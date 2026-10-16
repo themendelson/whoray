@@ -40,74 +40,18 @@ Returns a `Promise<WhorayResult>`.
 
 Throws only for input that isn't a domain name, or when your `signal` aborts. Any other failure resolves with `state: "unknown"` and an `error`.
 
-#### domain
+`domain` is any domain name, in Unicode or punycode.
 
-Type: `string`
-
-A domain name, in Unicode or punycode. Case and a trailing dot don't matter.
-
-#### options
-
-##### follow
-
-Type: `"registry" | "registrar"`\
-Default: `"registry"`
-
-`"registrar"` also queries the registrar's own server, one extra request, to fill in registrar details.
-
-##### rdap
-
-Type: `"prefer" | "only" | "never"`\
-Default: `"prefer"`
-
-Use `"only"` where port 43 isn't available, such as browsers. Use `"never"` to force WHOIS.
-
-##### timeout
-
-Type: `number`\
-Default: `10000`
-
-Deadline in milliseconds for the whole lookup, including fallbacks and referrals.
-
-##### signal
-
-Type: `AbortSignal`
-
-Cancels the lookup. The promise rejects with the signal's reason.
-
-##### servers
-
-Type: `Record<string, { rdap?: string; whois?: string; query?: string }>`
-
-Overrides the servers for a TLD. `rdap` is a base URL ending in `/`; `query` is a template such as `"-T dn {domain}"`.
-
-##### connect
-
-Type: `(host: string, port: number, signal?: AbortSignal) => Promise<{ readable: ReadableStream; writable: WritableStream }>`
-
-Opens the port 43 connection. Pass your own to go through a proxy. See [Recipes](#recipes).
-
-##### fetch
-
-Type: `typeof fetch`\
-Default: `globalThis.fetch`
-
-Used for RDAP requests.
-
-##### concurrency
-
-Type: `number`\
-Default: `4`
-
-Maximum requests in flight to a single server host.
-
-### parseWhois(text, domain)
-
-Parses a WHOIS reply you already have. Returns the same record as `lookup`, without `source` and `hops`.
-
-### parseRdap(json, domain)
-
-Parses an RDAP response you already have. Returns the same record as `lookup`, without `source` and `hops`.
+| Option | Default | What it does |
+| --- | --- | --- |
+| `follow` | `"registry"` | `"registrar"` also asks the registrar's own server, for fuller registrar details |
+| `rdap` | `"prefer"` | `"only"` skips WHOIS (use in browsers); `"never"` skips RDAP |
+| `timeout` | `10000` | Milliseconds for the whole lookup |
+| `signal` | | `AbortSignal` to cancel the lookup |
+| `servers` | | Your own servers per TLD: `{ io: { rdap: "https://…/", whois: "whois.nic.io" } }` |
+| `connect` | built in | Opens the port 43 connection; pass your own to use a proxy ([example](#use-a-socks-proxy-for-port-43)) |
+| `fetch` | `globalThis.fetch` | Used for RDAP requests |
+| `concurrency` | `4` | Max requests at once to the same server |
 
 ### Result
 
