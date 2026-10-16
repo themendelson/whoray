@@ -1,6 +1,6 @@
 {
   "name": "whoray",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "WHOIS and RDAP for every TLD: one call, one normalized result, lifecycle and drop dates. Zero dependencies.",
   "keywords": [
     "whois",
@@ -58,7 +58,8 @@
     "typecheck": "tsc",
     "test": "vitest run",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
-    "fixture": "node --experimental-strip-types --no-warnings scripts/fixture.ts"
+    "fixture": "node --experimental-strip-types --no-warnings scripts/fixture.ts",
+    "prepublishOnly": "pnpm check && pnpm build"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",
