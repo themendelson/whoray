@@ -3,11 +3,11 @@ import { servers } from "#data/servers.ts";
 import type { Name } from "#domain.ts";
 import { bySuffix, lastLabel, normalize } from "#domain.ts";
 import { ianaRdapBase, ianaWhoisHost } from "#iana.ts";
-import { isKnownSuffix } from "#lifecycle.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { toRecord } from "#parse/record.ts";
 import { fetchRdap, readRdapReply } from "#rdap.ts";
 import { referralHost, referralUrl } from "#referral.ts";
+import { isKnownSuffix } from "#tlds.ts";
 import type { Connect, Hop, LookupOptions, Protocol, ServerEntry, WhorayResult } from "#types.ts";
 import { queryWhois, readWhoisReply } from "#whois.ts";
 

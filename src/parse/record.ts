@@ -1,6 +1,7 @@
 import type { Name } from "#domain.ts";
-import { dropOf, registryOf, stateOf } from "#lifecycle.ts";
+import { dropOf, stateOf } from "#lifecycle.ts";
 import type { Found } from "#parse/found.ts";
+import { registryOf } from "#tlds.ts";
 import type { DomainRecord, DomainState } from "#types.ts";
 
 const REGISTERED: Record<DomainState, boolean | undefined> = {
