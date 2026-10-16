@@ -16,7 +16,7 @@
     "country": "US"
   },
   "registry": {
-    "id": "identity.digital",
+    "id": "identity-digital",
     "name": "Identity Digital"
   },
   "handle": "6eddd132ab114b12bd2bd4cf9c492a04-DONUTS",
@@ -29,6 +29,12 @@
     "clientTransferProhibited",
     "clientUpdateProhibited"
   ],
-  "nameservers": [],
+  "nameservers": [
+    "ns2.zdns.google",
+    "ns3.zdns.google",
+    "ns4.zdns.google",
+    "ns1.zdns.google"
+  ],
+  "dnssec": false,
   "source": "whois"
 }

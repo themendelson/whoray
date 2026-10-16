@@ -4,10 +4,10 @@
   "state": "unknown",
   "statuses": [],
   "nameservers": [],
-  "source": "whois",
   "error": {
     "code": "blocked",
     "message": "The server refused this client",
     "server": "whois.test"
-  }
+  },
+  "source": "whois"
 }

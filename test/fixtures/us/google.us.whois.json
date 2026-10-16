@@ -12,7 +12,8 @@
   },
   "registrant": {
     "name": "Google LLC",
-    "organization": "Google LLC"
+    "organization": "Google LLC",
+    "country": "US"
   },
   "handle": "D775573-US",
   "creationDate": "2002-04-19T23:16:01.000Z",
@@ -27,6 +28,12 @@
     "serverDeleteProhibited",
     "serverTransferProhibited"
   ],
-  "nameservers": [],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
   "source": "whois"
 }

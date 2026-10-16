@@ -10,10 +10,9 @@
   "creationDate": "2003-04-30T00:00:00.000Z",
   "statuses": [
     "ok",
-    "Delete Prohibited by Registrar",
-    "Update Prohibited by Registrar",
-    "Transfer Prohibited by Registrar",
-    "Registered until cancelled"
+    "clientDeleteProhibited",
+    "clientUpdateProhibited",
+    "clientTransferProhibited"
   ],
   "nameservers": [
     "ns1.google.com",

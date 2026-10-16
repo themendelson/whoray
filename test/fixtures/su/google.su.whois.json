@@ -8,11 +8,7 @@
   },
   "creationDate": "2005-10-15T20:00:00.000Z",
   "expirationDate": "2027-10-15T21:00:00.000Z",
-  "statuses": [
-    "REGISTERED",
-    "DELEGATED",
-    "VERIFIED"
-  ],
+  "statuses": [],
   "nameservers": [
     "ns1.beget.com",
     "ns1.beget.pro",

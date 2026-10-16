@@ -9,12 +9,30 @@
     "abuseEmail": "abusecomplaints@markmonitor.com",
     "abusePhone": "+1.2083895740"
   },
+  "registrant": {
+    "name": "Google Canada Corporation",
+    "organization": "Google Canada Corporation",
+    "country": "CA"
+  },
   "handle": "D73081-CIRA",
   "creationDate": "2000-10-04T02:21:23.000Z",
   "updatedDate": "2026-04-28T04:05:31.000Z",
   "expirationDate": "2027-04-28T04:00:00.000Z",
   "snapshotDate": "2026-10-16T18:51:16.000Z",
-  "statuses": [],
-  "nameservers": [],
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientTransferProhibited",
+    "clientUpdateProhibited",
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
   "source": "whois"
 }

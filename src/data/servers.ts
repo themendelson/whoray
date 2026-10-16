@@ -2,8 +2,6 @@ import type { ServerEntry } from "#types.ts";
 
 const identityDigital = "https://rdap.identitydigital.services/rdap/";
 
-export const availabilityConfirmedByWhois: ReadonlySet<string> = new Set(["rdap.identitydigital.services"]);
-
 export const servers: Record<string, ServerEntry> = {
   ac: { rdap: identityDigital, whois: "whois.nic.ac" },
   ai: { whois: "whois.nic.ai" },
@@ -30,7 +28,7 @@ export const servers: Record<string, ServerEntry> = {
   college: { whois: "whois.nic.college" },
   courses: { whois: "whois.nic.courses" },
   cyou: { whois: "whois.nic.cyou" },
-  de: { rdap: "https://rdap.denic.de/", whois: "whois.denic.de", query: "-T dn {domain}" },
+  de: { rdap: "https://rdap.denic.de/", whois: "whois.denic.de", query: "-T dn,ace {domain}" },
   design: { whois: "whois.nic.design" },
   do: { whois: "whois.nic.do" },
   earth: { whois: "whois.nic.earth" },

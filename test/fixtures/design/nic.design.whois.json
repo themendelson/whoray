@@ -1,7 +1,7 @@
 {
   "domain": "nic.design",
   "tld": "design",
-  "state": "expired",
+  "state": "registered",
   "isRegistered": true,
   "registrar": {
     "name": "MMX",
@@ -22,7 +22,6 @@
   "updatedDate": "2026-10-15T22:22:08.000Z",
   "expirationDate": "2026-09-29T06:08:47.000Z",
   "snapshotDate": "2026-10-16T18:51:54.000Z",
-  "dropDate": "2026-12-18T06:08:47.000Z",
   "statuses": [
     "serverRenewProhibited",
     "serverDeleteProhibited",
@@ -30,6 +29,12 @@
     "serverUpdateProhibited",
     "autoRenewPeriod"
   ],
-  "nameservers": [],
+  "nameservers": [
+    "a.nic.design",
+    "b.nic.design",
+    "c.nic.design",
+    "d.nic.design"
+  ],
+  "dnssec": true,
   "source": "whois"
 }

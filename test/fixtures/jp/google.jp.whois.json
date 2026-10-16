@@ -8,8 +8,7 @@
   "expirationDate": "2027-05-31T00:00:00.000Z",
   "statuses": [
     "ok",
-    "DomainTransferLocked",
-    "AgentChangeLocked"
+    "clientTransferProhibited"
   ],
   "nameservers": [
     "ns1.google.com",

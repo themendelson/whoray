@@ -4,10 +4,10 @@
   "state": "unknown",
   "statuses": [],
   "nameservers": [],
-  "source": "whois",
   "error": {
     "code": "rate_limited",
     "message": "The server is rate limiting queries",
     "server": "whois.test"
-  }
+  },
+  "source": "whois"
 }

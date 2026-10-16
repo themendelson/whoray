@@ -22,9 +22,7 @@
     "serverTransferProhibited",
     "clientUpdateProhibited",
     "clientDeleteProhibited",
-    "serverDeleteProhibited",
-    "DS automation disabled",
-    "NS automation disabled"
+    "serverDeleteProhibited"
   ],
   "nameservers": [
     "ns1.google.com",

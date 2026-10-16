@@ -1,7 +1,7 @@
-import { object, strings } from "#json.ts";
+import type { Found } from "#parse/found.ts";
+import { readRdap } from "#parse/rdap.ts";
 
 export interface RdapReply {
-  url: string;
   status: number;
   body: string;
   retryAfter?: number;
@@ -11,35 +11,25 @@ export async function fetchRdap(fetcher: typeof fetch, url: string, signal: Abor
   const response = await fetcher(url, { headers: { accept: "application/rdap+json" }, signal });
   const body = await response.text();
   const retryAfter = Number(response.headers.get("retry-after"));
-  return { url, status: response.status, body, ...(retryAfter > 0 && { retryAfter }) };
+  return { status: response.status, body, ...(retryAfter > 0 && { retryAfter }) };
 }
 
-let bootstrap: Promise<Map<string, string>> | undefined;
-
-export async function ianaRdapBase(
-  fetcher: typeof fetch,
-  tld: string,
-  signal: AbortSignal,
-): Promise<string | undefined> {
-  bootstrap ??= loadBootstrap(fetcher, signal).catch((error: unknown) => {
-    bootstrap = undefined;
-    throw error;
-  });
-  return (await bootstrap).get(tld);
-}
-
-async function loadBootstrap(fetcher: typeof fetch, signal: AbortSignal): Promise<Map<string, string>> {
-  const response = await fetcher("https://data.iana.org/rdap/dns.json", { signal });
-  if (!response.ok) throw new Error(`IANA RDAP bootstrap returned HTTP ${response.status}`);
-  const json: unknown = await response.json();
-  const bases = new Map<string, string>();
-  const services = object(json)?.services;
-  for (const service of Array.isArray(services) ? services : []) {
-    if (!Array.isArray(service)) continue;
-    const urls = strings(service[1]);
-    const base = urls.find((url) => url.startsWith("https://")) ?? urls[0];
-    if (base === undefined) continue;
-    for (const tld of strings(service[0])) bases.set(tld, base.endsWith("/") ? base : `${base}/`);
+export function readRdapReply({ status, body, retryAfter }: RdapReply): Found {
+  if (status === 404) return { kind: "available" };
+  if (status === 429) {
+    return {
+      kind: "error",
+      code: "rate_limited",
+      message: "HTTP 429",
+      ...(retryAfter !== undefined && { retryAfter }),
+    };
   }
-  return bases;
+  if (status !== 200) return { kind: "error", code: "network", message: `HTTP ${status}` };
+  let json: unknown;
+  try {
+    json = JSON.parse(body);
+  } catch {
+    return { kind: "error", code: "unparseable", message: "RDAP reply is not JSON" };
+  }
+  return readRdap(json);
 }

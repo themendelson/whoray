@@ -20,9 +20,7 @@
   "expirationDate": "2027-10-02T22:00:00.000Z",
   "snapshotDate": "2026-10-16T18:41:39.000Z",
   "statuses": [
-    "ok",
-    "DS automation disabled",
-    "NS automation disabled"
+    "ok"
   ],
   "nameservers": [
     "ns1.google.com",

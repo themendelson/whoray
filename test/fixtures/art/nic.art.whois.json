@@ -6,11 +6,14 @@
   "registrar": {
     "name": "CentralNic Ltd",
     "ianaId": 9999,
-    "url": "https://www.centralnic.com/"
+    "url": "https://www.centralnic.com/",
+    "abuseEmail": "ops@centralnic.com",
+    "abusePhone": "+44.2033880600"
   },
   "registrant": {
     "name": "Domain Administrator",
-    "organization": "CentralNic Ltd"
+    "organization": "CentralNic Ltd",
+    "country": "GB"
   },
   "registry": {
     "id": "centralnic",
@@ -27,6 +30,12 @@
     "serverDeleteProhibited",
     "serverTransferProhibited"
   ],
-  "nameservers": [],
+  "nameservers": [
+    "a.nic.art",
+    "b.nic.art",
+    "c.nic.art",
+    "d.nic.art"
+  ],
+  "dnssec": false,
   "source": "whois"
 }

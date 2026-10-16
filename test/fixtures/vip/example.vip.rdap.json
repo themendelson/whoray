@@ -1,0 +1,13 @@
+{
+  "domain": "example.vip",
+  "tld": "vip",
+  "state": "available",
+  "isRegistered": false,
+  "registry": {
+    "id": "godaddy-registry",
+    "name": "GoDaddy Registry"
+  },
+  "statuses": [],
+  "nameservers": [],
+  "source": "rdap"
+}

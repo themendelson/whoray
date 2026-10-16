@@ -1,24 +1,26 @@
 import type { JsonObject } from "#json.ts";
 import { boolean, object, objects, string, strings } from "#json.ts";
 import { parseDate } from "#parse/dates.ts";
+import { countryCode, hostnames, registrant, registrar, visible } from "#parse/fields.ts";
 import type { Found } from "#parse/found.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
-import { countryCode, registrant, visible } from "#parse/visible.ts";
 import type { Registrant, Registrar } from "#types.ts";
 
-type EventField = "created" | "updated" | "expires" | "deleted" | "database";
+type EventField = "creationDate" | "updatedDate" | "expirationDate" | "deleted" | "snapshotDate";
 
 const EVENT_FIELDS: Record<string, EventField> = {
-  registration: "created",
-  registered: "created",
-  expiration: "expires",
-  expired: "expires",
-  "last changed": "updated",
-  transfer: "updated",
+  registration: "creationDate",
+  registered: "creationDate",
+  expiration: "expirationDate",
+  expired: "expirationDate",
+  "last changed": "updatedDate",
+  transfer: "updatedDate",
   deleted: "deleted",
   deletion: "deleted",
-  "last update of rdap database": "database",
+  "last update of rdap database": "snapshotDate",
 };
+
+const ADR_PARTS = 7;
 
 export function readRdap(json: unknown): Found {
   const root = object(json);
@@ -45,9 +47,7 @@ export function readRdap(json: unknown): Found {
     kind: "record",
     ...dates,
     statuses: normalizeStatuses(strings(root.status)),
-    nameservers: [
-      ...new Set(objects(root.nameservers).flatMap((ns) => string(ns.ldhName)?.toLowerCase().replace(/\.$/, "") ?? [])),
-    ],
+    nameservers: hostnames(objects(root.nameservers ?? root.nameServers).flatMap((ns) => string(ns.ldhName) ?? [])),
     ...(registrar && { registrar }),
     ...(holder && { registrant: holder }),
     ...(handle !== undefined && { handle }),
@@ -59,20 +59,15 @@ export function readRdap(json: unknown): Found {
 function registrarOf(entity: JsonObject | undefined): Registrar | undefined {
   const name = entity && (vcard(entity, "fn") ?? vcard(entity, "org"));
   if (!entity || name === undefined) return undefined;
-  const ianaId = Number(
-    objects(entity.publicIds).find((id) => /iana/i.test(string(id.type) ?? ""))?.identifier ?? Number.NaN,
-  );
+  const ianaId = objects(entity.publicIds).find((id) => /iana/i.test(string(id.type) ?? ""))?.identifier;
   const abuse = objects(entity.entities).find((nested) => strings(nested.roles).includes("abuse"));
-  const abuseEmail = abuse && vcard(abuse, "email")?.toLowerCase();
-  const abusePhone = abuse && vcard(abuse, "tel")?.replace(/^tel:/, "");
-  const url = vcard(entity, "url") ?? objects(entity.links).find((link) => string(link.rel) === "about")?.href;
-  return {
-    name,
-    ...(Number.isInteger(ianaId) && ianaId > 0 && { ianaId }),
-    ...(typeof url === "string" && { url }),
-    ...(abuseEmail !== undefined && { abuseEmail }),
-    ...(abusePhone !== undefined && { abusePhone }),
-  };
+  const about = objects(entity.links).find((link) => string(link.rel) === "about");
+  return registrar(name, {
+    ianaId: Number(ianaId ?? Number.NaN),
+    url: vcard(entity, "url") ?? string(about?.href),
+    abuseEmail: abuse && vcard(abuse, "email"),
+    abusePhone: abuse && vcard(abuse, "tel"),
+  });
 }
 
 function registrantOf(entity: JsonObject | undefined): Registrant | undefined {
@@ -81,8 +76,12 @@ function registrantOf(entity: JsonObject | undefined): Registrant | undefined {
   return registrant(
     visible(vcard(entity, "fn")),
     visible(vcard(entity, "org")),
-    countryCode(string(object(address?.[1])?.cc) ?? strings(address?.[3]).at(-1)),
+    countryCode(string(object(address?.[1])?.cc) ?? countryOf(address?.[3])),
   );
+}
+
+function countryOf(parts: unknown): string | undefined {
+  return Array.isArray(parts) && parts.length === ADR_PARTS ? string(parts[ADR_PARTS - 1]) : undefined;
 }
 
 function vcardEntry(entity: JsonObject, property: string): unknown[] | undefined {

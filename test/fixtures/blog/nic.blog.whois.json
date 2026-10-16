@@ -15,7 +15,17 @@
   "updatedDate": "2026-05-06T14:56:02.000Z",
   "expirationDate": "3000-01-01T00:00:00.000Z",
   "snapshotDate": "2026-10-16T18:46:57.000Z",
-  "statuses": [],
-  "nameservers": [],
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverRenewProhibited",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "a.ns.nic.blog",
+    "b.ns.nic.blog",
+    "c.ns.nic.blog",
+    "d.ns.nic.blog"
+  ],
+  "dnssec": true,
   "source": "whois"
 }

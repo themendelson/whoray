@@ -1,34 +1,26 @@
 import { mkdir, writeFile } from "node:fs/promises";
-import { servers } from "#data/servers.ts";
-import { normalize } from "#domain.ts";
-import { hasLifecycleData, lastLabel } from "#lifecycle.ts";
-import { fetchRdap, ianaRdapBase } from "#rdap.ts";
-import { connect } from "#socket/node.ts";
-import { ianaWhoisHost, queryWhois } from "#whois.ts";
+import { lookup } from "#node.ts";
 
-const knownSuffix = (suffix: string): boolean => suffix in servers || hasLifecycleData(suffix);
+const TIMEOUT = 20_000;
 
 async function capture(input: string): Promise<void> {
-  const { domain, tld } = normalize(input, knownSuffix);
-  const dir = `test/fixtures/${tld}`;
+  const statuses: number[] = [];
+  const recording: typeof fetch = async (request, init) => {
+    const response = await fetch(request, init);
+    statuses.push(response.status);
+    return response;
+  };
+  const rdap = await lookup(input, { protocol: "rdap", fetch: recording, timeout: TIMEOUT });
+  const whois = await lookup(input, { protocol: "whois", timeout: TIMEOUT });
+  const dir = `test/fixtures/${rdap.tld}`;
   await mkdir(dir, { recursive: true });
-  const signal = AbortSignal.timeout(20_000);
-  const entry = servers[tld] ?? servers[lastLabel(tld)];
-  const rdapBase = entry?.rdap ?? (await ianaRdapBase(fetch, lastLabel(tld), signal).catch(() => undefined));
-  if (rdapBase !== undefined) {
-    const reply = await fetchRdap(fetch, `${rdapBase}domain/${domain}`, signal).catch((error: unknown) =>
-      String(error),
-    );
-    const saved = typeof reply === "string" ? reply : `${reply.status}\n${reply.body}`;
-    await writeFile(`${dir}/${domain}.rdap`, saved);
-  }
-  const host = entry?.whois ?? (await ianaWhoisHost(connect, lastLabel(tld), signal).catch(() => undefined));
-  if (host !== undefined) {
-    const query = (entry?.query ?? "{domain}").replace("{domain}", domain);
-    const reply = await queryWhois(connect, host, query, signal).catch((error: unknown) => `ERROR ${String(error)}`);
-    await writeFile(`${dir}/${domain}.whois`, `${host}\n${reply}`);
-  }
-  console.log(`${domain}: rdap ${rdapBase ?? "-"} whois ${host ?? "-"}`);
+  const [rdapHop] = rdap.hops;
+  if (rdapHop) await writeFile(`${dir}/${rdap.domain}.rdap`, `${statuses.at(-1) ?? ""}\n${rdapHop.raw}`);
+  const [whoisHop] = whois.hops;
+  if (whoisHop) await writeFile(`${dir}/${whois.domain}.whois`, `${whoisHop.server}\n${whoisHop.raw}`);
+  console.log(
+    `${rdap.domain}: rdap ${rdapHop?.server ?? rdap.error?.message} whois ${whoisHop?.server ?? whois.error?.message}`,
+  );
 }
 
 const queue = process.argv.slice(2);

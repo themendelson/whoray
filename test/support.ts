@@ -1,4 +1,6 @@
 import { readdirSync, readFileSync } from "node:fs";
+import { vi } from "vitest";
+import type { Lookup } from "#node.ts";
 import type { Connect } from "#types.ts";
 
 export interface Capture {
@@ -59,9 +61,13 @@ export function whoisServer(reply: (host: string, query: string) => string, down
   return { connect, connections, queries };
 }
 
-export function httpServer(
-  reply: (url: string) => { status: number; body: string; headers?: Record<string, string> },
-): {
+interface HttpReply {
+  status: number;
+  body: string;
+  headers?: Record<string, string>;
+}
+
+export function httpServer(reply: (url: string) => HttpReply | Promise<HttpReply>): {
   fetch: typeof fetch;
   urls: string[];
 } {
@@ -69,8 +75,20 @@ export function httpServer(
   const fakeFetch: typeof fetch = async (input) => {
     const url = input instanceof Request ? input.url : String(input);
     urls.push(url);
-    const { status, body, headers } = reply(url);
+    const { status, body, headers } = await reply(url);
     return new Response(body, { status, ...(headers && { headers }) });
   };
   return { fetch: fakeFetch, urls };
+}
+
+export const silentServer: Connect = async () => ({ writable: new WritableStream(), readable: new ReadableStream() });
+
+export function ianaBootstrap(tld: string, base: string): HttpReply {
+  return { status: 200, body: JSON.stringify({ services: [[[tld], [base]]] }) };
+}
+
+export async function freshLookup(): Promise<Lookup> {
+  vi.resetModules();
+  const fresh = await import("#node.ts");
+  return fresh.lookup;
 }

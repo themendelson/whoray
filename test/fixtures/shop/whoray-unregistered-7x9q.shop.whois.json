@@ -8,10 +8,10 @@
   },
   "statuses": [],
   "nameservers": [],
-  "source": "whois",
   "error": {
     "code": "no_server",
     "message": "The server no longer answers for this TLD",
     "server": "whois.test"
-  }
+  },
+  "source": "whois"
 }

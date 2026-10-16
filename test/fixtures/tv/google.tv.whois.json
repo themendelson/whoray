@@ -30,6 +30,11 @@
     "serverDeleteProhibited",
     "serverTransferProhibited"
   ],
-  "nameservers": [],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com"
+  ],
+  "dnssec": false,
   "source": "whois"
 }

@@ -31,10 +31,13 @@ interface Parts {
   rest: string;
 }
 
+const NUMERIC_DAY_MONTH_YEAR = /^(\d{1,2})[-./](\d{1,2})[-./](\d{4})(.*)$/;
+
 const PATTERNS: ((value: string) => Parts | undefined)[] = [
   (value) => parts(/^(\d{4})\s*[-./]\s*(\d{1,2})\s*[-./]\s*(\d{1,2})(.*)$/.exec(value), 1, 2, 3),
   (value) => parts(/^(\d{4})-([a-z]{3})-(\d{1,2})(.*)$/i.exec(value), 1, 2, 3),
-  (value) => parts(/^(\d{1,2})[-./](\d{1,2})[-./](\d{4})(.*)$/.exec(value), 3, 2, 1),
+  (value) => parts(NUMERIC_DAY_MONTH_YEAR.exec(value), 3, 2, 1),
+  (value) => parts(NUMERIC_DAY_MONTH_YEAR.exec(value), 3, 1, 2),
   (value) => parts(/^(\d{1,2})[-\s.]+([a-z]{3})[a-z]*\.?[-\s.,]+(\d{4})(.*)$/i.exec(value), 3, 2, 1),
   (value) => parts(/^([a-z]{3})[a-z]*\.?\s+(\d{1,2}),?\s+(\d{4})(.*)$/i.exec(value), 3, 1, 2),
   (value) => parts(/^(\d{4})(\d{2})(\d{2})(\D.*)?$/.exec(value), 1, 2, 3),
@@ -54,16 +57,17 @@ export function parseDate(input: string): Date | undefined {
     .replace(/^[a-z]{3},?\s+(?=[a-z]{3}\s)/i, "");
   for (const pattern of PATTERNS) {
     const found = pattern(value);
-    if (found) return build(found);
+    const date = found && build(found);
+    if (date) return date;
   }
   return undefined;
 }
 
 function build({ year, month, day, rest }: Parts): Date | undefined {
-  const time = /(\d{1,2}):(\d{2})(?::(\d{2}))?/.exec(rest);
-  const date = new Date(
-    Date.UTC(year, month - 1, day, Number(time?.[1] ?? 0), Number(time?.[2] ?? 0), Number(time?.[3] ?? 0)),
-  );
+  const time = /(\d{1,2}):(\d{2})(?::(\d{2}))?(?:\s*([ap])\.?m\b)?/i.exec(rest);
+  const meridiem = time?.[4]?.toLowerCase();
+  const hour = (Number(time?.[1] ?? 0) % (meridiem === undefined ? 24 : 12)) + (meridiem === "p" ? 12 : 0);
+  const date = new Date(Date.UTC(year, month - 1, day, hour, Number(time?.[2] ?? 0), Number(time?.[3] ?? 0)));
   const valid = month >= 1 && month <= 12 && date.getUTCDate() === day && date.getUTCMonth() === month - 1;
   return valid ? new Date(date.getTime() - offsetMinutes(rest) * 60_000) : undefined;
 }

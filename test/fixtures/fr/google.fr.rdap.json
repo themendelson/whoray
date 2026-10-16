@@ -23,8 +23,7 @@
   "statuses": [
     "serverUpdateProhibited",
     "serverTransferProhibited",
-    "serverDeleteProhibited",
-    "server recover prohibited"
+    "serverDeleteProhibited"
   ],
   "nameservers": [
     "ns1.google.com",
