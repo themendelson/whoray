@@ -110,3 +110,25 @@ test("an RDAP registrant's country is the address's country part, or its cc para
   });
   expect(parseRdap(withAddress({ cc: "us" }, blankCountry), "example.com").registrant).toEqual({ country: "US" });
 });
+
+test("DNSSEC wording is read as signed or unsigned", () => {
+  const dnssecOf = (value: string): boolean | undefined =>
+    parseWhois(`Domain Name: a.com\nCreation Date: 2020-01-01\nDNSSEC: ${value}`, "a.com").dnssec;
+  expect(["not signed", "Signed: no", "unsigned delegation", "Inactive", "no"].map(dnssecOf)).toEqual([
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+  expect(["signedDelegation", "yes", "Signed", "active"].map(dnssecOf)).toEqual([true, true, true, true]);
+});
+
+test("dates with a 12-hour clock and month-first dates that can't be day-first are read", () => {
+  const expiry = (value: string): Date | undefined =>
+    parseWhois(`Domain Name: a.com\nRegistrar: X\nExpiration Date: ${value}`, "a.com").expirationDate;
+  expect(expiry("2027-01-05 10:30:00 PM")).toEqual(new Date("2027-01-05T22:30:00Z"));
+  expect(expiry("2027-01-05 12:15:00 AM")).toEqual(new Date("2027-01-05T00:15:00Z"));
+  expect(expiry("12/31/2027")).toEqual(new Date("2027-12-31T00:00:00Z"));
+  expect(expiry("05/01/2027")).toEqual(new Date("2027-01-05T00:00:00Z"));
+});

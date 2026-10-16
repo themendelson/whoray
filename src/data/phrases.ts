@@ -47,3 +47,8 @@ export const notices: Record<"rateLimited" | "blocked" | "retired", RegExp[]> = 
   blocked: [/\bnot permitted\b/i, /\baccess denied\b/i, /\bblacklisted\b/i],
   retired: [/\bwhois service has been retired\b/i, /\btld is not supported\b/i],
 };
+
+export const dnssec: Record<"unsigned" | "signed", RegExp> = {
+  unsigned: /\b(?:unsigned|not signed|no|false|inactive|disabled|none)\b|미서명/i,
+  signed: /\b(?:signed|signeddelegation|yes|true|active|enabled)\b|서명/i,
+};

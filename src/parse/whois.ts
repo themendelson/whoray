@@ -1,6 +1,6 @@
 import type { Field } from "#data/aliases.ts";
 import { aliases } from "#data/aliases.ts";
-import { firstLine, notFound, notices, reserved, revoked } from "#data/phrases.ts";
+import { dnssec, firstLine, notFound, notices, reserved, revoked } from "#data/phrases.ts";
 import { quirks } from "#data/quirks.ts";
 import type { Name } from "#domain.ts";
 import { bySuffix } from "#domain.ts";
@@ -129,7 +129,7 @@ function registrarOf(fields: Map<Field, string[]>): Registrar | undefined {
 }
 
 function dnssecOf(value: string): boolean | undefined {
-  if (/unsigned|^no\b|inactive|false/i.test(value)) return false;
-  if (/signed|^yes\b|active|true/i.test(value)) return true;
+  if (dnssec.unsigned.test(value)) return false;
+  if (dnssec.signed.test(value)) return true;
   return undefined;
 }
