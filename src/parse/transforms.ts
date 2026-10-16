@@ -10,3 +10,8 @@ export const latestChange: Transform = (text) => {
 };
 
 export const recordOnDates: Transform = (text) => text.replace(/^\s*Record (expires|created) on /gm, "\n$1: ");
+
+export const commentedSections: Transform = (text) =>
+  text
+    .replace(/^%[ \t]*([\p{L} ]+):[ \t]*\n%[ \t]*=+[ \t]*$/gmu, "\n$1:")
+    .replace(/^(Registrar:\n)registrar:/m, "$1handle:");
