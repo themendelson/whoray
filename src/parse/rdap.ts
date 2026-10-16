@@ -20,6 +20,8 @@ const EVENT_FIELDS: Record<string, EventField> = {
   "last update of rdap database": "snapshotDate",
 };
 
+const ADR_PARTS = 7;
+
 export function readRdap(json: unknown): Found {
   const root = object(json);
   if (!root) return { kind: "error", code: "unparseable", message: "RDAP reply is not a JSON object" };
@@ -74,8 +76,12 @@ function registrantOf(entity: JsonObject | undefined): Registrant | undefined {
   return registrant(
     visible(vcard(entity, "fn")),
     visible(vcard(entity, "org")),
-    countryCode(string(object(address?.[1])?.cc) ?? strings(address?.[3]).at(-1)),
+    countryCode(string(object(address?.[1])?.cc) ?? countryOf(address?.[3])),
   );
+}
+
+function countryOf(parts: unknown): string | undefined {
+  return Array.isArray(parts) && parts.length === ADR_PARTS ? string(parts[ADR_PARTS - 1]) : undefined;
 }
 
 function vcardEntry(entity: JsonObject, property: string): unknown[] | undefined {

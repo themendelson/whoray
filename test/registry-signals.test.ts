@@ -96,3 +96,17 @@ test("a notice written as a comment error after the server's header is still rea
     "% This is the Example Whois server.\n% Use of this service is not permitted for marketing.\n\n%ERROR:201: access denied";
   expect(parseWhois(text, "example.cz").error?.code).toBe("blocked");
 });
+
+const withAddress = (parameters: object, parts: string[]): unknown => ({
+  objectClassName: "domain",
+  entities: [{ roles: ["registrant"], vcardArray: ["vcard", [["adr", parameters, "text", parts]]] }],
+});
+
+test("an RDAP registrant's country is the address's country part, or its cc parameter", () => {
+  const blankCountry = ["", "", "1 Main St", "Mountain View", "CA", "94043", ""];
+  expect(parseRdap(withAddress({}, blankCountry), "example.com").registrant).toBeUndefined();
+  expect(parseRdap(withAddress({}, ["", "", "", "", "Quebec", "", "CA"]), "example.ca").registrant).toEqual({
+    country: "CA",
+  });
+  expect(parseRdap(withAddress({ cc: "us" }, blankCountry), "example.com").registrant).toEqual({ country: "US" });
+});
