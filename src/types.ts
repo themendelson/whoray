@@ -91,5 +91,4 @@ export interface LookupOptions {
   servers?: Record<string, ServerEntry>;
   connect?: Connect;
   fetch?: typeof fetch;
-  concurrency?: number;
 }

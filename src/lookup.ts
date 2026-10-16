@@ -2,7 +2,6 @@ import { availabilityConfirmedByWhois, servers } from "#data/servers.ts";
 import type { Name } from "#domain.ts";
 import { normalize } from "#domain.ts";
 import { hasLifecycleData, lastLabel } from "#lifecycle.ts";
-import { withSlot } from "#limiter.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { readRdap } from "#parse/rdap.ts";
 import { toRecord } from "#parse/record.ts";
@@ -19,7 +18,6 @@ interface Context {
   registrar: boolean;
   connect: Connect;
   fetch: typeof fetch;
-  concurrency: number;
   signal: AbortSignal;
   hops: Hop[];
 }
@@ -44,7 +42,6 @@ export function createLookup(defaultConnect: Connect): Lookup {
       registrar: options.follow === "registrar",
       connect: options.connect ?? defaultConnect,
       fetch: options.fetch ?? globalThis.fetch,
-      concurrency: options.concurrency ?? 4,
       signal: options.signal ? AbortSignal.any([options.signal, timeout]) : timeout,
       hops: [],
     };
@@ -125,7 +122,7 @@ async function viaRdap(context: Context): Promise<Outcome | undefined> {
 
 async function rdapHop(context: Context, url: string): Promise<Found> {
   const host = new URL(url).host;
-  const reply = await withSlot(host, context.concurrency, () => fetchRdap(context.fetch, url, context.signal));
+  const reply = await fetchRdap(context.fetch, url, context.signal);
   context.hops.push({ protocol: "rdap", server: host, raw: reply.body });
   if (reply.status === 404) return { kind: "available" };
   if (reply.status === 429) {
@@ -159,12 +156,10 @@ async function viaWhois(context: Context): Promise<Outcome> {
 
 async function whoisHop(context: Context, host: string, query: string): Promise<Found> {
   const ask = (): Promise<string> => queryWhois(context.connect, host, query, context.signal);
-  const text = await withSlot(host, context.concurrency, () =>
-    ask().catch((error: unknown) => {
-      if (context.signal.aborted) throw error;
-      return ask();
-    }),
-  );
+  const text = await ask().catch((error: unknown) => {
+    if (context.signal.aborted) throw error;
+    return ask();
+  });
   context.hops.push({ protocol: "whois", server: host, raw: text });
   if (text.trim() === "") return { kind: "error", code: "rate_limited", message: "Empty reply, usually throttling" };
   return readWhois(text, context.name);

@@ -40,7 +40,6 @@ domain.expirationDate;  //=> 2027-07-19T23:59:59.000Z
 | `servers` | | Your own servers for a TLD, e.g. `{ io: { whois: "whois.nic.io" } }` |
 | `connect` | | Your own port 43 connection, e.g. through a [proxy](#using-a-proxy) |
 | `fetch` | `globalThis.fetch` | Your own fetch for RDAP |
-| `concurrency` | `4` | Max requests at once to one server |
 
 It throws only if `domain` isn't a domain name or your `signal` aborts. Any other failure comes back as `state: "unknown"` with an `error`.
 

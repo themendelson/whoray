@@ -139,20 +139,6 @@ test("aborting through the caller's signal rejects the lookup", async () => {
   await expect(lookup("example.com", { fetch, servers, signal: controller.signal })).rejects.toThrow("cancelled");
 });
 
-test("concurrency caps in-flight requests per server host", async () => {
-  let inFlight = 0;
-  let peak = 0;
-  const slow: typeof fetch = async () => {
-    peak = Math.max(peak, ++inFlight);
-    await new Promise((resolve) => setTimeout(resolve, 10));
-    inFlight--;
-    return new Response("", { status: 404 });
-  };
-  const domains = Array.from({ length: 6 }, (_, i) => `name${i}.com`);
-  await Promise.all(domains.map((domain) => lookup(domain, { fetch: slow, servers, rdap: "only", concurrency: 2 })));
-  expect(peak).toBe(2);
-});
-
 test("input that isn't a domain name throws", async () => {
   await expect(lookup("not a domain")).rejects.toThrow(TypeError);
   await expect(lookup("https://example.com/path")).rejects.toThrow(TypeError);
