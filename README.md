@@ -117,10 +117,6 @@ const connect = async (host, port) => {
 await lookup("example.de", { connect });
 ```
 
-### Run on Cloudflare Workers
-
-Nothing to configure. The `workerd` export condition picks a build that opens port 43 through `cloudflare:sockets`.
-
 ## CLI
 
 ```sh
