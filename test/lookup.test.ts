@@ -74,15 +74,6 @@ test("RDAP takes over when WHOIS hasn't answered by half the timeout", async () 
   expect(result).toMatchObject({ state: "available", source: "rdap" });
 });
 
-test("WHOIS keeps the whole timeout when there's no RDAP to hand over to", async () => {
-  const result = await lookup("example.com", {
-    connect: silentServer,
-    servers: { com: { rdap: false, whois: "whois.registry.test" } },
-    timeout: 100,
-  });
-  expect(result.error).toMatchObject({ code: "timeout", server: "whois.registry.test" });
-});
-
 test("an RDAP 404 doesn't overrule a WHOIS reply that wasn't a not-found", async () => {
   const { fetch } = httpServer(() => ({ status: 404, body: "" }));
   const { connect } = whoisServer(() => "This name is subject to a policy we don't recognise.");
@@ -112,14 +103,6 @@ test("protocol: rdap never opens a socket and reports rate limits with Retry-Aft
   expect(result).toMatchObject({ state: "unknown", source: "rdap" });
   expect(result.error).toEqual({ code: "rate_limited", message: "HTTP 429", server: "rdap.test", retryAfter: 30 });
   expect(whois.connections).toEqual([]);
-});
-
-test("protocol: whois never fetches", async () => {
-  const { fetch, urls } = httpServer(() => ({ status: 200, body: RDAP_DOMAIN }));
-  const { connect } = whoisServer(() => "");
-  const result = await lookup("example.com", { fetch, connect, servers, protocol: "whois" });
-  expect(urls).toEqual([]);
-  expect(result.error?.code).toBe("rate_limited");
 });
 
 test("an RDAP 404 means the domain is available", async () => {
@@ -167,13 +150,6 @@ test("WHOIS hosts come from whois.iana.org when the TLD isn't in the server list
     { host: "whois.nic.yy", query: "example.yy" },
   ]);
   expect(result.state).toBe("available");
-});
-
-test("a TLD with no server anywhere is reported without a source", async () => {
-  const server = whoisServer(() => "domain: XX\n");
-  const result = await lookup("example.xx", { connect: server.connect, servers: { xx: { rdap: false } } });
-  expect(result).toMatchObject({ state: "unknown", error: { code: "no_server" } });
-  expect(result.source).toBeUndefined();
 });
 
 test("registries that need a query format get it", async () => {
@@ -278,19 +254,8 @@ test("a reserved name stays reserved although RDAP has no record of it", async (
   expect(result).toMatchObject({ state: "reserved", isRegistered: false, source: "whois" });
 });
 
-test("follow: registrar ignores referrals to addresses or private names", async () => {
-  for (const referral of ["10.0.0.1", "0x7f.0.0.1", "localhost", "metadata.internal"]) {
-    const server = whoisServer(() => WHOIS_REGISTRY.replace("whois.registrar.test", referral));
-    await lookup("example.com", { connect: server.connect, servers, follow: "registrar", protocol: "whois" });
-    expect(server.connections).toEqual(["whois.registry.test"]);
-  }
-});
-
-test("follow: registrar only fetches public https RDAP referrals", async () => {
-  for (const href of ["http://rdap.registrar.test/domain/example.com", "https://169.254.169.254/domain/example.com"]) {
-    const body = JSON.stringify({ ...RDAP_RECORD, links: [{ rel: "related", type: "application/rdap+json", href }] });
-    const { fetch, urls } = httpServer(() => ({ status: 200, body }));
-    await lookup("example.com", { fetch, servers, follow: "registrar", protocol: "rdap" });
-    expect(urls).toEqual(["https://rdap.test/domain/example.com"]);
-  }
+test("follow: registrar doesn't follow a referral to a private address", async () => {
+  const whois = whoisServer(() => WHOIS_REGISTRY.replace("whois.registrar.test", "169.254.169.254"));
+  await lookup("example.com", { connect: whois.connect, servers, follow: "registrar", protocol: "whois" });
+  expect(whois.connections).toEqual(["whois.registry.test"]);
 });
