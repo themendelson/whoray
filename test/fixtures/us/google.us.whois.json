@@ -8,7 +8,8 @@
     "ianaId": 292,
     "url": "www.markmonitor.com",
     "abuseEmail": "registry.admin@markmonitor.com",
-    "abusePhone": "+1.2083895740"
+    "abusePhone": "+1.2083895740",
+    "whoisServer": "whois.markmonitor.com"
   },
   "registrant": {
     "name": "Google LLC",

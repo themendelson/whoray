@@ -29,10 +29,11 @@ interface RegistrarDetails {
   url?: string | undefined;
   abuseEmail?: string | undefined;
   abusePhone?: string | undefined;
+  whoisServer?: string | undefined;
 }
 
 export function registrar(name: string, details: RegistrarDetails): Registrar {
-  const { ianaId, url } = details;
+  const { ianaId, url, whoisServer } = details;
   const abuseEmail = details.abuseEmail?.toLowerCase();
   const abusePhone = details.abusePhone?.replace(/^tel:/, "");
   return {
@@ -41,6 +42,7 @@ export function registrar(name: string, details: RegistrarDetails): Registrar {
     ...(url !== undefined && { url }),
     ...(abuseEmail?.includes("@") === true && { abuseEmail }),
     ...(abusePhone !== undefined && { abusePhone }),
+    ...(whoisServer !== undefined && { whoisServer }),
   };
 }
 

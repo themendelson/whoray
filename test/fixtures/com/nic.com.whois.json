@@ -8,7 +8,8 @@
     "ianaId": 2,
     "url": "http://networksolutions.com",
     "abuseEmail": "domain.operations@web.com",
-    "abusePhone": "+1.8777228662"
+    "abusePhone": "+1.8777228662",
+    "whoisServer": "whois.networksolutions.com"
   },
   "registry": {
     "id": "verisign",

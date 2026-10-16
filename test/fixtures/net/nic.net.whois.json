@@ -8,7 +8,8 @@
     "ianaId": 886,
     "url": "http://www.domain.com",
     "abuseEmail": "domain.operations@web.com",
-    "abusePhone": "+1.8003337680"
+    "abusePhone": "+1.8003337680",
+    "whoisServer": "whois.domain.com"
   },
   "registry": {
     "id": "verisign",
