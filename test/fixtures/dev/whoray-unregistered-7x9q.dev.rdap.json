@@ -4,7 +4,7 @@
   "state": "available",
   "isRegistered": false,
   "registry": {
-    "id": "registry.google",
+    "id": "google-registry",
     "name": "Charleston Road Registry Inc"
   },
   "statuses": [],

@@ -4,7 +4,7 @@
   "state": "available",
   "isRegistered": false,
   "registry": {
-    "id": "tucows",
+    "id": "tucows-registry",
     "name": "Tucows Registry Services"
   },
   "statuses": [],

@@ -12,7 +12,7 @@ const list = (tlds: string): string[] => tlds.trim().split(/\s+/);
 
 export const registries: Registry[] = [
   {
-    id: "icb.co.uk",
+    id: "internet-computer-bureau",
     name: "Internet Computer Bureau",
     dropzone: true,
     redemption: 45,
@@ -22,7 +22,7 @@ export const registries: Registry[] = [
     `),
   },
   {
-    id: "pir.org",
+    id: "public-interest-registry",
     name: "Public Interest Registry",
     dropzone: true,
     redemption: 35,
@@ -41,7 +41,7 @@ export const registries: Registry[] = [
     `),
   },
   {
-    id: "registry.google",
+    id: "google-registry",
     name: "Charleston Road Registry Inc",
     textPattern: /registry\.google/,
     redemption: 35,
@@ -53,7 +53,7 @@ export const registries: Registry[] = [
     `),
   },
   {
-    id: "identity.digital",
+    id: "identity-digital",
     name: "Identity Digital",
     textPattern: /identity\.digital/,
     dropzone: true,
@@ -143,7 +143,7 @@ export const registries: Registry[] = [
     `),
   },
   {
-    id: "tucows",
+    id: "tucows-registry",
     name: "Tucows Registry Services",
     textPattern: /Tucows Registry/,
     redemption: 34,
@@ -168,7 +168,7 @@ export const registries: Registry[] = [
     `),
   },
   {
-    id: "MinTIC",
+    id: "mintic",
     name: "MinTIC",
     redemption: 30,
     pendingDelete: 5,
