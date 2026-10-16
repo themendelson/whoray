@@ -1,0 +1,24 @@
+{
+  "domain": "google.fi",
+  "unicode": "google.fi",
+  "tld": "fi",
+  "state": "registered",
+  "dates": {
+    "created": "2006-06-29T21:00:00.000Z",
+    "updated": "2026-06-02T10:04:19.000Z",
+    "expires": "2027-07-04T07:15:55.000Z"
+  },
+  "statuses": [
+    "ok",
+    "serverTransferProhibited",
+    "serverDeleteProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns3.google.com",
+    "ns4.google.com",
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "source": "rdap"
+}

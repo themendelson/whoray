@@ -1,0 +1,20 @@
+whois.tcinet.ru
+% TCI Whois Service. Terms of use:
+% https://tcinet.ru/documents/whois_ru_rf.pdf (in Russian)
+% https://tcinet.ru/documents/whois_su.pdf (in Russian)
+
+domain:        GOOGLE.SU
+nserver:       ns1.beget.com.
+nserver:       ns1.beget.pro.
+nserver:       ns2.beget.com.
+state:         REGISTERED, DELEGATED, VERIFIED
+person:        Private Person
+registrar:     RUCENTER-SU
+admin-contact: http://www.nic.ru/dns/service
+created:       2005-10-15T20:00:00Z
+paid-till:     2027-10-15T21:00:00Z
+free-date:     2027-11-16
+source:        TCI
+
+Last updated on 2026-10-16T18:48:01Z
+

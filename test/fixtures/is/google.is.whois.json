@@ -1,0 +1,17 @@
+{
+  "domain": "google.is",
+  "unicode": "google.is",
+  "tld": "is",
+  "state": "registered",
+  "dates": {
+    "created": "2002-05-22T00:00:00.000Z",
+    "expires": "2027-05-22T00:00:00.000Z"
+  },
+  "statuses": [],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

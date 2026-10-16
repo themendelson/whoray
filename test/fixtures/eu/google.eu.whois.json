@@ -1,0 +1,19 @@
+{
+  "domain": "google.eu",
+  "unicode": "google.eu",
+  "tld": "eu",
+  "state": "registered",
+  "registrar": {
+    "name": "Markmonitor Inc.",
+    "url": "https://www.markmonitor.com/"
+  },
+  "dates": {},
+  "statuses": [],
+  "nameservers": [
+    "ns4.google.com",
+    "ns2.google.com",
+    "ns1.google.com",
+    "ns3.google.com"
+  ],
+  "source": "whois"
+}

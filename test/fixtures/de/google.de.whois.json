@@ -1,0 +1,19 @@
+{
+  "domain": "google.de",
+  "unicode": "google.de",
+  "tld": "de",
+  "state": "registered",
+  "dates": {
+    "updated": "2018-03-12T20:44:25.000Z"
+  },
+  "statuses": [
+    "connect"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "source": "whois"
+}

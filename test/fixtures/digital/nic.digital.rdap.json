@@ -1,0 +1,33 @@
+{
+  "domain": "nic.digital",
+  "unicode": "nic.digital",
+  "tld": "digital",
+  "state": "registered",
+  "registrar": {
+    "name": "Registry Operator acts as Registrar (9999)",
+    "ianaId": 9999,
+    "url": "https://rdap.identitydigital.services/rdap",
+    "abuseEmail": "abuse@identity.digital"
+  },
+  "registry": "identity-digital",
+  "dates": {
+    "created": "2014-03-18T21:30:45.000Z",
+    "updated": "2026-08-12T04:25:06.000Z",
+    "expires": "2027-03-18T21:30:45.000Z"
+  },
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "v0n0.nic.digital",
+    "v0n1.nic.digital",
+    "v0n2.nic.digital",
+    "v0n3.nic.digital",
+    "v2n0.nic.digital",
+    "v2n1.nic.digital"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

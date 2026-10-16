@@ -1,0 +1,25 @@
+{
+  "domain": "google.ru",
+  "unicode": "google.ru",
+  "tld": "ru",
+  "state": "registered",
+  "registrar": {
+    "name": "RU-CENTER-RU"
+  },
+  "dates": {
+    "created": "2004-03-03T21:00:00.000Z",
+    "expires": "2027-03-04T21:00:00.000Z"
+  },
+  "statuses": [
+    "REGISTERED",
+    "DELEGATED",
+    "VERIFIED"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "source": "whois"
+}

@@ -1,0 +1,22 @@
+{
+  "domain": "google.lv",
+  "unicode": "google.lv",
+  "tld": "lv",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc."
+  },
+  "dates": {
+    "updated": "2026-10-16T17:12:38.000Z"
+  },
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "source": "whois"
+}

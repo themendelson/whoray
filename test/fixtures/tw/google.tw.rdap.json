@@ -1,0 +1,15 @@
+{
+  "domain": "google.tw",
+  "unicode": "google.tw",
+  "tld": "tw",
+  "state": "unknown",
+  "dates": {},
+  "statuses": [],
+  "nameservers": [],
+  "source": "rdap",
+  "error": {
+    "code": "network",
+    "message": "HTTP 426",
+    "server": "rdap.test"
+  }
+}

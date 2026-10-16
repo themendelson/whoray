@@ -1,0 +1,29 @@
+{
+  "domain": "google.ly",
+  "unicode": "google.ly",
+  "tld": "ly",
+  "state": "registered",
+  "registrar": {
+    "name": "Libyan Spider Network (int)",
+    "url": "https://rdap.nic.ly/entity/146380-nicly",
+    "abuseEmail": "abuse@register.ly"
+  },
+  "dates": {
+    "created": "2007-10-02T22:00:00.000Z",
+    "updated": "2026-09-02T15:40:14.000Z",
+    "expires": "2027-10-02T22:00:00.000Z"
+  },
+  "statuses": [
+    "ok",
+    "DS automation disabled",
+    "NS automation disabled"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

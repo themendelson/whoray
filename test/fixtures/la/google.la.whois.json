@@ -1,0 +1,26 @@
+{
+  "domain": "google.la",
+  "unicode": "google.la",
+  "tld": "la",
+  "state": "registered",
+  "registrar": {
+    "name": "TLD Registrar Solutions Ltd",
+    "abuseEmail": "abuse@centralnic.com"
+  },
+  "dates": {
+    "created": "2002-07-18T01:00:00.000Z",
+    "updated": "2026-10-16T08:19:37.000Z",
+    "expires": "2027-07-18T23:59:59.000Z"
+  },
+  "statuses": [
+    "clientTransferProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

@@ -1,0 +1,23 @@
+{
+  "domain": "google.ch",
+  "unicode": "google.ch",
+  "tld": "ch",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor"
+  },
+  "dates": {
+    "created": "1999-05-31T00:00:00.000Z"
+  },
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

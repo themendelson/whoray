@@ -1,0 +1,27 @@
+{
+  "domain": "nic.com",
+  "unicode": "nic.com",
+  "tld": "com",
+  "state": "registered",
+  "registrar": {
+    "name": "Network Solutions, LLC",
+    "ianaId": 2,
+    "url": "http://networksolutions.com",
+    "abuseEmail": "domain.operations@web.com"
+  },
+  "registry": "verisign",
+  "dates": {
+    "created": "1994-02-07T05:00:00.000Z",
+    "updated": "2024-02-08T05:05:53.000Z",
+    "expires": "2034-02-08T05:00:00.000Z"
+  },
+  "statuses": [
+    "clientTransferProhibited"
+  ],
+  "nameservers": [
+    "jessica.ns.cloudflare.com",
+    "sean.ns.cloudflare.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

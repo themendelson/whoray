@@ -1,0 +1,34 @@
+{
+  "domain": "google.ac",
+  "unicode": "google.ac",
+  "tld": "ac",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc.",
+    "ianaId": 292,
+    "url": "https://rdap.markmonitor.com/rdap/",
+    "abuseEmail": "abusecomplaints@markmonitor.com"
+  },
+  "registry": "icb",
+  "dates": {
+    "created": "2006-04-03T13:38:02.000Z",
+    "updated": "2026-08-12T12:22:20.000Z",
+    "expires": "2027-04-03T13:38:02.000Z"
+  },
+  "statuses": [
+    "clientDeleteProhibited",
+    "serverDeleteProhibited",
+    "clientTransferProhibited",
+    "serverTransferProhibited",
+    "clientUpdateProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns4.google.com",
+    "ns3.google.com",
+    "ns2.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

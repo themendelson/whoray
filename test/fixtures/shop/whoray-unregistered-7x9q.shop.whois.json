@@ -1,0 +1,16 @@
+{
+  "domain": "whoray-unregistered-7x9q.shop",
+  "unicode": "whoray-unregistered-7x9q.shop",
+  "tld": "shop",
+  "state": "unknown",
+  "registry": "gmo",
+  "dates": {},
+  "statuses": [],
+  "nameservers": [],
+  "source": "whois",
+  "error": {
+    "code": "no_server",
+    "message": "The server no longer answers for this TLD",
+    "server": "whois.test"
+  }
+}

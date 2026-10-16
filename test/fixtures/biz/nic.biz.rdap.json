@@ -1,0 +1,35 @@
+{
+  "domain": "nic.biz",
+  "unicode": "nic.biz",
+  "tld": "biz",
+  "state": "registered",
+  "registrar": {
+    "name": "Registry Services, LLC",
+    "ianaId": 9999,
+    "url": "registry.godaddy",
+    "abuseEmail": "reg-support@team.neustar"
+  },
+  "dates": {
+    "created": "2001-09-30T19:39:45.000Z",
+    "updated": "2026-10-15T00:01:32.000Z",
+    "expires": "2026-11-06T23:59:00.000Z"
+  },
+  "statuses": [
+    "serverUpdateProhibited",
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "clientTransferProhibited",
+    "clientUpdateProhibited",
+    "clientDeleteProhibited"
+  ],
+  "nameservers": [
+    "pdns3.ultradns.org",
+    "pdns4.ultradns.org",
+    "pdns2.ultradns.net",
+    "pdns1.ultradns.net",
+    "pdns5.ultradns.info",
+    "pdns6.ultradns.co.uk"
+  ],
+  "dnssec": true,
+  "source": "rdap"
+}

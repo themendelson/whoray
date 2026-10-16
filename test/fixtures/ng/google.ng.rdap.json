@@ -1,0 +1,33 @@
+{
+  "domain": "google.ng",
+  "unicode": "google.ng",
+  "tld": "ng",
+  "state": "registered",
+  "registrar": {
+    "name": "markmonitor",
+    "ianaId": 9999,
+    "url": "http://www.markmonitor.com"
+  },
+  "dates": {
+    "created": "2011-01-19T13:24:01.000Z",
+    "updated": "2026-03-12T10:47:40.000Z",
+    "expires": "2027-04-12T23:00:00.000Z"
+  },
+  "statuses": [
+    "serverRenewProhibited",
+    "clientTransferProhibited",
+    "serverTransferProhibited",
+    "clientUpdateProhibited",
+    "clientDeleteProhibited",
+    "serverDeleteProhibited",
+    "DS automation disabled",
+    "NS automation disabled"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

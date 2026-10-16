@@ -1,0 +1,32 @@
+{
+  "domain": "google.so",
+  "unicode": "google.so",
+  "tld": "so",
+  "state": "registered",
+  "registrar": {
+    "name": "Mark Monitor",
+    "ianaId": 9999,
+    "url": "https://rdap.nic.so/entity/52-sonic",
+    "abuseEmail": "ccops@markmonitor.com"
+  },
+  "dates": {
+    "created": "2011-01-24T00:00:00.000Z",
+    "updated": "2025-12-23T10:34:08.000Z",
+    "expires": "2027-01-24T00:00:00.000Z"
+  },
+  "statuses": [
+    "clientTransferProhibited",
+    "clientUpdateProhibited",
+    "clientDeleteProhibited",
+    "DS automation disabled",
+    "NS automation disabled"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

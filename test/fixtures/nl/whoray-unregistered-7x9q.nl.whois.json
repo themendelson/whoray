@@ -1,0 +1,15 @@
+{
+  "domain": "whoray-unregistered-7x9q.nl",
+  "unicode": "whoray-unregistered-7x9q.nl",
+  "tld": "nl",
+  "state": "unknown",
+  "dates": {},
+  "statuses": [],
+  "nameservers": [],
+  "source": "whois",
+  "error": {
+    "code": "rate_limited",
+    "message": "The server is rate limiting queries",
+    "server": "whois.test"
+  }
+}

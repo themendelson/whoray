@@ -1,0 +1,25 @@
+{
+  "domain": "google.th",
+  "unicode": "google.th",
+  "tld": "th",
+  "state": "registered",
+  "registrar": {
+    "name": "THNIC"
+  },
+  "dates": {
+    "created": "2014-07-17T00:00:00.000Z",
+    "updated": "2026-06-23T00:00:00.000Z",
+    "expires": "2027-07-16T00:00:00.000Z"
+  },
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "ns4.google.com",
+    "ns3.google.com",
+    "ns2.google.com",
+    "ns1.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

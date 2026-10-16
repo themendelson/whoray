@@ -1,0 +1,22 @@
+{
+  "domain": "google.pe",
+  "unicode": "google.pe",
+  "tld": "pe",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc."
+  },
+  "dates": {},
+  "statuses": [
+    "clientTransferProhibited",
+    "clientDeleteProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "source": "whois"
+}

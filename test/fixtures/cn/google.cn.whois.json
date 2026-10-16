@@ -1,0 +1,28 @@
+{
+  "domain": "google.cn",
+  "unicode": "google.cn",
+  "tld": "cn",
+  "state": "registered",
+  "registrar": {
+    "name": "厦门易名科技股份有限公司"
+  },
+  "dates": {
+    "created": "2003-03-17T12:20:05.000Z",
+    "expires": "2027-03-17T12:48:36.000Z"
+  },
+  "statuses": [
+    "clientDeleteProhibited",
+    "serverDeleteProhibited",
+    "serverUpdateProhibited",
+    "clientTransferProhibited",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "ns2.google.com",
+    "ns1.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

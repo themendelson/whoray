@@ -1,0 +1,21 @@
+{
+  "domain": "google.kr",
+  "unicode": "google.kr",
+  "tld": "kr",
+  "state": "registered",
+  "dates": {
+    "created": "2007-03-01T15:00:00.000Z",
+    "updated": "2026-04-14T15:07:47.000Z",
+    "expires": "2027-03-01T15:00:00.000Z"
+  },
+  "statuses": [
+    "clientTransferProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

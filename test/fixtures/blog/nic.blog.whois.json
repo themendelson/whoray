@@ -1,0 +1,20 @@
+{
+  "domain": "nic.blog",
+  "unicode": "nic.blog",
+  "tld": "blog",
+  "state": "registered",
+  "registrar": {
+    "name": "Knock Knock WHOIS There, LLC",
+    "ianaId": 9999,
+    "url": "https://my.blog",
+    "abuseEmail": "admin@my.blog"
+  },
+  "dates": {
+    "created": "2025-04-08T18:27:53.000Z",
+    "updated": "2026-05-06T14:56:02.000Z",
+    "expires": "3000-01-01T00:00:00.000Z"
+  },
+  "statuses": [],
+  "nameservers": [],
+  "source": "whois"
+}

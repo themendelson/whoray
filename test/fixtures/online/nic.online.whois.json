@@ -1,0 +1,30 @@
+{
+  "domain": "nic.online",
+  "unicode": "nic.online",
+  "tld": "online",
+  "state": "registered",
+  "registrar": {
+    "name": "Radix Technologies Inc. SEZC / CO Services Cayman Limited",
+    "ianaId": 9999,
+    "url": "https://radix.website/",
+    "abuseEmail": "admin@radix.email"
+  },
+  "registry": "centralnic",
+  "dates": {
+    "created": "2015-01-21T14:36:25.000Z",
+    "updated": "2026-03-17T10:34:10.000Z",
+    "expires": "2027-01-21T23:59:59.000Z"
+  },
+  "statuses": [
+    "serverRenewProhibited",
+    "serverUpdateProhibited",
+    "serverTransferProhibited",
+    "serverDeleteProhibited"
+  ],
+  "nameservers": [
+    "ns03.trs-dns.com",
+    "ns03.trs-dns.net"
+  ],
+  "dnssec": true,
+  "source": "whois"
+}

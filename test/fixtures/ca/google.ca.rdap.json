@@ -1,0 +1,32 @@
+{
+  "domain": "google.ca",
+  "unicode": "google.ca",
+  "tld": "ca",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor International Canada Ltd.",
+    "url": "Markmonitor.com",
+    "abuseEmail": "abusecomplaints@markmonitor.com"
+  },
+  "dates": {
+    "created": "2000-10-04T02:21:23.000Z",
+    "updated": "2026-04-28T04:05:31.000Z",
+    "expires": "2027-04-28T04:00:00.000Z"
+  },
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientTransferProhibited",
+    "clientUpdateProhibited",
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

@@ -1,0 +1,113 @@
+200
+{
+    "rdapConformance": [
+        "rdap_level_0"
+    ],
+    "notices": [
+        {
+            "title": "Acceptable Use Policy (AUP)",
+            "description": [
+                "This information is subject to an Acceptable Use Policy."
+            ],
+            "links": [
+                {
+                    "rel": "alternate",
+                    "type": "text/html",
+                    "href": "https://www.nic.ch/terms/aup/"
+                }
+            ]
+        }
+    ],
+    "objectClassName": "domain",
+    "ldhName": "google.ch",
+    "switch_name": "google.ch",
+    "handle": "google.ch",
+    "entities": [
+        {
+            "objectClassName": "entity",
+            "roles": [
+                "registrar"
+            ],
+            "vcardArray": [
+                "vcard",
+                [
+                    [
+                        "version",
+                        {
+                        },
+                        "text",
+                        "4.0"
+                    ],
+                    [
+                        "org",
+                        {
+                        },
+                        "text",
+                        "MarkMonitor"
+                    ],
+                    [
+                        "adr",
+                        {
+                        },
+                        "text",
+                        [
+                            "",
+                            "",
+                            "1120 S. Rackham Way, Suite 300",
+                            "Meridian",
+                            "",
+                            "ID 83642",
+                            "US"
+                        ]
+                    ],
+                    [
+                        "kind",
+                        {
+                        },
+                        "text",
+                        "group"
+                    ]
+                ]
+            ],
+            "url": "https://www.markmonitor.com"
+        }
+    ],
+    "status": [
+        "active"
+    ],
+    "events": [
+        {
+            "eventAction": "registration",
+            "eventDate": "1999-05-31"
+        }
+    ],
+    "secureDNS": {
+        "delegationSigned": false
+    },
+    "nameservers": [
+        {
+            "ldhName": "ns1.google.com",
+            "objectClassName": "nameserver",
+            "ipAddresses": {
+            }
+        },
+        {
+            "ldhName": "ns2.google.com",
+            "objectClassName": "nameserver",
+            "ipAddresses": {
+            }
+        },
+        {
+            "ldhName": "ns3.google.com",
+            "objectClassName": "nameserver",
+            "ipAddresses": {
+            }
+        },
+        {
+            "ldhName": "ns4.google.com",
+            "objectClassName": "nameserver",
+            "ipAddresses": {
+            }
+        }
+    ]
+}

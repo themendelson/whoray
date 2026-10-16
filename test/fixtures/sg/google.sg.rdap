@@ -1,0 +1,138 @@
+200
+{
+  "rdapConformance" : [ "icann_rdap_response_profile_0", "icann_rdap_technical_implementation_guide_0", "rdap_level_0" ],
+  "handle" : "513152-SGNIC",
+  "ldhName" : "google.sg",
+  "unicodeName" : "google.sg",
+  "status" : [ "client delete prohibited", "client transfer prohibited", "client update prohibited" ],
+  "port43" : "whois.sgnic.sg",
+  "whoisReferralUrl" : "http://www.markmonitor.com/",
+  "links" : [ {
+    "rel" : "self",
+    "href" : "https://rdap.sgnic.sg/rdap/domain/google.sg",
+    "title" : "Authoritative URL for this resource",
+    "type" : "application/rdap+json"
+  }, {
+    "rel" : "related",
+    "href" : "https://rdap.markmonitor.com/rdap/",
+    "title" : "Registrar's RDAP URL",
+    "type" : "application/rdap+json"
+  } ],
+  "notices" : [ {
+    "title" : "Status Codes",
+    "description" : [ "For more information on domain status codes, please visit https://icann.org/epp" ],
+    "links" : [ {
+      "rel" : "related",
+      "href" : "https://icann.org/epp",
+      "type" : "text/html"
+    } ]
+  }, {
+    "title" : "Terms of Service",
+    "description" : [ "Service subject to Terms of Use." ],
+    "links" : [ {
+      "rel" : "related",
+      "href" : "https://sgnic.sg/domain-registration/policies-agreements/revised-policy-documents",
+      "type" : "text/html"
+    } ]
+  }, {
+    "title" : "RDDS Inaccuracy Complaint Form",
+    "description" : [ "URL of the ICANN RDDS Inaccuracy Complaint Form: https://icann.org/wicf" ],
+    "links" : [ {
+      "rel" : "related",
+      "href" : "https://icann.org/wicf",
+      "type" : "text/html"
+    } ]
+  }, {
+    "title" : "Legal Notice",
+    "description" : [ "----------------------------------------------------------------------\nSGNIC WHOIS Server\n----------------------------------------------------------------------\n\nThis data is provided for information purposes only." ],
+    "links" : [ {
+      "rel" : "related",
+      "href" : "",
+      "type" : "text/html"
+    } ]
+  } ],
+  "events" : [ {
+    "eventAction" : "registration",
+    "eventDate" : "2005-01-03T04:00:00Z"
+  }, {
+    "eventAction" : "expiration",
+    "eventDate" : "2027-01-02T16:00:00Z"
+  }, {
+    "eventAction" : "last changed",
+    "eventDate" : "2025-12-01T10:41:02Z"
+  }, {
+    "eventAction" : "last update of RDAP database",
+    "eventDate" : "2026-10-16T18:52:32Z"
+  } ],
+  "nameservers" : [ {
+    "ldhName" : "ns1.google.com",
+    "objectClassName" : "nameserver"
+  }, {
+    "ldhName" : "ns2.google.com",
+    "objectClassName" : "nameserver"
+  }, {
+    "ldhName" : "ns3.google.com",
+    "objectClassName" : "nameserver"
+  }, {
+    "ldhName" : "ns4.google.com",
+    "objectClassName" : "nameserver"
+  } ],
+  "entities" : [ {
+    "handle" : "not applicable",
+    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "MarkMonitor Inc." ], [ "kind", { }, "text", "org" ], [ "role", { }, "text", "registrar" ], [ "url", {
+      "type" : "home"
+    }, "uri", "http://www.markmonitor.com/" ] ] ],
+    "entities" : [ {
+      "handle" : "not applicable",
+      "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "Abuse Contact" ], [ "kind", { }, "text", "individual" ], [ "role", { }, "text", "abuse" ], [ "tel", {
+        "type" : [ "voice" ]
+      }, "uri", "tel:" ], [ "email", { }, "text", "" ], [ "url", {
+        "type" : "home"
+      }, "uri", "http://www.markmonitor.com/" ] ] ],
+      "roles" : [ "abuse" ],
+      "publicIds" : [ ],
+      "objectClassName" : "entity"
+    } ],
+    "roles" : [ "registrar" ],
+    "publicIds" : [ ],
+    "objectClassName" : "entity"
+  }, {
+    "handle" : "267498-SGNIC",
+    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "GOOGLE LLC" ], [ "kind", { }, "text", "individual" ], [ "role", { }, "text", "registrant" ] ] ],
+    "roles" : [ "registrant" ],
+    "publicIds" : [ {
+      "type" : "ROID",
+      "identifier" : "267498-SGNIC"
+    } ],
+    "objectClassName" : "entity"
+  }, {
+    "handle" : "51417-SGNIC",
+    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "MARKMONITOR INC." ], [ "kind", { }, "text", "individual" ], [ "role", { }, "text", "administrative" ] ] ],
+    "roles" : [ "administrative" ],
+    "publicIds" : [ {
+      "type" : "ROID",
+      "identifier" : "51417-SGNIC"
+    } ],
+    "objectClassName" : "entity"
+  }, {
+    "handle" : "29909-SGNIC",
+    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "GOOGLE LLC" ], [ "kind", { }, "text", "individual" ], [ "role", { }, "text", "technical" ], [ "email", { }, "text", "dns-admin@google.com" ] ] ],
+    "roles" : [ "technical" ],
+    "publicIds" : [ {
+      "type" : "ROID",
+      "identifier" : "29909-SGNIC"
+    } ],
+    "objectClassName" : "entity"
+  }, {
+    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "kind", { }, "text", "individual" ], [ "role", { }, "text", "billing" ] ] ],
+    "roles" : [ "billing" ],
+    "publicIds" : [ ],
+    "objectClassName" : "entity"
+  } ],
+  "secureDNS" : {
+    "delegationSigned" : false
+  },
+  "variants" : [ ],
+  "objectClassName" : "domain",
+  "sgNIC_verifiedID_Status" : "VerifiedID@SG-Not Required"
+}

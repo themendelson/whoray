@@ -1,0 +1,28 @@
+{
+  "domain": "google.fm",
+  "unicode": "google.fm",
+  "tld": "fm",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc.",
+    "ianaId": 292,
+    "abuseEmail": "ccops@markmonitor.com"
+  },
+  "dates": {
+    "created": "2000-09-05T23:59:59.000Z",
+    "updated": "2026-09-01T10:00:40.000Z",
+    "expires": "2027-09-04T23:59:59.000Z"
+  },
+  "statuses": [
+    "clientTransferProhibited",
+    "clientUpdateProhibited",
+    "clientDeleteProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns3.google.com",
+    "ns2.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

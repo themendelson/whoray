@@ -1,0 +1,76 @@
+{
+  "name": "whoray",
+  "version": "0.0.0",
+  "description": "WHOIS and RDAP for every TLD: one call, one normalized result, lifecycle and drop dates. Zero dependencies.",
+  "keywords": [
+    "whois",
+    "rdap",
+    "domain",
+    "tld",
+    "registrar",
+    "availability",
+    "expiry",
+    "drop"
+  ],
+  "license": "MIT",
+  "author": "Amir Mendelson",
+  "repository": "github:themendelson/whoray",
+  "type": "module",
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20.19"
+  },
+  "packageManager": "pnpm@10.8.1",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "whoray": "./dist/cli.mjs"
+  },
+  "exports": {
+    ".": {
+      "workerd": {
+        "types": "./dist/workerd.d.ts",
+        "default": "./dist/workerd.js"
+      },
+      "browser": {
+        "types": "./dist/browser.d.ts",
+        "default": "./dist/browser.js"
+      },
+      "import": {
+        "types": "./dist/node.d.mts",
+        "default": "./dist/node.mjs"
+      },
+      "require": {
+        "types": "./dist/node.d.cts",
+        "default": "./dist/node.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "imports": {
+    "#*": "./src/*"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "lint": "biome check . && oxlint --type-aware && knip && jscpd",
+    "format": "biome check --write .",
+    "typecheck": "tsc",
+    "test": "vitest run",
+    "check": "pnpm lint && pnpm typecheck && pnpm test",
+    "fixture": "node --experimental-strip-types --no-warnings scripts/fixture.ts"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@types/node": "22",
+    "jscpd": "5.4.1",
+    "knip": "6.41.0",
+    "oxc-parser": "0.154.0",
+    "oxlint": "1.88.0",
+    "oxlint-tsgolint": "7.0.2004",
+    "tsdown": "0.23.1",
+    "typescript": "7.0.2",
+    "unrun": "0.3.1",
+    "vitest": "5.0.5"
+  }
+}

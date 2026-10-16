@@ -1,0 +1,15 @@
+{
+  "domain": "whoray-unregistered-7x9q.li",
+  "unicode": "whoray-unregistered-7x9q.li",
+  "tld": "li",
+  "state": "unknown",
+  "dates": {},
+  "statuses": [],
+  "nameservers": [],
+  "source": "whois",
+  "error": {
+    "code": "blocked",
+    "message": "The server refused this client",
+    "server": "whois.test"
+  }
+}

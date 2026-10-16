@@ -1,0 +1,19 @@
+{
+  "domain": "nic.club",
+  "unicode": "nic.club",
+  "tld": "club",
+  "state": "registered",
+  "registrar": {
+    "name": "DOTCLUB DOMAINS, LLC",
+    "ianaId": 9999
+  },
+  "registry": "godaddy",
+  "dates": {
+    "created": "2013-08-09T23:33:53.000Z",
+    "updated": "2026-10-15T00:05:50.000Z",
+    "expires": "2027-08-08T23:59:59.000Z"
+  },
+  "statuses": [],
+  "nameservers": [],
+  "source": "whois"
+}

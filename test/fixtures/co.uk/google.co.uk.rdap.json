@@ -1,0 +1,30 @@
+{
+  "domain": "google.co.uk",
+  "unicode": "google.co.uk",
+  "tld": "co.uk",
+  "state": "registered",
+  "registrar": {
+    "name": "Markmonitor Inc.",
+    "url": "https://www.markmonitor.com",
+    "abuseEmail": "abusecomplaints@markmonitor.com"
+  },
+  "registry": "nominet",
+  "dates": {
+    "created": "1999-02-14T11:29:16.000Z",
+    "updated": "2026-01-13T10:26:48.000Z",
+    "expires": "2027-02-14T11:29:16.000Z"
+  },
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

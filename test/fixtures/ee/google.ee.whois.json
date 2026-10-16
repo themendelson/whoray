@@ -1,0 +1,25 @@
+{
+  "domain": "google.ee",
+  "unicode": "google.ee",
+  "tld": "ee",
+  "state": "registered",
+  "registrar": {
+    "name": "Zone Media OÜ",
+    "url": "http://www.zone.ee"
+  },
+  "dates": {
+    "created": "2010-07-04T01:34:46.000Z",
+    "updated": "2025-10-07T16:45:15.000Z",
+    "expires": "2026-11-09T00:00:00.000Z"
+  },
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "ns4.google.com",
+    "ns3.google.com",
+    "ns2.google.com",
+    "ns1.google.com"
+  ],
+  "source": "whois"
+}

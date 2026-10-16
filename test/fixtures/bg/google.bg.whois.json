@@ -1,0 +1,19 @@
+{
+  "domain": "google.bg",
+  "unicode": "google.bg",
+  "tld": "bg",
+  "state": "registered",
+  "dates": {},
+  "statuses": [
+    "busy",
+    "ok"
+  ],
+  "nameservers": [
+    "ns2.google.com",
+    "ns4.google.com",
+    "ns3.google.com",
+    "ns1.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

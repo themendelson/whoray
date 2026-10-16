@@ -1,0 +1,22 @@
+{
+  "domain": "google.mx",
+  "unicode": "google.mx",
+  "tld": "mx",
+  "state": "registered",
+  "registrar": {
+    "name": "Markmonitor"
+  },
+  "dates": {
+    "created": "2009-05-12T00:00:00.000Z",
+    "updated": "2026-04-12T00:00:00.000Z",
+    "expires": "2027-05-11T00:00:00.000Z"
+  },
+  "statuses": [],
+  "nameservers": [
+    "ns2.google.com",
+    "ns4.google.com",
+    "ns3.google.com",
+    "ns1.google.com"
+  ],
+  "source": "whois"
+}

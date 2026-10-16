@@ -1,0 +1,32 @@
+{
+  "domain": "nic.name",
+  "unicode": "nic.name",
+  "tld": "name",
+  "state": "registered",
+  "registrar": {
+    "name": "CSC Corporate Domains, Inc.",
+    "ianaId": 299,
+    "url": "http://cscdbs.com",
+    "abuseEmail": "domainabuse@cscglobal.com"
+  },
+  "registry": "verisign",
+  "dates": {
+    "created": "2013-04-14T03:22:41.000Z",
+    "updated": "2026-05-28T22:12:04.000Z",
+    "expires": "2027-04-14T03:22:41.000Z"
+  },
+  "statuses": [
+    "clientTransferProhibited",
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "av1.nstld.com",
+    "av2.nstld.com",
+    "av3.nstld.com",
+    "av4.nstld.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

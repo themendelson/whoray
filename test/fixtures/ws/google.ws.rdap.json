@@ -1,0 +1,18 @@
+{
+  "domain": "google.ws",
+  "unicode": "google.ws",
+  "tld": "ws",
+  "state": "registered",
+  "dates": {
+    "created": "2002-03-03T18:00:26.000Z",
+    "updated": "2026-01-31T10:43:38.000Z",
+    "expires": "2027-03-04T00:00:26.000Z"
+  },
+  "statuses": [
+    "clientTransferProhibited",
+    "clientDeleteProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [],
+  "source": "rdap"
+}

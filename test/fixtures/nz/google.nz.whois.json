@@ -1,0 +1,15 @@
+{
+  "domain": "google.nz",
+  "unicode": "google.nz",
+  "tld": "nz",
+  "state": "unknown",
+  "dates": {},
+  "statuses": [],
+  "nameservers": [],
+  "source": "whois",
+  "error": {
+    "code": "unparseable",
+    "message": "No registration data or known not-found reply",
+    "server": "whois.test"
+  }
+}

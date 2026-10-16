@@ -1,0 +1,32 @@
+404
+{
+  "rdapConformance" : [ "icann_rdap_response_profile_0", "icann_rdap_technical_implementation_guide_0", "rdap_level_0" ],
+  "notices" : [ {
+    "title" : "Terms of Service",
+    "description" : [ "Service subject to Terms of Use." ],
+    "links" : [ {
+      "rel" : "related",
+      "href" : "https://sgnic.sg/domain-registration/policies-agreements/revised-policy-documents",
+      "type" : "text/html"
+    } ]
+  }, {
+    "title" : "RDDS Inaccuracy Complaint Form",
+    "description" : [ "URL of the ICANN RDDS Inaccuracy Complaint Form: https://icann.org/wicf" ],
+    "links" : [ {
+      "rel" : "related",
+      "href" : "https://icann.org/wicf",
+      "type" : "text/html"
+    } ]
+  }, {
+    "title" : "Legal Notice",
+    "description" : [ "----------------------------------------------------------------------\nSGNIC WHOIS Server\n----------------------------------------------------------------------\n\nThis data is provided for information purposes only." ],
+    "links" : [ {
+      "rel" : "related",
+      "href" : "",
+      "type" : "text/html"
+    } ]
+  } ],
+  "errorCode" : 404,
+  "title" : "Domain not found",
+  "description" : [ "Domain not found" ]
+}

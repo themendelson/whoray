@@ -1,0 +1,29 @@
+{
+  "domain": "google.com.au",
+  "unicode": "google.com.au",
+  "tld": "au",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Corporate Services Inc",
+    "abuseEmail": "abusecomplaints@markmonitor.com"
+  },
+  "dates": {
+    "updated": "2026-08-15T21:50:56.000Z"
+  },
+  "statuses": [
+    "clientDeleteProhibited",
+    "serverDeleteProhibited",
+    "serverRenewProhibited",
+    "serverTransferProhibited",
+    "clientUpdateProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

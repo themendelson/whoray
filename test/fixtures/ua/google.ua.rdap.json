@@ -1,0 +1,28 @@
+{
+  "domain": "google.ua",
+  "unicode": "google.ua",
+  "tld": "ua",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc.",
+    "url": "http://markmonitor.com"
+  },
+  "dates": {
+    "created": "2011-07-21T15:03:50.000Z",
+    "updated": "2026-06-19T10:07:10.000Z",
+    "expires": "2027-07-21T15:03:50.000Z"
+  },
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientTransferProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

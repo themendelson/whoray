@@ -1,0 +1,29 @@
+{
+  "domain": "nic.cloud",
+  "unicode": "nic.cloud",
+  "tld": "cloud",
+  "state": "registered",
+  "registrar": {
+    "name": "Aruba PEC SpA",
+    "ianaId": 9999,
+    "url": "https://rdap.registry.cloud/rdap/entity/9999",
+    "abuseEmail": "registry@get.cloud"
+  },
+  "registry": "tucows",
+  "dates": {
+    "created": "2023-09-13T15:50:46.000Z",
+    "updated": "2024-03-01T00:30:16.000Z",
+    "expires": "2033-09-13T15:50:46.000Z"
+  },
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns03.trs-dns.com",
+    "ns03.trs-dns.net"
+  ],
+  "dnssec": true,
+  "source": "rdap"
+}

@@ -1,0 +1,32 @@
+{
+  "domain": "nic.art",
+  "unicode": "nic.art",
+  "tld": "art",
+  "state": "registered",
+  "registrar": {
+    "name": "CentralNic Ltd",
+    "ianaId": 9999,
+    "url": "https://www.centralnic.com/",
+    "abuseEmail": "ops@centralnic.com"
+  },
+  "registry": "centralnic",
+  "dates": {
+    "created": "2016-04-21T16:55:18.000Z",
+    "updated": "2026-04-15T00:05:51.000Z",
+    "expires": "2027-04-21T23:59:59.000Z"
+  },
+  "statuses": [
+    "serverRenewProhibited",
+    "serverUpdateProhibited",
+    "serverDeleteProhibited",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "a.nic.art",
+    "b.nic.art",
+    "c.nic.art",
+    "d.nic.art"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

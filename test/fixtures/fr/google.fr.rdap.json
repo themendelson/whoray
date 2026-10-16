@@ -1,0 +1,30 @@
+{
+  "domain": "google.fr",
+  "unicode": "google.fr",
+  "tld": "fr",
+  "state": "registered",
+  "registrar": {
+    "name": "MARKMONITOR Inc.",
+    "ianaId": 292,
+    "url": "http://www.markmonitor.com",
+    "abuseEmail": "registryescalations@markmonitor.com"
+  },
+  "dates": {
+    "created": "2000-07-26T22:00:00.000Z",
+    "updated": "2025-12-03T10:12:00.000Z",
+    "expires": "2026-12-30T17:16:48.000Z"
+  },
+  "statuses": [
+    "serverUpdateProhibited",
+    "serverTransferProhibited",
+    "serverDeleteProhibited",
+    "server recover prohibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "source": "rdap"
+}

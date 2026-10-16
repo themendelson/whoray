@@ -1,0 +1,32 @@
+{
+  "domain": "google.sh",
+  "unicode": "google.sh",
+  "tld": "sh",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc.",
+    "ianaId": 292,
+    "url": "https://rdap.markmonitor.com/rdap/",
+    "abuseEmail": "abusecomplaints@markmonitor.com"
+  },
+  "registry": "icb",
+  "dates": {
+    "created": "1999-06-07T17:23:46.000Z",
+    "updated": "2026-08-12T10:24:46.000Z",
+    "expires": "2027-06-06T17:23:46.000Z"
+  },
+  "statuses": [
+    "clientDeleteProhibited",
+    "serverDeleteProhibited",
+    "clientTransferProhibited",
+    "serverTransferProhibited",
+    "clientUpdateProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

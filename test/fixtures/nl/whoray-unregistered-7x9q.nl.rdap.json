@@ -1,0 +1,15 @@
+{
+  "domain": "whoray-unregistered-7x9q.nl",
+  "unicode": "whoray-unregistered-7x9q.nl",
+  "tld": "nl",
+  "state": "unknown",
+  "dates": {},
+  "statuses": [],
+  "nameservers": [],
+  "source": "rdap",
+  "error": {
+    "code": "rate_limited",
+    "message": "HTTP 429",
+    "server": "rdap.test"
+  }
+}

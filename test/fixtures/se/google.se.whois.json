@@ -1,0 +1,28 @@
+{
+  "domain": "google.se",
+  "unicode": "google.se",
+  "tld": "se",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc"
+  },
+  "dates": {
+    "created": "2003-08-27T00:00:00.000Z",
+    "updated": "2026-09-18T00:00:00.000Z",
+    "expires": "2027-10-20T00:00:00.000Z"
+  },
+  "statuses": [
+    "ok",
+    "serverUpdateProhibited",
+    "serverDeleteProhibited",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

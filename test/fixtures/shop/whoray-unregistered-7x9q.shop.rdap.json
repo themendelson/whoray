@@ -1,0 +1,16 @@
+{
+  "domain": "whoray-unregistered-7x9q.shop",
+  "unicode": "whoray-unregistered-7x9q.shop",
+  "tld": "shop",
+  "state": "unknown",
+  "registry": "gmo",
+  "dates": {},
+  "statuses": [],
+  "nameservers": [],
+  "source": "rdap",
+  "error": {
+    "code": "rate_limited",
+    "message": "HTTP 429",
+    "server": "rdap.test"
+  }
+}

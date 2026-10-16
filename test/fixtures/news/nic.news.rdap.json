@@ -1,0 +1,33 @@
+{
+  "domain": "nic.news",
+  "unicode": "nic.news",
+  "tld": "news",
+  "state": "registered",
+  "registrar": {
+    "name": "Registry Operator acts as Registrar (9999)",
+    "ianaId": 9999,
+    "url": "https://rdap.identitydigital.services/rdap",
+    "abuseEmail": "abuse@identity.digital"
+  },
+  "registry": "identity-digital",
+  "dates": {
+    "created": "2015-02-20T18:28:32.000Z",
+    "updated": "2026-08-11T22:59:15.000Z",
+    "expires": "2027-02-20T18:28:32.000Z"
+  },
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "v0n0.nic.news",
+    "v0n1.nic.news",
+    "v0n2.nic.news",
+    "v0n3.nic.news",
+    "v2n0.nic.news",
+    "v2n1.nic.news"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

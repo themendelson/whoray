@@ -1,0 +1,15 @@
+{
+  "domain": "whoray-unregistered-7x9q.tw",
+  "unicode": "whoray-unregistered-7x9q.tw",
+  "tld": "tw",
+  "state": "unknown",
+  "dates": {},
+  "statuses": [],
+  "nameservers": [],
+  "source": "rdap",
+  "error": {
+    "code": "network",
+    "message": "HTTP 426",
+    "server": "rdap.test"
+  }
+}

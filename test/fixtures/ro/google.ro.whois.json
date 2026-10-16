@@ -1,0 +1,24 @@
+{
+  "domain": "google.ro",
+  "unicode": "google.ro",
+  "tld": "ro",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc.",
+    "url": "www.markmonitor.com"
+  },
+  "dates": {
+    "created": "2000-07-17T00:00:00.000Z"
+  },
+  "statuses": [
+    "UpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

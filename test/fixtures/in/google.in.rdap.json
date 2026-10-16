@@ -1,0 +1,30 @@
+{
+  "domain": "google.in",
+  "unicode": "google.in",
+  "tld": "in",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc.",
+    "ianaId": 292,
+    "url": "https://rdap.nixiregistry.in/rdap/entity/292",
+    "abuseEmail": "abusecomplaints@markmonitor.com"
+  },
+  "dates": {
+    "created": "2005-02-14T20:35:14.000Z",
+    "updated": "2026-05-26T12:16:48.000Z",
+    "expires": "2027-02-14T20:35:14.000Z"
+  },
+  "statuses": [
+    "clientUpdateProhibited",
+    "clientTransferProhibited",
+    "clientDeleteProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns3.google.com",
+    "ns2.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

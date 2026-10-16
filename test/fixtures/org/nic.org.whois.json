@@ -1,0 +1,27 @@
+{
+  "domain": "nic.org",
+  "unicode": "nic.org",
+  "tld": "org",
+  "state": "registered",
+  "registrar": {
+    "name": "NameCheap, Inc.",
+    "ianaId": 1068,
+    "url": "http://www.namecheap.com",
+    "abuseEmail": "abuse@namecheap.com"
+  },
+  "registry": "pir",
+  "dates": {
+    "created": "1995-06-11T04:00:00.000Z",
+    "updated": "2026-08-12T00:07:25.000Z",
+    "expires": "2030-06-10T04:00:00.000Z"
+  },
+  "statuses": [
+    "clientTransferProhibited"
+  ],
+  "nameservers": [
+    "dns1.registrar-servers.com",
+    "dns2.registrar-servers.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

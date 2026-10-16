@@ -1,0 +1,20 @@
+{
+  "domain": "nic.name",
+  "unicode": "nic.name",
+  "tld": "name",
+  "state": "registered",
+  "registrar": {
+    "name": "CSC Corporate Domains, Inc.",
+    "ianaId": 299
+  },
+  "registry": "verisign",
+  "dates": {},
+  "statuses": [
+    "serverTransferProhibited",
+    "serverUpdateProhibited",
+    "serverDeleteProhibited",
+    "clientTransferProhibited"
+  ],
+  "nameservers": [],
+  "source": "whois"
+}

@@ -1,0 +1,28 @@
+{
+  "domain": "google.to",
+  "unicode": "google.to",
+  "tld": "to",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc.",
+    "ianaId": 292,
+    "url": "https://rdap.tonicregistry.to/rdap/entity/292",
+    "abuseEmail": "ccops@markmonitor.com"
+  },
+  "dates": {
+    "created": "2018-11-30T07:38:29.000Z",
+    "updated": "2025-11-03T10:24:53.000Z",
+    "expires": "2026-11-30T07:38:29.000Z"
+  },
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientTransferProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns2.google.com",
+    "ns1.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

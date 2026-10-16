@@ -1,0 +1,32 @@
+{
+  "domain": "nic.vip",
+  "unicode": "nic.vip",
+  "tld": "vip",
+  "state": "expired",
+  "registrar": {
+    "name": "MMX",
+    "ianaId": 9999,
+    "url": "http://registry.godaddy",
+    "abuseEmail": "reg-help@registry.godaddy"
+  },
+  "registry": "godaddy",
+  "dates": {
+    "created": "2021-09-07T04:15:49.000Z",
+    "updated": "2026-10-15T00:07:11.000Z",
+    "expires": "2026-09-07T04:15:49.000Z"
+  },
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverUpdateProhibited",
+    "serverRenewProhibited",
+    "serverTransferProhibited",
+    "autoRenewPeriod"
+  ],
+  "nameservers": [],
+  "drop": {
+    "at": "2026-11-26T04:15:49.000Z",
+    "confidence": "low",
+    "basis": "expiry + periods"
+  },
+  "source": "whois"
+}

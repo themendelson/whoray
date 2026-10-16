@@ -1,0 +1,33 @@
+{
+  "domain": "nic.email",
+  "unicode": "nic.email",
+  "tld": "email",
+  "state": "registered",
+  "registrar": {
+    "name": "Registry Operator acts as Registrar (9999)",
+    "ianaId": 9999,
+    "url": "https://rdap.identitydigital.services/rdap",
+    "abuseEmail": "abuse@identity.digital"
+  },
+  "registry": "identity-digital",
+  "dates": {
+    "created": "2013-11-06T21:27:56.000Z",
+    "updated": "2026-08-12T01:20:31.000Z",
+    "expires": "2026-11-06T21:27:56.000Z"
+  },
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "v0n0.nic.email",
+    "v0n1.nic.email",
+    "v0n2.nic.email",
+    "v0n3.nic.email",
+    "v2n0.nic.email",
+    "v2n1.nic.email"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

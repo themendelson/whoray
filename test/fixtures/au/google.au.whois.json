@@ -1,0 +1,27 @@
+{
+  "domain": "google.au",
+  "unicode": "google.au",
+  "tld": "au",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Corporate Services Inc",
+    "url": "https://whois-webform.markmonitor.com/whois/",
+    "abuseEmail": "abusecomplaints@markmonitor.com"
+  },
+  "dates": {
+    "updated": "2026-08-15T19:50:43.000Z"
+  },
+  "statuses": [
+    "clientDeleteProhibited",
+    "serverRenewProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.googledomains.com",
+    "ns2.googledomains.com",
+    "ns3.googledomains.com",
+    "ns4.googledomains.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

@@ -1,0 +1,29 @@
+{
+  "domain": "nic.net",
+  "unicode": "nic.net",
+  "tld": "net",
+  "state": "registered",
+  "registrar": {
+    "name": "Domain.com - Network Solutions, LLC",
+    "ianaId": 886,
+    "url": "http://www.domain.com",
+    "abuseEmail": "domain.operations@web.com"
+  },
+  "registry": "verisign",
+  "dates": {
+    "created": "1996-10-23T04:00:00.000Z",
+    "updated": "2026-10-07T08:10:04.000Z",
+    "expires": "2027-10-22T04:00:00.000Z"
+  },
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientTransferProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [
+    "dns1.domainbank.com",
+    "dns2.domainbank.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

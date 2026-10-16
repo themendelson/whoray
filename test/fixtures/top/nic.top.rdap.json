@@ -1,0 +1,27 @@
+{
+  "domain": "nic.top",
+  "unicode": "nic.top",
+  "tld": "top",
+  "state": "registered",
+  "registrar": {
+    "name": "邦宁数字技术股份有限公司",
+    "ianaId": 4158,
+    "url": "http://www.com.top",
+    "abuseEmail": "abuse@nic.top"
+  },
+  "registry": "zdns",
+  "dates": {
+    "created": "2014-05-21T11:42:02.000Z",
+    "updated": "2025-05-21T03:04:59.000Z",
+    "expires": "2029-05-21T11:42:02.000Z"
+  },
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "cns1.zdnscloud.net",
+    "ins1.zdnscloud.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

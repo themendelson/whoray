@@ -1,0 +1,25 @@
+{
+  "domain": "google.nu",
+  "unicode": "google.nu",
+  "tld": "nu",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc"
+  },
+  "dates": {
+    "created": "1999-06-07T00:00:00.000Z",
+    "updated": "2026-05-06T00:00:00.000Z",
+    "expires": "2027-06-07T00:00:00.000Z"
+  },
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

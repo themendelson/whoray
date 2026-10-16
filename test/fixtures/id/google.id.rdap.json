@@ -1,0 +1,30 @@
+{
+  "domain": "google.id",
+  "unicode": "google.id",
+  "tld": "id",
+  "state": "registered",
+  "registrar": {
+    "name": "PT Digital Registra Indonesia",
+    "ianaId": 1,
+    "abuseEmail": "info@digitalregistra.co.id"
+  },
+  "dates": {
+    "created": "2014-04-17T10:39:27.000Z",
+    "updated": "2026-03-27T16:00:02.000Z",
+    "expires": "2027-04-17T23:59:59.000Z"
+  },
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientTransferProhibited",
+    "clientUpdateProhibited",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

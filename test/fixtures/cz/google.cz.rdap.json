@@ -1,0 +1,25 @@
+{
+  "domain": "google.cz",
+  "unicode": "google.cz",
+  "tld": "cz",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc."
+  },
+  "dates": {
+    "created": "2000-07-21T13:21:00.000Z",
+    "updated": "2018-04-23T18:24:01.000Z",
+    "expires": "2027-07-21T22:00:00.000Z"
+  },
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

@@ -1,0 +1,28 @@
+{
+  "domain": "google.sg",
+  "unicode": "google.sg",
+  "tld": "sg",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc.",
+    "url": "http://www.markmonitor.com/"
+  },
+  "dates": {
+    "created": "2005-01-03T04:00:00.000Z",
+    "updated": "2025-12-01T10:41:02.000Z",
+    "expires": "2027-01-02T16:00:00.000Z"
+  },
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientTransferProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

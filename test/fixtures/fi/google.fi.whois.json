@@ -1,0 +1,25 @@
+{
+  "domain": "google.fi",
+  "unicode": "google.fi",
+  "tld": "fi",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc."
+  },
+  "dates": {
+    "created": "2006-06-30T00:00:00.000Z",
+    "updated": "2026-06-02T13:04:19.000Z",
+    "expires": "2027-07-04T10:15:55.000Z"
+  },
+  "statuses": [
+    "Registered"
+  ],
+  "nameservers": [
+    "ns3.google.com",
+    "ns4.google.com",
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

@@ -1,0 +1,23 @@
+{
+  "domain": "google.ke",
+  "unicode": "google.ke",
+  "tld": "ke",
+  "state": "registered",
+  "dates": {
+    "created": "2018-01-10T11:43:08.000Z",
+    "updated": "2025-12-14T10:44:50.000Z",
+    "expires": "2027-01-10T11:43:08.000Z"
+  },
+  "statuses": [
+    "clientTransferProhibited",
+    "clientDeleteProhibited"
+  ],
+  "nameservers": [
+    "ns1.googledomains.com",
+    "ns3.googledomains.com",
+    "ns2.googledomains.com",
+    "ns4.googledomains.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

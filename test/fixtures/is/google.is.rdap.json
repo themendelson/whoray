@@ -1,0 +1,19 @@
+{
+  "domain": "google.is",
+  "unicode": "google.is",
+  "tld": "is",
+  "state": "registered",
+  "dates": {
+    "created": "2002-05-22T00:00:01.000Z",
+    "updated": "2026-04-29T19:12:13.000Z"
+  },
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

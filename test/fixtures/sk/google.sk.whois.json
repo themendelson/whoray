@@ -1,0 +1,26 @@
+{
+  "domain": "google.sk",
+  "unicode": "google.sk",
+  "tld": "sk",
+  "state": "registered",
+  "registrar": {
+    "name": "MARK-0292"
+  },
+  "dates": {
+    "created": "2003-07-24T00:00:00.000Z",
+    "updated": "2026-06-22T00:00:00.000Z",
+    "expires": "2027-07-24T00:00:00.000Z"
+  },
+  "statuses": [
+    "clientTransferProhibited",
+    "clientUpdateProhibited",
+    "clientDeleteProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "source": "whois"
+}

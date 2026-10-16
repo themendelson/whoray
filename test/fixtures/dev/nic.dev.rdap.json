@@ -1,0 +1,30 @@
+{
+  "domain": "nic.dev",
+  "unicode": "nic.dev",
+  "tld": "dev",
+  "state": "registered",
+  "registrar": {
+    "name": "Charleston Road Registry NonBillable",
+    "ianaId": 9999,
+    "abuseEmail": "registry-abuse-support@google.com"
+  },
+  "registry": "google",
+  "dates": {
+    "created": "2015-01-05T17:44:36.000Z",
+    "updated": "2026-02-19T17:44:36.000Z",
+    "expires": "2027-01-05T17:44:36.000Z"
+  },
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

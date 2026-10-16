@@ -1,0 +1,32 @@
+{
+  "domain": "nic.inc",
+  "unicode": "nic.inc",
+  "tld": "inc",
+  "state": "registered",
+  "registrar": {
+    "name": "Intercap Registry Inc.",
+    "ianaId": 9999,
+    "url": "https://intercap.inc/",
+    "abuseEmail": "abuse@my.box"
+  },
+  "registry": "centralnic",
+  "dates": {
+    "created": "2018-05-01T23:32:47.000Z",
+    "updated": "2025-02-19T15:28:09.000Z",
+    "expires": "2028-05-01T23:59:59.000Z"
+  },
+  "statuses": [
+    "serverRenewProhibited",
+    "serverUpdateProhibited",
+    "serverDeleteProhibited",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "a.nic.inc",
+    "b.nic.inc",
+    "c.nic.inc",
+    "d.nic.inc"
+  ],
+  "dnssec": true,
+  "source": "rdap"
+}

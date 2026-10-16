@@ -1,0 +1,30 @@
+{
+  "domain": "nic.app",
+  "unicode": "nic.app",
+  "tld": "app",
+  "state": "registered",
+  "registrar": {
+    "name": "Charleston Road Registry NonBillable",
+    "ianaId": 9999,
+    "abuseEmail": "registry-abuse-support@google.com"
+  },
+  "registry": "google",
+  "dates": {
+    "created": "2015-06-22T20:34:34.000Z",
+    "updated": "2026-08-06T20:34:34.000Z",
+    "expires": "2027-06-22T20:34:34.000Z"
+  },
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

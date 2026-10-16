@@ -1,0 +1,27 @@
+{
+  "domain": "google.th",
+  "unicode": "google.th",
+  "tld": "th",
+  "state": "registered",
+  "registrar": {
+    "name": "T.H.NIC Co., Ltd.",
+    "ianaId": 10001,
+    "abuseEmail": "abuse@thnic.co.th"
+  },
+  "dates": {
+    "created": "2014-07-17T16:37:38.000Z",
+    "updated": "2026-06-23T08:52:43.000Z",
+    "expires": "2027-07-16T16:37:38.000Z"
+  },
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

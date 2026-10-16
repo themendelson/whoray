@@ -1,0 +1,23 @@
+{
+  "domain": "google.lt",
+  "unicode": "google.lt",
+  "tld": "lt",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor, Inc.",
+    "url": "http://www.markmonitor.com"
+  },
+  "dates": {
+    "created": "2018-12-07T00:00:00.000Z",
+    "expires": "2026-12-08T00:00:00.000Z"
+  },
+  "statuses": [
+    "registered"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com"
+  ],
+  "source": "whois"
+}

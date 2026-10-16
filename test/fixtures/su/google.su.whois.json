@@ -1,0 +1,24 @@
+{
+  "domain": "google.su",
+  "unicode": "google.su",
+  "tld": "su",
+  "state": "registered",
+  "registrar": {
+    "name": "RUCENTER-SU"
+  },
+  "dates": {
+    "created": "2005-10-15T20:00:00.000Z",
+    "expires": "2027-10-15T21:00:00.000Z"
+  },
+  "statuses": [
+    "REGISTERED",
+    "DELEGATED",
+    "VERIFIED"
+  ],
+  "nameservers": [
+    "ns1.beget.com",
+    "ns1.beget.pro",
+    "ns2.beget.com"
+  ],
+  "source": "whois"
+}

@@ -1,0 +1,17 @@
+{
+  "domain": "google.im",
+  "unicode": "google.im",
+  "tld": "im",
+  "state": "registered",
+  "dates": {
+    "expires": "2027-08-16T23:59:39.000Z"
+  },
+  "statuses": [],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "source": "whois"
+}

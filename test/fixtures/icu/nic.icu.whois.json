@@ -1,0 +1,32 @@
+{
+  "domain": "nic.icu",
+  "unicode": "nic.icu",
+  "tld": "icu",
+  "state": "registered",
+  "registrar": {
+    "name": "CentralNic Ltd",
+    "ianaId": 9999,
+    "url": "https://www.centralnic.com/",
+    "abuseEmail": "ops@centralnic.com"
+  },
+  "registry": "centralnic",
+  "dates": {
+    "created": "2015-02-17T01:17:58.000Z",
+    "updated": "2026-02-11T00:07:00.000Z",
+    "expires": "2027-02-17T23:59:59.000Z"
+  },
+  "statuses": [
+    "serverRenewProhibited",
+    "serverUpdateProhibited",
+    "serverDeleteProhibited",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "a.nic.icu",
+    "b.nic.icu",
+    "c.nic.icu",
+    "d.nic.icu"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

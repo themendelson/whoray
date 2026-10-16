@@ -1,0 +1,18 @@
+{
+  "domain": "google.so",
+  "unicode": "google.so",
+  "tld": "so",
+  "state": "registered",
+  "registrar": {
+    "name": "Mark Monitor",
+    "abuseEmail": "ccops@markmonitor.com"
+  },
+  "dates": {
+    "created": "2011-01-24T00:00:00.000Z",
+    "updated": "2025-12-23T10:34:08.000Z",
+    "expires": "2027-01-24T00:00:00.000Z"
+  },
+  "statuses": [],
+  "nameservers": [],
+  "source": "whois"
+}

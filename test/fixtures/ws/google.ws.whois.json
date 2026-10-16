@@ -1,0 +1,30 @@
+{
+  "domain": "google.ws",
+  "unicode": "google.ws",
+  "tld": "ws",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc.",
+    "ianaId": 292,
+    "url": "http://www.markmonitor.com/whois.asp",
+    "abuseEmail": "ccops@markmonitor.com"
+  },
+  "dates": {
+    "created": "2002-03-03T18:00:26.000Z",
+    "updated": "2026-01-31T10:43:38.000Z",
+    "expires": "2027-03-04T00:00:26.000Z"
+  },
+  "statuses": [
+    "clientTransferProhibited",
+    "clientDeleteProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

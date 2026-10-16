@@ -1,0 +1,32 @@
+{
+  "domain": "nic.xyz",
+  "unicode": "nic.xyz",
+  "tld": "xyz",
+  "state": "registered",
+  "registrar": {
+    "name": "XYZ.com, LLC",
+    "ianaId": 9999,
+    "url": "https://gen.xyz/",
+    "abuseEmail": "xyz_abuse@gen.xyz"
+  },
+  "registry": "centralnic",
+  "dates": {
+    "created": "2013-09-11T11:58:06.000Z",
+    "updated": "2026-09-05T00:05:06.000Z",
+    "expires": "2027-09-11T23:59:59.000Z"
+  },
+  "statuses": [
+    "serverRenewProhibited",
+    "serverUpdateProhibited",
+    "serverDeleteProhibited",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "x.nic.xyz",
+    "y.nic.xyz",
+    "z.nic.xyz",
+    "generationxyz.nic.xyz"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

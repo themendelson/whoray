@@ -1,0 +1,24 @@
+{
+  "domain": "google.be",
+  "unicode": "google.be",
+  "tld": "be",
+  "state": "registered",
+  "registrar": {
+    "name": "Markmonitor Inc.",
+    "url": "https://www.markmonitor.com"
+  },
+  "dates": {
+    "created": "2000-12-12T00:00:00.000Z"
+  },
+  "statuses": [
+    "NOT AVAILABLE",
+    "clientTransferProhibited"
+  ],
+  "nameservers": [
+    "ns3.google.com",
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns4.google.com"
+  ],
+  "source": "whois"
+}

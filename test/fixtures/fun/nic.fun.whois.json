@@ -1,0 +1,30 @@
+{
+  "domain": "nic.fun",
+  "unicode": "nic.fun",
+  "tld": "fun",
+  "state": "registered",
+  "registrar": {
+    "name": "Radix Technologies Inc. SEZC / CO Services Cayman Limited",
+    "ianaId": 9999,
+    "url": "https://radix.website/",
+    "abuseEmail": "admin@radix.email"
+  },
+  "registry": "centralnic",
+  "dates": {
+    "created": "2016-10-25T11:48:07.000Z",
+    "updated": "2026-03-17T10:04:44.000Z",
+    "expires": "2026-10-25T23:59:59.000Z"
+  },
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverUpdateProhibited",
+    "serverRenewProhibited",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "ns03.trs-dns.com",
+    "ns03.trs-dns.net"
+  ],
+  "dnssec": true,
+  "source": "whois"
+}

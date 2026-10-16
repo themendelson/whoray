@@ -1,0 +1,27 @@
+{
+  "domain": "google.gg",
+  "unicode": "google.gg",
+  "tld": "gg",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor Inc.",
+    "url": "http://www.markmonitor.com"
+  },
+  "dates": {
+    "created": "2003-04-30T00:00:00.000Z"
+  },
+  "statuses": [
+    "ok",
+    "Delete Prohibited by Registrar",
+    "Update Prohibited by Registrar",
+    "Transfer Prohibited by Registrar",
+    "Registered until cancelled"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "source": "whois"
+}

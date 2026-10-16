@@ -1,0 +1,15 @@
+{
+  "domain": "google.ch",
+  "unicode": "google.ch",
+  "tld": "ch",
+  "state": "unknown",
+  "dates": {},
+  "statuses": [],
+  "nameservers": [],
+  "source": "whois",
+  "error": {
+    "code": "blocked",
+    "message": "The server refused this client",
+    "server": "whois.test"
+  }
+}

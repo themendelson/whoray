@@ -1,0 +1,33 @@
+{
+  "domain": "google.us",
+  "unicode": "google.us",
+  "tld": "us",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor, Inc.",
+    "ianaId": 292,
+    "url": "www.markmonitor.com",
+    "abuseEmail": "registry.admin@markmonitor.com"
+  },
+  "dates": {
+    "created": "2002-04-19T23:16:01.000Z",
+    "updated": "2026-03-22T11:00:47.000Z",
+    "expires": "2027-04-18T23:59:59.000Z"
+  },
+  "statuses": [
+    "clientTransferProhibited",
+    "clientUpdateProhibited",
+    "clientDeleteProhibited",
+    "serverUpdateProhibited",
+    "serverDeleteProhibited",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns3.google.com",
+    "ns2.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

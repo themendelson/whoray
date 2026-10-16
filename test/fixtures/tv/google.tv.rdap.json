@@ -1,0 +1,32 @@
+{
+  "domain": "google.tv",
+  "unicode": "google.tv",
+  "tld": "tv",
+  "state": "registered",
+  "registrar": {
+    "name": "MarkMonitor, Inc.",
+    "ianaId": 292,
+    "url": "www.markmonitor.com",
+    "abuseEmail": "registry.admin@markmonitor.com"
+  },
+  "dates": {
+    "created": "2002-08-02T16:43:36.000Z",
+    "updated": "2026-07-06T10:13:54.000Z",
+    "expires": "2027-08-02T16:43:36.000Z"
+  },
+  "statuses": [
+    "clientUpdateProhibited",
+    "clientTransferProhibited",
+    "clientDeleteProhibited",
+    "serverUpdateProhibited",
+    "serverDeleteProhibited",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns3.google.com",
+    "ns2.google.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

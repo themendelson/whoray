@@ -1,0 +1,31 @@
+{
+  "domain": "nic.mobi",
+  "unicode": "nic.mobi",
+  "tld": "mobi",
+  "state": "registered",
+  "registrar": {
+    "name": "Registry Operator acts as Registrar (9999)",
+    "ianaId": 9999,
+    "url": "https://rdap.identitydigital.services/rdap",
+    "abuseEmail": "abuse@identity.digital"
+  },
+  "registry": "identity-digital",
+  "dates": {
+    "created": "2006-05-11T21:21:35.000Z",
+    "updated": "2026-08-13T18:35:27.000Z",
+    "expires": "2027-05-11T21:21:35.000Z"
+  },
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "a0.dig.afilias-nst.info",
+    "d0.dig.afilias-nst.info",
+    "c0.dig.afilias-nst.info",
+    "b0.dig.afilias-nst.info"
+  ],
+  "dnssec": true,
+  "source": "rdap"
+}

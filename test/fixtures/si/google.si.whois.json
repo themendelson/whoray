@@ -1,0 +1,24 @@
+{
+  "domain": "google.si",
+  "unicode": "google.si",
+  "tld": "si",
+  "state": "registered",
+  "registrar": {
+    "name": "Markmonitor Inc."
+  },
+  "dates": {
+    "created": "2005-04-04T00:00:00.000Z",
+    "expires": "2027-07-19T00:00:00.000Z"
+  },
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "source": "whois"
+}

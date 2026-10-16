@@ -1,0 +1,33 @@
+{
+  "domain": "nic.studio",
+  "unicode": "nic.studio",
+  "tld": "studio",
+  "state": "registered",
+  "registrar": {
+    "name": "Registry Operator acts as Registrar (9999)",
+    "ianaId": 9999,
+    "url": "https://rdap.identitydigital.services/rdap",
+    "abuseEmail": "abuse@identity.digital"
+  },
+  "registry": "identity-digital",
+  "dates": {
+    "created": "2015-04-27T22:04:42.000Z",
+    "updated": "2026-08-12T03:10:40.000Z",
+    "expires": "2027-04-27T22:04:42.000Z"
+  },
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "v0n0.nic.studio",
+    "v0n1.nic.studio",
+    "v0n2.nic.studio",
+    "v0n3.nic.studio",
+    "v2n0.nic.studio",
+    "v2n1.nic.studio"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

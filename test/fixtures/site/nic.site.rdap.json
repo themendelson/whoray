@@ -1,0 +1,30 @@
+{
+  "domain": "nic.site",
+  "unicode": "nic.site",
+  "tld": "site",
+  "state": "registered",
+  "registrar": {
+    "name": "Radix Technologies Inc. SEZC / CO Services Cayman Limited",
+    "ianaId": 9999,
+    "url": "https://rdap.radix.host/rdap/entity/9999",
+    "abuseEmail": "admin@radix.email"
+  },
+  "registry": "centralnic",
+  "dates": {
+    "created": "2014-11-13T18:15:00.000Z",
+    "updated": "2026-03-17T15:20:21.000Z",
+    "expires": "2026-11-13T23:59:59.000Z"
+  },
+  "statuses": [
+    "serverTransferProhibited",
+    "serverDeleteProhibited",
+    "serverUpdateProhibited",
+    "serverRenewProhibited"
+  ],
+  "nameservers": [
+    "ns03.trs-dns.com",
+    "ns03.trs-dns.net"
+  ],
+  "dnssec": true,
+  "source": "rdap"
+}
