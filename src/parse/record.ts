@@ -27,7 +27,16 @@ export function toRecord(name: Name, found: Found): DomainRecord {
   if (found.kind === "available") return { ...empty("available"), ...(found.premium && { premium: true }) };
   if (found.kind === "dropzone") return empty("dropzone");
   if (found.kind === "reserved") return empty("reserved");
-  if (found.kind === "error") return empty("unknown");
+  if (found.kind === "error") {
+    const { code, message, server, retryAfter } = found;
+    const error = {
+      code,
+      message,
+      ...(server !== undefined && { server }),
+      ...(retryAfter !== undefined && { retryAfter }),
+    };
+    return { ...empty("unknown"), error };
+  }
   const statuses = new Set(found.statuses);
   const state = stateOf(statuses, found.expires);
   const drop = dropOf(name.tld, state, factsOf(found, statuses), operator);

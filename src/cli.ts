@@ -8,16 +8,16 @@ const { values, positionals } = parseArgs({
   options: {
     json: { type: "boolean" },
     registrar: { type: "boolean" },
-    rdap: { type: "string" },
+    protocol: { type: "string" },
     raw: { type: "boolean" },
   },
 });
 
-const rdapModes = ["prefer", "only"] as const;
-const rdap = rdapModes.find((mode) => mode === values.rdap);
+const protocols = ["auto", "whois", "rdap"] as const;
+const protocol = protocols.find((name) => name === values.protocol);
 
-if (positionals.length === 0 || (values.rdap !== undefined && !rdap)) {
-  console.error("Usage: whoray <domain...> [--json] [--raw] [--registrar] [--rdap prefer|only]");
+if (positionals.length === 0 || (values.protocol !== undefined && !protocol)) {
+  console.error("Usage: whoray <domain...> [--json] [--raw] [--registrar] [--protocol auto|whois|rdap]");
   process.exit(2);
 }
 
@@ -30,7 +30,7 @@ function describe(result: WhorayResult): string {
     `  expires      ${date(result.expirationDate)}`,
     `  statuses     ${result.statuses.join(", ") || "-"}`,
     `  nameservers  ${result.nameservers.join(", ") || "-"}`,
-    `  source       ${result.source} via ${result.hops.map((hop) => hop.server).join(" -> ") || "-"}`,
+    `  source       ${result.source ?? "-"} via ${result.hops.map((hop) => hop.server).join(" -> ") || "-"}`,
   ];
   if (result.dropDate) lines.push(`  drops        ${result.dropDate.toISOString()}`);
   if (values.raw === true) lines.push(...result.hops.map((hop) => `\n--- ${hop.server}\n${hop.raw}`));
@@ -40,7 +40,7 @@ function describe(result: WhorayResult): string {
 for (const domain of positionals) {
   const result = await lookup(domain, {
     ...(values.registrar === true && { follow: "registrar" }),
-    ...(rdap && { rdap }),
+    ...(protocol && { protocol }),
   });
   console.log(values.json === true ? JSON.stringify(result, null, 2) : describe(result));
 }

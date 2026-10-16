@@ -8,6 +8,8 @@ export type DomainState =
   | "reserved"
   | "unknown";
 
+export type Protocol = "whois" | "rdap";
+
 export type ErrorCode = "timeout" | "rate_limited" | "blocked" | "no_server" | "unparseable" | "network";
 
 export interface WhorayError {
@@ -56,23 +58,23 @@ export interface DomainRecord {
   statuses: string[];
   nameservers: string[];
   dnssec?: boolean;
+  error?: WhorayError;
 }
 
 export interface Hop {
-  protocol: "rdap" | "whois";
+  protocol: Protocol;
   server: string;
   raw: string;
 }
 
 export interface WhorayResult extends DomainRecord {
-  source: "rdap" | "whois";
+  source?: Protocol;
   hops: Hop[];
-  error?: WhorayError;
 }
 
 export interface ServerEntry {
+  whois?: string | false;
   rdap?: string | false;
-  whois?: string;
   query?: string;
 }
 
@@ -84,11 +86,11 @@ export interface Socket {
 export type Connect = (host: string, port: number, signal?: AbortSignal) => Promise<Socket>;
 
 export interface LookupOptions {
+  protocol?: "auto" | Protocol;
   follow?: "registry" | "registrar";
-  rdap?: "prefer" | "only";
   timeout?: number;
   signal?: AbortSignal;
-  servers?: Record<string, ServerEntry>;
+  servers?: Readonly<Record<string, ServerEntry>>;
   connect?: Connect;
   fetch?: typeof fetch;
 }

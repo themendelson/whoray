@@ -72,20 +72,10 @@ test("WHOIS replies keep the registry database timestamp", () => {
   expect(parseWhois(text, "example.com").snapshotDate).toEqual(new Date("2026-10-16T08:00:00Z"));
 });
 
-const identityDigital = { io: { rdap: "https://rdap.identitydigital.services/rdap/", whois: "whois.nic.io" } };
-
-test("an Identity Digital name RDAP calls available is checked on WHOIS for premium", async () => {
-  const { fetch } = httpServer(() => ({ status: 404, body: "" }));
+test("a premium marker in the WHOIS reply survives a full lookup", async () => {
+  const { fetch, urls } = httpServer(() => ({ status: 404, body: "" }));
   const { connect } = whoisServer(() => "Contact platinums@identity.digital for this name.\nDomain not found.");
-  const result = await lookup("example.io", { fetch, connect, servers: identityDigital });
+  const result = await lookup("example.io", { fetch, connect });
+  expect(urls).toEqual([]);
   expect(result).toMatchObject({ state: "available", premium: true, source: "whois" });
-});
-
-test("a plain not-found on WHOIS keeps the RDAP answer", async () => {
-  const { fetch } = httpServer(() => ({ status: 404, body: "" }));
-  const { connect, queries } = whoisServer(() => "Domain not found.");
-  const result = await lookup("example.io", { fetch, connect, servers: identityDigital });
-  expect(queries).toHaveLength(1);
-  expect(result).toMatchObject({ state: "available", source: "rdap" });
-  expect(result.premium).toBeUndefined();
 });

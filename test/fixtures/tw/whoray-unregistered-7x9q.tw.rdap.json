@@ -4,10 +4,10 @@
   "state": "unknown",
   "statuses": [],
   "nameservers": [],
-  "source": "rdap",
   "error": {
     "code": "network",
     "message": "HTTP 426",
     "server": "rdap.test"
-  }
+  },
+  "source": "rdap"
 }

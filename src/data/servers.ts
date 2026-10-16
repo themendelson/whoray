@@ -2,8 +2,6 @@ import type { ServerEntry } from "#types.ts";
 
 const identityDigital = "https://rdap.identitydigital.services/rdap/";
 
-export const availabilityConfirmedByWhois: ReadonlySet<string> = new Set(["rdap.identitydigital.services"]);
-
 export const servers: Record<string, ServerEntry> = {
   ac: { rdap: identityDigital, whois: "whois.nic.ac" },
   ai: { whois: "whois.nic.ai" },

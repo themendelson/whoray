@@ -24,4 +24,4 @@ export type Found =
   | { kind: "available"; premium?: true }
   | { kind: "dropzone" }
   | { kind: "reserved" }
-  | { kind: "error"; code: ErrorCode; message: string; retryAfter?: number };
+  | { kind: "error"; code: ErrorCode; message: string; server?: string; retryAfter?: number };

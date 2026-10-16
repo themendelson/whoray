@@ -8,10 +8,10 @@
   },
   "statuses": [],
   "nameservers": [],
-  "source": "rdap",
   "error": {
     "code": "rate_limited",
     "message": "HTTP 429",
     "server": "rdap.test"
-  }
+  },
+  "source": "rdap"
 }
