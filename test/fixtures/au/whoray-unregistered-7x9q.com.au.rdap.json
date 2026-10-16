@@ -1,9 +1,9 @@
 {
   "domain": "whoray-unregistered-7x9q.com.au",
-  "tld": "com.au",
+  "tld": "au",
   "state": "available",
   "isRegistered": false,
   "statuses": [],
   "nameservers": [],
-  "source": "whois"
+  "source": "rdap"
 }

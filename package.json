@@ -59,7 +59,6 @@
     "test": "vitest run",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "fixture": "node --experimental-strip-types --no-warnings scripts/fixture.ts",
-    "suffixes": "node --experimental-strip-types --no-warnings scripts/suffixes.ts",
     "prepublishOnly": "pnpm check && pnpm build"
   },
   "devDependencies": {

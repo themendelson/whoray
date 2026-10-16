@@ -1,5 +1,3 @@
-import { suffixes } from "#data/suffixes.ts";
-
 const LABEL = /^(?!-)[a-z0-9-]{1,63}(?<!-)$/;
 const NOT_A_HOSTNAME = /[\s/\\:@?#%]/;
 
@@ -9,7 +7,7 @@ export interface Name {
   tld: string;
 }
 
-export function normalize(input: string, isExtraSuffix: (suffix: string) => boolean = () => false): Name {
+export function normalize(input: string, isKnownSuffix: (suffix: string) => boolean): Name {
   const trimmed = input.trim().toLowerCase().replace(/\.$/, "");
   if (NOT_A_HOSTNAME.test(trimmed)) throw new TypeError(`Not a domain name: "${input}"`);
   let ascii: string;
@@ -23,10 +21,7 @@ export function normalize(input: string, isExtraSuffix: (suffix: string) => bool
   if (labels.length < 2 || ascii.length > 253 || /^\d+$/.test(tldLabel) || !labels.every((l) => LABEL.test(l))) {
     throw new TypeError(`Not a domain name: "${input}"`);
   }
-  const suffixLength = publicSuffixLength(labels, isExtraSuffix);
-  if (labels.length <= suffixLength) throw new TypeError(`"${input}" is a public suffix, not a domain name`);
-  const domain = labels.slice(-suffixLength - 1).join(".");
-  return { domain, unicode: toUnicode(domain), tld: labels.slice(-suffixLength).join(".") };
+  return { domain: ascii, unicode: toUnicode(ascii), tld: suffixOf(labels, isKnownSuffix) };
 }
 
 export function lastLabel(suffix: string): string {
@@ -40,26 +35,12 @@ export function bySuffix<T>(table: Readonly<Record<string, T>>, suffix: string):
   }
 }
 
-let rules: ReadonlySet<string> | undefined;
-
-function suffixRules(): ReadonlySet<string> {
-  rules ??= new Set(
-    Object.entries(suffixes).flatMap(([tld, list]) =>
-      list.split(" ").map((rule) => (rule.startsWith("!") ? `!${rule.slice(1)}.${tld}` : `${rule}.${tld}`)),
-    ),
-  );
-  return rules;
-}
-
-function publicSuffixLength(labels: string[], isExtraSuffix: (suffix: string) => boolean): number {
-  const known = suffixRules();
-  for (let i = 0; i < labels.length - 1; i++) {
+function suffixOf(labels: string[], isKnownSuffix: (suffix: string) => boolean): string {
+  for (let i = 1; i < labels.length - 1; i++) {
     const candidate = labels.slice(i).join(".");
-    if (known.has(`!${candidate}`)) return labels.length - i - 1;
-    const parent = labels.slice(i + 1).join(".");
-    if (known.has(candidate) || known.has(`*.${parent}`) || isExtraSuffix(candidate)) return labels.length - i;
+    if (isKnownSuffix(candidate)) return candidate;
   }
-  return 1;
+  return labels.at(-1) ?? "";
 }
 
 function toUnicode(domain: string): string {

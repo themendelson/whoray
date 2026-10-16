@@ -34,7 +34,7 @@ domain.expirationDate;  //=> 2027-07-19T23:59:59.000Z
 
 ### lookup(domain, options?)
 
-`domain` can be in Unicode or punycode. A hostname is looked up as the domain registered under its public suffix: `www.google.co.uk` → `google.co.uk`.
+`domain` can be in Unicode or punycode.
 
 | Option | Default | |
 | --- | --- | --- |
@@ -56,7 +56,7 @@ Fields marked `?` are left out when they don't apply or the registry doesn't pub
 {
   domain: string;              // "namecheap.co", always punycode
   unicode?: string;            // "bücher.de", only for internationalized names
-  tld: string;                 // the public suffix: "co", "co.uk", "com.au"
+  tld: string;                 // "co", or "co.uk" for second-level suffixes
   state: State;                // see the table below
   isRegistered?: boolean;      // missing only when the lookup failed
   premium?: true;              // an available name the registry sells at a premium price

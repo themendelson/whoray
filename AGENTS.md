@@ -10,7 +10,6 @@ pnpm install
 pnpm check                  # lint + typecheck + tests: the gate before "done"
 pnpm test test/lookup.test.ts
 pnpm fixture nic.de         # capture live RDAP and WHOIS responses into test/fixtures
-pnpm suffixes               # regenerate src/data/suffixes.ts from the Public Suffix List
 pnpm test -u                # write expected records for new captures
 pnpm build
 ```
@@ -22,10 +21,9 @@ pnpm build
 - `src/lookup.ts`: one path for both protocols (locate the server, ask the registry, follow the
   registrar). `protocol: "auto"` asks WHOIS and falls back to RDAP.
 - `src/whois.ts`, `src/rdap.ts`: the transports. `src/iana.ts`: IANA lookups, cached for a day.
-- `src/domain.ts`: input normalization and the public suffix rules.
+- `src/domain.ts`: input normalization.
 - `src/parse/`: WHOIS text and RDAP JSON into a `DomainRecord`.
-- `src/data/`: servers, registries, label aliases, phrases, statuses,
-  public suffixes, per-TLD quirks. Knowledge about a TLD
+- `src/data/`: servers, registries, label aliases, phrases, statuses, per-TLD quirks. Knowledge about a TLD
   lives here, never in an `if (tld === …)` in code.
 
 ## Rules the linter can't check
