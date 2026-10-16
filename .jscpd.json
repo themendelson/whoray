@@ -1,5 +1,6 @@
 {
   "path": ["src"],
+  "ignore": ["src/node.ts", "src/workerd.ts", "src/browser.ts"],
   "format": ["typescript"],
   "minTokens": 50,
   "minLines": 5,

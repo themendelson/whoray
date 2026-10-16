@@ -1,5 +1,5 @@
 import { mkdir, writeFile } from "node:fs/promises";
-import { lookup } from "#node.ts";
+import { rdap, whois } from "#node.ts";
 
 const TIMEOUT = 20_000;
 
@@ -10,16 +10,16 @@ async function capture(input: string): Promise<void> {
     statuses.push(response.status);
     return response;
   };
-  const rdap = await lookup(input, { protocol: "rdap", fetch: recording, timeout: TIMEOUT });
-  const whois = await lookup(input, { protocol: "whois", timeout: TIMEOUT });
-  const dir = `test/fixtures/${rdap.tld}`;
+  const rdapResult = await rdap(input, { fetch: recording, timeout: TIMEOUT });
+  const whoisResult = await whois(input, { timeout: TIMEOUT });
+  const dir = `test/fixtures/${rdapResult.tld}`;
   await mkdir(dir, { recursive: true });
-  const [rdapHop] = rdap.hops;
-  if (rdapHop) await writeFile(`${dir}/${rdap.domain}.rdap`, `${statuses.at(-1) ?? ""}\n${rdapHop.raw}`);
-  const [whoisHop] = whois.hops;
-  if (whoisHop) await writeFile(`${dir}/${whois.domain}.whois`, `${whoisHop.server}\n${whoisHop.raw}`);
+  const [rdapHop] = rdapResult.hops;
+  if (rdapHop) await writeFile(`${dir}/${rdapResult.domain}.rdap`, `${statuses.at(-1) ?? ""}\n${rdapHop.raw}`);
+  const [whoisHop] = whoisResult.hops;
+  if (whoisHop) await writeFile(`${dir}/${whoisResult.domain}.whois`, `${whoisHop.server}\n${whoisHop.raw}`);
   console.log(
-    `${rdap.domain}: rdap ${rdapHop?.server ?? rdap.error?.message} whois ${whoisHop?.server ?? whois.error?.message}`,
+    `${rdapResult.domain}: rdap ${rdapHop?.server ?? rdapResult.error?.message} whois ${whoisHop?.server ?? whoisResult.error?.message}`,
   );
 }
 

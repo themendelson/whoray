@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
-import { lookup, parseRdap, parseWhois } from "whoray";
+import { parseRdap, parseWhois, whois } from "whoray";
 
 const fixture = (path) => readFileSync(`test/fixtures/${path}`, "utf8").split("\n").slice(1).join("\n");
 const commonjs = createRequire(import.meta.url)("whoray");
@@ -17,9 +17,8 @@ const connect = async () => ({
     start: (controller) => controller.close(controller.enqueue(new TextEncoder().encode(reply))),
   }),
 });
-const result = await lookup("whoray-unregistered-7x9q.com", {
+const result = await whois("whoray-unregistered-7x9q.com", {
   connect,
-  protocol: "whois",
   servers: { com: { whois: "whois.test" } },
 });
 assert.equal(result.state, "available");

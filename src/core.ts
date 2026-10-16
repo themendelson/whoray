@@ -6,6 +6,7 @@ import { readWhois } from "#parse/whois.ts";
 import type { DomainRecord } from "#types.ts";
 
 export type { Lookup } from "#lookup.ts";
+export { rdap } from "#lookup.ts";
 export type * from "#types.ts";
 
 export function parseWhois(text: string, domain: string): DomainRecord {

@@ -34,12 +34,11 @@ domain.expirationDate;  //=> 2027-07-19T23:59:59.000Z
 
 ### lookup(domain, options?)
 
-`domain` can be in Unicode or punycode.
+Asks WHOIS and moves to RDAP when WHOIS has no server, fails or is slow. `domain` can be in Unicode or punycode.
 
 | Option | Default | |
 | --- | --- | --- |
 | `follow` | `"registry"` | Set to `"registrar"` to also query the registrar's server for fuller registrar details |
-| `protocol` | `"auto"` | `"auto"` asks WHOIS and moves to RDAP when WHOIS has no server, fails or is slow; `"whois"` or `"rdap"` asks only that one |
 | `timeout` | `10000` | Milliseconds for the whole lookup |
 | `signal` | | `AbortSignal` to cancel the lookup |
 | `servers` | | Your own servers for a TLD, e.g. `{ io: { whois: "whois.nic.io" } }`; `whois: false` or `rdap: false` skips that protocol for it |
@@ -47,6 +46,10 @@ domain.expirationDate;  //=> 2027-07-19T23:59:59.000Z
 | `fetch` | `globalThis.fetch` | Your own fetch for RDAP |
 
 It throws only if `domain` isn't a domain name or your `signal` aborts. Any other failure comes back as `state: "unknown"` with an `error`.
+
+### whois(domain, options?) and rdap(domain, options?)
+
+Ask only that protocol and return the same result. `whois` takes every option except `fetch`; `rdap` takes every option except `connect`. If you only import `rdap`, your bundler leaves the WHOIS code out.
 
 ### Result
 

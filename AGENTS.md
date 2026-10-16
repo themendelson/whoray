@@ -17,9 +17,11 @@ pnpm build
 ## Layout
 
 - `src/node.ts`, `src/workerd.ts`, `src/browser.ts`: entry points, picked by package.json export
-  conditions. Each only wires a socket into `createLookup`; the shared exports live in `src/core.ts`.
-- `src/lookup.ts`: one path for both protocols (locate the server, ask the registry, follow the
-  registrar). `protocol: "auto"` asks WHOIS and falls back to RDAP.
+  conditions. Each only binds its socket into `lookup` and `whois`, as plain arrow functions so a
+  bundler can drop WHOIS when only `rdap` is imported; the shared exports live in `src/core.ts`.
+- `src/lookup.ts`: the public `lookup` (WHOIS, falling back to RDAP), `whois` and `rdap`.
+  `src/query.ts` runs one protocol (locate the server, ask the registry, follow the registrar);
+  `src/transports.ts` says how for each.
 - `src/whois.ts`, `src/rdap.ts`: the transports. `src/iana.ts`: IANA lookups, cached for a day.
 - `src/domain.ts`: input normalization.
 - `src/parse/`: WHOIS text and RDAP JSON into a `DomainRecord`.
