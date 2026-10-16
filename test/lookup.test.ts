@@ -1,5 +1,6 @@
 import { expect, test, vi } from "vitest";
 import { lookup } from "#node.ts";
+import type { Connect } from "#types.ts";
 import { httpServer, whoisServer } from "./support.ts";
 
 const RDAP_DOMAIN = JSON.stringify({
@@ -142,4 +143,25 @@ test("aborting through the caller's signal rejects the lookup", async () => {
 
 test("input that isn't a domain name rejects the lookup", async () => {
   await expect(lookup("not a domain")).rejects.toThrow(TypeError);
+});
+
+test("the timeout also bounds a connect hook that ignores the signal", async () => {
+  let lateSocketClosed = false;
+  const slowConnect: Connect = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 150));
+    return {
+      writable: new WritableStream(),
+      readable: new ReadableStream({
+        cancel() {
+          lateSocketClosed = true;
+        },
+      }),
+    };
+  };
+  const started = Date.now();
+  const result = await lookup("example.com", { connect: slowConnect, servers: whoisOnly, timeout: 50 });
+  expect(result.error?.code).toBe("timeout");
+  expect(Date.now() - started).toBeLessThan(140);
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  expect(lateSocketClosed).toBe(true);
 });

@@ -1,23 +1,37 @@
-import type { Connect } from "#types.ts";
+import { untilAborted } from "#abort.ts";
+import type { Connect, Socket } from "#types.ts";
 
 const encoder = new TextEncoder();
+const ignore = (): void => undefined;
 
 export async function queryWhois(connect: Connect, host: string, query: string, signal: AbortSignal): Promise<string> {
-  const socket = await connect(host, 43, signal);
+  const socket = await untilAborted(connect(host, 43, signal), signal, close);
   const writer = socket.writable.getWriter();
   const reader = socket.readable.getReader();
-  const cancel = (): void => void reader.cancel().catch(() => undefined);
-  signal.addEventListener("abort", cancel, { once: true });
+  const hangUp = (): void => {
+    void reader.cancel().catch(ignore);
+    void writer.abort().catch(ignore);
+  };
+  signal.addEventListener("abort", hangUp, { once: true });
+  let replied = false;
   try {
+    signal.throwIfAborted();
     await writer.write(encoder.encode(`${query}\r\n`));
     const chunks: Uint8Array[] = [];
     for (let chunk = await reader.read(); !chunk.done; chunk = await reader.read()) chunks.push(chunk.value);
     signal.throwIfAborted();
+    replied = true;
     return decode(concat(chunks));
   } finally {
-    signal.removeEventListener("abort", cancel);
-    await writer.close().catch(() => undefined);
+    signal.removeEventListener("abort", hangUp);
+    if (replied) void writer.close().catch(ignore);
+    else hangUp();
   }
+}
+
+function close(socket: Socket): void {
+  void socket.readable.cancel().catch(ignore);
+  void socket.writable.abort().catch(ignore);
 }
 
 function concat(chunks: Uint8Array[]): Uint8Array {
