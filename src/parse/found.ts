@@ -1,20 +1,24 @@
-import type { ErrorCode, Registrant, Registrar } from "#types.ts";
+import type { DomainRecord, WhorayError } from "#types.ts";
 
-export interface Registration {
+type Published = Pick<
+  DomainRecord,
+  | "registrar"
+  | "registrant"
+  | "handle"
+  | "creationDate"
+  | "updatedDate"
+  | "expirationDate"
+  | "snapshotDate"
+  | "statuses"
+  | "nameservers"
+  | "dnssec"
+>;
+
+export interface Registration extends Published {
   kind: "record";
-  registrar?: Registrar;
-  registrant?: Registrant;
-  handle?: string;
-  created?: Date;
-  updated?: Date;
-  expires?: Date;
   released?: Date;
   deleted?: Date;
-  database?: Date;
   registryId?: string;
-  statuses: string[];
-  nameservers: string[];
-  dnssec?: boolean;
   registrarWhois?: string;
   registrarRdap?: string;
 }
@@ -24,4 +28,4 @@ export type Found =
   | { kind: "available"; premium?: true }
   | { kind: "dropzone" }
   | { kind: "reserved" }
-  | { kind: "error"; code: ErrorCode; message: string; server?: string; retryAfter?: number };
+  | ({ kind: "error" } & WhorayError);

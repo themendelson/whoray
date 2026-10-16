@@ -1,7 +1,7 @@
-import { expect, test, vi } from "vitest";
+import { expect, test } from "vitest";
 import { lookup } from "#node.ts";
 import type { Connect } from "#types.ts";
-import { httpServer, whoisServer } from "./support.ts";
+import { freshLookup, httpServer, ianaBootstrap, silentServer, whoisServer } from "./support.ts";
 
 const RDAP_DOMAIN = JSON.stringify({
   objectClassName: "domain",
@@ -24,11 +24,6 @@ const WHOIS_REGISTRY = [
 ].join("\n");
 
 const servers = { com: { rdap: "https://rdap.test/", whois: "whois.registry.test" } };
-
-const silent: Connect = async () => ({
-  writable: new WritableStream(),
-  readable: new ReadableStream(),
-});
 
 test("WHOIS answers first and RDAP isn't asked", async () => {
   const { fetch, urls } = httpServer(() => ({ status: 200, body: RDAP_DOMAIN }));
@@ -74,13 +69,13 @@ test("a retired WHOIS service hands the lookup to RDAP", async () => {
 
 test("RDAP takes over when WHOIS hasn't answered by half the timeout", async () => {
   const { fetch } = httpServer(() => ({ status: 404, body: "" }));
-  const result = await lookup("example.com", { fetch, connect: silent, servers, timeout: 200 });
+  const result = await lookup("example.com", { fetch, connect: silentServer, servers, timeout: 200 });
   expect(result).toMatchObject({ state: "available", source: "rdap" });
 });
 
 test("WHOIS keeps the whole timeout when there's no RDAP to hand over to", async () => {
   const result = await lookup("example.com", {
-    connect: silent,
+    connect: silentServer,
     servers: { com: { rdap: false, whois: "whois.registry.test" } },
     timeout: 100,
   });
@@ -151,14 +146,12 @@ test("follow: registrar queries the referral server and keeps the registry's dat
 });
 
 test("an unknown TLD is resolved through IANA once and cached", async () => {
-  vi.resetModules();
-  const fresh = await import("#node.ts");
-  const bootstrap = { services: [[["zz"], ["https://rdap.zz.test/"]]] };
+  const fresh = await freshLookup();
   const { fetch, urls } = httpServer((url) =>
-    url.endsWith("dns.json") ? { status: 200, body: JSON.stringify(bootstrap) } : { status: 404, body: "" },
+    url.endsWith("dns.json") ? ianaBootstrap("zz", "https://rdap.zz.test/") : { status: 404, body: "" },
   );
-  await fresh.lookup("one.zz", { fetch, protocol: "rdap" });
-  await fresh.lookup("two.zz", { fetch, protocol: "rdap" });
+  await fresh("one.zz", { fetch, protocol: "rdap" });
+  await fresh("two.zz", { fetch, protocol: "rdap" });
   expect(urls.filter((url) => url.endsWith("dns.json"))).toHaveLength(1);
   expect(urls).toContain("https://rdap.zz.test/domain/two.zz");
 });
@@ -248,36 +241,30 @@ test("input that isn't a domain name rejects the lookup", async () => {
 });
 
 test("one lookup timing out doesn't fail another waiting on the same IANA bootstrap", async () => {
-  vi.resetModules();
-  const fresh = await import("#node.ts");
-  const bootstrap = { services: [[["zz"], ["https://rdap.zz.test/"]]] };
-  const slowBootstrap: typeof fetch = async (input) => {
-    const url = input instanceof Request ? input.url : input.toString();
-    if (url.endsWith("dns.json")) {
-      await new Promise((resolve) => setTimeout(resolve, 100));
-      return new Response(JSON.stringify(bootstrap));
-    }
-    return new Response("", { status: 404 });
-  };
+  const fresh = await freshLookup();
+  const { fetch } = httpServer(async (url) => {
+    if (!url.endsWith("dns.json")) return { status: 404, body: "" };
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    return ianaBootstrap("zz", "https://rdap.zz.test/");
+  });
   const [short, long] = await Promise.all([
-    fresh.lookup("one.zz", { fetch: slowBootstrap, protocol: "rdap", timeout: 20 }),
-    fresh.lookup("two.zz", { fetch: slowBootstrap, protocol: "rdap", timeout: 5000 }),
+    fresh("one.zz", { fetch, protocol: "rdap", timeout: 20 }),
+    fresh("two.zz", { fetch, protocol: "rdap", timeout: 5000 }),
   ]);
   expect(short.error?.code).toBe("timeout");
   expect(long).toMatchObject({ state: "available", source: "rdap" });
 });
 
 test("a WHOIS host IANA didn't answer for is asked again on the next lookup", async () => {
-  vi.resetModules();
-  const fresh = await import("#node.ts");
+  const fresh = await freshLookup();
   let ianaCalls = 0;
   const server = whoisServer((host) => {
     if (host !== "whois.iana.org") return "% No match";
     ianaCalls += 1;
     return ianaCalls === 1 ? "% Query rate exceeded" : "domain: YY\nwhois: whois.nic.yy\n";
   });
-  const first = await fresh.lookup("example.yy", { connect: server.connect, protocol: "whois" });
-  const second = await fresh.lookup("example.yy", { connect: server.connect, protocol: "whois" });
+  const first = await fresh("example.yy", { connect: server.connect, protocol: "whois" });
+  const second = await fresh("example.yy", { connect: server.connect, protocol: "whois" });
   expect(first.error).toMatchObject({ code: "network", server: "whois.iana.org" });
   expect(second.state).toBe("available");
 });

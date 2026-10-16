@@ -1,7 +1,9 @@
+export const ignore = (): void => undefined;
+
 export function untilAborted<T>(
   promise: Promise<T>,
   signal: AbortSignal,
-  discard: (late: T) => void = () => undefined,
+  discard: (late: T) => void = ignore,
 ): Promise<T> {
   return new Promise((resolve, reject) => {
     const abort = (): void => reject(signal.reason);

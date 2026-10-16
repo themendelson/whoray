@@ -1,14 +1,13 @@
+import { ignore } from "#abort.ts";
 import { servers } from "#data/servers.ts";
 import type { Name } from "#domain.ts";
 import { bySuffix, lastLabel, normalize } from "#domain.ts";
+import { ianaRdapBase, ianaWhoisHost } from "#iana.ts";
 import type { Found, Registration } from "#parse/found.ts";
-import { readRdap } from "#parse/rdap.ts";
 import { toRecord } from "#parse/record.ts";
-import { readWhois } from "#parse/whois.ts";
-import type { RdapReply } from "#rdap.ts";
-import { fetchRdap, ianaRdapBase } from "#rdap.ts";
+import { fetchRdap, readRdapReply } from "#rdap.ts";
 import type { Connect, Hop, LookupOptions, Protocol, ServerEntry, WhorayResult } from "#types.ts";
-import { ianaWhoisHost, queryWhois } from "#whois.ts";
+import { queryWhois, readWhoisReply } from "#whois.ts";
 
 export type Lookup = (domain: string, options?: LookupOptions) => Promise<WhorayResult>;
 
@@ -29,8 +28,41 @@ interface Outcome {
   source: Protocol;
 }
 
+interface Target {
+  server: string;
+  ask: (signal: AbortSignal) => Promise<{ raw: string; read: () => Found }>;
+}
+
+interface Transport {
+  directory: string;
+  locate: (context: Context, signal: AbortSignal) => Promise<string | undefined>;
+  registry: (context: Context, located: string) => Target;
+  registrar: (context: Context, found: Registration, registry: Target) => Target | undefined;
+}
+
 const DEFAULT_TIMEOUT = 10_000;
 const NO_SERVER: Found = { kind: "error", code: "no_server", message: "No WHOIS or RDAP server is known for this TLD" };
+
+const transports: Record<Protocol, Transport> = {
+  whois: {
+    directory: "whois.iana.org",
+    locate: async ({ entry, connect, name }, signal) =>
+      entry.whois === false ? undefined : (entry.whois ?? ianaWhoisHost(connect, lastLabel(name.tld), signal)),
+    registry: (context, host) =>
+      whoisTarget(context, host, (context.entry.query ?? "{domain}").replace("{domain}", context.name.domain)),
+    registrar: (context, found, registry) =>
+      found.registrarWhois === undefined || found.registrarWhois === registry.server
+        ? undefined
+        : whoisTarget(context, found.registrarWhois, context.name.domain),
+  },
+  rdap: {
+    directory: "data.iana.org",
+    locate: rdapBase,
+    registry: (context, base) => rdapTarget(context, `${base}domain/${context.name.domain}`),
+    registrar: (context, found) =>
+      found.registrarRdap === undefined ? undefined : rdapTarget(context, found.registrarRdap),
+  },
+};
 
 export function createLookup(defaultConnect: Connect): Lookup {
   return async (domain, options = {}) => {
@@ -64,11 +96,10 @@ async function resolve(
   context: Context,
   protocol: NonNullable<LookupOptions["protocol"]>,
 ): Promise<Outcome | undefined> {
-  if (protocol === "whois") return viaWhois(context, context.signal);
-  if (protocol === "rdap") return viaRdap(context, context.signal);
-  const whois = await handingOff(context, (signal) => viaWhois(context, signal));
+  if (protocol !== "auto") return via(context, protocol, context.signal);
+  const whois = await handingOff(context, (signal) => via(context, "whois", signal));
   if (whois !== undefined && whois.found.kind !== "error") return whois;
-  return settle(whois, await viaRdap(context, context.signal));
+  return settle(whois, await via(context, "rdap", context.signal));
 }
 
 function settle(whois: Outcome | undefined, rdap: Outcome | undefined): Outcome | undefined {
@@ -85,12 +116,9 @@ async function handingOff(
   if (context.entry.rdap === false) return run(context.signal);
   const handOff = new AbortController();
   const timer = setTimeout(() => {
-    void rdapBase(context, context.signal).then(
-      (base) => {
-        if (base !== undefined) handOff.abort(new DOMException("RDAP takes over from a slow WHOIS", "TimeoutError"));
-      },
-      () => undefined,
-    );
+    void rdapBase(context, context.signal).then((base) => {
+      if (base !== undefined) handOff.abort(new DOMException("RDAP takes over from a slow WHOIS", "TimeoutError"));
+    }, ignore);
   }, context.timeout / 2);
   try {
     return await run(AbortSignal.any([context.signal, handOff.signal]));
@@ -101,89 +129,61 @@ async function handingOff(
 
 async function rdapBase(context: Context, signal: AbortSignal): Promise<string | undefined> {
   const { rdap } = context.entry;
-  if (rdap !== undefined) return rdap === false ? undefined : rdap;
-  return ianaRdapBase(context.fetch, lastLabel(context.name.tld), signal);
+  const base = rdap === undefined ? await ianaRdapBase(context.fetch, lastLabel(context.name.tld), signal) : rdap;
+  return base === false ? undefined : base?.replace(/\/?$/, "/");
 }
 
-async function viaRdap(context: Context, signal: AbortSignal): Promise<Outcome | undefined> {
-  let base: string | undefined;
+async function via(context: Context, protocol: Protocol, signal: AbortSignal): Promise<Outcome | undefined> {
+  const transport = transports[protocol];
+  let located: string | undefined;
   try {
-    base = await rdapBase(context, signal);
+    located = await transport.locate(context, signal);
   } catch (error) {
-    return { found: failure(context, error, "data.iana.org", signal), source: "rdap" };
+    return { found: failure(context, error, transport.directory, signal), source: protocol };
   }
-  if (base === undefined) return undefined;
-  const found = await rdapHop(context, `${base.replace(/\/?$/, "/")}domain/${context.name.domain}`, signal);
-  const referral = found.kind === "record" && context.registrar ? found.registrarRdap : undefined;
-  if (found.kind !== "record" || referral === undefined) return { found, source: "rdap" };
-  return { found: merge(found, await rdapHop(context, referral, signal)), source: "rdap" };
+  if (located === undefined) return undefined;
+  const registry = transport.registry(context, located);
+  const found = await hop(context, protocol, registry, signal);
+  const registrar =
+    found.kind === "record" && context.registrar ? transport.registrar(context, found, registry) : undefined;
+  if (found.kind !== "record" || registrar === undefined) return { found, source: protocol };
+  return { found: merge(found, await hop(context, protocol, registrar, signal)), source: protocol };
 }
 
-async function rdapHop(context: Context, url: string, signal: AbortSignal): Promise<Found> {
-  let server = url;
-  let reply: RdapReply;
+async function hop(context: Context, protocol: Protocol, target: Target, signal: AbortSignal): Promise<Found> {
+  let reply: Awaited<ReturnType<Target["ask"]>>;
   try {
-    server = new URL(url).host;
-    reply = await fetchRdap(context.fetch, url, signal);
+    reply = await target.ask(signal);
   } catch (error) {
-    return failure(context, error, server, signal);
+    return failure(context, error, target.server, signal);
   }
-  context.hops.push({ protocol: "rdap", server, raw: reply.body });
-  if (reply.status === 404) return { kind: "available" };
-  if (reply.status === 429) {
-    const { retryAfter } = reply;
-    return {
-      kind: "error",
-      code: "rate_limited",
-      message: "HTTP 429",
-      server,
-      ...(retryAfter !== undefined && { retryAfter }),
-    };
-  }
-  if (reply.status !== 200) return { kind: "error", code: "network", message: `HTTP ${reply.status}`, server };
-  let json: unknown;
-  try {
-    json = JSON.parse(reply.body);
-  } catch {
-    return { kind: "error", code: "unparseable", message: "RDAP reply is not JSON", server };
-  }
-  const found = readRdap(json);
-  return found.kind === "error" ? { ...found, server } : found;
+  context.hops.push({ protocol, server: target.server, raw: reply.raw });
+  const found = reply.read();
+  return found.kind === "error" ? { ...found, server: target.server } : found;
 }
 
-async function viaWhois(context: Context, signal: AbortSignal): Promise<Outcome | undefined> {
-  const { name, entry } = context;
-  if (entry.whois === false) return undefined;
-  let host: string | undefined;
-  try {
-    host = entry.whois ?? (await ianaWhoisHost(context.connect, lastLabel(name.tld), signal));
-  } catch (error) {
-    return { found: failure(context, error, "whois.iana.org", signal), source: "whois" };
-  }
-  if (host === undefined) return undefined;
-  const found = await whoisHop(context, host, (entry.query ?? "{domain}").replace("{domain}", name.domain), signal);
-  const referral = found.kind === "record" && context.registrar ? found.registrarWhois : undefined;
-  if (found.kind !== "record" || referral === undefined || referral === host) return { found, source: "whois" };
-  return { found: merge(found, await whoisHop(context, referral, name.domain, signal)), source: "whois" };
+function whoisTarget(context: Context, host: string, query: string): Target {
+  const ask = (signal: AbortSignal): Promise<string> => queryWhois(context.connect, host, query, signal);
+  return {
+    server: host,
+    ask: async (signal) => {
+      const raw = await ask(signal).catch((error: unknown) => {
+        if (signal.aborted) throw error;
+        return ask(signal);
+      });
+      return { raw, read: () => readWhoisReply(raw, context.name) };
+    },
+  };
 }
 
-async function whoisHop(context: Context, host: string, query: string, signal: AbortSignal): Promise<Found> {
-  const ask = (): Promise<string> => queryWhois(context.connect, host, query, signal);
-  let text: string;
-  try {
-    text = await ask().catch((error: unknown) => {
-      if (signal.aborted) throw error;
-      return ask();
-    });
-  } catch (error) {
-    return failure(context, error, host, signal);
-  }
-  context.hops.push({ protocol: "whois", server: host, raw: text });
-  if (text.trim() === "") {
-    return { kind: "error", code: "rate_limited", message: "Empty reply, usually throttling", server: host };
-  }
-  const found = readWhois(text, context.name);
-  return found.kind === "error" ? { ...found, server: host } : found;
+function rdapTarget(context: Context, url: string): Target {
+  return {
+    server: URL.canParse(url) ? new URL(url).host : url,
+    ask: async (signal) => {
+      const reply = await fetchRdap(context.fetch, url, signal);
+      return { raw: reply.body, read: () => readRdapReply(reply) };
+    },
+  };
 }
 
 function failure(context: Context, error: unknown, server: string, signal: AbortSignal): Found {

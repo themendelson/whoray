@@ -19,10 +19,10 @@ export function registryInText(text: string): Registry | undefined {
   return registries.find((registry) => registry.textPattern?.test(text) === true);
 }
 
-export function stateOf(statuses: ReadonlySet<string>, expires: Date | undefined): DomainState {
+export function stateOf(statuses: ReadonlySet<string>, expirationDate: Date | undefined): DomainState {
   if (statuses.has("redemptionPeriod")) return "redemption";
   if (statuses.has("pendingDelete")) return "pendingDelete";
-  if (expires && expires.getTime() < Date.now()) return "expired";
+  if (expirationDate && expirationDate.getTime() < Date.now()) return "expired";
   return "registered";
 }
 

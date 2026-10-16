@@ -6,10 +6,10 @@ import type { Name } from "#domain.ts";
 import { bySuffix } from "#domain.ts";
 import { registryInText } from "#lifecycle.ts";
 import { parseDate } from "#parse/dates.ts";
+import { countryCode, hostnames, registrant, registrar, visible } from "#parse/fields.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { pairs } from "#parse/pairs.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
-import { countryCode, registrant, visible } from "#parse/visible.ts";
 import type { Registrant, Registrar } from "#types.ts";
 
 const fieldByKey = new Map(aliases.flatMap(([field, keys]) => keys.map((key) => [key, field] as const)));
@@ -17,18 +17,18 @@ const fieldByKey = new Map(aliases.flatMap(([field, keys]) => keys.map((key) => 
 export function readWhois(text: string, name: Name): Found {
   const transforms = bySuffix(quirks, name.tld) ?? [];
   const fields = collect(transforms.reduce((current, transform) => transform(current), text));
-  const created = firstDate(fields.get("created"));
-  const expires = firstDate(fields.get("expires"));
+  const creationDate = firstDate(fields.get("created"));
+  const expirationDate = firstDate(fields.get("expires"));
   const registrar = registrarOf(fields);
   const nameservers = hostnames(fields.get("nameservers") ?? []).filter((host) => host !== name.domain);
-  if (!created && !expires && !registrar && nameservers.length === 0) return withoutRecord(text);
+  if (!creationDate && !expirationDate && !registrar && nameservers.length === 0) return withoutRecord(text);
   return {
     kind: "record",
     statuses: statusesOf(fields, text),
     nameservers,
     ...(registrar && { registrar }),
-    ...(created && { created }),
-    ...(expires && { expires }),
+    ...(creationDate && { creationDate }),
+    ...(expirationDate && { expirationDate }),
     ...details(fields, text),
   };
 }
@@ -39,10 +39,10 @@ function statusesOf(fields: Map<Field, string[]>, text: string): string[] {
 }
 
 function details(fields: Map<Field, string[]>, text: string): Partial<Registration> {
-  const updated = firstDate(fields.get("updated"));
+  const updatedDate = firstDate(fields.get("updated"));
   const released = firstDate(fields.get("released"));
   const deleted = firstDate(fields.get("deleted"));
-  const database = parseDate(/>>> Last update of WHOIS database:\s*(\S+)/i.exec(text)?.[1] ?? "");
+  const snapshotDate = parseDate(/>>> Last update of WHOIS database:\s*(\S+)/i.exec(text)?.[1] ?? "");
   const registrarWhois = hostnames(fields.get("registrarWhois") ?? []).at(0);
   const dnssec = (fields.get("dnssec") ?? []).map(dnssecOf).find((value) => value !== undefined);
   const holder = registrantOf(fields);
@@ -51,10 +51,10 @@ function details(fields: Map<Field, string[]>, text: string): Partial<Registrati
   return {
     ...(holder && { registrant: holder }),
     ...(handle !== undefined && { handle }),
-    ...(updated && { updated }),
+    ...(updatedDate && { updatedDate }),
     ...(released && { released }),
     ...(deleted && { deleted }),
-    ...(database && { database }),
+    ...(snapshotDate && { snapshotDate }),
     ...(dnssec !== undefined && { dnssec }),
     ...(registrarWhois !== undefined && { registrarWhois }),
     ...(registryId !== undefined && { registryId }),
@@ -120,24 +120,12 @@ function registrarOf(fields: Map<Field, string[]>): Registrar | undefined {
   if (raw === undefined) return undefined;
   const inline = /^(.*?)\s*\(\s*(https?:\/\/[^\s)]+)\s*\)$/.exec(raw);
   const name = inline?.[1] ?? raw;
-  const url = present(fields.get("registrarUrl")) ?? inline?.[2];
-  const ianaId = Number(fields.get("registrarIanaId")?.[0]);
-  const abuseEmail = present(fields.get("abuseEmail"))?.toLowerCase();
-  const abusePhone = present(fields.get("abusePhone"));
-  return {
-    name,
-    ...(Number.isInteger(ianaId) && ianaId > 0 && { ianaId }),
-    ...(url !== undefined && { url }),
-    ...(abuseEmail?.includes("@") === true && { abuseEmail }),
-    ...(abusePhone !== undefined && { abusePhone }),
-  };
-}
-
-function hostnames(values: string[]): string[] {
-  const hosts = values
-    .map((value) => (value.replace(/^\w+:\/\//, "").split(/[\s/]/)[0] ?? "").toLowerCase().replace(/\.$/, ""))
-    .filter((host) => /^[a-z0-9-]+(\.[a-z0-9-]+)+$/.test(host));
-  return [...new Set(hosts)];
+  return registrar(name, {
+    ianaId: Number(fields.get("registrarIanaId")?.[0]),
+    url: present(fields.get("registrarUrl")) ?? inline?.[2],
+    abuseEmail: present(fields.get("abuseEmail")),
+    abusePhone: present(fields.get("abusePhone")),
+  });
 }
 
 function dnssecOf(value: string): boolean | undefined {

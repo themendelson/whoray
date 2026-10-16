@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { parseArgs } from "node:util";
 import { lookup } from "#node.ts";
-import type { WhorayResult } from "#types.ts";
+import type { LookupOptions, WhorayResult } from "#types.ts";
 
 const { values, positionals } = parseArgs({
   allowPositionals: true,
@@ -13,7 +13,7 @@ const { values, positionals } = parseArgs({
   },
 });
 
-const protocols = ["auto", "whois", "rdap"] as const;
+const protocols: NonNullable<LookupOptions["protocol"]>[] = ["auto", "whois", "rdap"];
 const protocol = protocols.find((name) => name === values.protocol);
 
 if (positionals.length === 0 || (values.protocol !== undefined && !protocol)) {

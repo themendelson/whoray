@@ -1,38 +1,42 @@
-import { untilAborted } from "#abort.ts";
-import { Memo } from "#memo.ts";
-import type { Connect, Socket } from "#types.ts";
+import { ignore, untilAborted } from "#abort.ts";
+import type { Name } from "#domain.ts";
+import type { Found } from "#parse/found.ts";
+import { readWhois } from "#parse/whois.ts";
+import type { Connect } from "#types.ts";
 
 const encoder = new TextEncoder();
-const ignore = (): void => undefined;
+
+interface Closable {
+  readable: { cancel(): Promise<void> };
+  writable: { abort(): Promise<void> };
+}
+
+function hangUp({ readable, writable }: Closable): void {
+  void readable.cancel().catch(ignore);
+  void writable.abort().catch(ignore);
+}
 
 export async function queryWhois(connect: Connect, host: string, query: string, signal: AbortSignal): Promise<string> {
-  const socket = await untilAborted(connect(host, 43, signal), signal, close);
-  const writer = socket.writable.getWriter();
-  const reader = socket.readable.getReader();
-  const hangUp = (): void => {
-    void reader.cancel().catch(ignore);
-    void writer.abort().catch(ignore);
-  };
-  signal.addEventListener("abort", hangUp, { once: true });
+  const socket = await untilAborted(connect(host, 43, signal), signal, hangUp);
+  const stream = { readable: socket.readable.getReader(), writable: socket.writable.getWriter() };
+  const abort = (): void => hangUp(stream);
+  signal.addEventListener("abort", abort, { once: true });
   let replied = false;
   try {
     signal.throwIfAborted();
-    await writer.write(encoder.encode(`${query}\r\n`));
+    await stream.writable.write(encoder.encode(`${query}\r\n`));
     const chunks: Uint8Array[] = [];
-    for (let chunk = await reader.read(); !chunk.done; chunk = await reader.read()) chunks.push(chunk.value);
+    for (let chunk = await stream.readable.read(); !chunk.done; chunk = await stream.readable.read()) {
+      chunks.push(chunk.value);
+    }
     signal.throwIfAborted();
     replied = true;
     return decode(concat(chunks));
   } finally {
-    signal.removeEventListener("abort", hangUp);
-    if (replied) void writer.close().catch(ignore);
-    else hangUp();
+    signal.removeEventListener("abort", abort);
+    if (replied) void stream.writable.close().catch(ignore);
+    else hangUp(stream);
   }
-}
-
-function close(socket: Socket): void {
-  void socket.readable.cancel().catch(ignore);
-  void socket.writable.abort().catch(ignore);
 }
 
 function concat(chunks: Uint8Array[]): Uint8Array {
@@ -53,17 +57,7 @@ function decode(bytes: Uint8Array): string {
   }
 }
 
-const DAY = 86_400_000;
-const IANA_TIMEOUT = 15_000;
-const ianaHosts = new Memo<string | undefined>(DAY);
-
-export function ianaWhoisHost(connect: Connect, tld: string, signal: AbortSignal): Promise<string | undefined> {
-  const load = (): Promise<string | undefined> =>
-    queryWhois(connect, "whois.iana.org", tld, AbortSignal.timeout(IANA_TIMEOUT)).then(whoisHostIn);
-  return ianaHosts.get(tld, load, signal);
-}
-
-function whoisHostIn(reply: string): string | undefined {
-  if (!/^domain:|returned 0 objects/m.test(reply)) throw new Error("whois.iana.org sent no TLD record");
-  return /^whois:[ \t]*(\S+)/m.exec(reply)?.[1]?.toLowerCase();
+export function readWhoisReply(text: string, name: Name): Found {
+  if (text.trim() === "") return { kind: "error", code: "rate_limited", message: "Empty reply, usually throttling" };
+  return readWhois(text, name);
 }
