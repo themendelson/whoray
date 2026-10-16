@@ -4,7 +4,6 @@
   "state": "registered",
   "isRegistered": true,
   "statuses": [
-    "busy",
     "ok"
   ],
   "nameservers": [

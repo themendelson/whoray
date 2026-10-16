@@ -17,9 +17,7 @@
   "statuses": [
     "clientTransferProhibited",
     "clientUpdateProhibited",
-    "clientDeleteProhibited",
-    "DS automation disabled",
-    "NS automation disabled"
+    "clientDeleteProhibited"
   ],
   "nameservers": [
     "ns1.google.com",

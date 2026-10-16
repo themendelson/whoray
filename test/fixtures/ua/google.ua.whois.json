@@ -13,8 +13,7 @@
     "clientDeleteProhibited",
     "clientTransferProhibited",
     "clientUpdateProhibited",
-    "ok",
-    "linked"
+    "ok"
   ],
   "nameservers": [
     "ns1.google.com",

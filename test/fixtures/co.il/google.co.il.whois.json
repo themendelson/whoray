@@ -11,7 +11,7 @@
   "updatedDate": "2018-12-16T00:00:00.000Z",
   "expirationDate": "2027-06-05T00:00:00.000Z",
   "statuses": [
-    "Transfer Locked"
+    "clientTransferProhibited"
   ],
   "nameservers": [
     "ns1.google.com",
