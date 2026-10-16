@@ -6,6 +6,7 @@ import { ianaRdapBase, ianaWhoisHost } from "#iana.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { toRecord } from "#parse/record.ts";
 import { fetchRdap, readRdapReply } from "#rdap.ts";
+import { referralHost, referralUrl } from "#referral.ts";
 import type { Connect, Hop, LookupOptions, Protocol, ServerEntry, WhorayResult } from "#types.ts";
 import { queryWhois, readWhoisReply } from "#whois.ts";
 
@@ -50,17 +51,19 @@ const transports: Record<Protocol, Transport> = {
       entry.whois === false ? undefined : (entry.whois ?? ianaWhoisHost(connect, lastLabel(name.tld), signal)),
     registry: (context, host) =>
       whoisTarget(context, host, (context.entry.query ?? "{domain}").replace("{domain}", context.name.domain)),
-    registrar: (context, found, registry) =>
-      found.registrarWhois === undefined || found.registrarWhois === registry.server
-        ? undefined
-        : whoisTarget(context, found.registrarWhois, context.name.domain),
+    registrar: (context, found, registry) => {
+      const host = referralHost(found.registrarWhois, registry.server);
+      return host === undefined ? undefined : whoisTarget(context, host, context.name.domain);
+    },
   },
   rdap: {
     directory: "data.iana.org",
     locate: rdapBase,
     registry: (context, base) => rdapTarget(context, `${base}domain/${context.name.domain}`),
-    registrar: (context, found) =>
-      found.registrarRdap === undefined ? undefined : rdapTarget(context, found.registrarRdap),
+    registrar: (context, found) => {
+      const url = referralUrl(found.registrarRdap);
+      return url === undefined ? undefined : rdapTarget(context, url);
+    },
   },
 };
 

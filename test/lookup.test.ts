@@ -3,7 +3,7 @@ import { lookup } from "#node.ts";
 import type { Connect } from "#types.ts";
 import { freshLookup, httpServer, ianaBootstrap, silentServer, whoisServer } from "./support.ts";
 
-const RDAP_DOMAIN = JSON.stringify({
+const RDAP_RECORD = {
   objectClassName: "domain",
   ldhName: "example.com",
   status: ["client transfer prohibited"],
@@ -12,7 +12,8 @@ const RDAP_DOMAIN = JSON.stringify({
     { eventAction: "expiration", eventDate: "2030-02-03T04:05:06Z" },
   ],
   nameservers: [{ ldhName: "NS1.EXAMPLE.NET." }],
-});
+};
+const RDAP_DOMAIN = JSON.stringify(RDAP_RECORD);
 
 const WHOIS_REGISTRY = [
   "Domain Name: EXAMPLE.COM",
@@ -275,4 +276,21 @@ test("a reserved name stays reserved although RDAP has no record of it", async (
   const result = await lookup("example.com", { fetch, connect, servers });
   expect(urls).toEqual([]);
   expect(result).toMatchObject({ state: "reserved", isRegistered: false, source: "whois" });
+});
+
+test("follow: registrar ignores referrals to addresses or private names", async () => {
+  for (const referral of ["10.0.0.1", "0x7f.0.0.1", "localhost", "metadata.internal"]) {
+    const server = whoisServer(() => WHOIS_REGISTRY.replace("whois.registrar.test", referral));
+    await lookup("example.com", { connect: server.connect, servers, follow: "registrar", protocol: "whois" });
+    expect(server.connections).toEqual(["whois.registry.test"]);
+  }
+});
+
+test("follow: registrar only fetches public https RDAP referrals", async () => {
+  for (const href of ["http://rdap.registrar.test/domain/example.com", "https://169.254.169.254/domain/example.com"]) {
+    const body = JSON.stringify({ ...RDAP_RECORD, links: [{ rel: "related", type: "application/rdap+json", href }] });
+    const { fetch, urls } = httpServer(() => ({ status: 200, body }));
+    await lookup("example.com", { fetch, servers, follow: "registrar", protocol: "rdap" });
+    expect(urls).toEqual(["https://rdap.test/domain/example.com"]);
+  }
 });
