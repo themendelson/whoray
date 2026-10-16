@@ -1,4 +1,4 @@
-const DAY = 86_400_000;
+export const DAY = 86_400_000;
 
 export function addDays(date: Date, days: number): Date {
   return new Date(date.getTime() + days * DAY);
