@@ -7,6 +7,10 @@ export type Facts = Pick<Registration, "expirationDate" | "updatedDate" | "relea
 
 export type DropRule = (facts: Facts) => Date | undefined;
 
+// When pendingDelete outlasts its window, updatedDate wasn't the deletion; count the observed
+// expiry-to-drop cycle from the expiry instead.
+const EXPIRY_TO_DROP_DAYS = 77;
+
 export function redemptionGracePeriod(redemption: number, pendingDelete: number): DropRule {
   return ({ expirationDate, updatedDate, statuses }) => {
     if (!updatedDate) return undefined;
@@ -15,8 +19,9 @@ export function redemptionGracePeriod(redemption: number, pendingDelete: number)
     }
     if (!statuses.has("pendingDelete")) return undefined;
     const pendingDeleteOver = addDays(updatedDate, pendingDelete).getTime() < Date.now();
-    if (expirationDate && updatedDate > expirationDate && pendingDeleteOver)
-      return addDays(updatedDate, 77 - daysBetween(updatedDate, expirationDate));
+    if (expirationDate && updatedDate > expirationDate && pendingDeleteOver) {
+      return addDays(updatedDate, EXPIRY_TO_DROP_DAYS - daysBetween(updatedDate, expirationDate));
+    }
     return addDays(updatedDate, pendingDelete);
   };
 }

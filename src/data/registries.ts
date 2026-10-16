@@ -85,8 +85,7 @@ export const registries: Registry[] = [
   {
     id: "godaddy-registry",
     name: "GoDaddy Registry",
-    textPattern:
-      /he copying, compilation, repackaging, dissemination or other use of the information provided by the Service is not permitted, without our express written consent.\r\n\r\nThis information has been prepared and published in order to represent administrative and technical management of the TLD/,
+    textPattern: /represent administrative and technical management of the TLD/,
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`

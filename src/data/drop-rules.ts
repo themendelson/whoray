@@ -4,6 +4,8 @@ import { addDays, atUtcHour, daysBetween, rolledPast } from "#time.ts";
 
 const uk = fixedPeriods(60, 30, 5);
 
+// Offsets observed in .us deletions; they depend on how long after expiry the name was last updated
+// and are measured from whichever date the observations lined up with.
 function usSchedule(expirationDate: Date, updatedDate: Date): Date {
   const gap = daysBetween(updatedDate, expirationDate);
   if (gap > 31) return addDays(updatedDate, 36);
@@ -18,6 +20,7 @@ function usSchedule(expirationDate: Date, updatedDate: Date): Date {
 }
 
 export const dropRules: Record<string, DropRule> = {
+  // Observed: .ai names drop at 17:00 UTC, and an update after 14:00 UTC counts from the next day.
   ai: ({ updatedDate, statuses }) => {
     if (!updatedDate) return undefined;
     const days = statuses.has("pendingDelete") ? 28 : statuses.has("redemptionPeriod") ? 58 : undefined;
