@@ -8,8 +8,9 @@ Runs on Node 20.19+, Bun, Deno and Cloudflare Workers; browsers get RDAP only.
 ```bash
 pnpm install
 pnpm check                  # lint + typecheck + tests: the gate before "done"
-pnpm test test/parse.test.ts
+pnpm test test/lookup.test.ts
 pnpm fixture nic.de         # capture live RDAP and WHOIS responses into test/fixtures
+pnpm suffixes               # regenerate src/data/suffixes.ts from the Public Suffix List
 pnpm test -u                # write expected records for new captures
 pnpm build
 ```
@@ -17,10 +18,14 @@ pnpm build
 ## Layout
 
 - `src/node.ts`, `src/workerd.ts`, `src/browser.ts`: entry points, picked by package.json export
-  conditions. Each only wires a socket into `createLookup`.
-- `src/lookup.ts`: RDAP first, port 43 second, our server list first, IANA second, referrals.
+  conditions. Each only wires a socket into `createLookup`; the shared exports live in `src/core.ts`.
+- `src/lookup.ts`: one path for both protocols (locate the server, ask the registry, follow the
+  registrar). `protocol: "auto"` asks WHOIS and falls back to RDAP.
+- `src/whois.ts`, `src/rdap.ts`: the transports. `src/iana.ts`: IANA lookups, cached for a day.
+- `src/domain.ts`: input normalization and the public suffix rules.
 - `src/parse/`: WHOIS text and RDAP JSON into a `DomainRecord`.
-- `src/data/`: servers, registries, label aliases, phrases, per-TLD quirks. Knowledge about a TLD
+- `src/data/`: servers, registries, label aliases, phrases, statuses,
+  public suffixes, per-TLD quirks. Knowledge about a TLD
   lives here, never in an `if (tld === …)` in code.
 
 ## Rules the linter can't check
@@ -38,7 +43,8 @@ pnpm build
   name states the rule. Read the raw response before accepting a changed expected file
   (`pnpm test -u`). No test touches the network.
 - Don't write comments. Name things so the code explains itself. The only exception is a why a
-  reader can't get from the code: two lines at most, never narrating or restating. CI enforces it.
+  reader can't get from the code: two lines at most, never narrating or restating. CI enforces the
+  two-line limit and rejects commented-out code.
 
 ## Done means
 
