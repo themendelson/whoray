@@ -6,7 +6,8 @@
   "registrar": {
     "name": "Charleston Road Registry NonBillable",
     "ianaId": 9999,
-    "abuseEmail": "registry-abuse-support@google.com"
+    "abuseEmail": "registry-abuse-support@google.com",
+    "abusePhone": "+1.2125652633"
   },
   "registry": {
     "id": "google",

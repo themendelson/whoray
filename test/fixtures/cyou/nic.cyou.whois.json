@@ -7,7 +7,8 @@
     "name": "Shortdot SA",
     "ianaId": 9999,
     "url": "http://nic.icu/",
-    "abuseEmail": "info@centralnic.com"
+    "abuseEmail": "info@centralnic.com",
+    "abusePhone": "+352.621811103"
   },
   "registry": {
     "id": "centralnic",

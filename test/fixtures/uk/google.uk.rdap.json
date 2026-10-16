@@ -6,7 +6,8 @@
   "registrar": {
     "name": "Markmonitor Inc.",
     "url": "https://www.markmonitor.com",
-    "abuseEmail": "abusecomplaints@markmonitor.com"
+    "abuseEmail": "abusecomplaints@markmonitor.com",
+    "abusePhone": "+1.2083895740"
   },
   "registry": {
     "id": "nominet",

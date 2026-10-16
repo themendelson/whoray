@@ -6,7 +6,8 @@
   "registrar": {
     "name": "T.H.NIC Co., Ltd.",
     "ianaId": 10001,
-    "abuseEmail": "abuse@thnic.co.th"
+    "abuseEmail": "abuse@thnic.co.th",
+    "abusePhone": "+66.21054007"
   },
   "handle": "DOMAIN_628897-TH",
   "dates": {

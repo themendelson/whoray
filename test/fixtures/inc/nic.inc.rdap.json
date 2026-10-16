@@ -7,7 +7,8 @@
     "name": "Intercap Registry Inc.",
     "ianaId": 9999,
     "url": "https://intercap.inc/",
-    "abuseEmail": "abuse@my.box"
+    "abuseEmail": "abuse@my.box",
+    "abusePhone": "+44.123456789"
   },
   "registrant": {
     "country": "KY"

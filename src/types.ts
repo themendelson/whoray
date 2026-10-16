@@ -21,6 +21,7 @@ export interface Registrar {
   ianaId?: number;
   url?: string;
   abuseEmail?: string;
+  abusePhone?: string;
 }
 
 export interface Registry {

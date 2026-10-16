@@ -6,7 +6,8 @@
   "registrar": {
     "name": "Markmonitor Inc",
     "url": "http://www.eMarkmonitor.com",
-    "abuseEmail": "abusecomplaints@markmonitor.com"
+    "abuseEmail": "abusecomplaints@markmonitor.com",
+    "abusePhone": "+1.2086851865"
   },
   "registrant": {
     "name": "Google LLC"

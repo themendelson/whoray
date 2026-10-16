@@ -4,6 +4,7 @@ export type Field =
   | "registrarIanaId"
   | "registrarWhois"
   | "abuseEmail"
+  | "abusePhone"
   | "registrantName"
   | "registrantOrganization"
   | "registrantCountry"
@@ -52,6 +53,7 @@ export const aliases: [Field, string[]][] = [
   ["registrarIanaId", ["registrar iana id", "sponsoring registrar iana id"]],
   ["registrarWhois", ["registrar whois server", "whois server", "registrar whois"]],
   ["abuseEmail", ["registrar abuse contact email"]],
+  ["abusePhone", ["registrar abuse contact phone"]],
   [
     "created",
     [

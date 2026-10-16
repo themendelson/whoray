@@ -6,7 +6,8 @@
   "registrar": {
     "name": "Libyan Spider Network (int)",
     "url": "https://rdap.nic.ly/entity/146380-nicly",
-    "abuseEmail": "abuse@register.ly"
+    "abuseEmail": "abuse@register.ly",
+    "abusePhone": "+1.8448469791"
   },
   "registrant": {
     "name": "Domain Administrator",

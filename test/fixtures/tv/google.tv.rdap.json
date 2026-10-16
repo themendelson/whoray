@@ -7,7 +7,8 @@
     "name": "MarkMonitor, Inc.",
     "ianaId": 292,
     "url": "www.markmonitor.com",
-    "abuseEmail": "registry.admin@markmonitor.com"
+    "abuseEmail": "registry.admin@markmonitor.com",
+    "abusePhone": "+1.2083895740"
   },
   "registrant": {
     "country": "US"

@@ -6,7 +6,8 @@
   "registrar": {
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
-    "abuseEmail": "ccops@markmonitor.com"
+    "abuseEmail": "ccops@markmonitor.com",
+    "abusePhone": "+1.2083895740"
   },
   "handle": "D327730546-CNIC",
   "dates": {

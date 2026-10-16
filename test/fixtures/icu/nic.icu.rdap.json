@@ -7,7 +7,8 @@
     "name": "CentralNic Ltd",
     "ianaId": 9999,
     "url": "https://www.centralnic.com/",
-    "abuseEmail": "ops@centralnic.com"
+    "abuseEmail": "ops@centralnic.com",
+    "abusePhone": "+44.2033880600"
   },
   "registry": {
     "id": "centralnic",

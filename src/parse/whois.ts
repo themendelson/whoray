@@ -92,11 +92,13 @@ function registrarOf(fields: Map<Field, string[]>): Registrar | undefined {
   const url = present(fields.get("registrarUrl")) ?? inline?.[2];
   const ianaId = Number(fields.get("registrarIanaId")?.[0]);
   const abuseEmail = present(fields.get("abuseEmail"))?.toLowerCase();
+  const abusePhone = present(fields.get("abusePhone"));
   return {
     name,
     ...(Number.isInteger(ianaId) && ianaId > 0 && { ianaId }),
     ...(url !== undefined && { url }),
     ...(abuseEmail?.includes("@") === true && { abuseEmail }),
+    ...(abusePhone !== undefined && { abusePhone }),
   };
 }
 

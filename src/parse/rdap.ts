@@ -55,12 +55,14 @@ function registrarOf(entity: JsonObject | undefined): Registrar | undefined {
   );
   const abuse = objects(entity.entities).find((nested) => strings(nested.roles).includes("abuse"));
   const abuseEmail = abuse && vcard(abuse, "email")?.toLowerCase();
+  const abusePhone = abuse && vcard(abuse, "tel")?.replace(/^tel:/, "");
   const url = vcard(entity, "url") ?? objects(entity.links).find((link) => string(link.rel) === "about")?.href;
   return {
     name,
     ...(Number.isInteger(ianaId) && ianaId > 0 && { ianaId }),
     ...(typeof url === "string" && { url }),
     ...(abuseEmail !== undefined && { abuseEmail }),
+    ...(abusePhone !== undefined && { abusePhone }),
   };
 }
 

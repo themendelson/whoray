@@ -6,7 +6,8 @@
   "registrar": {
     "name": "PT Digital Registra Indonesia",
     "ianaId": 1,
-    "abuseEmail": "info@digitalregistra.co.id"
+    "abuseEmail": "info@digitalregistra.co.id",
+    "abusePhone": "+62274882257"
   },
   "handle": "282661_DOMAIN_ID-ID",
   "dates": {
