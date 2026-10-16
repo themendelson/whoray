@@ -39,7 +39,7 @@ domain.expirationDate;  //=> 2027-07-19T23:59:59.000Z
 | Option | Default | |
 | --- | --- | --- |
 | `follow` | `"registry"` | Set to `"registrar"` to also query the registrar's server for fuller registrar details |
-| `protocol` | `"auto"` | `"auto"` asks WHOIS and moves to RDAP when WHOIS has no server, fails or is slow; `"whois"` or `"rdap"` asks only that one |
+| `protocol` | `"auto"` | `"auto"` asks WHOIS and moves to RDAP when WHOIS has no server, fails or is slow; `"whois"` or `"rdap"` asks only that one. In a browser it defaults to `"rdap"` unless you pass `connect` |
 | `timeout` | `10000` | Milliseconds for the whole lookup |
 | `signal` | | `AbortSignal` to cancel the lookup |
 | `servers` | | Your own servers for a TLD, e.g. `{ io: { whois: "whois.nic.io" } }`; `whois: false` or `rdap: false` skips that protocol for it |
@@ -95,6 +95,13 @@ Fields marked `?` are left out when they don't apply or the registry doesn't pub
 | `available` | Not registered |
 | `reserved` | Reserved or blocked by the registry |
 | `unknown` | The lookup failed. `error.code` is one of `timeout`, `rate_limited`, `blocked`, `no_server`, `unparseable` or `network` |
+
+## In a browser
+
+Browsers can't open port 43, so `lookup` asks RDAP only. Two things change:
+
+- RDAP answers a reserved, premium or dropzone name with a 404, so those come back as `available`.
+- A registry whose RDAP server doesn't allow cross-origin requests (DENIC, for `.de`) fails with a `network` error.
 
 ## Using a proxy
 

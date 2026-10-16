@@ -4,4 +4,4 @@ import { connect } from "#socket/browser.ts";
 
 export * from "#core.ts";
 
-export const lookup: Lookup = createLookup(connect);
+export const lookup: Lookup = createLookup(connect, "rdap");

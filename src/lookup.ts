@@ -68,7 +68,7 @@ const transports: Record<Protocol, Transport> = {
   },
 };
 
-export function createLookup(defaultConnect: Connect): Lookup {
+export function createLookup(defaultConnect: Connect, defaultProtocol: Protocol | "auto" = "auto"): Lookup {
   return async (domain, options = {}) => {
     options.signal?.throwIfAborted();
     const overrides = options.servers ?? {};
@@ -86,7 +86,7 @@ export function createLookup(defaultConnect: Connect): Lookup {
       timeout,
       hops: [],
     };
-    const outcome = await resolve(context, options.protocol ?? "auto");
+    const outcome = await resolve(context, options.protocol ?? (options.connect ? "auto" : defaultProtocol));
     options.signal?.throwIfAborted();
     return {
       ...toRecord(name, outcome?.found ?? NO_SERVER),
