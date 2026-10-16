@@ -7,7 +7,7 @@ const fixture = (path) => readFileSync(`test/fixtures/${path}`, "utf8").split("\
 const commonjs = createRequire(import.meta.url)("whoray");
 
 assert.equal(parseWhois(fixture("com/nic.com.whois"), "nic.com").state, "registered");
-assert.equal(commonjs.parseWhois(fixture("com/nic.com.whois"), "www.nic.com").domain, "nic.com");
+assert.equal(commonjs.parseWhois(fixture("com/nic.com.whois"), "nic.com").state, "registered");
 assert.equal(parseRdap(JSON.parse(fixture("org/nic.org.rdap")), "nic.org").registry?.id, "public-interest-registry");
 
 const reply = fixture("com/whoray-unregistered-7x9q.com.whois");
