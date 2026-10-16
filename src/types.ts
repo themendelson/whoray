@@ -85,12 +85,19 @@ export interface Socket {
 
 export type Connect = (host: string, port: number, signal?: AbortSignal) => Promise<Socket>;
 
-export interface LookupOptions {
-  protocol?: "auto" | Protocol;
+export interface QueryOptions {
   follow?: "registry" | "registrar";
   timeout?: number;
   signal?: AbortSignal;
   servers?: Readonly<Record<string, ServerEntry>>;
+}
+
+export interface WhoisOptions extends QueryOptions {
   connect?: Connect;
+}
+
+export interface RdapOptions extends QueryOptions {
   fetch?: typeof fetch;
 }
+
+export interface LookupOptions extends WhoisOptions, RdapOptions {}

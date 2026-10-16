@@ -1,6 +1,5 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { vi } from "vitest";
-import type { Lookup } from "#node.ts";
 import type { Connect } from "#types.ts";
 
 export interface Capture {
@@ -87,8 +86,7 @@ export function ianaBootstrap(tld: string, base: string): HttpReply {
   return { status: 200, body: JSON.stringify({ services: [[[tld], [base]]] }) };
 }
 
-export async function freshLookup(): Promise<Lookup> {
+export async function freshWhoray(): Promise<typeof import("#node.ts")> {
   vi.resetModules();
-  const fresh = await import("#node.ts");
-  return fresh.lookup;
+  return import("#node.ts");
 }

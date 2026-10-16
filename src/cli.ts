@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { parseArgs } from "node:util";
-import { lookup } from "#node.ts";
+import { lookup, rdap, whois } from "#node.ts";
 import type { LookupOptions, WhorayResult } from "#types.ts";
 
 const USAGE = `Usage: whoray <domain...> [options]
@@ -11,7 +11,7 @@ const USAGE = `Usage: whoray <domain...> [options]
   --raw                         print every raw reply
   -h, --help                    show this help`;
 
-const protocols: NonNullable<LookupOptions["protocol"]>[] = ["auto", "whois", "rdap"];
+const protocols = { auto: lookup, whois, rdap } as const;
 
 function usage(problem?: string): never {
   if (problem === undefined) {
@@ -42,7 +42,7 @@ function parse(): ReturnType<typeof parseArgs<typeof config>> {
 }
 
 const { values, positionals } = parse();
-const protocol = protocols.find((name) => name === values.protocol);
+const protocol = Object.entries(protocols).find(([name]) => name === values.protocol)?.[1];
 if (values.help === true) usage();
 if (positionals.length === 0) usage("No domain given.");
 if (values.protocol !== undefined && !protocol) usage(`Unknown protocol "${values.protocol}".`);
@@ -63,14 +63,12 @@ function describe(result: WhorayResult): string {
   return lines.join("\n");
 }
 
-const options: LookupOptions = {
-  ...(values.registrar === true && { follow: "registrar" }),
-  ...(protocol && { protocol }),
-};
+const options: LookupOptions = values.registrar === true ? { follow: "registrar" } : {};
+const ask = protocol ?? lookup;
 
 for (const domain of positionals) {
   try {
-    const result = await lookup(domain, options);
+    const result = await ask(domain, options);
     console.log(values.json === true ? JSON.stringify(result, null, 2) : describe(result));
     if (result.error) process.exitCode = 1;
   } catch (error) {

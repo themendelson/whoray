@@ -1,7 +1,7 @@
 import { expect, test } from "vitest";
-import { lookup } from "#node.ts";
+import { lookup, rdap, whois } from "#node.ts";
 import type { Connect } from "#types.ts";
-import { freshLookup, httpServer, ianaBootstrap, silentServer, whoisServer } from "./support.ts";
+import { freshWhoray, httpServer, ianaBootstrap, silentServer, whoisServer } from "./support.ts";
 
 const RDAP_RECORD = {
   objectClassName: "domain",
@@ -51,13 +51,13 @@ test("a WHOIS server that can't be reached hands the lookup to RDAP", async () =
 
 test("a TLD without WHOIS goes straight to RDAP", async () => {
   const { fetch } = httpServer(() => ({ status: 404, body: "" }));
-  const whois = whoisServer(() => WHOIS_REGISTRY);
+  const server = whoisServer(() => WHOIS_REGISTRY);
   const result = await lookup("example.com", {
     fetch,
-    connect: whois.connect,
+    connect: server.connect,
     servers: { com: { whois: false, rdap: "https://rdap.test/" } },
   });
-  expect(whois.connections).toEqual([]);
+  expect(server.connections).toEqual([]);
   expect(result).toMatchObject({ state: "available", source: "rdap" });
 });
 
@@ -96,24 +96,22 @@ test("when both protocols fail, the WHOIS error is reported with its server", as
   expect(result.hops.map((hop) => hop.server)).toEqual(["whois.registry.test", "rdap.test"]);
 });
 
-test("protocol: rdap never opens a socket and reports rate limits with Retry-After", async () => {
+test("rdap() reports rate limits with Retry-After", async () => {
   const { fetch } = httpServer(() => ({ status: 429, body: "", headers: { "retry-after": "30" } }));
-  const whois = whoisServer(() => WHOIS_REGISTRY);
-  const result = await lookup("example.com", { fetch, connect: whois.connect, servers, protocol: "rdap" });
+  const result = await rdap("example.com", { fetch, servers });
   expect(result).toMatchObject({ state: "unknown", source: "rdap" });
   expect(result.error).toEqual({ code: "rate_limited", message: "HTTP 429", server: "rdap.test", retryAfter: 30 });
-  expect(whois.connections).toEqual([]);
 });
 
 test("an RDAP 404 means the domain is available", async () => {
   const { fetch } = httpServer(() => ({ status: 404, body: "" }));
-  const result = await lookup("example.com", { fetch, servers, protocol: "rdap" });
+  const result = await rdap("example.com", { fetch, servers });
   expect(result).toMatchObject({ state: "available", source: "rdap", hops: [{ protocol: "rdap" }] });
 });
 
 test("an RDAP base URL from the servers option works without a trailing slash", async () => {
   const { fetch, urls } = httpServer(() => ({ status: 404, body: "" }));
-  await lookup("example.com", { fetch, servers: { com: { rdap: "https://rdap.test/v1" } }, protocol: "rdap" });
+  await rdap("example.com", { fetch, servers: { com: { rdap: "https://rdap.test/v1" } } });
   expect(urls).toEqual(["https://rdap.test/v1/domain/example.com"]);
 });
 
@@ -130,12 +128,12 @@ test("follow: registrar queries the referral server and keeps the registry's dat
 });
 
 test("an unknown TLD is resolved through IANA once and cached", async () => {
-  const fresh = await freshLookup();
+  const fresh = await freshWhoray();
   const { fetch, urls } = httpServer((url) =>
     url.endsWith("dns.json") ? ianaBootstrap("zz", "https://rdap.zz.test/") : { status: 404, body: "" },
   );
-  await fresh("one.zz", { fetch, protocol: "rdap" });
-  await fresh("two.zz", { fetch, protocol: "rdap" });
+  await fresh.rdap("one.zz", { fetch });
+  await fresh.rdap("two.zz", { fetch });
   expect(urls.filter((url) => url.endsWith("dns.json"))).toHaveLength(1);
   expect(urls).toContain("https://rdap.zz.test/domain/two.zz");
 });
@@ -144,7 +142,7 @@ test("WHOIS hosts come from whois.iana.org when the TLD isn't in the server list
   const server = whoisServer((host) =>
     host === "whois.iana.org" ? "domain: YY\nwhois: whois.nic.yy\n" : "% No match",
   );
-  const result = await lookup("example.yy", { connect: server.connect, protocol: "whois" });
+  const result = await whois("example.yy", { connect: server.connect });
   expect(server.queries).toEqual([
     { host: "whois.iana.org", query: "yy" },
     { host: "whois.nic.yy", query: "example.yy" },
@@ -154,26 +152,26 @@ test("WHOIS hosts come from whois.iana.org when the TLD isn't in the server list
 
 test("registries that need a query format get it", async () => {
   const server = whoisServer(() => "Domain: nic.de\nStatus: free");
-  await lookup("nic.de", { connect: server.connect, protocol: "whois" });
+  await whois("nic.de", { connect: server.connect });
   expect(server.queries).toEqual([{ host: "whois.denic.de", query: "-T dn,ace nic.de" }]);
 });
 
 test("international names are queried in punycode and returned in both forms", async () => {
   const server = whoisServer(() => "Domain: xn--bcher-kva.de\nStatus: free");
-  const result = await lookup("Bücher.de", { connect: server.connect, protocol: "whois" });
+  const result = await whois("Bücher.de", { connect: server.connect });
   expect(server.queries.at(0)?.query).toBe("-T dn,ace xn--bcher-kva.de");
   expect(result).toMatchObject({ domain: "xn--bcher-kva.de", unicode: "bücher.de" });
 });
 
 test("an empty WHOIS reply is treated as throttling", async () => {
   const { connect } = whoisServer(() => "");
-  const result = await lookup("example.com", { connect, servers, protocol: "whois" });
+  const result = await whois("example.com", { connect, servers });
   expect(result.error?.code).toBe("rate_limited");
 });
 
 test("a refused connection is retried once, then reported as a network error", async () => {
   const { connect, connections } = whoisServer(() => WHOIS_REGISTRY, ["whois.registry.test"]);
-  const result = await lookup("example.com", { connect, servers, protocol: "whois" });
+  const result = await whois("example.com", { connect, servers });
   expect(connections).toEqual(["whois.registry.test", "whois.registry.test"]);
   expect(result).toMatchObject({ state: "unknown", error: { code: "network", server: "whois.registry.test" } });
 });
@@ -181,7 +179,7 @@ test("a refused connection is retried once, then reported as a network error", a
 test("the timeout bounds the whole lookup and returns state unknown", async () => {
   const hang: typeof fetch = (_input, init) =>
     new Promise((_resolve, reject) => init?.signal?.addEventListener("abort", () => reject(init.signal?.reason)));
-  const result = await lookup("example.com", { fetch: hang, servers, protocol: "rdap", timeout: 50 });
+  const result = await rdap("example.com", { fetch: hang, servers, timeout: 50 });
   expect(result.error).toMatchObject({ code: "timeout", server: "rdap.test" });
 });
 
@@ -199,7 +197,7 @@ test("the timeout also bounds a connect hook that ignores the signal", async () 
     };
   };
   const started = Date.now();
-  const result = await lookup("example.com", { connect: slowConnect, servers, protocol: "whois", timeout: 50 });
+  const result = await whois("example.com", { connect: slowConnect, servers, timeout: 50 });
   expect(result.error?.code).toBe("timeout");
   expect(Date.now() - started).toBeLessThan(140);
   await new Promise((resolve) => setTimeout(resolve, 150));
@@ -218,15 +216,15 @@ test("input that isn't a domain name rejects the lookup", async () => {
 });
 
 test("a WHOIS host IANA didn't answer for is asked again on the next lookup", async () => {
-  const fresh = await freshLookup();
+  const fresh = await freshWhoray();
   let ianaCalls = 0;
   const server = whoisServer((host) => {
     if (host !== "whois.iana.org") return "% No match";
     ianaCalls += 1;
     return ianaCalls === 1 ? "% Query rate exceeded" : "domain: YY\nwhois: whois.nic.yy\n";
   });
-  const first = await fresh("example.yy", { connect: server.connect, protocol: "whois" });
-  const second = await fresh("example.yy", { connect: server.connect, protocol: "whois" });
+  const first = await fresh.whois("example.yy", { connect: server.connect });
+  const second = await fresh.whois("example.yy", { connect: server.connect });
   expect(first.error).toMatchObject({ code: "network", server: "whois.iana.org" });
   expect(second.state).toBe("available");
 });
@@ -240,7 +238,7 @@ test("a reserved name stays reserved although RDAP has no record of it", async (
 });
 
 test("follow: registrar doesn't follow a referral to a private address", async () => {
-  const whois = whoisServer(() => WHOIS_REGISTRY.replace("whois.registrar.test", "169.254.169.254"));
-  await lookup("example.com", { connect: whois.connect, servers, follow: "registrar", protocol: "whois" });
-  expect(whois.connections).toEqual(["whois.registry.test"]);
+  const server = whoisServer(() => WHOIS_REGISTRY.replace("whois.registrar.test", "169.254.169.254"));
+  await whois("example.com", { connect: server.connect, servers, follow: "registrar" });
+  expect(server.connections).toEqual(["whois.registry.test"]);
 });

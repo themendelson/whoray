@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, expect, test, vi } from "vitest";
-import { lookup } from "#node.ts";
+import { rdap, whois } from "#node.ts";
 import type { Capture } from "./support.ts";
 import { captures, httpServer, whoisServer } from "./support.ts";
 
@@ -9,17 +9,13 @@ beforeAll(() => {
 });
 afterAll(() => vi.useRealTimers());
 
-function replay(capture: Capture): ReturnType<typeof lookup> {
+function replay(capture: Capture): ReturnType<typeof rdap> {
   if (capture.protocol === "rdap") {
     const { fetch } = httpServer(() => ({ status: Number(capture.header), body: capture.body }));
-    return lookup(capture.domain, {
-      protocol: "rdap",
-      fetch,
-      servers: { [capture.tld]: { rdap: "https://rdap.test/" } },
-    });
+    return rdap(capture.domain, { fetch, servers: { [capture.tld]: { rdap: "https://rdap.test/" } } });
   }
   const { connect } = whoisServer(() => capture.body);
-  return lookup(capture.domain, { protocol: "whois", connect, servers: { [capture.tld]: { whois: "whois.test" } } });
+  return whois(capture.domain, { connect, servers: { [capture.tld]: { whois: "whois.test" } } });
 }
 
 test.each(captures())("$path parses to its expected record", async (capture) => {
