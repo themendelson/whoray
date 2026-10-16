@@ -1,3 +1,11 @@
+export const firstLine: Record<"dropzone" | "premium" | "dpml", RegExp> = {
+  dropzone: /Dropzone/,
+  premium: /platinums@identity\.digital/,
+  dpml: /DPML/,
+};
+
+export const revoked: RegExp = /Domain not renewed\. Being revoked/;
+
 export const notFound: RegExp[] = [
   /\bno match\b/i,
   /\bnot found\b/i,

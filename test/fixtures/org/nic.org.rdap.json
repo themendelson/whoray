@@ -11,13 +11,14 @@
     "abusePhone": "+1.9854014545"
   },
   "registry": {
-    "id": "pir",
+    "id": "pir.org",
     "name": "Public Interest Registry"
   },
   "dates": {
     "created": "1995-06-11T04:00:00.000Z",
     "updated": "2026-08-12T00:07:25.000Z",
-    "expires": "2030-06-10T04:00:00.000Z"
+    "expires": "2030-06-10T04:00:00.000Z",
+    "database": "2026-10-16T18:51:45.000Z"
   },
   "statuses": [
     "clientTransferProhibited"

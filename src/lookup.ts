@@ -1,4 +1,4 @@
-import { servers } from "#data/servers.ts";
+import { availabilityConfirmedByWhois, servers } from "#data/servers.ts";
 import type { Name } from "#domain.ts";
 import { normalize } from "#domain.ts";
 import { hasLifecycleData, lastLabel } from "#lifecycle.ts";
@@ -48,14 +48,34 @@ export function createLookup(defaultConnect: Connect): Lookup {
       signal: options.signal ? AbortSignal.any([options.signal, timeout]) : timeout,
       hops: [],
     };
-    const mode = options.rdap ?? "prefer";
-    const rdap = mode === "never" ? undefined : await attempt(context, options.signal, "rdap", viaRdap);
-    const settled = rdap !== undefined && rdap.found.kind !== "error";
-    const whois = settled || mode === "only" ? undefined : await attempt(context, options.signal, "whois", viaWhois);
-    const outcome = whois && (whois.found.kind !== "error" || !rdap) ? whois : rdap;
+    const outcome = await resolve(context, options.rdap ?? "prefer", options.signal);
     options.signal?.throwIfAborted();
     return result(context, outcome);
   };
+}
+
+async function resolve(
+  context: Context,
+  mode: NonNullable<LookupOptions["rdap"]>,
+  callerSignal: AbortSignal | undefined,
+): Promise<Outcome | undefined> {
+  const rdap = mode === "never" ? undefined : await attempt(context, callerSignal, "rdap", viaRdap);
+  const confirm =
+    rdap?.found.kind === "available" && availabilityConfirmedByWhois.has(context.hops.at(-1)?.server ?? "");
+  const settled = rdap !== undefined && rdap.found.kind !== "error" && !confirm;
+  const whois = settled || mode === "only" ? undefined : await attempt(context, callerSignal, "whois", viaWhois);
+  if (confirm) return whois && marksAvailability(whois.found) ? whois : rdap;
+  return pick(rdap, whois);
+}
+
+function pick(rdap: Outcome | undefined, whois: Outcome | undefined): Outcome | undefined {
+  return whois && (whois.found.kind !== "error" || !rdap) ? whois : rdap;
+}
+
+function marksAvailability(found: Found): boolean {
+  return (
+    found.kind === "dropzone" || found.kind === "reserved" || (found.kind === "available" && found.premium === true)
+  );
 }
 
 async function attempt(

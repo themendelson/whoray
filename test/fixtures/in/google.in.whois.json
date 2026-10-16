@@ -9,11 +9,16 @@
     "url": "http://www.markmonitor.com",
     "abuseEmail": "abusecomplaints@markmonitor.com"
   },
+  "registry": {
+    "id": "tucows",
+    "name": "Tucows Registry Services"
+  },
   "handle": "D21089-IN",
   "dates": {
     "created": "2005-02-14T20:35:14.000Z",
     "updated": "2026-05-26T12:16:48.000Z",
-    "expires": "2027-02-14T20:35:14.000Z"
+    "expires": "2027-02-14T20:35:14.000Z",
+    "database": "2026-10-16T18:52:14.000Z"
   },
   "statuses": [],
   "nameservers": [],

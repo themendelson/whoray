@@ -9,6 +9,9 @@ export interface Registration {
   updated?: Date;
   expires?: Date;
   released?: Date;
+  deleted?: Date;
+  database?: Date;
+  registryId?: string;
   statuses: string[];
   nameservers: string[];
   dnssec?: boolean;
@@ -18,6 +21,7 @@ export interface Registration {
 
 export type Found =
   | Registration
-  | { kind: "available" }
+  | { kind: "available"; premium?: true }
+  | { kind: "dropzone" }
   | { kind: "reserved" }
   | { kind: "error"; code: ErrorCode; message: string; retryAfter?: number };

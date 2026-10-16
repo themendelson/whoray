@@ -9,7 +9,9 @@
   "registrant": {
     "name": "Google LLC"
   },
-  "dates": {},
+  "dates": {
+    "database": "2026-10-16T18:47:33.000Z"
+  },
   "statuses": [
     "clientTransferProhibited",
     "clientDeleteProhibited",

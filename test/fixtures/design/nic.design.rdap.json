@@ -14,13 +14,14 @@
     "country": "AU"
   },
   "registry": {
-    "id": "godaddy",
+    "id": "godaddy-registry",
     "name": "GoDaddy Registry"
   },
   "dates": {
     "created": "2021-09-29T06:08:47.000Z",
     "updated": "2026-10-15T22:22:08.000Z",
-    "expires": "2026-09-29T06:08:47.000Z"
+    "expires": "2026-09-29T06:08:47.000Z",
+    "database": "2026-10-16T18:51:53.000Z"
   },
   "statuses": [
     "serverUpdateProhibited",

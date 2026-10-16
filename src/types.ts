@@ -4,6 +4,7 @@ export type DomainState =
   | "redemption"
   | "pendingDelete"
   | "available"
+  | "dropzone"
   | "reserved"
   | "unknown";
 
@@ -37,6 +38,7 @@ export interface Registrant {
 
 export interface Drop {
   at: Date;
+  deletion?: Date;
   confidence: "high" | "low";
   basis: string;
 }
@@ -50,7 +52,8 @@ export interface DomainRecord {
   registrant?: Registrant;
   registry?: Registry;
   handle?: string;
-  dates: { created?: Date; updated?: Date; expires?: Date };
+  dates: { created?: Date; updated?: Date; expires?: Date; database?: Date };
+  premium?: true;
   statuses: string[];
   nameservers: string[];
   dnssec?: boolean;

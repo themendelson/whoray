@@ -13,6 +13,7 @@ export type Field =
   | "updated"
   | "expires"
   | "released"
+  | "deleted"
   | "statuses"
   | "nameservers"
   | "dnssec";
@@ -111,7 +112,8 @@ export const aliases: [Field, string[]][] = [
       "exp date",
     ],
   ],
-  ["released", ["free-date", "available"]],
+  ["released", ["free-date", "available", "reservation eligibility end date"]],
+  ["deleted", ["deleted"]],
   [
     "statuses",
     ["domain status", "status", "state", "domain state", "registration status", "flags", "lock status", "epp status"],

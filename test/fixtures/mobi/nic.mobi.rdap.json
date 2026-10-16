@@ -11,13 +11,14 @@
     "abusePhone": "+1.6664447777"
   },
   "registry": {
-    "id": "identity-digital",
+    "id": "identity.digital",
     "name": "Identity Digital"
   },
   "dates": {
     "created": "2006-05-11T21:21:35.000Z",
     "updated": "2026-08-13T18:35:27.000Z",
-    "expires": "2027-05-11T21:21:35.000Z"
+    "expires": "2027-05-11T21:21:35.000Z",
+    "database": "2026-10-16T18:51:57.000Z"
   },
   "statuses": [
     "serverDeleteProhibited",

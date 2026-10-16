@@ -9,11 +9,16 @@
     "abuseEmail": "ccops@markmonitor.com",
     "abusePhone": "+1.2083895740"
   },
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
   "handle": "D327730546-CNIC",
   "dates": {
     "created": "2003-03-11T03:00:00.000Z",
     "updated": "2026-01-01T16:02:36.000Z",
-    "expires": "2027-01-01T23:59:59.000Z"
+    "expires": "2027-01-01T23:59:59.000Z",
+    "database": "2026-10-16T18:52:47.000Z"
   },
   "statuses": [
     "clientTransferProhibited",

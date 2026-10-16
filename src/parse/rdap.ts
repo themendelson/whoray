@@ -6,10 +6,18 @@ import { normalizeStatuses } from "#parse/statuses.ts";
 import { countryCode, registrant, visible } from "#parse/visible.ts";
 import type { Registrant, Registrar } from "#types.ts";
 
-const EVENT_FIELDS: Record<string, "created" | "updated" | "expires"> = {
+type EventField = "created" | "updated" | "expires" | "deleted" | "database";
+
+const EVENT_FIELDS: Record<string, EventField> = {
   registration: "created",
+  registered: "created",
   expiration: "expires",
+  expired: "expires",
   "last changed": "updated",
+  transfer: "updated",
+  deleted: "deleted",
+  deletion: "deleted",
+  "last update of rdap database": "database",
 };
 
 export function readRdap(json: unknown): Found {
@@ -19,11 +27,12 @@ export function readRdap(json: unknown): Found {
   if (string(root.objectClassName) !== "domain") {
     return { kind: "error", code: "unparseable", message: "RDAP reply is not a domain object" };
   }
-  const dates: { created?: Date; updated?: Date; expires?: Date } = {};
+  const dates: Partial<Record<EventField, Date>> = {};
   for (const event of objects(root.events)) {
     const field = EVENT_FIELDS[string(event.eventAction)?.toLowerCase() ?? ""];
     const date = parseDate(string(event.eventDate) ?? "");
-    if (field && date) dates[field] ??= date;
+    const current = field && dates[field];
+    if (field && date && (!current || date > current)) dates[field] = date;
   }
   const withRole = (role: string): JsonObject | undefined =>
     objects(root.entities).find((entity) => strings(entity.roles).includes(role));

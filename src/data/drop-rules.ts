@@ -27,6 +27,7 @@ export const dropRules: Record<string, DropRule> = {
   "co.uk": uk,
   de: ({ updated, statuses }) =>
     tldRule(statuses.has("redemptionPeriod") && updated ? addDays(updated, 31) : undefined),
+  fr: ({ deleted }) => tldRule(deleted && addDays(deleted, 30)),
   it: ({ updated, statuses }) => tldRule(statuses.has("pendingDelete") && updated ? addDays(updated, 33) : undefined),
   ly: ({ expires, updated, statuses }) => {
     if (!expires || !updated) return undefined;

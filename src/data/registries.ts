@@ -1,6 +1,8 @@
 export interface Registry {
   id: string;
   name: string;
+  textPattern?: RegExp;
+  dropzone?: true;
   redemption: number;
   pendingDelete: number;
   tlds: string[];
@@ -10,8 +12,9 @@ const list = (tlds: string): string[] => tlds.trim().split(/\s+/);
 
 export const registries: Registry[] = [
   {
-    id: "icb",
+    id: "icb.co.uk",
     name: "Internet Computer Bureau",
+    dropzone: true,
     redemption: 45,
     pendingDelete: 15,
     tlds: list(`
@@ -19,8 +22,9 @@ export const registries: Registry[] = [
     `),
   },
   {
-    id: "pir",
+    id: "pir.org",
     name: "Public Interest Registry",
+    dropzone: true,
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
@@ -29,7 +33,7 @@ export const registries: Registry[] = [
   },
   {
     id: "verisign",
-    name: "Verisign",
+    name: "Verisign Global Registry Services",
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
@@ -37,8 +41,9 @@ export const registries: Registry[] = [
     `),
   },
   {
-    id: "google",
-    name: "Google Registry",
+    id: "registry.google",
+    name: "Charleston Road Registry Inc",
+    textPattern: /registry\.google/,
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
@@ -48,8 +53,10 @@ export const registries: Registry[] = [
     `),
   },
   {
-    id: "identity-digital",
+    id: "identity.digital",
     name: "Identity Digital",
+    textPattern: /identity\.digital/,
+    dropzone: true,
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
@@ -76,8 +83,10 @@ export const registries: Registry[] = [
     `),
   },
   {
-    id: "godaddy",
+    id: "godaddy-registry",
     name: "GoDaddy Registry",
+    textPattern:
+      /he copying, compilation, repackaging, dissemination or other use of the information provided by the Service is not permitted, without our express written consent.\r\n\r\nThis information has been prepared and published in order to represent administrative and technical management of the TLD/,
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
@@ -99,6 +108,7 @@ export const registries: Registry[] = [
   {
     id: "centralnic",
     name: "CentralNic",
+    textPattern: /All data is \(c\) CentralNic Ltd/,
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
@@ -113,6 +123,7 @@ export const registries: Registry[] = [
   {
     id: "zdns",
     name: "ZDNS",
+    textPattern: /Jiangsu bangning science & technology Co/,
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
@@ -120,8 +131,9 @@ export const registries: Registry[] = [
     `),
   },
   {
-    id: "gmo",
-    name: "GMO Registry",
+    id: "gmo-registry",
+    name: "GMO Registry Inc",
+    textPattern: /All data is \(c\) GMO Registry/,
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
@@ -133,7 +145,8 @@ export const registries: Registry[] = [
   },
   {
     id: "tucows",
-    name: "Tucows Registry",
+    name: "Tucows Registry Services",
+    textPattern: /Tucows Registry/,
     redemption: 34,
     pendingDelete: 5,
     tlds: list(`
@@ -144,6 +157,7 @@ export const registries: Registry[] = [
   {
     id: "nominet",
     name: "Nominet",
+    textPattern: /nominet/,
     redemption: 35,
     pendingDelete: 35,
     tlds: list(`
@@ -155,7 +169,7 @@ export const registries: Registry[] = [
     `),
   },
   {
-    id: "mintic",
+    id: "MinTIC",
     name: "MinTIC",
     redemption: 30,
     pendingDelete: 5,

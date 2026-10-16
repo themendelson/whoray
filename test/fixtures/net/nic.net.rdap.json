@@ -12,13 +12,14 @@
   },
   "registry": {
     "id": "verisign",
-    "name": "Verisign"
+    "name": "Verisign Global Registry Services"
   },
   "handle": "2707346_DOMAIN_NET-VRSN",
   "dates": {
     "created": "1996-10-23T04:00:00.000Z",
     "updated": "2026-10-07T08:10:04.000Z",
-    "expires": "2027-10-22T04:00:00.000Z"
+    "expires": "2027-10-22T04:00:00.000Z",
+    "database": "2026-10-16T18:51:25.000Z"
   },
   "statuses": [
     "clientDeleteProhibited",

@@ -15,13 +15,14 @@
     "country": "US"
   },
   "registry": {
-    "id": "icb",
+    "id": "icb.co.uk",
     "name": "Internet Computer Bureau"
   },
   "dates": {
     "created": "2006-04-03T13:38:02.000Z",
     "updated": "2026-08-12T12:22:20.000Z",
-    "expires": "2027-04-03T13:38:02.000Z"
+    "expires": "2027-04-03T13:38:02.000Z",
+    "database": "2026-10-16T18:52:48.000Z"
   },
   "statuses": [
     "clientDeleteProhibited",

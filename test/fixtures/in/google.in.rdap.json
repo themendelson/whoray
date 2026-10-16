@@ -18,7 +18,8 @@
   "dates": {
     "created": "2005-02-14T20:35:14.000Z",
     "updated": "2026-05-26T12:16:48.000Z",
-    "expires": "2027-02-14T20:35:14.000Z"
+    "expires": "2027-02-14T20:35:14.000Z",
+    "database": "2026-10-16T18:52:13.000Z"
   },
   "statuses": [
     "clientUpdateProhibited",

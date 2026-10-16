@@ -15,11 +15,16 @@
     "organization": "Google LLC",
     "country": "US"
   },
+  "registry": {
+    "id": "identity.digital",
+    "name": "Identity Digital"
+  },
   "handle": "6eddd132ab114b12bd2bd4cf9c492a04-DONUTS",
   "dates": {
     "created": "2017-12-16T05:37:20.000Z",
     "updated": "2026-08-12T11:04:42.000Z",
-    "expires": "2027-09-25T05:37:20.000Z"
+    "expires": "2027-09-25T05:37:20.000Z",
+    "database": "2026-10-16T18:52:01.000Z"
   },
   "statuses": [
     "clientDeleteProhibited",

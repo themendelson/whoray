@@ -11,13 +11,14 @@
     "country": "US"
   },
   "registry": {
-    "id": "godaddy",
+    "id": "godaddy-registry",
     "name": "GoDaddy Registry"
   },
   "dates": {
     "created": "2013-08-09T23:33:53.000Z",
     "updated": "2026-10-15T00:05:50.000Z",
-    "expires": "2027-08-08T23:59:59.000Z"
+    "expires": "2027-08-08T23:59:59.000Z",
+    "database": "2026-10-16T18:51:49.000Z"
   },
   "statuses": [
     "serverUpdateProhibited",

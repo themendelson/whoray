@@ -4,6 +4,7 @@ export interface Facts {
   expires?: Date;
   updated?: Date;
   released?: Date;
+  deleted?: Date;
   statuses: ReadonlySet<string>;
 }
 
