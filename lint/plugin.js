@@ -41,19 +41,6 @@ const noCommentedCode = {
   },
 };
 
-const noComments = {
-  meta: { type: "suggestion", docs: { description: "No comments: name things so the code reads on its own." } },
-  create(context) {
-    return {
-      Program() {
-        for (const comment of context.sourceCode.getAllComments()) {
-          context.report({ loc: comment.loc, message: "No comments here: delete it." });
-        }
-      },
-    };
-  },
-};
-
 const MAX_COMMENT_LINES = 2;
 
 const maxCommentLines = {
@@ -83,5 +70,5 @@ const maxCommentLines = {
 
 export default {
   meta: { name: "local" },
-  rules: { "no-commented-code": noCommentedCode, "no-comments": noComments, "max-comment-lines": maxCommentLines },
+  rules: { "no-commented-code": noCommentedCode, "max-comment-lines": maxCommentLines },
 };
