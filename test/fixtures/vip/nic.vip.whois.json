@@ -30,6 +30,12 @@
     "serverTransferProhibited",
     "autoRenewPeriod"
   ],
-  "nameservers": [],
+  "nameservers": [
+    "a.nic.vip",
+    "b.nic.vip",
+    "c.nic.vip",
+    "d.nic.vip"
+  ],
+  "dnssec": true,
   "source": "whois"
 }

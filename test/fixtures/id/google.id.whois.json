@@ -14,7 +14,18 @@
   "updatedDate": "2026-03-27T16:00:02.000Z",
   "expirationDate": "2027-04-17T23:59:59.000Z",
   "snapshotDate": "2026-10-16T18:52:35.000Z",
-  "statuses": [],
-  "nameservers": [],
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientTransferProhibited",
+    "clientUpdateProhibited",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
   "source": "whois"
 }

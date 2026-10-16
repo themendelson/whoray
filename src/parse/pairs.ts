@@ -20,21 +20,28 @@ class Reader {
   readonly found: Pair[] = [];
   private section: string | undefined;
   private explicit = false;
+  private capturesPairs = false;
   private filled = false;
+  private midParagraph = false;
   private lastKey: string | undefined;
 
   blank(): void {
     if (this.filled || this.section === undefined) this.section = this.lastKey = undefined;
+    this.midParagraph = false;
   }
 
   header(key: string, explicit: boolean): void {
     this.section = key;
     this.explicit = explicit;
+    this.capturesPairs = !explicit || !this.midParagraph;
     this.filled = false;
+    this.midParagraph = true;
     this.lastKey = undefined;
   }
 
-  pair(key: string, value: string): void {
+  pair(key: string, value: string, indented: boolean): void {
+    if (!indented && !this.capturesPairs) this.section = undefined;
+    this.midParagraph = true;
     if (this.section === undefined || !CONTACT_SECTION.test(this.section)) this.found.push({ key, value });
     if (this.section !== undefined && this.section !== key) this.found.push({ key: `${this.section} ${key}`, value });
     this.filled = true;
@@ -43,7 +50,7 @@ class Reader {
 
   bare(line: string, indented: boolean): void {
     if (indented && this.lastKey !== undefined) {
-      this.pair(this.lastKey, line);
+      this.pair(this.lastKey, line, true);
     } else if (this.section !== undefined && (indented || this.explicit)) {
       this.found.push({ key: this.section, value: line });
       this.filled = true;
@@ -62,9 +69,10 @@ export function pairs(text: string): Pair[] {
     const match = BRACKET.exec(line) ?? KEY_VALUE.exec(line);
     const key = match?.[1] === undefined ? undefined : normalizeKey(match[1]);
     const value = match?.[2]?.trim() ?? "";
-    if (key === undefined) reader.bare(line, /^\s/.test(raw));
+    const indented = /^\s/.test(raw);
+    if (key === undefined) reader.bare(line, indented);
     else if (value === "") reader.header(key, true);
-    else reader.pair(key, value);
+    else reader.pair(key, value, indented);
   }
   return reader.found;
 }

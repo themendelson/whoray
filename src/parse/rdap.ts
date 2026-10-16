@@ -46,7 +46,11 @@ export function readRdap(json: unknown): Found {
     ...dates,
     statuses: normalizeStatuses(strings(root.status)),
     nameservers: [
-      ...new Set(objects(root.nameservers).flatMap((ns) => string(ns.ldhName)?.toLowerCase().replace(/\.$/, "") ?? [])),
+      ...new Set(
+        objects(root.nameservers ?? root.nameServers).flatMap(
+          (ns) => string(ns.ldhName)?.toLowerCase().replace(/\.$/, "") ?? [],
+        ),
+      ),
     ],
     ...(registrar && { registrar }),
     ...(holder && { registrant: holder }),

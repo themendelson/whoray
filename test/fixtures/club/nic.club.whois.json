@@ -7,6 +7,10 @@
     "name": "DOTCLUB DOMAINS, LLC",
     "ianaId": 9999
   },
+  "registrant": {
+    "organization": ".CLUB Domains, LLC",
+    "country": "US"
+  },
   "registry": {
     "id": "godaddy-registry",
     "name": "GoDaddy Registry"
@@ -15,7 +19,19 @@
   "updatedDate": "2026-10-15T00:05:50.000Z",
   "expirationDate": "2027-08-08T23:59:59.000Z",
   "snapshotDate": "2026-10-16T18:51:50.000Z",
-  "statuses": [],
-  "nameservers": [],
+  "statuses": [
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.dns.nic.club",
+    "ns2.dns.nic.club",
+    "ns3.dns.nic.club",
+    "ns4.dns.nic.club",
+    "ns5.dns.nic.club",
+    "ns6.dns.nic.club"
+  ],
+  "dnssec": true,
   "source": "whois"
 }

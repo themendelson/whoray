@@ -30,6 +30,12 @@
     "serverUpdateProhibited",
     "autoRenewPeriod"
   ],
-  "nameservers": [],
+  "nameservers": [
+    "a.nic.design",
+    "b.nic.design",
+    "c.nic.design",
+    "d.nic.design"
+  ],
+  "dnssec": true,
   "source": "whois"
 }

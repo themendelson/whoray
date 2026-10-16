@@ -26,7 +26,9 @@ test.each(captures())("$path parses to its expected record", async (capture) => 
   );
 });
 
-test("WHOIS and RDAP agree on dates and nameservers for the same registered domain", async () => {
+const whoisWithoutNameservers = new Set(["name", "no"]);
+
+test("WHOIS and RDAP agree on state, dates and nameservers for the same registered domain", async () => {
   const all = captures();
   const pairs = all.flatMap((rdap) => {
     const whois = all.find((other) => other.protocol === "whois" && other.domain === rdap.domain);
@@ -35,6 +37,7 @@ test("WHOIS and RDAP agree on dates and nameservers for the same registered doma
   const disagreements: string[] = [];
   for (const pair of pairs) {
     const [fromRdap, fromWhois] = await Promise.all([replay(pair.rdap), replay(pair.whois)]);
+    if (fromRdap.state === "unknown" || fromWhois.state === "unknown") continue;
     for (const field of ["creationDate", "expirationDate"] as const) {
       const a = fromRdap[field]?.getTime();
       const b = fromWhois[field]?.getTime();
@@ -43,9 +46,9 @@ test("WHOIS and RDAP agree on dates and nameservers for the same registered doma
       }
     }
     const nameservers = [fromRdap.nameservers, fromWhois.nameservers].map((list) => [...list].sort().join(","));
-    if (fromRdap.nameservers.length > 0 && fromWhois.nameservers.length > 0 && nameservers[0] !== nameservers[1]) {
+    if (nameservers[0] !== nameservers[1] && !whoisWithoutNameservers.has(pair.rdap.tld))
       disagreements.push(`${pair.rdap.domain} nameservers`);
-    }
+    if (fromRdap.state !== fromWhois.state) disagreements.push(`${pair.rdap.domain} state`);
   }
   expect(pairs.length).toBeGreaterThan(50);
   expect(disagreements).toEqual([]);
