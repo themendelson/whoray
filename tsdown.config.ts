@@ -1,7 +1,12 @@
 import type { UserConfig } from "tsdown";
 
 const config: UserConfig = {
-  entry: ["src/node.ts", "src/workerd.ts", "src/browser.ts", "src/cli.ts"],
+  entry: {
+    node: "src/runtime/node.ts",
+    workerd: "src/runtime/workerd.ts",
+    browser: "src/runtime/browser.ts",
+    cli: "src/cli.ts",
+  },
   format: ["esm"],
   platform: "neutral",
   dts: true,

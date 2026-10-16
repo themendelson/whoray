@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, expect, test, vi } from "vitest";
-import { parseRdap, parseWhois } from "#node.ts";
+import { parseRdap, parseWhois } from "#runtime/node.ts";
 
 beforeAll(() => {
   vi.useFakeTimers({ toFake: ["Date"] });
