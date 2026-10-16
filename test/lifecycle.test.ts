@@ -40,8 +40,23 @@ test("a domain in redemption drops after redemption plus pending delete", () => 
   expect(record.dropDate).toEqual(new Date("2026-11-10T00:00:00Z"));
 });
 
-test("an expired domain with no deletion status gets a low-confidence estimate from its expiry", () => {
+test("a past expiry in the auto-renew period is a renewed domain, not an expired one", () => {
+  const record = parseRdap(
+    rdap("nic.vip", ["auto renew period", "server delete prohibited"], { expiration: "2026-09-07T04:15:49Z" }),
+    "nic.vip",
+  );
+  expect(record.state).toBe("registered");
+  expect(record.dropDate).toBeUndefined();
+});
+
+test("an expired domain without deletion statuses gets no drop date when its registry's schedule is known", () => {
   const record = parseRdap(rdap("example.com", ["active"], { expiration: "2026-10-01T00:00:00Z" }), "example.com");
+  expect(record.state).toBe("expired");
+  expect(record.dropDate).toBeUndefined();
+});
+
+test("a TLD without lifecycle data gets a generic estimate from its expiry", () => {
+  const record = parseRdap(rdap("example.zz", ["active"], { expiration: "2026-10-01T00:00:00Z" }), "example.zz");
   expect(record.state).toBe("expired");
   expect(record.dropDate).toEqual(new Date("2026-12-20T00:00:00Z"));
 });

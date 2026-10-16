@@ -22,7 +22,8 @@ export function registryInText(text: string): Registry | undefined {
 export function stateOf(statuses: ReadonlySet<string>, expirationDate: Date | undefined): DomainState {
   if (statuses.has("redemptionPeriod")) return "redemption";
   if (statuses.has("pendingDelete")) return "pendingDelete";
-  if (expirationDate && expirationDate.getTime() < Date.now()) return "expired";
+  const renewed = statuses.has("autoRenewPeriod") || statuses.has("renewPeriod");
+  if (expirationDate && expirationDate.getTime() < Date.now() && !renewed) return "expired";
   return "registered";
 }
 
@@ -42,6 +43,6 @@ export function dropOf(tld: string, state: DomainState, facts: Facts, registry?:
   if (fromRegistry && registry.dropzone === true) {
     return { dropDate: new Date(fromRegistry.getTime() + DROPZONE_HOLD_HOURS * 3_600_000), deletionDate: fromRegistry };
   }
-  const dropDate = fromRegistry ?? defaultPeriods(facts);
+  const dropDate = registry ? fromRegistry : defaultPeriods(facts);
   return dropDate && { dropDate };
 }
