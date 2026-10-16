@@ -7,7 +7,7 @@
 
 > WHOIS and RDAP lookups for every TLD, with one normalized result and drop-date estimates
 
-- Asks RDAP first and falls back to WHOIS, so ccTLDs without RDAP work too
+- Asks WHOIS first and falls back to RDAP, so reserved, premium and dropzone names aren't reported as available
 - Same result shape for every registry: UTC dates, EPP status codes, redacted fields left out
 - Knows where a domain is in its lifecycle, and estimates when an expiring domain drops
 - Zero dependencies. Runs on Node.js 20.19+, Bun, Deno and Cloudflare Workers. Browsers get RDAP only.
@@ -34,15 +34,15 @@ domain.expirationDate;  //=> 2027-07-19T23:59:59.000Z
 
 ### lookup(domain, options?)
 
-`domain` can be in Unicode or punycode.
+`domain` can be in Unicode or punycode. A hostname is looked up as the domain registered under its public suffix: `www.google.co.uk` → `google.co.uk`.
 
 | Option | Default | |
 | --- | --- | --- |
 | `follow` | `"registry"` | Set to `"registrar"` to also query the registrar's server for fuller registrar details |
-| `rdap` | `"prefer"` | `"only"` never uses WHOIS (needed in browsers) |
+| `protocol` | `"auto"` | `"auto"` asks WHOIS and moves to RDAP when WHOIS has no server, fails or is slow; `"whois"` or `"rdap"` asks only that one |
 | `timeout` | `10000` | Milliseconds for the whole lookup |
 | `signal` | | `AbortSignal` to cancel the lookup |
-| `servers` | | Your own servers for a TLD, e.g. `{ io: { whois: "whois.nic.io" } }`; `rdap: false` skips RDAP for it |
+| `servers` | | Your own servers for a TLD, e.g. `{ io: { whois: "whois.nic.io" } }`; `whois: false` or `rdap: false` skips that protocol for it |
 | `connect` | | Your own port 43 connection, e.g. through a [proxy](#using-a-proxy) |
 | `fetch` | `globalThis.fetch` | Your own fetch for RDAP |
 
@@ -56,14 +56,14 @@ Fields marked `?` are left out when they don't apply or the registry doesn't pub
 {
   domain: string;              // "namecheap.co", always punycode
   unicode?: string;            // "bücher.de", only for internationalized names
-  tld: string;                 // "co", or "co.uk" for second-level suffixes
+  tld: string;                 // the public suffix: "co", "co.uk", "com.au"
   state: State;                // see the table below
   isRegistered?: boolean;      // missing only when the lookup failed
   premium?: true;              // an available name the registry sells at a premium price
 
   registrar?: { name: string; ianaId?: number; url?: string; abuseEmail?: string; abusePhone?: string };
-  registrant?: { name?: string; organization?: string; country?: string };
-  registry?: { id: string; name: string };  // the TLD's operator: { id: "MinTIC", name: "MinTIC" }
+  registrant?: { name?: string; organization?: string; country?: string };  // country: ISO 3166 code
+  registry?: { id: string; name: string };  // the TLD's operator: { id: "mintic", name: "MinTIC" }
   handle?: string;             // the registry's ID for the domain: "D249131-CNIC"
 
   creationDate?: Date;
@@ -77,7 +77,7 @@ Fields marked `?` are left out when they don't apply or the registry doesn't pub
   nameservers: string[];       // ["dns1.registrar-servers.com", "dns2.registrar-servers.com"]
   dnssec?: boolean;
 
-  source: "rdap" | "whois";    // which protocol answered
+  source?: "whois" | "rdap";   // which protocol answered; left out when no server was found
   hops: { protocol: "rdap" | "whois"; server: string; raw: string }[];  // every raw reply, in order
   error?: { code: string; message: string; server?: string; retryAfter?: number };
 }
@@ -120,7 +120,10 @@ await lookup("example.de", { connect });
 ```sh
 npx whoray namecheap.co
 npx whoray namecheap.co --json
+npx whoray namecheap.co --protocol rdap --registrar --raw
 ```
+
+It exits with 1 if any lookup failed. `npx whoray --help` lists the options.
 
 ## Issues
 
