@@ -13,11 +13,11 @@ const { values, positionals } = parseArgs({
   },
 });
 
-const rdapModes = ["prefer", "only", "never"] as const;
+const rdapModes = ["prefer", "only"] as const;
 const rdap = rdapModes.find((mode) => mode === values.rdap);
 
 if (positionals.length === 0 || (values.rdap !== undefined && !rdap)) {
-  console.error("Usage: whoray <domain...> [--json] [--raw] [--registrar] [--rdap prefer|only|never]");
+  console.error("Usage: whoray <domain...> [--json] [--raw] [--registrar] [--rdap prefer|only]");
   process.exit(2);
 }
 

@@ -34,10 +34,10 @@ domain.expirationDate;  //=> 2027-07-19T23:59:59.000Z
 | Option | Default | |
 | --- | --- | --- |
 | `follow` | `"registry"` | Set to `"registrar"` to also query the registrar's server for fuller registrar details |
-| `rdap` | `"prefer"` | `"only"` never uses WHOIS (needed in browsers); `"never"` never uses RDAP |
+| `rdap` | `"prefer"` | `"only"` never uses WHOIS (needed in browsers) |
 | `timeout` | `10000` | Milliseconds for the whole lookup |
 | `signal` | | `AbortSignal` to cancel the lookup |
-| `servers` | | Your own servers for a TLD, e.g. `{ io: { whois: "whois.nic.io" } }` |
+| `servers` | | Your own servers for a TLD, e.g. `{ io: { whois: "whois.nic.io" } }`; `rdap: false` skips RDAP for it |
 | `connect` | | Your own port 43 connection, e.g. through a [proxy](#using-a-proxy) |
 | `fetch` | `globalThis.fetch` | Your own fetch for RDAP |
 

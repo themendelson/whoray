@@ -15,7 +15,7 @@ function replay(capture: Capture): ReturnType<typeof lookup> {
     return lookup(capture.domain, { rdap: "only", fetch, servers: { [capture.tld]: { rdap: "https://rdap.test/" } } });
   }
   const { connect } = whoisServer(() => capture.body);
-  return lookup(capture.domain, { rdap: "never", connect, servers: { [capture.tld]: { whois: "whois.test" } } });
+  return lookup(capture.domain, { connect, servers: { [capture.tld]: { rdap: false, whois: "whois.test" } } });
 }
 
 test.each(captures())("$path parses to its expected record", async (capture) => {

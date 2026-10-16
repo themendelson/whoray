@@ -56,7 +56,7 @@ async function resolve(
   mode: NonNullable<LookupOptions["rdap"]>,
   callerSignal: AbortSignal | undefined,
 ): Promise<Outcome | undefined> {
-  const rdap = mode === "never" ? undefined : await attempt(context, callerSignal, "rdap", viaRdap);
+  const rdap = await attempt(context, callerSignal, "rdap", viaRdap);
   const confirm =
     rdap?.found.kind === "available" && availabilityConfirmedByWhois.has(context.hops.at(-1)?.server ?? "");
   const settled = rdap !== undefined && rdap.found.kind !== "error" && !confirm;
@@ -111,6 +111,7 @@ function result(context: Context, outcome: Outcome | undefined): WhorayResult {
 
 async function viaRdap(context: Context): Promise<Outcome | undefined> {
   const { name, entry, signal } = context;
+  if (entry.rdap === false) return undefined;
   const base = entry.rdap ?? (await ianaRdapBase(context.fetch, lastLabel(name.tld), signal));
   if (base === undefined) return undefined;
   const found = await rdapHop(context, `${base}domain/${name.domain}`);

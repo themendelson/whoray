@@ -23,6 +23,7 @@ const WHOIS_REGISTRY = [
 ].join("\n");
 
 const servers = { com: { rdap: "https://rdap.test/", whois: "whois.registry.test" } };
+const whoisOnly = { com: { rdap: false as const, whois: "whois.registry.test" } };
 
 test("an RDAP 404 means the domain is available", async () => {
   const { fetch } = httpServer(() => ({ status: 404, body: "" }));
@@ -48,10 +49,10 @@ test("rdap: only never opens a socket and reports rate limits with Retry-After",
   expect(whois.connections).toEqual([]);
 });
 
-test("rdap: never goes straight to port 43 and normalizes the record", async () => {
+test("rdap: false for a TLD goes straight to port 43 and normalizes the record", async () => {
   const { fetch, urls } = httpServer(() => ({ status: 200, body: RDAP_DOMAIN }));
   const { connect } = whoisServer(() => WHOIS_REGISTRY);
-  const result = await lookup("Example.COM.", { fetch, connect, servers, rdap: "never" });
+  const result = await lookup("Example.COM.", { fetch, connect, servers: whoisOnly });
   expect(urls).toEqual([]);
   expect(result).toMatchObject({
     domain: "example.com",
@@ -68,7 +69,7 @@ test("follow: registrar queries the referral server and keeps the registry's dat
       ? "Registrar: Example Registrar, Inc.\nRegistrar Abuse Contact Email: Abuse@Registrar.test\nCreation Date: 1999-01-01"
       : WHOIS_REGISTRY,
   );
-  const result = await lookup("example.com", { connect: server.connect, servers, rdap: "never", follow: "registrar" });
+  const result = await lookup("example.com", { connect: server.connect, servers: whoisOnly, follow: "registrar" });
   expect(server.queries.map((query) => query.host)).toEqual(["whois.registry.test", "whois.registrar.test"]);
   expect(result.registrar).toEqual({ name: "Example Registrar, Inc.", abuseEmail: "abuse@registrar.test" });
   expect(result.creationDate).toEqual(new Date("2001-02-03T04:05:06Z"));
@@ -91,7 +92,7 @@ test("WHOIS hosts come from whois.iana.org when the TLD isn't in the server list
   const server = whoisServer((host) =>
     host === "whois.iana.org" ? "domain: YY\nwhois: whois.nic.yy\n" : "% No match",
   );
-  const result = await lookup("example.yy", { connect: server.connect, rdap: "never" });
+  const result = await lookup("example.yy", { connect: server.connect, servers: { yy: { rdap: false } } });
   expect(server.queries).toEqual([
     { host: "whois.iana.org", query: "yy" },
     { host: "whois.nic.yy", query: "example.yy" },
@@ -101,26 +102,26 @@ test("WHOIS hosts come from whois.iana.org when the TLD isn't in the server list
 
 test("registries that need a query format get it", async () => {
   const server = whoisServer(() => "Domain: nic.de\nStatus: free");
-  await lookup("nic.de", { connect: server.connect, rdap: "never" });
+  await lookup("nic.de", { connect: server.connect, servers: { de: { rdap: false } } });
   expect(server.queries).toEqual([{ host: "whois.denic.de", query: "-T dn nic.de" }]);
 });
 
 test("international names are queried in punycode and returned in both forms", async () => {
   const server = whoisServer(() => "Domain: xn--bcher-kva.de\nStatus: free");
-  const result = await lookup("Bücher.de", { connect: server.connect, rdap: "never" });
+  const result = await lookup("Bücher.de", { connect: server.connect, servers: { de: { rdap: false } } });
   expect(server.queries.at(0)?.query).toBe("-T dn xn--bcher-kva.de");
   expect(result).toMatchObject({ domain: "xn--bcher-kva.de", unicode: "bücher.de" });
 });
 
 test("an empty WHOIS reply is treated as throttling", async () => {
   const { connect } = whoisServer(() => "");
-  const result = await lookup("example.com", { connect, servers, rdap: "never" });
+  const result = await lookup("example.com", { connect, servers: whoisOnly });
   expect(result.error?.code).toBe("rate_limited");
 });
 
 test("a refused connection is retried once, then reported as a network error", async () => {
   const { connect, connections } = whoisServer(() => WHOIS_REGISTRY, ["whois.registry.test"]);
-  const result = await lookup("example.com", { connect, servers, rdap: "never" });
+  const result = await lookup("example.com", { connect, servers: whoisOnly });
   expect(connections).toEqual(["whois.registry.test", "whois.registry.test"]);
   expect(result).toMatchObject({ state: "unknown", error: { code: "network" } });
 });

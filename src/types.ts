@@ -71,7 +71,7 @@ export interface WhorayResult extends DomainRecord {
 }
 
 export interface ServerEntry {
-  rdap?: string;
+  rdap?: string | false;
   whois?: string;
   query?: string;
 }
@@ -85,7 +85,7 @@ export type Connect = (host: string, port: number, signal?: AbortSignal) => Prom
 
 export interface LookupOptions {
   follow?: "registry" | "registrar";
-  rdap?: "prefer" | "only" | "never";
+  rdap?: "prefer" | "only";
   timeout?: number;
   signal?: AbortSignal;
   servers?: Record<string, ServerEntry>;
