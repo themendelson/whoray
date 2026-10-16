@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { lookup } from "#node.ts";
+import { lookup } from "#runtime/node.ts";
 import type { Connect } from "#types.ts";
 import { freshLookup, httpServer, ianaBootstrap, silentServer, whoisServer } from "./support.ts";
 

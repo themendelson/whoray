@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { parseArgs } from "node:util";
-import { lookup } from "#node.ts";
+import { lookup } from "#runtime/node.ts";
 import type { LookupOptions, WhorayResult } from "#types.ts";
 
 const USAGE = `Usage: whoray <domain...> [options]

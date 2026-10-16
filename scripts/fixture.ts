@@ -1,5 +1,5 @@
 import { mkdir, writeFile } from "node:fs/promises";
-import { lookup } from "#node.ts";
+import { lookup } from "#runtime/node.ts";
 
 const TIMEOUT = 20_000;
 

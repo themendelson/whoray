@@ -1,5 +1,5 @@
-import type { Transform } from "#parse/transforms.ts";
-import { latestChange, recordOnDates, registeredOnDate } from "#parse/transforms.ts";
+import type { Transform } from "#whois/transforms.ts";
+import { latestChange, recordOnDates, registeredOnDate } from "#whois/transforms.ts";
 
 export const quirks: Record<string, Transform[]> = {
   gg: [registeredOnDate],
