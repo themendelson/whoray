@@ -165,3 +165,38 @@ test("the timeout also bounds a connect hook that ignores the signal", async () 
   await new Promise((resolve) => setTimeout(resolve, 150));
   expect(lateSocketClosed).toBe(true);
 });
+
+test("one lookup timing out doesn't fail another waiting on the same IANA bootstrap", async () => {
+  vi.resetModules();
+  const fresh = await import("#node.ts");
+  const bootstrap = { services: [[["zz"], ["https://rdap.zz.test/"]]] };
+  const slowBootstrap: typeof fetch = async (input) => {
+    const url = input instanceof Request ? input.url : input.toString();
+    if (url.endsWith("dns.json")) {
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      return new Response(JSON.stringify(bootstrap));
+    }
+    return new Response("", { status: 404 });
+  };
+  const [short, long] = await Promise.all([
+    fresh.lookup("one.zz", { fetch: slowBootstrap, rdap: "only", timeout: 20 }),
+    fresh.lookup("two.zz", { fetch: slowBootstrap, rdap: "only", timeout: 5000 }),
+  ]);
+  expect(short.error?.code).toBe("timeout");
+  expect(long).toMatchObject({ state: "available", source: "rdap" });
+});
+
+test("a WHOIS host IANA didn't answer for is asked again on the next lookup", async () => {
+  vi.resetModules();
+  const fresh = await import("#node.ts");
+  let ianaCalls = 0;
+  const server = whoisServer((host) => {
+    if (host !== "whois.iana.org") return "% No match";
+    ianaCalls += 1;
+    return ianaCalls === 1 ? "% Query rate exceeded" : "domain: YY\nwhois: whois.nic.yy\n";
+  });
+  const first = await fresh.lookup("example.yy", { connect: server.connect, servers: { yy: { rdap: false } } });
+  const second = await fresh.lookup("example.yy", { connect: server.connect, servers: { yy: { rdap: false } } });
+  expect(first.state).toBe("unknown");
+  expect(second.state).toBe("available");
+});

@@ -1,4 +1,5 @@
 import { untilAborted } from "#abort.ts";
+import { Memo } from "#memo.ts";
 import type { Connect, Socket } from "#types.ts";
 
 const encoder = new TextEncoder();
@@ -52,18 +53,17 @@ function decode(bytes: Uint8Array): string {
   }
 }
 
-const ianaHosts = new Map<string, Promise<string | undefined>>();
+const DAY = 86_400_000;
+const IANA_TIMEOUT = 15_000;
+const ianaHosts = new Memo<string | undefined>(DAY);
 
 export function ianaWhoisHost(connect: Connect, tld: string, signal: AbortSignal): Promise<string | undefined> {
-  const cached = ianaHosts.get(tld);
-  if (cached) return cached;
-  const pending = queryWhois(connect, "whois.iana.org", tld, signal).then(
-    (reply) => /^whois:[ \t]*(\S+)/m.exec(reply)?.[1]?.toLowerCase(),
-    (error: unknown) => {
-      ianaHosts.delete(tld);
-      throw error;
-    },
-  );
-  ianaHosts.set(tld, pending);
-  return pending;
+  const load = (): Promise<string | undefined> =>
+    queryWhois(connect, "whois.iana.org", tld, AbortSignal.timeout(IANA_TIMEOUT)).then(whoisHostIn);
+  return ianaHosts.get(tld, load, signal);
+}
+
+function whoisHostIn(reply: string): string | undefined {
+  if (!/^domain:|returned 0 objects/m.test(reply)) throw new Error("whois.iana.org sent no TLD record");
+  return /^whois:[ \t]*(\S+)/m.exec(reply)?.[1]?.toLowerCase();
 }

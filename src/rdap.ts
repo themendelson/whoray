@@ -1,4 +1,5 @@
 import { object, strings } from "#json.ts";
+import { Memo } from "#memo.ts";
 
 export interface RdapReply {
   url: string;
@@ -14,22 +15,21 @@ export async function fetchRdap(fetcher: typeof fetch, url: string, signal: Abor
   return { url, status: response.status, body, ...(retryAfter > 0 && { retryAfter }) };
 }
 
-let bootstrap: Promise<Map<string, string>> | undefined;
+const DAY = 86_400_000;
+const IANA_TIMEOUT = 15_000;
+const bootstrap = new Memo<ReadonlyMap<string, string>>(DAY);
 
 export async function ianaRdapBase(
   fetcher: typeof fetch,
   tld: string,
   signal: AbortSignal,
 ): Promise<string | undefined> {
-  bootstrap ??= loadBootstrap(fetcher, signal).catch((error: unknown) => {
-    bootstrap = undefined;
-    throw error;
-  });
-  return (await bootstrap).get(tld);
+  const bases = await bootstrap.get("dns", () => loadBootstrap(fetcher), signal);
+  return bases.get(tld);
 }
 
-async function loadBootstrap(fetcher: typeof fetch, signal: AbortSignal): Promise<Map<string, string>> {
-  const response = await fetcher("https://data.iana.org/rdap/dns.json", { signal });
+async function loadBootstrap(fetcher: typeof fetch): Promise<Map<string, string>> {
+  const response = await fetcher("https://data.iana.org/rdap/dns.json", { signal: AbortSignal.timeout(IANA_TIMEOUT) });
   if (!response.ok) throw new Error(`IANA RDAP bootstrap returned HTTP ${response.status}`);
   const json: unknown = await response.json();
   const bases = new Map<string, string>();
