@@ -1,23 +1,33 @@
 import { object, strings } from "#json.ts";
+import { DAY } from "#time.ts";
 import type { Connect } from "#types.ts";
 import { queryWhois } from "#whois.ts";
 
-let rdapBases: ReadonlyMap<string, string> | undefined;
-const whoisHosts = new Map<string, string | undefined>();
+interface Cached<T> {
+  value: T;
+  until: number;
+}
+
+let rdapBases: Cached<ReadonlyMap<string, string>> | undefined;
+const whoisHosts = new Map<string, Cached<string | undefined>>();
+
+const fresh = <T>(entry: Cached<T> | undefined): entry is Cached<T> => entry !== undefined && entry.until > Date.now();
+const forADay = <T>(value: T): Cached<T> => ({ value, until: Date.now() + DAY });
 
 export async function ianaRdapBase(
   fetcher: typeof fetch,
   tld: string,
   signal: AbortSignal,
 ): Promise<string | undefined> {
-  rdapBases ??= await loadBootstrap(fetcher, signal);
-  return rdapBases.get(tld);
+  if (!fresh(rdapBases)) rdapBases = forADay(await loadBootstrap(fetcher, signal));
+  return rdapBases.value.get(tld);
 }
 
 export async function ianaWhoisHost(connect: Connect, tld: string, signal: AbortSignal): Promise<string | undefined> {
-  if (whoisHosts.has(tld)) return whoisHosts.get(tld);
+  const cached = whoisHosts.get(tld);
+  if (fresh(cached)) return cached.value;
   const host = whoisHostIn(await queryWhois(connect, "whois.iana.org", tld, signal));
-  whoisHosts.set(tld, host);
+  whoisHosts.set(tld, forADay(host));
   return host;
 }
 

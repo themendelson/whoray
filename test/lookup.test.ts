@@ -1,4 +1,4 @@
-import { expect, test } from "vitest";
+import { expect, test, vi } from "vitest";
 import { lookup } from "#node.ts";
 import type { Connect } from "#types.ts";
 import { freshLookup, httpServer, ianaBootstrap, silentServer, whoisServer } from "./support.ts";
@@ -138,6 +138,24 @@ test("an unknown TLD is resolved through IANA once and cached", async () => {
   await fresh("two.zz", { fetch, protocol: "rdap" });
   expect(urls.filter((url) => url.endsWith("dns.json"))).toHaveLength(1);
   expect(urls).toContain("https://rdap.zz.test/domain/two.zz");
+});
+
+test("IANA answers are asked for again after a day", async () => {
+  const fresh = await freshLookup();
+  const { fetch, urls } = httpServer((url) =>
+    url.endsWith("dns.json") ? ianaBootstrap("zz", "https://rdap.zz.test/") : { status: 404, body: "" },
+  );
+  vi.useFakeTimers({ toFake: ["Date"] });
+  try {
+    await fresh("one.zz", { fetch, protocol: "rdap" });
+    vi.advanceTimersByTime(23 * 3_600_000);
+    await fresh("two.zz", { fetch, protocol: "rdap" });
+    vi.advanceTimersByTime(2 * 3_600_000);
+    await fresh("three.zz", { fetch, protocol: "rdap" });
+  } finally {
+    vi.useRealTimers();
+  }
+  expect(urls.filter((url) => url.endsWith("dns.json"))).toHaveLength(2);
 });
 
 test("WHOIS hosts come from whois.iana.org when the TLD isn't in the server list", async () => {
