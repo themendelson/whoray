@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.id",
-  "unicode": "whoray-unregistered-7x9q.id",
   "tld": "id",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "whois"

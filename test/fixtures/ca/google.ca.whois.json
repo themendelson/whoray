@@ -1,8 +1,8 @@
 {
   "domain": "google.ca",
-  "unicode": "google.ca",
   "tld": "ca",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor International Canada Ltd.",
     "url": "Markmonitor.com",
@@ -10,12 +10,10 @@
     "abusePhone": "+1.2083895740"
   },
   "handle": "D73081-CIRA",
-  "dates": {
-    "created": "2000-10-04T02:21:23.000Z",
-    "updated": "2026-04-28T04:05:31.000Z",
-    "expires": "2027-04-28T04:00:00.000Z",
-    "database": "2026-10-16T18:51:16.000Z"
-  },
+  "creationDate": "2000-10-04T02:21:23.000Z",
+  "updatedDate": "2026-04-28T04:05:31.000Z",
+  "expirationDate": "2027-04-28T04:00:00.000Z",
+  "snapshotDate": "2026-10-16T18:51:16.000Z",
   "statuses": [],
   "nameservers": [],
   "source": "whois"

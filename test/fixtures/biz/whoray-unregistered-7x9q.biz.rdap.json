@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.biz",
-  "unicode": "whoray-unregistered-7x9q.biz",
   "tld": "biz",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

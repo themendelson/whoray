@@ -1,17 +1,15 @@
 {
   "domain": "google.co.il",
-  "unicode": "google.co.il",
   "tld": "co.il",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Domain The Net Technologies Ltd",
     "url": "https://www.domainthenet.com"
   },
-  "dates": {
-    "created": "1999-06-05T00:00:00.000Z",
-    "updated": "2018-12-16T00:00:00.000Z",
-    "expires": "2027-06-05T00:00:00.000Z"
-  },
+  "creationDate": "1999-06-05T00:00:00.000Z",
+  "updatedDate": "2018-12-16T00:00:00.000Z",
+  "expirationDate": "2027-06-05T00:00:00.000Z",
   "statuses": [
     "Transfer Locked"
   ],

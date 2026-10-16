@@ -1,8 +1,8 @@
 {
   "domain": "nic.sbs",
-  "unicode": "nic.sbs",
   "tld": "sbs",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "CentralNic Ltd",
     "ianaId": 9999,
@@ -15,12 +15,10 @@
     "name": "CentralNic"
   },
   "handle": "D220193433-CNIC",
-  "dates": {
-    "created": "2021-02-03T15:20:54.000Z",
-    "updated": "2026-01-28T00:06:58.000Z",
-    "expires": "2027-02-03T23:59:59.000Z",
-    "database": "2026-10-16T18:51:59.000Z"
-  },
+  "creationDate": "2021-02-03T15:20:54.000Z",
+  "updatedDate": "2026-01-28T00:06:58.000Z",
+  "expirationDate": "2027-02-03T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:51:59.000Z",
   "statuses": [
     "serverRenewProhibited",
     "serverUpdateProhibited",

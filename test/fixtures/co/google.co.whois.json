@@ -1,8 +1,8 @@
 {
   "domain": "google.co",
-  "unicode": "google.co",
   "tld": "co",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor, Inc.",
     "ianaId": 292,
@@ -15,12 +15,10 @@
     "name": "MinTIC"
   },
   "handle": "D157997-CNIC",
-  "dates": {
-    "created": "2010-02-25T01:04:59.000Z",
-    "updated": "2026-01-28T10:37:02.000Z",
-    "expires": "2027-02-24T23:59:59.000Z",
-    "database": "2026-10-16T18:52:01.000Z"
-  },
+  "creationDate": "2010-02-25T01:04:59.000Z",
+  "updatedDate": "2026-01-28T10:37:02.000Z",
+  "expirationDate": "2027-02-24T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:52:01.000Z",
   "statuses": [
     "clientTransferProhibited",
     "clientUpdateProhibited",

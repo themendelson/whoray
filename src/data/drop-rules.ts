@@ -1,5 +1,5 @@
 import type { DropRule } from "#drop.ts";
-import { addDays, atUtcHour, daysBetween, fixedPeriods, rolledPast, tldRule } from "#drop.ts";
+import { addDays, atUtcHour, daysBetween, fixedPeriods, rolledPast } from "#drop.ts";
 
 const uk = fixedPeriods(60, 30, 5);
 
@@ -20,31 +20,26 @@ export const dropRules: Record<string, DropRule> = {
   ai: ({ updated, statuses }) => {
     if (!updated) return undefined;
     const days = statuses.has("pendingDelete") ? 28 : statuses.has("redemptionPeriod") ? 58 : undefined;
-    return tldRule(days === undefined ? undefined : atUtcHour(addDays(rolledPast(updated, 14), days), 17));
+    return days === undefined ? undefined : atUtcHour(addDays(rolledPast(updated, 14), days), 17);
   },
-  co: ({ released }) => tldRule(released && addDays(rolledPast(released, 17), 1)),
-  "co.il": ({ expires }) => tldRule(expires && addDays(expires, 62)),
+  co: ({ released }) => released && addDays(rolledPast(released, 17), 1),
+  "co.il": ({ expires }) => expires && addDays(expires, 62),
   "co.uk": uk,
-  de: ({ updated, statuses }) =>
-    tldRule(statuses.has("redemptionPeriod") && updated ? addDays(updated, 31) : undefined),
-  fr: ({ deleted }) => tldRule(deleted && addDays(deleted, 30)),
-  it: ({ updated, statuses }) => tldRule(statuses.has("pendingDelete") && updated ? addDays(updated, 33) : undefined),
+  de: ({ updated, statuses }) => (statuses.has("redemptionPeriod") && updated ? addDays(updated, 31) : undefined),
+  fr: ({ deleted }) => deleted && addDays(deleted, 30),
+  it: ({ updated, statuses }) => (statuses.has("pendingDelete") && updated ? addDays(updated, 33) : undefined),
   ly: ({ expires, updated, statuses }) => {
     if (!expires || !updated) return undefined;
-    if (!statuses.has("pendingDelete")) return tldRule(addDays(expires, 28));
-    return tldRule(addDays(updated, statuses.has("redemptionPeriod") ? 36 : 7));
+    if (!statuses.has("pendingDelete")) return addDays(expires, 28);
+    return addDays(updated, statuses.has("redemptionPeriod") ? 36 : 7);
   },
-  me: ({ updated, statuses }) => tldRule(updated && addDays(updated, statuses.has("redemptionPeriod") ? 35 : 6)),
+  me: ({ updated, statuses }) => updated && addDays(updated, statuses.has("redemptionPeriod") ? 35 : 6),
   "me.uk": uk,
   "org.uk": uk,
-  si: ({ expires, statuses }) => tldRule(statuses.has("pendingDelete") && expires ? addDays(expires, 30) : undefined),
+  si: ({ expires, statuses }) => (statuses.has("pendingDelete") && expires ? addDays(expires, 30) : undefined),
   uk,
   us: ({ expires, updated, statuses }) =>
-    tldRule(statuses.has("pendingDelete") && expires && updated ? usSchedule(expires, updated) : undefined),
+    statuses.has("pendingDelete") && expires && updated ? usSchedule(expires, updated) : undefined,
   xyz: ({ updated, statuses }) =>
-    tldRule(
-      statuses.has("pendingDelete") && updated
-        ? addDays(updated, statuses.has("redemptionPeriod") ? 35 : 5)
-        : undefined,
-    ),
+    statuses.has("pendingDelete") && updated ? addDays(updated, statuses.has("redemptionPeriod") ? 35 : 5) : undefined,
 };

@@ -1,12 +1,10 @@
 {
   "domain": "google.md",
-  "unicode": "google.md",
   "tld": "md",
   "state": "registered",
-  "dates": {
-    "created": "2006-05-02T00:00:00.000Z",
-    "expires": "2027-05-02T00:00:00.000Z"
-  },
+  "isRegistered": true,
+  "creationDate": "2006-05-02T00:00:00.000Z",
+  "expirationDate": "2027-05-02T00:00:00.000Z",
   "statuses": [
     "ok"
   ],

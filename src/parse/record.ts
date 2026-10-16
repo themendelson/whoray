@@ -4,14 +4,23 @@ import { dropOf, registryOf, stateOf } from "#lifecycle.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import type { DomainRecord, DomainState } from "#types.ts";
 
+const REGISTERED: Record<DomainState, boolean | undefined> = {
+  registered: true,
+  expired: true,
+  redemption: true,
+  pendingDelete: true,
+  available: false,
+  dropzone: false,
+  reserved: false,
+  unknown: undefined,
+};
+
 export function toRecord(name: Name, found: Found): DomainRecord {
   const operator = registryOf(name.tld, found.kind === "record" ? found.registryId : undefined);
   const registry = operator && { id: operator.id, name: operator.name };
   const empty = (state: DomainState): DomainRecord => ({
-    ...name,
-    state,
+    ...identity(name, state),
     ...(registry && { registry }),
-    dates: {},
     statuses: [],
     nameservers: [],
   });
@@ -24,17 +33,30 @@ export function toRecord(name: Name, found: Found): DomainRecord {
   const drop = dropOf(name.tld, state, factsOf(found, statuses), operator);
   const { registrar, registrant, handle, dnssec } = found;
   return {
-    ...name,
-    state,
+    ...identity(name, state),
     ...(registrar && { registrar }),
     ...(registrant && { registrant }),
     ...(registry && { registry }),
     ...(handle !== undefined && { handle }),
-    dates: datesOf(found),
+    ...datesOf(found),
+    ...drop,
     statuses: found.statuses,
     nameservers: found.nameservers,
     ...(dnssec !== undefined && { dnssec }),
-    ...(drop && { drop }),
+  };
+}
+
+function identity(
+  name: Name,
+  state: DomainState,
+): Pick<DomainRecord, "domain" | "unicode" | "tld" | "state" | "isRegistered"> {
+  const isRegistered = REGISTERED[state];
+  return {
+    domain: name.domain,
+    ...(name.unicode !== name.domain && { unicode: name.unicode }),
+    tld: name.tld,
+    state,
+    ...(isRegistered !== undefined && { isRegistered }),
   };
 }
 
@@ -48,11 +70,11 @@ function factsOf({ expires, updated, released, deleted }: Registration, statuses
   };
 }
 
-function datesOf({ created, updated, expires, database }: Registration): DomainRecord["dates"] {
+function datesOf({ created, updated, expires, database }: Registration): Partial<DomainRecord> {
   return {
-    ...(created && { created }),
-    ...(updated && { updated }),
-    ...(expires && { expires }),
-    ...(database && { database }),
+    ...(created && { creationDate: created }),
+    ...(updated && { updatedDate: updated }),
+    ...(expires && { expirationDate: expires }),
+    ...(database && { snapshotDate: database }),
   };
 }

@@ -1,12 +1,10 @@
 {
   "domain": "google.no",
-  "unicode": "google.no",
   "tld": "no",
   "state": "registered",
-  "dates": {
-    "created": "2001-02-26T00:00:00.000Z",
-    "updated": "2026-01-27T00:00:00.000Z"
-  },
+  "isRegistered": true,
+  "creationDate": "2001-02-26T00:00:00.000Z",
+  "updatedDate": "2026-01-27T00:00:00.000Z",
   "statuses": [],
   "nameservers": [],
   "source": "whois"

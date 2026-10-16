@@ -40,7 +40,7 @@ test(".fr drops 30 days after its deletion date", () => {
     },
     "example.fr",
   );
-  expect(record.drop).toMatchObject({ at: new Date("2026-11-09T00:00:00Z"), basis: "tld schedule" });
+  expect(record.dropDate).toEqual(new Date("2026-11-09T00:00:00Z"));
 });
 
 test("registries with a dropzone release names 12 hours after their scheduled deletion", () => {
@@ -55,9 +55,9 @@ test("registries with a dropzone release names 12 hours after their scheduled de
     },
     "example.org",
   );
-  expect(record.drop).toMatchObject({
-    deletion: new Date("2026-10-19T00:00:00Z"),
-    at: new Date("2026-10-19T12:00:00Z"),
+  expect(record).toMatchObject({
+    deletionDate: new Date("2026-10-19T00:00:00Z"),
+    dropDate: new Date("2026-10-19T12:00:00Z"),
   });
 });
 
@@ -69,7 +69,7 @@ test("an unmapped TLD gets its registry from the reply text", () => {
 test("WHOIS replies keep the registry database timestamp", () => {
   const text =
     "Domain Name: example.com\nCreation Date: 2020-01-01\n>>> Last update of WHOIS database: 2026-10-16T08:00:00Z <<<";
-  expect(parseWhois(text, "example.com").dates.database).toEqual(new Date("2026-10-16T08:00:00Z"));
+  expect(parseWhois(text, "example.com").snapshotDate).toEqual(new Date("2026-10-16T08:00:00Z"));
 });
 
 const identityDigital = { io: { rdap: "https://rdap.identitydigital.services/rdap/", whois: "whois.nic.io" } };

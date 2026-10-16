@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.design",
-  "unicode": "whoray-unregistered-7x9q.design",
   "tld": "design",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "godaddy-registry",
     "name": "GoDaddy Registry"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

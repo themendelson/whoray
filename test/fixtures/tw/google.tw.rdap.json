@@ -1,9 +1,7 @@
 {
   "domain": "google.tw",
-  "unicode": "google.tw",
   "tld": "tw",
   "state": "unknown",
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap",

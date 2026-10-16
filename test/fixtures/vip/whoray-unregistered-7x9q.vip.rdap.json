@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.vip",
-  "unicode": "whoray-unregistered-7x9q.vip",
   "tld": "vip",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "godaddy-registry",
     "name": "GoDaddy Registry"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

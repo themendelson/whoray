@@ -1,9 +1,8 @@
 {
   "domain": "google.bg",
-  "unicode": "google.bg",
   "tld": "bg",
   "state": "registered",
-  "dates": {},
+  "isRegistered": true,
   "statuses": [
     "busy",
     "ok"

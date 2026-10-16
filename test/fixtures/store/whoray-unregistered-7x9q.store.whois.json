@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.store",
-  "unicode": "whoray-unregistered-7x9q.store",
   "tld": "store",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "centralnic",
     "name": "CentralNic"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "whois"

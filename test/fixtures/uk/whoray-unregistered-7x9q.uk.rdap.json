@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.uk",
-  "unicode": "whoray-unregistered-7x9q.uk",
   "tld": "uk",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "nominet",
     "name": "Nominet"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

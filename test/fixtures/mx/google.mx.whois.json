@@ -1,8 +1,8 @@
 {
   "domain": "google.mx",
-  "unicode": "google.mx",
   "tld": "mx",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Markmonitor"
   },
@@ -10,11 +10,9 @@
     "name": "DNS Admin",
     "country": "United States"
   },
-  "dates": {
-    "created": "2009-05-12T00:00:00.000Z",
-    "updated": "2026-04-12T00:00:00.000Z",
-    "expires": "2027-05-11T00:00:00.000Z"
-  },
+  "creationDate": "2009-05-12T00:00:00.000Z",
+  "updatedDate": "2026-04-12T00:00:00.000Z",
+  "expirationDate": "2027-05-11T00:00:00.000Z",
   "statuses": [],
   "nameservers": [
     "ns2.google.com",

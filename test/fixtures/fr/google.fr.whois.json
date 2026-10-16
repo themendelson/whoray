@@ -1,17 +1,15 @@
 {
   "domain": "google.fr",
-  "unicode": "google.fr",
   "tld": "fr",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MARKMONITOR Inc."
   },
-  "dates": {
-    "created": "2000-07-26T22:00:00.000Z",
-    "updated": "2025-12-03T10:12:00.000Z",
-    "expires": "2026-12-30T17:16:48.000Z",
-    "database": "2026-10-16T18:52:04.000Z"
-  },
+  "creationDate": "2000-07-26T22:00:00.000Z",
+  "updatedDate": "2025-12-03T10:12:00.000Z",
+  "expirationDate": "2026-12-30T17:16:48.000Z",
+  "snapshotDate": "2026-10-16T18:52:04.000Z",
   "statuses": [
     "ok"
   ],

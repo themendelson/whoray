@@ -1,8 +1,8 @@
 {
   "domain": "nic.club",
-  "unicode": "nic.club",
   "tld": "club",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "DOTCLUB DOMAINS, LLC",
     "ianaId": 9999
@@ -14,12 +14,10 @@
     "id": "godaddy-registry",
     "name": "GoDaddy Registry"
   },
-  "dates": {
-    "created": "2013-08-09T23:33:53.000Z",
-    "updated": "2026-10-15T00:05:50.000Z",
-    "expires": "2027-08-08T23:59:59.000Z",
-    "database": "2026-10-16T18:51:49.000Z"
-  },
+  "creationDate": "2013-08-09T23:33:53.000Z",
+  "updatedDate": "2026-10-15T00:05:50.000Z",
+  "expirationDate": "2027-08-08T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:51:49.000Z",
   "statuses": [
     "serverUpdateProhibited",
     "serverTransferProhibited",

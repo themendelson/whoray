@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.si",
-  "unicode": "whoray-unregistered-7x9q.si",
   "tld": "si",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

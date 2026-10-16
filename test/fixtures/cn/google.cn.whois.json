@@ -1,16 +1,14 @@
 {
   "domain": "google.cn",
-  "unicode": "google.cn",
   "tld": "cn",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "厦门易名科技股份有限公司"
   },
   "handle": "20030311s10001s00033735-cn",
-  "dates": {
-    "created": "2003-03-17T12:20:05.000Z",
-    "expires": "2027-03-17T12:48:36.000Z"
-  },
+  "creationDate": "2003-03-17T12:20:05.000Z",
+  "expirationDate": "2027-03-17T12:48:36.000Z",
   "statuses": [
     "clientDeleteProhibited",
     "serverDeleteProhibited",

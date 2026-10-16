@@ -1,20 +1,18 @@
 {
   "domain": "google.la",
-  "unicode": "google.la",
   "tld": "la",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "TLD Registrar Solutions Ltd",
     "abuseEmail": "abuse@centralnic.com",
     "abusePhone": "+44.20338806"
   },
   "handle": "D471480-LANIC",
-  "dates": {
-    "created": "2002-07-18T01:00:00.000Z",
-    "updated": "2026-10-16T08:19:37.000Z",
-    "expires": "2027-07-18T23:59:59.000Z",
-    "database": "2026-10-16T18:49:54.000Z"
-  },
+  "creationDate": "2002-07-18T01:00:00.000Z",
+  "updatedDate": "2026-10-16T08:19:37.000Z",
+  "expirationDate": "2027-07-18T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:49:54.000Z",
   "statuses": [
     "clientTransferProhibited"
   ],

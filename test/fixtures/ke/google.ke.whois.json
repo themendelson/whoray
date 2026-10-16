@@ -1,18 +1,16 @@
 {
   "domain": "google.ke",
-  "unicode": "google.ke",
   "tld": "ke",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Afriregister Limited"
   },
   "handle": "542953-KENIC",
-  "dates": {
-    "created": "2018-01-10T11:43:08.000Z",
-    "updated": "2025-12-14T10:44:50.000Z",
-    "expires": "2027-01-10T11:43:08.000Z",
-    "database": "2026-10-16T18:31:28.000Z"
-  },
+  "creationDate": "2018-01-10T11:43:08.000Z",
+  "updatedDate": "2025-12-14T10:44:50.000Z",
+  "expirationDate": "2027-01-10T11:43:08.000Z",
+  "snapshotDate": "2026-10-16T18:31:28.000Z",
   "statuses": [],
   "nameservers": [],
   "source": "whois"

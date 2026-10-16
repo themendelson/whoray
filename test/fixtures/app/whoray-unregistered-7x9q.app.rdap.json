@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.app",
-  "unicode": "whoray-unregistered-7x9q.app",
   "tld": "app",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "registry.google",
     "name": "Charleston Road Registry Inc"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

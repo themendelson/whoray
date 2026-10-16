@@ -1,8 +1,8 @@
 {
   "domain": "google.ng",
-  "unicode": "google.ng",
   "tld": "ng",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "markmonitor",
     "ianaId": 9999,
@@ -12,12 +12,10 @@
     "country": "US"
   },
   "handle": "29993-NIRA",
-  "dates": {
-    "created": "2011-01-19T13:24:01.000Z",
-    "updated": "2026-03-12T10:47:40.000Z",
-    "expires": "2027-04-12T23:00:00.000Z",
-    "database": "2026-10-16T18:21:50.000Z"
-  },
+  "creationDate": "2011-01-19T13:24:01.000Z",
+  "updatedDate": "2026-03-12T10:47:40.000Z",
+  "expirationDate": "2027-04-12T23:00:00.000Z",
+  "snapshotDate": "2026-10-16T18:21:50.000Z",
   "statuses": [
     "serverRenewProhibited",
     "clientTransferProhibited",

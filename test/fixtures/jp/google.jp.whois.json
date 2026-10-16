@@ -1,13 +1,11 @@
 {
   "domain": "google.jp",
-  "unicode": "google.jp",
   "tld": "jp",
   "state": "registered",
-  "dates": {
-    "created": "2005-05-30T00:00:00.000Z",
-    "updated": "2026-05-31T16:05:03.000Z",
-    "expires": "2027-05-31T00:00:00.000Z"
-  },
+  "isRegistered": true,
+  "creationDate": "2005-05-30T00:00:00.000Z",
+  "updatedDate": "2026-05-31T16:05:03.000Z",
+  "expirationDate": "2027-05-31T00:00:00.000Z",
   "statuses": [
     "ok",
     "DomainTransferLocked",

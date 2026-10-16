@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.hk",
-  "unicode": "whoray-unregistered-7x9q.hk",
   "tld": "hk",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "whois"

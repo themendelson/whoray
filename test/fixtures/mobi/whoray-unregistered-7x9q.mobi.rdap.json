@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.mobi",
-  "unicode": "whoray-unregistered-7x9q.mobi",
   "tld": "mobi",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "identity.digital",
     "name": "Identity Digital"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

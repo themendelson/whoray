@@ -3,7 +3,7 @@ import type { Registry } from "#data/registries.ts";
 import { registries } from "#data/registries.ts";
 import type { Facts } from "#drop.ts";
 import { fixedPeriods, redemptionGracePeriod } from "#drop.ts";
-import type { DomainState, Drop } from "#types.ts";
+import type { DomainState } from "#types.ts";
 
 const registryByTld = new Map(registries.flatMap((registry) => registry.tlds.map((tld) => [tld, registry] as const)));
 const defaultPeriods = fixedPeriods(45, 30, 5);
@@ -35,15 +35,20 @@ export function stateOf(statuses: ReadonlySet<string>, expires: Date | undefined
 
 const DROPZONE_HOLD_HOURS = 12;
 
-export function dropOf(tld: string, state: DomainState, facts: Facts, registry?: Registry): Drop | undefined {
+export interface DropDates {
+  dropDate: Date;
+  deletionDate?: Date;
+}
+
+export function dropOf(tld: string, state: DomainState, facts: Facts, registry?: Registry): DropDates | undefined {
   if (state !== "expired" && state !== "redemption" && state !== "pendingDelete") return undefined;
   const fromTld = (dropRules[tld] ?? dropRules[lastLabel(tld)])?.(facts);
-  if (fromTld) return fromTld;
-  if (facts.released) return { at: facts.released, confidence: "high", basis: "registry date" };
+  if (fromTld) return { dropDate: fromTld };
+  if (facts.released) return { dropDate: facts.released };
   const fromRegistry = registry && redemptionGracePeriod(registry.redemption, registry.pendingDelete)(facts);
   if (fromRegistry && registry.dropzone === true) {
-    const at = new Date(fromRegistry.at.getTime() + DROPZONE_HOLD_HOURS * 3_600_000);
-    return { ...fromRegistry, at, deletion: fromRegistry.at };
+    return { dropDate: new Date(fromRegistry.getTime() + DROPZONE_HOLD_HOURS * 3_600_000), deletionDate: fromRegistry };
   }
-  return fromRegistry ?? defaultPeriods(facts);
+  const dropDate = fromRegistry ?? defaultPeriods(facts);
+  return dropDate && { dropDate };
 }

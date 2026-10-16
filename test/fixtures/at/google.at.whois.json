@@ -1,16 +1,14 @@
 {
   "domain": "google.at",
-  "unicode": "google.at",
   "tld": "at",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "url": "https://nic.at/registrar/434"
   },
-  "dates": {
-    "created": "2000-12-04T20:03:13.000Z",
-    "updated": "2024-11-13T19:36:02.000Z"
-  },
+  "creationDate": "2000-12-04T20:03:13.000Z",
+  "updatedDate": "2024-11-13T19:36:02.000Z",
   "statuses": [],
   "nameservers": [
     "ns1.google.com",

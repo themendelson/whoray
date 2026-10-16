@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.fr",
-  "unicode": "whoray-unregistered-7x9q.fr",
   "tld": "fr",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

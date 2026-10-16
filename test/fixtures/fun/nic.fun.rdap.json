@@ -1,8 +1,8 @@
 {
   "domain": "nic.fun",
-  "unicode": "nic.fun",
   "tld": "fun",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Radix Technologies Inc. SEZC / CO Services Cayman Limited",
     "ianaId": 9999,
@@ -15,12 +15,10 @@
     "name": "CentralNic"
   },
   "handle": "D38032273-CNIC",
-  "dates": {
-    "created": "2016-10-25T11:48:07.000Z",
-    "updated": "2026-03-17T10:04:44.000Z",
-    "expires": "2026-10-25T23:59:59.000Z",
-    "database": "2026-10-16T18:51:52.000Z"
-  },
+  "creationDate": "2016-10-25T11:48:07.000Z",
+  "updatedDate": "2026-03-17T10:04:44.000Z",
+  "expirationDate": "2026-10-25T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:51:52.000Z",
   "statuses": [
     "serverDeleteProhibited",
     "serverUpdateProhibited",

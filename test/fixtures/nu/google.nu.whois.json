@@ -1,16 +1,14 @@
 {
   "domain": "google.nu",
-  "unicode": "google.nu",
   "tld": "nu",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc"
   },
-  "dates": {
-    "created": "1999-06-07T00:00:00.000Z",
-    "updated": "2026-05-06T00:00:00.000Z",
-    "expires": "2027-06-07T00:00:00.000Z"
-  },
+  "creationDate": "1999-06-07T00:00:00.000Z",
+  "updatedDate": "2026-05-06T00:00:00.000Z",
+  "expirationDate": "2027-06-07T00:00:00.000Z",
   "statuses": [
     "ok"
   ],

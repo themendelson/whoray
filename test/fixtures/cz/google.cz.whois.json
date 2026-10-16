@@ -1,16 +1,14 @@
 {
   "domain": "google.cz",
-  "unicode": "google.cz",
   "tld": "cz",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "REG-MARKMONITOR"
   },
-  "dates": {
-    "created": "2000-07-21T15:21:00.000Z",
-    "updated": "2018-04-23T20:24:01.000Z",
-    "expires": "2027-07-22T00:00:00.000Z"
-  },
+  "creationDate": "2000-07-21T15:21:00.000Z",
+  "updatedDate": "2018-04-23T20:24:01.000Z",
+  "expirationDate": "2027-07-22T00:00:00.000Z",
   "statuses": [],
   "nameservers": [
     "ns2.google.com",

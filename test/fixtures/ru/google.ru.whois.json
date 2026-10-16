@@ -1,15 +1,13 @@
 {
   "domain": "google.ru",
-  "unicode": "google.ru",
   "tld": "ru",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "RU-CENTER-RU"
   },
-  "dates": {
-    "created": "2004-03-03T21:00:00.000Z",
-    "expires": "2027-03-04T21:00:00.000Z"
-  },
+  "creationDate": "2004-03-03T21:00:00.000Z",
+  "expirationDate": "2027-03-04T21:00:00.000Z",
   "statuses": [
     "REGISTERED",
     "DELEGATED",

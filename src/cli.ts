@@ -24,16 +24,15 @@ if (positionals.length === 0 || (values.rdap !== undefined && !rdap)) {
 function describe(result: WhorayResult): string {
   const date = (value: Date | undefined): string => value?.toISOString().slice(0, 10) ?? "-";
   const lines = [
-    `${result.unicode}  ${result.state}${result.error ? ` (${result.error.code}: ${result.error.message})` : ""}`,
+    `${result.unicode ?? result.domain}  ${result.state}${result.error ? ` (${result.error.code}: ${result.error.message})` : ""}`,
     `  registrar    ${result.registrar?.name ?? "-"}`,
-    `  created      ${date(result.dates.created)}`,
-    `  expires      ${date(result.dates.expires)}`,
+    `  created      ${date(result.creationDate)}`,
+    `  expires      ${date(result.expirationDate)}`,
     `  statuses     ${result.statuses.join(", ") || "-"}`,
     `  nameservers  ${result.nameservers.join(", ") || "-"}`,
     `  source       ${result.source} via ${result.hops.map((hop) => hop.server).join(" -> ") || "-"}`,
   ];
-  if (result.drop)
-    lines.push(`  drops        ${result.drop.at.toISOString()} (${result.drop.confidence}, ${result.drop.basis})`);
+  if (result.dropDate) lines.push(`  drops        ${result.dropDate.toISOString()}`);
   if (values.raw === true) lines.push(...result.hops.map((hop) => `\n--- ${hop.server}\n${hop.raw}`));
   return lines.join("\n");
 }

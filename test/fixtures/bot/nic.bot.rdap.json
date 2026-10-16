@@ -1,8 +1,8 @@
 {
   "domain": "nic.bot",
-  "unicode": "nic.bot",
   "tld": "bot",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Amazon Registry Services, Inc. (Registry)",
     "ianaId": 9999,
@@ -13,12 +13,10 @@
     "name": "Nominet"
   },
   "handle": "D_2503430-BOT",
-  "dates": {
-    "created": "2013-09-16T18:56:56.000Z",
-    "updated": "2026-07-22T08:00:32.000Z",
-    "expires": "2030-09-16T18:56:56.000Z",
-    "database": "2026-10-16T18:51:58.000Z"
-  },
+  "creationDate": "2013-09-16T18:56:56.000Z",
+  "updatedDate": "2026-07-22T08:00:32.000Z",
+  "expirationDate": "2030-09-16T18:56:56.000Z",
+  "snapshotDate": "2026-10-16T18:51:58.000Z",
   "statuses": [
     "serverTransferProhibited",
     "serverUpdateProhibited",

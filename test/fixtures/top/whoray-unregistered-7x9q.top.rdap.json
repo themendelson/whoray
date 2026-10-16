@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.top",
-  "unicode": "whoray-unregistered-7x9q.top",
   "tld": "top",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "zdns",
     "name": "ZDNS"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

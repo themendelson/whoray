@@ -1,8 +1,8 @@
 {
   "domain": "nic.cyou",
-  "unicode": "nic.cyou",
   "tld": "cyou",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Shortdot SA",
     "ianaId": 9999,
@@ -15,12 +15,10 @@
     "name": "CentralNic"
   },
   "handle": "D186154499-CNIC",
-  "dates": {
-    "created": "2014-05-01T00:00:00.000Z",
-    "updated": "2026-02-12T14:26:13.000Z",
-    "expires": "2030-03-01T23:59:59.000Z",
-    "database": "2026-10-16T18:51:58.000Z"
-  },
+  "creationDate": "2014-05-01T00:00:00.000Z",
+  "updatedDate": "2026-02-12T14:26:13.000Z",
+  "expirationDate": "2030-03-01T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:51:58.000Z",
   "statuses": [
     "serverRenewProhibited",
     "serverUpdateProhibited",

@@ -1,11 +1,9 @@
 {
   "domain": "google.de",
-  "unicode": "google.de",
   "tld": "de",
   "state": "registered",
-  "dates": {
-    "updated": "2018-03-12T20:44:25.000Z"
-  },
+  "isRegistered": true,
+  "updatedDate": "2018-03-12T20:44:25.000Z",
   "statuses": [
     "connect"
   ],

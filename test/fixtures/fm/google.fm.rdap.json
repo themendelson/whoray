@@ -1,8 +1,8 @@
 {
   "domain": "google.fm",
-  "unicode": "google.fm",
   "tld": "fm",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
@@ -13,12 +13,10 @@
     "country": "US"
   },
   "handle": "D34865469-CNIC",
-  "dates": {
-    "created": "2000-09-05T23:59:59.000Z",
-    "updated": "2026-09-01T10:00:40.000Z",
-    "expires": "2027-09-04T23:59:59.000Z",
-    "database": "2026-10-16T18:52:45.000Z"
-  },
+  "creationDate": "2000-09-05T23:59:59.000Z",
+  "updatedDate": "2026-09-01T10:00:40.000Z",
+  "expirationDate": "2027-09-04T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:52:45.000Z",
   "statuses": [
     "clientTransferProhibited",
     "clientUpdateProhibited",

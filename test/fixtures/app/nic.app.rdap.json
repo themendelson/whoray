@@ -1,8 +1,8 @@
 {
   "domain": "nic.app",
-  "unicode": "nic.app",
   "tld": "app",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Charleston Road Registry NonBillable",
     "ianaId": 9999,
@@ -14,12 +14,10 @@
     "name": "Charleston Road Registry Inc"
   },
   "handle": "6D67D1-APP",
-  "dates": {
-    "created": "2015-06-22T20:34:34.000Z",
-    "updated": "2026-08-06T20:34:34.000Z",
-    "expires": "2027-06-22T20:34:34.000Z",
-    "database": "2026-10-16T18:51:49.000Z"
-  },
+  "creationDate": "2015-06-22T20:34:34.000Z",
+  "updatedDate": "2026-08-06T20:34:34.000Z",
+  "expirationDate": "2027-06-22T20:34:34.000Z",
+  "snapshotDate": "2026-10-16T18:51:49.000Z",
   "statuses": [
     "serverDeleteProhibited",
     "serverTransferProhibited",

@@ -1,8 +1,8 @@
 {
   "domain": "google.in",
-  "unicode": "google.in",
   "tld": "in",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
@@ -14,12 +14,10 @@
     "name": "Tucows Registry Services"
   },
   "handle": "D21089-IN",
-  "dates": {
-    "created": "2005-02-14T20:35:14.000Z",
-    "updated": "2026-05-26T12:16:48.000Z",
-    "expires": "2027-02-14T20:35:14.000Z",
-    "database": "2026-10-16T18:52:14.000Z"
-  },
+  "creationDate": "2005-02-14T20:35:14.000Z",
+  "updatedDate": "2026-05-26T12:16:48.000Z",
+  "expirationDate": "2027-02-14T20:35:14.000Z",
+  "snapshotDate": "2026-10-16T18:52:14.000Z",
   "statuses": [],
   "nameservers": [],
   "source": "whois"

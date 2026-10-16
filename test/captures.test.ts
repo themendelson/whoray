@@ -35,9 +35,9 @@ test("WHOIS and RDAP agree on dates and nameservers for the same registered doma
   const disagreements: string[] = [];
   for (const pair of pairs) {
     const [fromRdap, fromWhois] = await Promise.all([replay(pair.rdap), replay(pair.whois)]);
-    for (const field of ["created", "expires"] as const) {
-      const a = fromRdap.dates[field]?.getTime();
-      const b = fromWhois.dates[field]?.getTime();
+    for (const field of ["creationDate", "expirationDate"] as const) {
+      const a = fromRdap[field]?.getTime();
+      const b = fromWhois[field]?.getTime();
       if (a !== undefined && b !== undefined && Math.abs(a - b) > 86_400_000) {
         disagreements.push(`${pair.rdap.domain} ${field}`);
       }

@@ -1,15 +1,13 @@
 {
   "domain": "google.dk",
-  "unicode": "google.dk",
   "tld": "dk",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc."
   },
-  "dates": {
-    "created": "1999-01-10T00:00:00.000Z",
-    "expires": "2027-03-31T00:00:00.000Z"
-  },
+  "creationDate": "1999-01-10T00:00:00.000Z",
+  "expirationDate": "2027-03-31T00:00:00.000Z",
   "statuses": [
     "ok"
   ],

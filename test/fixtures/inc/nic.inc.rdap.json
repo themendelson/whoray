@@ -1,8 +1,8 @@
 {
   "domain": "nic.inc",
-  "unicode": "nic.inc",
   "tld": "inc",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Intercap Registry Inc.",
     "ianaId": 9999,
@@ -18,12 +18,10 @@
     "name": "CentralNic"
   },
   "handle": "D235786333-CNIC",
-  "dates": {
-    "created": "2018-05-01T23:32:47.000Z",
-    "updated": "2025-02-19T15:28:09.000Z",
-    "expires": "2028-05-01T23:59:59.000Z",
-    "database": "2026-10-16T18:51:57.000Z"
-  },
+  "creationDate": "2018-05-01T23:32:47.000Z",
+  "updatedDate": "2025-02-19T15:28:09.000Z",
+  "expirationDate": "2028-05-01T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:51:57.000Z",
   "statuses": [
     "serverRenewProhibited",
     "serverUpdateProhibited",

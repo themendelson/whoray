@@ -1,15 +1,13 @@
 {
   "domain": "google.tr",
-  "unicode": "google.tr",
   "tld": "tr",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "ODTÜ GELİŞTİRME VAKFI BİLGİ TEKNOLOJİLERİ SAN. VE TİC. A.Ş."
   },
-  "dates": {
-    "created": "2024-08-26T00:00:00.000Z",
-    "expires": "2027-08-25T00:00:00.000Z"
-  },
+  "creationDate": "2024-08-26T00:00:00.000Z",
+  "expirationDate": "2027-08-25T00:00:00.000Z",
   "statuses": [
     "ok"
   ],

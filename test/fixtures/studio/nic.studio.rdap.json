@@ -1,8 +1,8 @@
 {
   "domain": "nic.studio",
-  "unicode": "nic.studio",
   "tld": "studio",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Registry Operator acts as Registrar (9999)",
     "ianaId": 9999,
@@ -14,12 +14,10 @@
     "id": "identity.digital",
     "name": "Identity Digital"
   },
-  "dates": {
-    "created": "2015-04-27T22:04:42.000Z",
-    "updated": "2026-08-12T03:10:40.000Z",
-    "expires": "2027-04-27T22:04:42.000Z",
-    "database": "2026-10-16T18:51:55.000Z"
-  },
+  "creationDate": "2015-04-27T22:04:42.000Z",
+  "updatedDate": "2026-08-12T03:10:40.000Z",
+  "expirationDate": "2027-04-27T22:04:42.000Z",
+  "snapshotDate": "2026-10-16T18:51:55.000Z",
   "statuses": [
     "serverDeleteProhibited",
     "serverTransferProhibited",

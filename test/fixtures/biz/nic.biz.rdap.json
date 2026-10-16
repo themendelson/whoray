@@ -1,8 +1,8 @@
 {
   "domain": "nic.biz",
-  "unicode": "nic.biz",
   "tld": "biz",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Registry Services, LLC",
     "ianaId": 9999,
@@ -13,12 +13,10 @@
   "registrant": {
     "country": "US"
   },
-  "dates": {
-    "created": "2001-09-30T19:39:45.000Z",
-    "updated": "2026-10-15T00:01:32.000Z",
-    "expires": "2026-11-06T23:59:00.000Z",
-    "database": "2026-10-16T18:51:46.000Z"
-  },
+  "creationDate": "2001-09-30T19:39:45.000Z",
+  "updatedDate": "2026-10-15T00:01:32.000Z",
+  "expirationDate": "2026-11-06T23:59:00.000Z",
+  "snapshotDate": "2026-10-16T18:51:46.000Z",
   "statuses": [
     "serverUpdateProhibited",
     "serverDeleteProhibited",

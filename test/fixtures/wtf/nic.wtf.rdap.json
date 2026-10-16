@@ -1,8 +1,8 @@
 {
   "domain": "nic.wtf",
-  "unicode": "nic.wtf",
   "tld": "wtf",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Registry Operator acts as Registrar (9999)",
     "ianaId": 9999,
@@ -14,12 +14,10 @@
     "id": "identity.digital",
     "name": "Identity Digital"
   },
-  "dates": {
-    "created": "2014-03-18T21:35:31.000Z",
-    "updated": "2026-08-12T05:20:31.000Z",
-    "expires": "2027-03-18T21:35:31.000Z",
-    "database": "2026-10-16T18:51:59.000Z"
-  },
+  "creationDate": "2014-03-18T21:35:31.000Z",
+  "updatedDate": "2026-08-12T05:20:31.000Z",
+  "expirationDate": "2027-03-18T21:35:31.000Z",
+  "snapshotDate": "2026-10-16T18:51:59.000Z",
   "statuses": [
     "serverDeleteProhibited",
     "serverTransferProhibited",

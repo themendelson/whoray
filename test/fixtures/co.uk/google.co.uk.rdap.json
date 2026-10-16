@@ -1,8 +1,8 @@
 {
   "domain": "google.co.uk",
-  "unicode": "google.co.uk",
   "tld": "co.uk",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Markmonitor Inc.",
     "url": "https://www.markmonitor.com",
@@ -14,12 +14,10 @@
     "name": "Nominet"
   },
   "handle": "D_15237971-UK",
-  "dates": {
-    "created": "1999-02-14T11:29:16.000Z",
-    "updated": "2026-01-13T10:26:48.000Z",
-    "expires": "2027-02-14T11:29:16.000Z",
-    "database": "2026-10-16T18:52:03.000Z"
-  },
+  "creationDate": "1999-02-14T11:29:16.000Z",
+  "updatedDate": "2026-01-13T10:26:48.000Z",
+  "expirationDate": "2027-02-14T11:29:16.000Z",
+  "snapshotDate": "2026-10-16T18:52:03.000Z",
   "statuses": [
     "serverDeleteProhibited",
     "serverTransferProhibited",

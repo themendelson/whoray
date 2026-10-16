@@ -1,18 +1,16 @@
 {
   "domain": "google.fi",
-  "unicode": "google.fi",
   "tld": "fi",
   "state": "registered",
+  "isRegistered": true,
   "registrant": {
     "name": "Google LLC",
     "country": "United States of America"
   },
-  "dates": {
-    "created": "2006-06-29T21:00:00.000Z",
-    "updated": "2026-06-02T10:04:19.000Z",
-    "expires": "2027-07-04T07:15:55.000Z",
-    "database": "2026-10-16T18:45:18.000Z"
-  },
+  "creationDate": "2006-06-29T21:00:00.000Z",
+  "updatedDate": "2026-06-02T10:04:19.000Z",
+  "expirationDate": "2027-07-04T07:15:55.000Z",
+  "snapshotDate": "2026-10-16T18:45:18.000Z",
   "statuses": [
     "ok",
     "serverTransferProhibited",

@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.cloud",
-  "unicode": "whoray-unregistered-7x9q.cloud",
   "tld": "cloud",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "tucows",
     "name": "Tucows Registry Services"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.fm",
-  "unicode": "whoray-unregistered-7x9q.fm",
   "tld": "fm",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "whois"

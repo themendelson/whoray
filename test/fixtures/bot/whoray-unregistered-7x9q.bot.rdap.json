@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.bot",
-  "unicode": "whoray-unregistered-7x9q.bot",
   "tld": "bot",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "nominet",
     "name": "Nominet"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

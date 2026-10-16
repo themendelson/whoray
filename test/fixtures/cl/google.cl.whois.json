@@ -1,8 +1,8 @@
 {
   "domain": "google.cl",
-  "unicode": "google.cl",
   "tld": "cl",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "url": "https://markmonitor.com/"
@@ -11,10 +11,8 @@
     "name": "Google LLC",
     "organization": "Google LLC"
   },
-  "dates": {
-    "created": "2002-10-22T20:48:23.000Z",
-    "expires": "2026-11-20T17:48:02.000Z"
-  },
+  "creationDate": "2002-10-22T20:48:23.000Z",
+  "expirationDate": "2026-11-20T17:48:02.000Z",
   "statuses": [],
   "nameservers": [
     "ns1.google.com",

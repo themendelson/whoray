@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.cyou",
-  "unicode": "whoray-unregistered-7x9q.cyou",
   "tld": "cyou",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "centralnic",
     "name": "CentralNic"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

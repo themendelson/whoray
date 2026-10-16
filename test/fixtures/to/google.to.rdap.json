@@ -1,8 +1,8 @@
 {
   "domain": "google.to",
-  "unicode": "google.to",
   "tld": "to",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
@@ -11,12 +11,10 @@
     "abusePhone": "+1.208389574"
   },
   "handle": "DO_f0618eeeed591e510d38cc373635cfdc-TONIC",
-  "dates": {
-    "created": "2018-11-30T07:38:29.000Z",
-    "updated": "2025-11-03T10:24:53.000Z",
-    "expires": "2026-11-30T07:38:29.000Z",
-    "database": "2026-10-16T18:52:42.000Z"
-  },
+  "creationDate": "2018-11-30T07:38:29.000Z",
+  "updatedDate": "2025-11-03T10:24:53.000Z",
+  "expirationDate": "2026-11-30T07:38:29.000Z",
+  "snapshotDate": "2026-10-16T18:52:42.000Z",
   "statuses": [
     "clientDeleteProhibited",
     "clientTransferProhibited",

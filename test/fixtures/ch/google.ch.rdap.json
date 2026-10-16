@@ -1,15 +1,13 @@
 {
   "domain": "google.ch",
-  "unicode": "google.ch",
   "tld": "ch",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor"
   },
   "handle": "google.ch",
-  "dates": {
-    "created": "1999-05-31T00:00:00.000Z"
-  },
+  "creationDate": "1999-05-31T00:00:00.000Z",
   "statuses": [
     "ok"
   ],

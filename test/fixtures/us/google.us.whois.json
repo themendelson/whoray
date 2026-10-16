@@ -1,8 +1,8 @@
 {
   "domain": "google.us",
-  "unicode": "google.us",
   "tld": "us",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor, Inc.",
     "ianaId": 292,
@@ -15,12 +15,10 @@
     "organization": "Google LLC"
   },
   "handle": "D775573-US",
-  "dates": {
-    "created": "2002-04-19T23:16:01.000Z",
-    "updated": "2026-03-22T11:00:47.000Z",
-    "expires": "2027-04-18T23:59:59.000Z",
-    "database": "2026-10-16T18:52:04.000Z"
-  },
+  "creationDate": "2002-04-19T23:16:01.000Z",
+  "updatedDate": "2026-03-22T11:00:47.000Z",
+  "expirationDate": "2027-04-18T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:52:04.000Z",
   "statuses": [
     "clientDeleteProhibited",
     "clientTransferProhibited",

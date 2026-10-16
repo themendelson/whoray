@@ -1,8 +1,8 @@
 {
   "domain": "google.my",
-  "unicode": "google.my",
   "tld": "my",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
@@ -19,12 +19,10 @@
     "name": "Tucows Registry Services"
   },
   "handle": "D6A017331-MYNIC",
-  "dates": {
-    "created": "2009-05-12T16:00:00.000Z",
-    "updated": "2026-04-16T10:30:12.000Z",
-    "expires": "2027-05-12T16:00:00.000Z",
-    "database": "2026-10-16T18:52:32.000Z"
-  },
+  "creationDate": "2009-05-12T16:00:00.000Z",
+  "updatedDate": "2026-04-16T10:30:12.000Z",
+  "expirationDate": "2027-05-12T16:00:00.000Z",
+  "snapshotDate": "2026-10-16T18:52:32.000Z",
   "statuses": [
     "clientTransferProhibited",
     "clientDeleteProhibited",

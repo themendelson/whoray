@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.at",
-  "unicode": "whoray-unregistered-7x9q.at",
   "tld": "at",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "whois"

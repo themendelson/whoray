@@ -1,8 +1,8 @@
 {
   "domain": "nic.space",
-  "unicode": "nic.space",
   "tld": "space",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Radix Technologies Inc. SEZC / CO Services Cayman Limited",
     "ianaId": 9999,
@@ -15,12 +15,10 @@
     "name": "CentralNic"
   },
   "handle": "D2361836-CNIC",
-  "dates": {
-    "created": "2014-04-10T09:14:07.000Z",
-    "updated": "2026-05-26T00:02:58.000Z",
-    "expires": "2027-04-10T23:59:59.000Z",
-    "database": "2026-10-16T18:51:52.000Z"
-  },
+  "creationDate": "2014-04-10T09:14:07.000Z",
+  "updatedDate": "2026-05-26T00:02:58.000Z",
+  "expirationDate": "2027-04-10T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:51:52.000Z",
   "statuses": [
     "serverTransferProhibited",
     "serverUpdateProhibited",

@@ -1,8 +1,8 @@
 {
   "domain": "nic.dev",
-  "unicode": "nic.dev",
   "tld": "dev",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Charleston Road Registry NonBillable",
     "ianaId": 9999,
@@ -14,12 +14,10 @@
     "name": "Charleston Road Registry Inc"
   },
   "handle": "4E9533-DEV",
-  "dates": {
-    "created": "2015-01-05T17:44:36.000Z",
-    "updated": "2026-02-19T17:44:36.000Z",
-    "expires": "2027-01-05T17:44:36.000Z",
-    "database": "2026-10-16T18:51:50.000Z"
-  },
+  "creationDate": "2015-01-05T17:44:36.000Z",
+  "updatedDate": "2026-02-19T17:44:36.000Z",
+  "expirationDate": "2027-01-05T17:44:36.000Z",
+  "snapshotDate": "2026-10-16T18:51:50.000Z",
   "statuses": [
     "serverDeleteProhibited",
     "serverTransferProhibited",

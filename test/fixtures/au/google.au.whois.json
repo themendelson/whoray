@@ -1,8 +1,8 @@
 {
   "domain": "google.au",
-  "unicode": "google.au",
   "tld": "au",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Corporate Services Inc",
     "url": "https://whois-webform.markmonitor.com/whois/",
@@ -13,10 +13,8 @@
     "name": "Domain Admin"
   },
   "handle": "2272ab7e23d646fe967bb348fbf12292-AU",
-  "dates": {
-    "updated": "2026-08-15T19:50:43.000Z",
-    "database": "2026-10-16T18:52:24.000Z"
-  },
+  "updatedDate": "2026-08-15T19:50:43.000Z",
+  "snapshotDate": "2026-10-16T18:52:24.000Z",
   "statuses": [
     "clientDeleteProhibited",
     "serverRenewProhibited",

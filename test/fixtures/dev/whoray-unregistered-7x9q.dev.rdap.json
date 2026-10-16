@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.dev",
-  "unicode": "whoray-unregistered-7x9q.dev",
   "tld": "dev",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "registry.google",
     "name": "Charleston Road Registry Inc"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

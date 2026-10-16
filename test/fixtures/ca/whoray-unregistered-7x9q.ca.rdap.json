@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.ca",
-  "unicode": "whoray-unregistered-7x9q.ca",
   "tld": "ca",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

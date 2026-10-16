@@ -1,8 +1,8 @@
 {
   "domain": "teachi.xyz",
-  "unicode": "teachi.xyz",
   "tld": "xyz",
   "state": "redemption",
+  "isRegistered": true,
   "registrar": {
     "name": "GoDaddy.com, LLC",
     "ianaId": 146,
@@ -15,12 +15,11 @@
     "name": "CentralNic"
   },
   "handle": "D578027370-CNIC",
-  "dates": {
-    "created": "2025-08-07T01:27:18.000Z",
-    "updated": "2026-09-18T08:08:05.000Z",
-    "expires": "2026-08-07T23:59:59.000Z",
-    "database": "2026-10-16T20:14:59.000Z"
-  },
+  "creationDate": "2025-08-07T01:27:18.000Z",
+  "updatedDate": "2026-09-18T08:08:05.000Z",
+  "expirationDate": "2026-08-07T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T20:14:59.000Z",
+  "dropDate": "2026-10-23T08:08:05.000Z",
   "statuses": [
     "serverHold",
     "serverTransferProhibited",
@@ -30,10 +29,5 @@
   ],
   "nameservers": [],
   "dnssec": false,
-  "drop": {
-    "at": "2026-10-23T08:08:05.000Z",
-    "confidence": "high",
-    "basis": "tld schedule"
-  },
   "source": "whois"
 }

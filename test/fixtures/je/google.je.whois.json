@@ -1,15 +1,13 @@
 {
   "domain": "google.je",
-  "unicode": "google.je",
   "tld": "je",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "url": "http://www.markmonitor.com"
   },
-  "dates": {
-    "created": "2002-10-31T00:00:00.000Z"
-  },
+  "creationDate": "2002-10-31T00:00:00.000Z",
   "statuses": [
     "ok",
     "Transfer Prohibited by Registry",

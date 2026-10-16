@@ -1,8 +1,8 @@
 {
   "domain": "nic.design",
-  "unicode": "nic.design",
   "tld": "design",
   "state": "expired",
+  "isRegistered": true,
   "registrar": {
     "name": "MMX",
     "ianaId": 9999,
@@ -18,12 +18,11 @@
     "id": "godaddy-registry",
     "name": "GoDaddy Registry"
   },
-  "dates": {
-    "created": "2021-09-29T06:08:47.000Z",
-    "updated": "2026-10-15T22:22:08.000Z",
-    "expires": "2026-09-29T06:08:47.000Z",
-    "database": "2026-10-16T18:51:54.000Z"
-  },
+  "creationDate": "2021-09-29T06:08:47.000Z",
+  "updatedDate": "2026-10-15T22:22:08.000Z",
+  "expirationDate": "2026-09-29T06:08:47.000Z",
+  "snapshotDate": "2026-10-16T18:51:54.000Z",
+  "dropDate": "2026-12-18T06:08:47.000Z",
   "statuses": [
     "serverRenewProhibited",
     "serverDeleteProhibited",
@@ -32,10 +31,5 @@
     "autoRenewPeriod"
   ],
   "nameservers": [],
-  "drop": {
-    "at": "2026-12-18T06:08:47.000Z",
-    "confidence": "low",
-    "basis": "expiry + periods"
-  },
   "source": "whois"
 }

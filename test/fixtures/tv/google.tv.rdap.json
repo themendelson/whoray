@@ -1,8 +1,8 @@
 {
   "domain": "google.tv",
-  "unicode": "google.tv",
   "tld": "tv",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor, Inc.",
     "ianaId": 292,
@@ -13,12 +13,10 @@
   "registrant": {
     "country": "US"
   },
-  "dates": {
-    "created": "2002-08-02T16:43:36.000Z",
-    "updated": "2026-07-06T10:13:54.000Z",
-    "expires": "2027-08-02T16:43:36.000Z",
-    "database": "2026-10-16T18:52:02.000Z"
-  },
+  "creationDate": "2002-08-02T16:43:36.000Z",
+  "updatedDate": "2026-07-06T10:13:54.000Z",
+  "expirationDate": "2027-08-02T16:43:36.000Z",
+  "snapshotDate": "2026-10-16T18:52:02.000Z",
   "statuses": [
     "clientUpdateProhibited",
     "clientTransferProhibited",

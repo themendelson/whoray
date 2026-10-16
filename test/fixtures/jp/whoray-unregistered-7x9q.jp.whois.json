@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.jp",
-  "unicode": "whoray-unregistered-7x9q.jp",
   "tld": "jp",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "whois"

@@ -1,8 +1,8 @@
 {
   "domain": "nic.top",
-  "unicode": "nic.top",
   "tld": "top",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Bangning Digital Technology Co.,Ltd",
     "ianaId": 4158,
@@ -18,12 +18,10 @@
     "name": "ZDNS"
   },
   "handle": "D20140521G10001G_09355319-top",
-  "dates": {
-    "created": "2014-05-21T11:42:02.000Z",
-    "updated": "2025-05-21T03:04:59.000Z",
-    "expires": "2029-05-21T11:42:02.000Z",
-    "database": "2026-10-16T18:50:30.000Z"
-  },
+  "creationDate": "2014-05-21T11:42:02.000Z",
+  "updatedDate": "2025-05-21T03:04:59.000Z",
+  "expirationDate": "2029-05-21T11:42:02.000Z",
+  "snapshotDate": "2026-10-16T18:50:30.000Z",
   "statuses": [
     "ok"
   ],

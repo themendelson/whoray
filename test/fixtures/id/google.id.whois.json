@@ -1,8 +1,8 @@
 {
   "domain": "google.id",
-  "unicode": "google.id",
   "tld": "id",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "PT Digital Registra Indonesia",
     "ianaId": 1,
@@ -10,12 +10,10 @@
     "abuseEmail": "info@digitalregistra.co.id"
   },
   "handle": "282661_DOMAIN_ID-ID",
-  "dates": {
-    "created": "2014-04-17T10:39:27.000Z",
-    "updated": "2026-03-27T16:00:02.000Z",
-    "expires": "2027-04-17T23:59:59.000Z",
-    "database": "2026-10-16T18:52:35.000Z"
-  },
+  "creationDate": "2014-04-17T10:39:27.000Z",
+  "updatedDate": "2026-03-27T16:00:02.000Z",
+  "expirationDate": "2027-04-17T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:52:35.000Z",
   "statuses": [],
   "nameservers": [],
   "source": "whois"

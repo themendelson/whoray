@@ -1,15 +1,13 @@
 {
   "domain": "google.nl",
-  "unicode": "google.nl",
   "tld": "nl",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc."
   },
-  "dates": {
-    "created": "1999-05-27T00:00:00.000Z",
-    "updated": "2025-04-18T00:00:00.000Z"
-  },
+  "creationDate": "1999-05-27T00:00:00.000Z",
+  "updatedDate": "2025-04-18T00:00:00.000Z",
   "statuses": [
     "ok"
   ],

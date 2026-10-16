@@ -1,8 +1,8 @@
 {
   "domain": "nic.xyz",
-  "unicode": "nic.xyz",
   "tld": "xyz",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "XYZ.com, LLC",
     "ianaId": 9999,
@@ -15,12 +15,10 @@
     "name": "CentralNic"
   },
   "handle": "D1465615-CNIC",
-  "dates": {
-    "created": "2013-09-11T11:58:06.000Z",
-    "updated": "2026-09-05T00:05:06.000Z",
-    "expires": "2027-09-11T23:59:59.000Z",
-    "database": "2026-10-16T18:51:47.000Z"
-  },
+  "creationDate": "2013-09-11T11:58:06.000Z",
+  "updatedDate": "2026-09-05T00:05:06.000Z",
+  "expirationDate": "2027-09-11T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:51:47.000Z",
   "statuses": [
     "serverRenewProhibited",
     "serverUpdateProhibited",

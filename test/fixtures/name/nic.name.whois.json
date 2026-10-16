@@ -1,8 +1,8 @@
 {
   "domain": "nic.name",
-  "unicode": "nic.name",
   "tld": "name",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "CSC Corporate Domains, Inc.",
     "ianaId": 299
@@ -12,9 +12,7 @@
     "name": "Verisign Global Registry Services"
   },
   "handle": "134557330_DOMAIN_NAME-VRSN",
-  "dates": {
-    "database": "2026-10-16T18:51:43.000Z"
-  },
+  "snapshotDate": "2026-10-16T18:51:43.000Z",
   "statuses": [
     "serverTransferProhibited",
     "serverUpdateProhibited",

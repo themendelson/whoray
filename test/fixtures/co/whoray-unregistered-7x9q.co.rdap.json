@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.co",
-  "unicode": "whoray-unregistered-7x9q.co",
   "tld": "co",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "MinTIC",
     "name": "MinTIC"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

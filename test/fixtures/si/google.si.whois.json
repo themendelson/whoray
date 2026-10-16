@@ -1,15 +1,13 @@
 {
   "domain": "google.si",
-  "unicode": "google.si",
   "tld": "si",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Markmonitor Inc."
   },
-  "dates": {
-    "created": "2005-04-04T00:00:00.000Z",
-    "expires": "2027-07-19T00:00:00.000Z"
-  },
+  "creationDate": "2005-04-04T00:00:00.000Z",
+  "expirationDate": "2027-07-19T00:00:00.000Z",
   "statuses": [
     "clientDeleteProhibited",
     "clientUpdateProhibited"

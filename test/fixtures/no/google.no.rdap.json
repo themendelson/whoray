@@ -1,16 +1,14 @@
 {
   "domain": "google.no",
-  "unicode": "google.no",
   "tld": "no",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc."
   },
   "handle": "GOO371D-NORID",
-  "dates": {
-    "created": "2001-02-26T20:24:40.000Z",
-    "updated": "2026-01-27T10:55:11.000Z"
-  },
+  "creationDate": "2001-02-26T20:24:40.000Z",
+  "updatedDate": "2026-01-27T10:55:11.000Z",
   "statuses": [],
   "nameservers": [
     "ns1.google.com",

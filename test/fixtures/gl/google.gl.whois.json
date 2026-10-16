@@ -1,8 +1,8 @@
 {
   "domain": "google.gl",
-  "unicode": "google.gl",
   "tld": "gl",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
@@ -14,12 +14,10 @@
     "name": "CentralNic"
   },
   "handle": "D327730546-CNIC",
-  "dates": {
-    "created": "2003-03-11T03:00:00.000Z",
-    "updated": "2026-01-01T16:02:36.000Z",
-    "expires": "2027-01-01T23:59:59.000Z",
-    "database": "2026-10-16T18:52:47.000Z"
-  },
+  "creationDate": "2003-03-11T03:00:00.000Z",
+  "updatedDate": "2026-01-01T16:02:36.000Z",
+  "expirationDate": "2027-01-01T23:59:59.000Z",
+  "snapshotDate": "2026-10-16T18:52:47.000Z",
   "statuses": [
     "clientTransferProhibited",
     "clientUpdateProhibited",

@@ -1,8 +1,8 @@
 {
   "domain": "nic.life",
-  "unicode": "nic.life",
   "tld": "life",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Registry Operator acts as Registrar (9999)",
     "ianaId": 9999,
@@ -14,12 +14,10 @@
     "id": "identity.digital",
     "name": "Identity Digital"
   },
-  "dates": {
-    "created": "2014-01-31T18:13:29.000Z",
-    "updated": "2026-08-12T03:12:27.000Z",
-    "expires": "2027-01-31T18:13:29.000Z",
-    "database": "2026-10-16T18:51:51.000Z"
-  },
+  "creationDate": "2014-01-31T18:13:29.000Z",
+  "updatedDate": "2026-08-12T03:12:27.000Z",
+  "expirationDate": "2027-01-31T18:13:29.000Z",
+  "snapshotDate": "2026-10-16T18:51:51.000Z",
   "statuses": [
     "serverDeleteProhibited",
     "serverTransferProhibited",

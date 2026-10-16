@@ -1,9 +1,8 @@
 {
   "domain": "google.br",
-  "unicode": "google.br",
   "tld": "br",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "whois"

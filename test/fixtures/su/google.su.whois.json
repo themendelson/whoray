@@ -1,15 +1,13 @@
 {
   "domain": "google.su",
-  "unicode": "google.su",
   "tld": "su",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "RUCENTER-SU"
   },
-  "dates": {
-    "created": "2005-10-15T20:00:00.000Z",
-    "expires": "2027-10-15T21:00:00.000Z"
-  },
+  "creationDate": "2005-10-15T20:00:00.000Z",
+  "expirationDate": "2027-10-15T21:00:00.000Z",
   "statuses": [
     "REGISTERED",
     "DELEGATED",

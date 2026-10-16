@@ -1,8 +1,8 @@
 {
   "domain": "nic.cloud",
-  "unicode": "nic.cloud",
   "tld": "cloud",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Aruba PEC SpA",
     "ianaId": 9999,
@@ -15,12 +15,10 @@
     "name": "Tucows Registry Services"
   },
   "handle": "DO_24db87a3dce495c84f0ac848f922206d-ARUBA",
-  "dates": {
-    "created": "2023-09-13T15:50:46.000Z",
-    "updated": "2024-03-01T00:30:16.000Z",
-    "expires": "2033-09-13T15:50:46.000Z",
-    "database": "2026-10-16T18:51:53.000Z"
-  },
+  "creationDate": "2023-09-13T15:50:46.000Z",
+  "updatedDate": "2024-03-01T00:30:16.000Z",
+  "expirationDate": "2033-09-13T15:50:46.000Z",
+  "snapshotDate": "2026-10-16T18:51:53.000Z",
   "statuses": [
     "serverDeleteProhibited",
     "serverTransferProhibited",

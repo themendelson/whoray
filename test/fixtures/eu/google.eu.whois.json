@@ -1,13 +1,12 @@
 {
   "domain": "google.eu",
-  "unicode": "google.eu",
   "tld": "eu",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Markmonitor Inc.",
     "url": "https://www.markmonitor.com/"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [
     "ns4.google.com",

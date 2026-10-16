@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.art",
-  "unicode": "whoray-unregistered-7x9q.art",
   "tld": "art",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "centralnic",
     "name": "CentralNic"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "whois"

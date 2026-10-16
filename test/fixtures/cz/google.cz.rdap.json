@@ -1,17 +1,15 @@
 {
   "domain": "google.cz",
-  "unicode": "google.cz",
   "tld": "cz",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc."
   },
   "handle": "google.cz",
-  "dates": {
-    "created": "2000-07-21T13:21:00.000Z",
-    "updated": "2018-04-23T18:24:01.000Z",
-    "expires": "2027-07-21T22:00:00.000Z"
-  },
+  "creationDate": "2000-07-21T13:21:00.000Z",
+  "updatedDate": "2018-04-23T18:24:01.000Z",
+  "expirationDate": "2027-07-21T22:00:00.000Z",
   "statuses": [
     "ok"
   ],

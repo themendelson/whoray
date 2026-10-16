@@ -1,8 +1,8 @@
 {
   "domain": "nic.info",
-  "unicode": "nic.info",
   "tld": "info",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Registry Operator acts as Registrar (9999)",
     "ianaId": 9999,
@@ -14,12 +14,10 @@
     "id": "identity.digital",
     "name": "Identity Digital"
   },
-  "dates": {
-    "created": "2001-07-27T19:05:24.000Z",
-    "updated": "2026-09-10T19:05:58.000Z",
-    "expires": "2027-07-27T19:05:24.000Z",
-    "database": "2026-10-16T18:51:46.000Z"
-  },
+  "creationDate": "2001-07-27T19:05:24.000Z",
+  "updatedDate": "2026-09-10T19:05:58.000Z",
+  "expirationDate": "2027-07-27T19:05:24.000Z",
+  "snapshotDate": "2026-10-16T18:51:46.000Z",
   "statuses": [
     "serverDeleteProhibited",
     "serverRenewProhibited",

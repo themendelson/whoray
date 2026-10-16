@@ -1,8 +1,8 @@
 {
   "domain": "nic.blog",
-  "unicode": "nic.blog",
   "tld": "blog",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Knock Knock WHOIS There, LLC",
     "ianaId": 9999,
@@ -11,12 +11,10 @@
     "abusePhone": "+1.8772733049"
   },
   "handle": "303-BLOG",
-  "dates": {
-    "created": "2025-04-08T18:27:53.000Z",
-    "updated": "2026-05-06T14:56:02.000Z",
-    "expires": "3000-01-01T00:00:00.000Z",
-    "database": "2026-10-16T18:46:57.000Z"
-  },
+  "creationDate": "2025-04-08T18:27:53.000Z",
+  "updatedDate": "2026-05-06T14:56:02.000Z",
+  "expirationDate": "3000-01-01T00:00:00.000Z",
+  "snapshotDate": "2026-10-16T18:46:57.000Z",
   "statuses": [
     "serverDeleteProhibited",
     "serverRenewProhibited",

@@ -1,8 +1,8 @@
 {
   "domain": "google.io",
-  "unicode": "google.io",
   "tld": "io",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
@@ -18,12 +18,10 @@
     "id": "icb.co.uk",
     "name": "Internet Computer Bureau"
   },
-  "dates": {
-    "created": "2002-10-01T01:00:00.000Z",
-    "updated": "2026-09-03T10:48:03.000Z",
-    "expires": "2027-09-30T01:00:00.000Z",
-    "database": "2026-10-16T18:52:01.000Z"
-  },
+  "creationDate": "2002-10-01T01:00:00.000Z",
+  "updatedDate": "2026-09-03T10:48:03.000Z",
+  "expirationDate": "2027-09-30T01:00:00.000Z",
+  "snapshotDate": "2026-10-16T18:52:01.000Z",
   "statuses": [
     "clientDeleteProhibited",
     "serverDeleteProhibited",

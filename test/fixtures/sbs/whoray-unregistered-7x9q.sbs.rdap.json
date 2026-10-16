@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.sbs",
-  "unicode": "whoray-unregistered-7x9q.sbs",
   "tld": "sbs",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "centralnic",
     "name": "CentralNic"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

@@ -1,15 +1,13 @@
 {
   "domain": "google.hk",
-  "unicode": "google.hk",
   "tld": "hk",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MARKMONITOR INC."
   },
-  "dates": {
-    "created": "2004-04-06T00:00:00.000Z",
-    "expires": "2027-03-31T00:00:00.000Z"
-  },
+  "creationDate": "2004-04-06T00:00:00.000Z",
+  "expirationDate": "2027-03-31T00:00:00.000Z",
   "statuses": [
     "ok"
   ],

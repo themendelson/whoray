@@ -1,8 +1,8 @@
 {
   "domain": "google.cc",
-  "unicode": "google.cc",
   "tld": "cc",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
@@ -15,12 +15,10 @@
     "name": "Verisign Global Registry Services"
   },
   "handle": "86420657_DOMAIN_CC-VRSN",
-  "dates": {
-    "created": "1999-06-07T04:00:00.000Z",
-    "updated": "2026-05-06T10:52:12.000Z",
-    "expires": "2027-06-07T04:00:00.000Z",
-    "database": "2026-10-16T18:51:43.000Z"
-  },
+  "creationDate": "1999-06-07T04:00:00.000Z",
+  "updatedDate": "2026-05-06T10:52:12.000Z",
+  "expirationDate": "2027-06-07T04:00:00.000Z",
+  "snapshotDate": "2026-10-16T18:51:43.000Z",
   "statuses": [
     "clientDeleteProhibited",
     "clientTransferProhibited",

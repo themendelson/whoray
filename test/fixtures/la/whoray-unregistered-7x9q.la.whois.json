@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.la",
-  "unicode": "whoray-unregistered-7x9q.la",
   "tld": "la",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "whois"

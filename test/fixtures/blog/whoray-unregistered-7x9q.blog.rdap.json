@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.blog",
-  "unicode": "whoray-unregistered-7x9q.blog",
   "tld": "blog",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

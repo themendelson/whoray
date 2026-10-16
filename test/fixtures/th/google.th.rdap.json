@@ -1,8 +1,8 @@
 {
   "domain": "google.th",
-  "unicode": "google.th",
   "tld": "th",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "T.H.NIC Co., Ltd.",
     "ianaId": 10001,
@@ -10,12 +10,10 @@
     "abusePhone": "+66.21054007"
   },
   "handle": "DOMAIN_628897-TH",
-  "dates": {
-    "created": "2014-07-17T16:37:38.000Z",
-    "updated": "2026-06-23T08:52:43.000Z",
-    "expires": "2027-07-16T16:37:38.000Z",
-    "database": "2026-10-16T18:52:33.000Z"
-  },
+  "creationDate": "2014-07-17T16:37:38.000Z",
+  "updatedDate": "2026-06-23T08:52:43.000Z",
+  "expirationDate": "2027-07-16T16:37:38.000Z",
+  "snapshotDate": "2026-10-16T18:52:33.000Z",
   "statuses": [
     "ok"
   ],

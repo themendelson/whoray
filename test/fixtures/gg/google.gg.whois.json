@@ -1,15 +1,13 @@
 {
   "domain": "google.gg",
-  "unicode": "google.gg",
   "tld": "gg",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "url": "http://www.markmonitor.com"
   },
-  "dates": {
-    "created": "2003-04-30T00:00:00.000Z"
-  },
+  "creationDate": "2003-04-30T00:00:00.000Z",
   "statuses": [
     "ok",
     "Delete Prohibited by Registrar",

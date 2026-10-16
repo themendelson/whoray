@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.ng",
-  "unicode": "whoray-unregistered-7x9q.ng",
   "tld": "ng",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

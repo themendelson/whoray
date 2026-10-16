@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.cz",
-  "unicode": "whoray-unregistered-7x9q.cz",
   "tld": "cz",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

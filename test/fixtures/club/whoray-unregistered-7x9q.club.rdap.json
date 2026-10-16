@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.club",
-  "unicode": "whoray-unregistered-7x9q.club",
   "tld": "club",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "godaddy-registry",
     "name": "GoDaddy Registry"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

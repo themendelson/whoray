@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.world",
-  "unicode": "whoray-unregistered-7x9q.world",
   "tld": "world",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "identity.digital",
     "name": "Identity Digital"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

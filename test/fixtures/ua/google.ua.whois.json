@@ -1,16 +1,14 @@
 {
   "domain": "google.ua",
-  "unicode": "google.ua",
   "tld": "ua",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "ua.markmonitor"
   },
-  "dates": {
-    "created": "2011-07-21T15:03:50.000Z",
-    "updated": "2026-06-19T10:07:10.000Z",
-    "expires": "2027-07-21T15:03:50.000Z"
-  },
+  "creationDate": "2011-07-21T15:03:50.000Z",
+  "updatedDate": "2026-06-19T10:07:10.000Z",
+  "expirationDate": "2027-07-21T15:03:50.000Z",
   "statuses": [
     "clientDeleteProhibited",
     "clientTransferProhibited",

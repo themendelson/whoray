@@ -1,8 +1,8 @@
 {
   "domain": "nic.com",
-  "unicode": "nic.com",
   "tld": "com",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "Network Solutions, LLC",
     "ianaId": 2,
@@ -15,12 +15,10 @@
     "name": "Verisign Global Registry Services"
   },
   "handle": "91988_DOMAIN_COM-VRSN",
-  "dates": {
-    "created": "1994-02-07T05:00:00.000Z",
-    "updated": "2024-02-08T05:05:53.000Z",
-    "expires": "2034-02-08T05:00:00.000Z",
-    "database": "2026-10-16T18:51:40.000Z"
-  },
+  "creationDate": "1994-02-07T05:00:00.000Z",
+  "updatedDate": "2024-02-08T05:05:53.000Z",
+  "expirationDate": "2034-02-08T05:00:00.000Z",
+  "snapshotDate": "2026-10-16T18:51:40.000Z",
   "statuses": [
     "clientTransferProhibited"
   ],

@@ -1,8 +1,8 @@
 {
   "domain": "google.me",
-  "unicode": "google.me",
   "tld": "me",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
@@ -18,12 +18,10 @@
     "id": "identity.digital",
     "name": "Identity Digital"
   },
-  "dates": {
-    "created": "2008-06-13T17:17:40.000Z",
-    "updated": "2026-08-12T10:02:24.000Z",
-    "expires": "2027-06-13T17:17:40.000Z",
-    "database": "2026-10-16T18:52:02.000Z"
-  },
+  "creationDate": "2008-06-13T17:17:40.000Z",
+  "updatedDate": "2026-08-12T10:02:24.000Z",
+  "expirationDate": "2027-06-13T17:17:40.000Z",
+  "snapshotDate": "2026-10-16T18:52:02.000Z",
   "statuses": [
     "clientDeleteProhibited",
     "serverDeleteProhibited",

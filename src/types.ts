@@ -36,28 +36,26 @@ export interface Registrant {
   country?: string;
 }
 
-export interface Drop {
-  at: Date;
-  deletion?: Date;
-  confidence: "high" | "low";
-  basis: string;
-}
-
 export interface DomainRecord {
   domain: string;
-  unicode: string;
+  unicode?: string;
   tld: string;
   state: DomainState;
+  isRegistered?: boolean;
+  premium?: true;
   registrar?: Registrar;
   registrant?: Registrant;
   registry?: Registry;
   handle?: string;
-  dates: { created?: Date; updated?: Date; expires?: Date; database?: Date };
-  premium?: true;
+  creationDate?: Date;
+  updatedDate?: Date;
+  expirationDate?: Date;
+  deletionDate?: Date;
+  dropDate?: Date;
+  snapshotDate?: Date;
   statuses: string[];
   nameservers: string[];
   dnssec?: boolean;
-  drop?: Drop;
 }
 
 export interface Hop {

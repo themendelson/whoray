@@ -1,8 +1,8 @@
 {
   "domain": "google.th",
-  "unicode": "google.th",
   "tld": "th",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "THNIC"
   },
@@ -10,11 +10,9 @@
     "organization": "Google LLC (กูเกิล แอลแอลซี)",
     "country": "US"
   },
-  "dates": {
-    "created": "2014-07-17T00:00:00.000Z",
-    "updated": "2026-06-23T00:00:00.000Z",
-    "expires": "2027-07-16T00:00:00.000Z"
-  },
+  "creationDate": "2014-07-17T00:00:00.000Z",
+  "updatedDate": "2026-06-23T00:00:00.000Z",
+  "expirationDate": "2027-07-16T00:00:00.000Z",
   "statuses": [
     "ok"
   ],

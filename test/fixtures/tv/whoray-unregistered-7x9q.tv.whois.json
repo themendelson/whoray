@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.tv",
-  "unicode": "whoray-unregistered-7x9q.tv",
   "tld": "tv",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "whois"

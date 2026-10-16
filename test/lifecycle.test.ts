@@ -25,7 +25,7 @@ test("a pendingDelete .com drops five days after its last update", () => {
     "example.com",
   );
   expect(record.state).toBe("pendingDelete");
-  expect(record.drop).toEqual({ at: new Date("2026-10-19T18:00:00Z"), confidence: "high", basis: "registry schedule" });
+  expect(record.dropDate).toEqual(new Date("2026-10-19T18:00:00Z"));
 });
 
 test("a domain in redemption drops after redemption plus pending delete", () => {
@@ -37,19 +37,19 @@ test("a domain in redemption drops after redemption plus pending delete", () => 
     "example.com",
   );
   expect(record.state).toBe("redemption");
-  expect(record.drop?.at).toEqual(new Date("2026-11-10T00:00:00Z"));
+  expect(record.dropDate).toEqual(new Date("2026-11-10T00:00:00Z"));
 });
 
 test("an expired domain with no deletion status gets a low-confidence estimate from its expiry", () => {
   const record = parseRdap(rdap("example.com", ["active"], { expiration: "2026-10-01T00:00:00Z" }), "example.com");
   expect(record.state).toBe("expired");
-  expect(record.drop).toEqual({ at: new Date("2026-12-20T00:00:00Z"), confidence: "low", basis: "expiry + periods" });
+  expect(record.dropDate).toEqual(new Date("2026-12-20T00:00:00Z"));
 });
 
 test("a registered domain has no drop estimate", () => {
   const record = parseRdap(rdap("example.com", ["active"], { expiration: "2030-01-01T00:00:00Z" }), "example.com");
   expect(record).toMatchObject({ state: "registered", statuses: ["ok"] });
-  expect(record.drop).toBeUndefined();
+  expect(record.dropDate).toBeUndefined();
 });
 
 test("a date the registry publishes for release wins over formulas", () => {
@@ -57,7 +57,7 @@ test("a date the registry publishes for release wins over formulas", () => {
     "domain: EXAMPLE.RU\nstate: REGISTERED\npaid-till: 2026-10-01T21:00:00Z\nfree-date: 2026-11-02\nnserver: ns1.example.net.";
   const record = parseWhois(text, "example.ru");
   expect(record.state).toBe("expired");
-  expect(record.drop).toEqual({ at: new Date("2026-11-02T00:00:00Z"), confidence: "high", basis: "registry date" });
+  expect(record.dropDate).toEqual(new Date("2026-11-02T00:00:00Z"));
 });
 
 test("TLD schedules override the registry's", () => {
@@ -68,7 +68,7 @@ test("TLD schedules override the registry's", () => {
     }),
     "example.ai",
   );
-  expect(record.drop).toEqual({ at: new Date("2026-11-08T17:00:00Z"), confidence: "high", basis: "tld schedule" });
+  expect(record.dropDate).toEqual(new Date("2026-11-08T17:00:00Z"));
 });
 
 test("records name the registry operator for the TLD, including second-level suffixes", () => {

@@ -1,17 +1,15 @@
 {
   "domain": "google.pe",
-  "unicode": "google.pe",
   "tld": "pe",
   "state": "registered",
+  "isRegistered": true,
   "registrar": {
     "name": "MarkMonitor Inc."
   },
   "registrant": {
     "name": "Google LLC"
   },
-  "dates": {
-    "database": "2026-10-16T18:47:33.000Z"
-  },
+  "snapshotDate": "2026-10-16T18:47:33.000Z",
   "statuses": [
     "clientTransferProhibited",
     "clientDeleteProhibited",

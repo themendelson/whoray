@@ -1,9 +1,8 @@
 {
   "domain": "whoray-unregistered-7x9q.kr",
-  "unicode": "whoray-unregistered-7x9q.kr",
   "tld": "kr",
   "state": "available",
-  "dates": {},
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

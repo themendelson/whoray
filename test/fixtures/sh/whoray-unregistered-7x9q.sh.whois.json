@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.sh",
-  "unicode": "whoray-unregistered-7x9q.sh",
   "tld": "sh",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "icb.co.uk",
     "name": "Internet Computer Bureau"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "whois"

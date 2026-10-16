@@ -1,13 +1,12 @@
 {
   "domain": "whoray-unregistered-7x9q.cc",
-  "unicode": "whoray-unregistered-7x9q.cc",
   "tld": "cc",
   "state": "available",
+  "isRegistered": false,
   "registry": {
     "id": "verisign",
     "name": "Verisign Global Registry Services"
   },
-  "dates": {},
   "statuses": [],
   "nameservers": [],
   "source": "whois"

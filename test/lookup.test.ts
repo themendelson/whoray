@@ -56,7 +56,8 @@ test("rdap: never goes straight to port 43 and normalizes the record", async () 
   expect(result).toMatchObject({
     domain: "example.com",
     registrar: { name: "Example Registrar, Inc." },
-    dates: { created: new Date("2001-02-03T04:05:06Z"), expires: new Date("2030-02-03T04:05:06Z") },
+    creationDate: new Date("2001-02-03T04:05:06Z"),
+    expirationDate: new Date("2030-02-03T04:05:06Z"),
     nameservers: ["ns1.example.net"],
   });
 });
@@ -70,7 +71,7 @@ test("follow: registrar queries the referral server and keeps the registry's dat
   const result = await lookup("example.com", { connect: server.connect, servers, rdap: "never", follow: "registrar" });
   expect(server.queries.map((query) => query.host)).toEqual(["whois.registry.test", "whois.registrar.test"]);
   expect(result.registrar).toEqual({ name: "Example Registrar, Inc.", abuseEmail: "abuse@registrar.test" });
-  expect(result.dates.created).toEqual(new Date("2001-02-03T04:05:06Z"));
+  expect(result.creationDate).toEqual(new Date("2001-02-03T04:05:06Z"));
 });
 
 test("an unknown TLD is resolved through IANA once and cached", async () => {
