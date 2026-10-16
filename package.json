@@ -25,7 +25,7 @@
     "dist"
   ],
   "bin": {
-    "whoray": "./dist/cli.mjs"
+    "whoray": "./dist/cli.js"
   },
   "exports": {
     ".": {
@@ -37,17 +37,14 @@
         "types": "./dist/browser.d.ts",
         "default": "./dist/browser.js"
       },
-      "import": {
-        "types": "./dist/node.d.mts",
-        "default": "./dist/node.mjs"
-      },
-      "require": {
-        "types": "./dist/node.d.cts",
-        "default": "./dist/node.cjs"
+      "default": {
+        "types": "./dist/node.d.ts",
+        "default": "./dist/node.js"
       }
     },
     "./package.json": "./package.json"
   },
+  "types": "./dist/node.d.ts",
   "imports": {
     "#*": "./src/*"
   },
@@ -59,7 +56,6 @@
     "test": "vitest run",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "fixture": "node --experimental-strip-types --no-warnings scripts/fixture.ts",
-    "suffixes": "node --experimental-strip-types --no-warnings scripts/suffixes.ts",
     "prepublishOnly": "pnpm check && pnpm build"
   },
   "devDependencies": {

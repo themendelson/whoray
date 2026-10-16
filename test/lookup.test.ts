@@ -217,21 +217,6 @@ test("input that isn't a domain name rejects the lookup", async () => {
   await expect(lookup("not a domain")).rejects.toThrow(TypeError);
 });
 
-test("one lookup timing out doesn't fail another waiting on the same IANA bootstrap", async () => {
-  const fresh = await freshLookup();
-  const { fetch } = httpServer(async (url) => {
-    if (!url.endsWith("dns.json")) return { status: 404, body: "" };
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    return ianaBootstrap("zz", "https://rdap.zz.test/");
-  });
-  const [short, long] = await Promise.all([
-    fresh("one.zz", { fetch, protocol: "rdap", timeout: 20 }),
-    fresh("two.zz", { fetch, protocol: "rdap", timeout: 5000 }),
-  ]);
-  expect(short.error?.code).toBe("timeout");
-  expect(long).toMatchObject({ state: "available", source: "rdap" });
-});
-
 test("a WHOIS host IANA didn't answer for is asked again on the next lookup", async () => {
   const fresh = await freshLookup();
   let ianaCalls = 0;

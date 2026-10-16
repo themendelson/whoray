@@ -3,6 +3,7 @@ import { servers } from "#data/servers.ts";
 import type { Name } from "#domain.ts";
 import { bySuffix, lastLabel, normalize } from "#domain.ts";
 import { ianaRdapBase, ianaWhoisHost } from "#iana.ts";
+import { isKnownSuffix } from "#lifecycle.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { toRecord } from "#parse/record.ts";
 import { fetchRdap, readRdapReply } from "#rdap.ts";
@@ -71,7 +72,7 @@ export function createLookup(defaultConnect: Connect): Lookup {
   return async (domain, options = {}) => {
     options.signal?.throwIfAborted();
     const overrides = options.servers ?? {};
-    const name = normalize(domain, (suffix) => Object.hasOwn(overrides, suffix));
+    const name = normalize(domain, (suffix) => isKnownSuffix(suffix) || Object.hasOwn(overrides, suffix));
     const timeout = options.timeout ?? DEFAULT_TIMEOUT;
     const deadline = AbortSignal.timeout(timeout);
     const context: Context = {
