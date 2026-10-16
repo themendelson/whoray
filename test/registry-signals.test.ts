@@ -132,3 +132,17 @@ test("dates with a 12-hour clock and month-first dates that can't be day-first a
   expect(expiry("12/31/2027")).toEqual(new Date("2027-12-31T00:00:00Z"));
   expect(expiry("05/01/2027")).toEqual(new Date("2027-01-05T00:00:00Z"));
 });
+
+test("registrant countries are ISO codes, mapped from names where needed", () => {
+  const countryOf = (value: string): string | undefined =>
+    parseWhois(`Domain Name: a.com\nCreation Date: 2020-01-01\nRegistrant Country: ${value}`, "a.com").registrant
+      ?.country;
+  expect(["us", "United States", "United States of America", "UK", "Germany"].map(countryOf)).toEqual([
+    "US",
+    "US",
+    "US",
+    "GB",
+    "DE",
+  ]);
+  expect(countryOf("Atlantis")).toBeUndefined();
+});
