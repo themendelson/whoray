@@ -4,12 +4,12 @@ import { dnssec, firstLine, notFound, notices, reserved, revoked } from "#data/p
 import { quirks } from "#data/quirks.ts";
 import type { Name } from "#domain.ts";
 import { bySuffix } from "#domain.ts";
-import { registryInText } from "#lifecycle.ts";
 import { parseDate } from "#parse/dates.ts";
 import { countryCode, hostnames, registrant, registrar, visible } from "#parse/fields.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { pairs } from "#parse/pairs.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
+import { registryInText } from "#tlds.ts";
 import type { Registrant, Registrar } from "#types.ts";
 
 const fieldByKey = new Map(aliases.flatMap(([field, keys]) => keys.map((key) => [key, field] as const)));

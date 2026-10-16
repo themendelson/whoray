@@ -1,8 +1,8 @@
 import { normalize } from "#domain.ts";
-import { isKnownSuffix } from "#lifecycle.ts";
 import { readRdap } from "#parse/rdap.ts";
 import { toRecord } from "#parse/record.ts";
 import { readWhois } from "#parse/whois.ts";
+import { isKnownSuffix } from "#tlds.ts";
 import type { DomainRecord } from "#types.ts";
 
 export type { Lookup } from "#lookup.ts";

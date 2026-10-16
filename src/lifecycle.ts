@@ -1,28 +1,11 @@
 import { dropRules } from "#data/drop-rules.ts";
 import type { Registry } from "#data/registries.ts";
-import { registries } from "#data/registries.ts";
-import { servers } from "#data/servers.ts";
 import { bySuffix } from "#domain.ts";
 import type { Facts } from "#drop.ts";
 import { fixedPeriods, redemptionGracePeriod } from "#drop.ts";
 import type { DomainState } from "#types.ts";
 
-const registryByTld: Readonly<Record<string, Registry>> = Object.fromEntries(
-  registries.flatMap((registry) => registry.tlds.map((tld) => [tld, registry] as const)),
-);
 const defaultPeriods = fixedPeriods(45, 30, 5);
-
-export function registryOf(tld: string, id?: string): Registry | undefined {
-  return bySuffix(registryByTld, tld) ?? registries.find((registry) => registry.id === id);
-}
-
-export function isKnownSuffix(suffix: string): boolean {
-  return Object.hasOwn(servers, suffix) || Object.hasOwn(registryByTld, suffix) || Object.hasOwn(dropRules, suffix);
-}
-
-export function registryInText(text: string): Registry | undefined {
-  return registries.find((registry) => registry.textPattern?.test(text) === true);
-}
 
 export function stateOf(statuses: ReadonlySet<string>, expirationDate: Date | undefined): DomainState {
   if (statuses.has("redemptionPeriod")) return "redemption";
