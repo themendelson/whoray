@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.shop",
   "tld": "shop",
   "state": "unknown",
-  "registry": "gmo",
+  "registry": {
+    "id": "gmo",
+    "name": "GMO Registry"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

@@ -4,11 +4,12 @@ import type { Found } from "#parse/found.ts";
 import type { DomainRecord, DomainState } from "#types.ts";
 
 export function toRecord(name: Name, found: Found): DomainRecord {
-  const registry = registryOf(name.tld)?.id;
+  const operator = registryOf(name.tld);
+  const registry = operator && { id: operator.id, name: operator.name };
   const empty = (state: DomainState): DomainRecord => ({
     ...name,
     state,
-    ...(registry !== undefined && { registry }),
+    ...(registry && { registry }),
     dates: {},
     statuses: [],
     nameservers: [],
@@ -16,7 +17,7 @@ export function toRecord(name: Name, found: Found): DomainRecord {
   if (found.kind === "available") return empty("available");
   if (found.kind === "reserved") return empty("reserved");
   if (found.kind === "error") return empty("unknown");
-  const { created, updated, expires, released, statuses, nameservers, registrar, dnssec } = found;
+  const { created, updated, expires, released, statuses, nameservers, registrar, registrant, handle, dnssec } = found;
   const statusSet = new Set(statuses);
   const state = stateOf(statusSet, expires);
   const drop = dropOf(name.tld, state, {
@@ -29,7 +30,9 @@ export function toRecord(name: Name, found: Found): DomainRecord {
     ...name,
     state,
     ...(registrar && { registrar }),
-    ...(registry !== undefined && { registry }),
+    ...(registrant && { registrant }),
+    ...(registry && { registry }),
+    ...(handle !== undefined && { handle }),
     dates: { ...(created && { created }), ...(updated && { updated }), ...(expires && { expires }) },
     statuses,
     nameservers,

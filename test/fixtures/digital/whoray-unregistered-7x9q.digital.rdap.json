@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.digital",
   "tld": "digital",
   "state": "available",
-  "registry": "identity-digital",
+  "registry": {
+    "id": "identity-digital",
+    "name": "Identity Digital"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

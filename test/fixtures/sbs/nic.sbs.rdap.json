@@ -9,7 +9,11 @@
     "url": "https://www.centralnic.com/",
     "abuseEmail": "ops@centralnic.com"
   },
-  "registry": "centralnic",
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "handle": "D220193433-CNIC",
   "dates": {
     "created": "2021-02-03T15:20:54.000Z",
     "updated": "2026-01-28T00:06:58.000Z",

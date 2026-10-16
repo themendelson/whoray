@@ -9,7 +9,10 @@
     "url": "https://rdap.identitydigital.services/rdap",
     "abuseEmail": "abuse@identity.digital"
   },
-  "registry": "identity-digital",
+  "registry": {
+    "id": "identity-digital",
+    "name": "Identity Digital"
+  },
   "dates": {
     "created": "2014-03-18T21:35:31.000Z",
     "updated": "2026-08-12T05:20:31.000Z",

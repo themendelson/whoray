@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.name",
   "tld": "name",
   "state": "available",
-  "registry": "verisign",
+  "registry": {
+    "id": "verisign",
+    "name": "Verisign"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

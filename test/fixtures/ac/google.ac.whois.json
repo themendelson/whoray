@@ -9,7 +9,14 @@
     "url": "http://www.markmonitor.com",
     "abuseEmail": "abusecomplaints@markmonitor.com"
   },
-  "registry": "icb",
+  "registrant": {
+    "organization": "Google LLC",
+    "country": "US"
+  },
+  "registry": {
+    "id": "icb",
+    "name": "Internet Computer Bureau"
+  },
   "dates": {
     "created": "2006-04-03T13:38:02.000Z",
     "updated": "2026-08-12T12:22:20.000Z",

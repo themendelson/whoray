@@ -8,6 +8,10 @@
     "url": "http://www.eMarkmonitor.com",
     "abuseEmail": "abusecomplaints@markmonitor.com"
   },
+  "registrant": {
+    "name": "Google LLC"
+  },
+  "handle": "762999-IEDR",
   "dates": {
     "created": "2002-03-21T00:00:00.000Z",
     "updated": "2026-05-05T14:17:13.000Z",

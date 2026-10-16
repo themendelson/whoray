@@ -9,7 +9,10 @@
     "url": "http://www.namecheap.com",
     "abuseEmail": "abuse@namecheap.com"
   },
-  "registry": "pir",
+  "registry": {
+    "id": "pir",
+    "name": "Public Interest Registry"
+  },
   "dates": {
     "created": "1995-06-11T04:00:00.000Z",
     "updated": "2026-08-12T00:07:25.000Z",

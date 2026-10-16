@@ -72,9 +72,12 @@ test("TLD schedules override the registry's", () => {
 });
 
 test("records name the registry operator for the TLD, including second-level suffixes", () => {
-  expect(parseRdap(rdap("example.org", [], {}), "example.org").registry).toBe("pir");
+  expect(parseRdap(rdap("example.org", [], {}), "example.org").registry).toEqual({
+    id: "pir",
+    name: "Public Interest Registry",
+  });
   expect(parseRdap(rdap("example.co.uk", [], {}), "example.co.uk")).toMatchObject({
     tld: "co.uk",
-    registry: "nominet",
+    registry: { id: "nominet" },
   });
 });

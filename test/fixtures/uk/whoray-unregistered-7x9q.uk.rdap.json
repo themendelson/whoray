@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.uk",
   "tld": "uk",
   "state": "available",
-  "registry": "nominet",
+  "registry": {
+    "id": "nominet",
+    "name": "Nominet"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

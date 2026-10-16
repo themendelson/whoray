@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.art",
   "tld": "art",
   "state": "available",
-  "registry": "centralnic",
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

@@ -8,7 +8,11 @@
     "ianaId": 9999,
     "url": "http://www.nic.bot"
   },
-  "registry": "nominet",
+  "registry": {
+    "id": "nominet",
+    "name": "Nominet"
+  },
+  "handle": "D_2503430-BOT",
   "dates": {
     "created": "2013-09-16T18:56:56.000Z",
     "updated": "2026-07-22T08:00:32.000Z",

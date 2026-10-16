@@ -9,7 +9,11 @@
     "url": "https://radix.website/",
     "abuseEmail": "admin@radix.email"
   },
-  "registry": "centralnic",
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "handle": "D6441991-CNIC",
   "dates": {
     "created": "2014-11-13T18:15:00.000Z",
     "updated": "2026-03-17T15:20:21.000Z",

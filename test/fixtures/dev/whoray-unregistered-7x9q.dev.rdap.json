@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.dev",
   "tld": "dev",
   "state": "available",
-  "registry": "google",
+  "registry": {
+    "id": "google",
+    "name": "Google Registry"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

@@ -9,7 +9,11 @@
     "url": "https://gen.xyz/",
     "abuseEmail": "xyz_abuse@gen.xyz"
   },
-  "registry": "centralnic",
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "handle": "D1465615-CNIC",
   "dates": {
     "created": "2013-09-11T11:58:06.000Z",
     "updated": "2026-09-05T00:05:06.000Z",

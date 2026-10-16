@@ -1,8 +1,10 @@
-import type { ErrorCode, Registrar } from "#types.ts";
+import type { ErrorCode, Registrant, Registrar } from "#types.ts";
 
 export interface Registration {
   kind: "record";
   registrar?: Registrar;
+  registrant?: Registrant;
+  handle?: string;
   created?: Date;
   updated?: Date;
   expires?: Date;

@@ -6,6 +6,9 @@
   "registrar": {
     "name": "MarkMonitor Inc."
   },
+  "registrant": {
+    "name": "GOOGLE LLC"
+  },
   "dates": {
     "created": "2005-01-03T04:00:00.000Z",
     "updated": "2025-12-01T10:41:02.000Z",

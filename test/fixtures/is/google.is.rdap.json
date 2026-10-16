@@ -3,6 +3,11 @@
   "unicode": "google.is",
   "tld": "is",
   "state": "registered",
+  "registrant": {
+    "name": "Google LLC",
+    "country": "US"
+  },
+  "handle": "google.is-7897",
   "dates": {
     "created": "2002-05-22T00:00:01.000Z",
     "updated": "2026-04-29T19:12:13.000Z"

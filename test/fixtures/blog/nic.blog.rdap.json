@@ -9,6 +9,7 @@
     "url": "https://my.blog",
     "abuseEmail": "admin@my.blog"
   },
+  "handle": "303-BLOG",
   "dates": {
     "created": "2025-04-08T18:27:53.000Z",
     "updated": "2026-05-06T14:56:02.000Z",

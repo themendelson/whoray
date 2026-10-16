@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.org",
   "tld": "org",
   "state": "available",
-  "registry": "pir",
+  "registry": {
+    "id": "pir",
+    "name": "Public Interest Registry"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

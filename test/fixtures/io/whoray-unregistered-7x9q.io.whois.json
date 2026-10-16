@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.io",
   "tld": "io",
   "state": "available",
-  "registry": "icb",
+  "registry": {
+    "id": "icb",
+    "name": "Internet Computer Bureau"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

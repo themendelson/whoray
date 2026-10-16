@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.top",
   "tld": "top",
   "state": "available",
-  "registry": "zdns",
+  "registry": {
+    "id": "zdns",
+    "name": "ZDNS"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

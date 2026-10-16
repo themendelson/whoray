@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.icu",
   "tld": "icu",
   "state": "available",
-  "registry": "centralnic",
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

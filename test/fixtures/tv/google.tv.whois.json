@@ -9,6 +9,10 @@
     "url": "www.markmonitor.com",
     "abuseEmail": "registry.admin@markmonitor.com"
   },
+  "registrant": {
+    "organization": "Registry Services, LLC",
+    "country": "US"
+  },
   "dates": {
     "created": "2002-08-02T16:43:36.000Z",
     "updated": "2026-07-06T10:13:54.000Z",

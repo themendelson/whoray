@@ -9,7 +9,11 @@
     "url": "http://www.domain.com",
     "abuseEmail": "domain.operations@web.com"
   },
-  "registry": "verisign",
+  "registry": {
+    "id": "verisign",
+    "name": "Verisign"
+  },
+  "handle": "2707346_DOMAIN_NET-VRSN",
   "dates": {
     "created": "1996-10-23T04:00:00.000Z",
     "updated": "2026-10-07T08:10:04.000Z",

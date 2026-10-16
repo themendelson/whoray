@@ -6,6 +6,7 @@
   "registrar": {
     "name": "MarkMonitor"
   },
+  "handle": "google.li",
   "dates": {
     "created": "2000-08-04T00:00:00.000Z"
   },

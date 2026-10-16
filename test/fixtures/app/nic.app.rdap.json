@@ -8,7 +8,11 @@
     "ianaId": 9999,
     "abuseEmail": "registry-abuse-support@google.com"
   },
-  "registry": "google",
+  "registry": {
+    "id": "google",
+    "name": "Google Registry"
+  },
+  "handle": "6D67D1-APP",
   "dates": {
     "created": "2015-06-22T20:34:34.000Z",
     "updated": "2026-08-06T20:34:34.000Z",

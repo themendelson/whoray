@@ -7,6 +7,11 @@
     "name": "Libyan Spider Network (int)",
     "abuseEmail": "abuse@register.ly"
   },
+  "registrant": {
+    "name": "Domain Administrator",
+    "country": "US"
+  },
+  "handle": "30119-CoCCA",
   "dates": {
     "created": "2007-10-02T22:00:00.000Z",
     "updated": "2026-09-02T15:40:14.000Z",

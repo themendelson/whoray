@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.vip",
   "tld": "vip",
   "state": "available",
-  "registry": "godaddy",
+  "registry": {
+    "id": "godaddy",
+    "name": "GoDaddy Registry"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.co",
   "tld": "co",
   "state": "available",
-  "registry": "mintic",
+  "registry": {
+    "id": "mintic",
+    "name": "MinTIC"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

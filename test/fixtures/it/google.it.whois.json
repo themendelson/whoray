@@ -7,6 +7,9 @@
     "name": "MarkMonitor International Limited",
     "url": "https://www.markmonitor.com/"
   },
+  "registrant": {
+    "organization": "Google Ireland Holdings Unlimited Company"
+  },
   "dates": {
     "created": "1999-12-10T00:00:00.000Z",
     "updated": "2026-06-09T23:13:34.000Z",

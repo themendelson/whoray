@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.wtf",
   "tld": "wtf",
   "state": "available",
-  "registry": "identity-digital",
+  "registry": {
+    "id": "identity-digital",
+    "name": "Identity Digital"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

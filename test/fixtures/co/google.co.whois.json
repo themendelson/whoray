@@ -9,7 +9,11 @@
     "url": "http://www.markmonitor.com",
     "abuseEmail": "abusecomplaints@markmonitor.com"
   },
-  "registry": "mintic",
+  "registry": {
+    "id": "mintic",
+    "name": "MinTIC"
+  },
+  "handle": "D157997-CNIC",
   "dates": {
     "created": "2010-02-25T01:04:59.000Z",
     "updated": "2026-01-28T10:37:02.000Z",

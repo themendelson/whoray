@@ -9,6 +9,9 @@
     "url": "www.markmonitor.com",
     "abuseEmail": "registry.admin@markmonitor.com"
   },
+  "registrant": {
+    "country": "US"
+  },
   "dates": {
     "created": "2002-04-19T23:16:01.000Z",
     "updated": "2026-03-22T11:00:47.000Z",

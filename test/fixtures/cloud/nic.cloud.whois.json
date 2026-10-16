@@ -9,7 +9,11 @@
     "url": "get.cloud",
     "abuseEmail": "registry@get.cloud"
   },
-  "registry": "tucows",
+  "registry": {
+    "id": "tucows",
+    "name": "Tucows Registry"
+  },
+  "handle": "DO_24db87a3dce495c84f0ac848f922206d-ARUBA",
   "dates": {
     "created": "2023-09-13T15:50:46.000Z",
     "updated": "2024-03-01T00:30:16.000Z",

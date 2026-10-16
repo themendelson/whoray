@@ -9,6 +9,10 @@
     "url": "https://rdap.markmonitor.com/rdap/",
     "abuseEmail": "abusecomplaints@markmonitor.com"
   },
+  "registrant": {
+    "organization": "Google LLC",
+    "country": "US"
+  },
   "dates": {
     "created": "2008-06-13T17:17:40.000Z",
     "updated": "2026-08-12T10:02:24.000Z",

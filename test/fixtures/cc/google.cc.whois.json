@@ -9,7 +9,11 @@
     "url": "http://www.markmonitor.com",
     "abuseEmail": "abusecomplaints@markmonitor.com"
   },
-  "registry": "verisign",
+  "registry": {
+    "id": "verisign",
+    "name": "Verisign"
+  },
+  "handle": "86420657_DOMAIN_CC-VRSN",
   "dates": {
     "created": "1999-06-07T04:00:00.000Z",
     "updated": "2026-05-06T10:52:12.000Z",

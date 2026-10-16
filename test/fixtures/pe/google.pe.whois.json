@@ -6,6 +6,9 @@
   "registrar": {
     "name": "MarkMonitor Inc."
   },
+  "registrant": {
+    "name": "Google LLC"
+  },
   "dates": {},
   "statuses": [
     "clientTransferProhibited",

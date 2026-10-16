@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.cloud",
   "tld": "cloud",
   "state": "available",
-  "registry": "tucows",
+  "registry": {
+    "id": "tucows",
+    "name": "Tucows Registry"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],

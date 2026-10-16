@@ -8,6 +8,12 @@
     "url": "https://rdap.nic.ly/entity/146380-nicly",
     "abuseEmail": "abuse@register.ly"
   },
+  "registrant": {
+    "name": "Domain Administrator",
+    "organization": "Google LLC",
+    "country": "US"
+  },
+  "handle": "30119-CoCCA",
   "dates": {
     "created": "2007-10-02T22:00:00.000Z",
     "updated": "2026-09-02T15:40:14.000Z",

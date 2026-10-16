@@ -9,7 +9,14 @@
     "url": "https://intercap.inc/",
     "abuseEmail": "abuse@my.box"
   },
-  "registry": "centralnic",
+  "registrant": {
+    "country": "KY"
+  },
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "handle": "D235786333-CNIC",
   "dates": {
     "created": "2018-05-01T23:32:47.000Z",
     "updated": "2025-02-19T15:28:09.000Z",

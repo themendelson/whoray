@@ -8,10 +8,10 @@ import { parseDate } from "#parse/dates.ts";
 import type { Found } from "#parse/found.ts";
 import { pairs } from "#parse/pairs.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
-import type { Registrar } from "#types.ts";
+import { countryCode, registrant, visible } from "#parse/visible.ts";
+import type { Registrant, Registrar } from "#types.ts";
 
 const fieldByKey = new Map(aliases.flatMap(([field, keys]) => keys.map((key) => [key, field] as const)));
-const REDACTED = /redacted|not disclosed|data protected|withheld|gdpr|not applicable|privacy/i;
 
 export function readWhois(text: string, { domain, tld }: Name): Found {
   const transforms = quirks[tld] ?? quirks[lastLabel(tld)] ?? [];
@@ -25,11 +25,15 @@ export function readWhois(text: string, { domain, tld }: Name): Found {
   if (!created && !expires && !registrar && nameservers.length === 0) return withoutRecord(text);
   const registrarWhois = hostnames(fields.get("registrarWhois") ?? []).at(0);
   const dnssec = (fields.get("dnssec") ?? []).map(dnssecOf).find((value) => value !== undefined);
+  const holder = registrantOf(fields);
+  const handle = visible(fields.get("handle")?.[0]);
   return {
     kind: "record",
     statuses: normalizeStatuses(fields.get("statuses") ?? []),
     nameservers,
     ...(registrar && { registrar }),
+    ...(holder && { registrant: holder }),
+    ...(handle !== undefined && { handle }),
     ...(created && { created }),
     ...(updated && { updated }),
     ...(expires && { expires }),
@@ -69,7 +73,15 @@ function firstDate(values: string[] | undefined): Date | undefined {
 }
 
 function present(values: string[] | undefined): string | undefined {
-  return values?.find((value) => !REDACTED.test(value));
+  return values?.find((value) => visible(value) !== undefined);
+}
+
+function registrantOf(fields: Map<Field, string[]>): Registrant | undefined {
+  return registrant(
+    present(fields.get("registrantName")),
+    present(fields.get("registrantOrganization")),
+    countryCode(present(fields.get("registrantCountry"))),
+  );
 }
 
 function registrarOf(fields: Map<Field, string[]>): Registrar | undefined {

@@ -9,7 +9,11 @@
     "url": "http://cscdbs.com",
     "abuseEmail": "domainabuse@cscglobal.com"
   },
-  "registry": "verisign",
+  "registry": {
+    "id": "verisign",
+    "name": "Verisign"
+  },
+  "handle": "134557330_DOMAIN_NAME-VRSN",
   "dates": {
     "created": "2013-04-14T03:22:41.000Z",
     "updated": "2026-05-28T22:12:04.000Z",

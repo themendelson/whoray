@@ -8,7 +8,15 @@
     "ianaId": 9999,
     "url": "https://www.centralnic.com/"
   },
-  "registry": "centralnic",
+  "registrant": {
+    "name": "Domain Administrator",
+    "organization": "CentralNic Ltd"
+  },
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "handle": "D19874866-CNIC",
   "dates": {
     "created": "2016-04-21T16:55:18.000Z",
     "updated": "2026-04-15T00:05:51.000Z",

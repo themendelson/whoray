@@ -9,6 +9,11 @@
     "url": "https://rdap.nixiregistry.in/rdap/entity/292",
     "abuseEmail": "abusecomplaints@markmonitor.com"
   },
+  "registrant": {
+    "organization": "Google LLC",
+    "country": "US"
+  },
+  "handle": "D21089-IN",
   "dates": {
     "created": "2005-02-14T20:35:14.000Z",
     "updated": "2026-05-26T12:16:48.000Z",

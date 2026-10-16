@@ -7,6 +7,12 @@
     "name": "MarkMonitor Inc.",
     "url": "http://markmonitor.com"
   },
+  "registrant": {
+    "name": "Domain Administrator",
+    "organization": "Google LLC",
+    "country": "United States"
+  },
+  "handle": "google.ua",
   "dates": {
     "created": "2011-07-21T15:03:50.000Z",
     "updated": "2026-06-19T10:07:10.000Z",

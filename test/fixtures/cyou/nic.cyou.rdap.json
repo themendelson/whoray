@@ -9,7 +9,11 @@
     "url": "http://nic.icu/",
     "abuseEmail": "info@centralnic.com"
   },
-  "registry": "centralnic",
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "handle": "D186154499-CNIC",
   "dates": {
     "created": "2014-05-01T00:00:00.000Z",
     "updated": "2026-02-12T14:26:13.000Z",

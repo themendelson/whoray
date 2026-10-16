@@ -8,7 +8,11 @@
     "url": "https://www.markmonitor.com",
     "abuseEmail": "abusecomplaints@markmonitor.com"
   },
-  "registry": "nominet",
+  "registry": {
+    "id": "nominet",
+    "name": "Nominet"
+  },
+  "handle": "D_15237971-UK",
   "dates": {
     "created": "1999-02-14T11:29:16.000Z",
     "updated": "2026-01-13T10:26:48.000Z",

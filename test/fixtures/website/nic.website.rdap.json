@@ -9,7 +9,11 @@
     "url": "https://rdap.radix.host/rdap/entity/9999",
     "abuseEmail": "admin@radix.email"
   },
-  "registry": "centralnic",
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "handle": "D2361833-CNIC",
   "dates": {
     "created": "2014-04-10T09:14:05.000Z",
     "updated": "2026-05-26T00:02:56.000Z",

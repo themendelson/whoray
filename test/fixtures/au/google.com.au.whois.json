@@ -8,6 +8,10 @@
     "url": "https://whois-webform.markmonitor.com/whois/",
     "abuseEmail": "abusecomplaints@markmonitor.com"
   },
+  "registrant": {
+    "name": "Domain Admin"
+  },
+  "handle": "92bb371462a94cd584a36765406a795d-AU",
   "dates": {
     "updated": "2026-08-15T21:50:56.000Z"
   },

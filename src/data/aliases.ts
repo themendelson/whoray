@@ -4,6 +4,10 @@ export type Field =
   | "registrarIanaId"
   | "registrarWhois"
   | "abuseEmail"
+  | "registrantName"
+  | "registrantOrganization"
+  | "registrantCountry"
+  | "handle"
   | "created"
   | "updated"
   | "expires"
@@ -13,6 +17,13 @@ export type Field =
   | "dnssec";
 
 export const aliases: [Field, string[]][] = [
+  ["registrantName", ["registrant name", "registrant contact name"]],
+  [
+    "registrantOrganization",
+    ["registrant organization", "registrant organisation", "registrant org", "domain holder organization"],
+  ],
+  ["registrantCountry", ["registrant country", "registrant country code", "domain holder country"]],
+  ["handle", ["registry domain id", "roid"]],
   [
     "registrar",
     [

@@ -3,7 +3,8 @@ import { boolean, object, objects, string, strings } from "#json.ts";
 import { parseDate } from "#parse/dates.ts";
 import type { Found } from "#parse/found.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
-import type { Registrar } from "#types.ts";
+import { countryCode, registrant, visible } from "#parse/visible.ts";
+import type { Registrant, Registrar } from "#types.ts";
 
 const EVENT_FIELDS: Record<string, "created" | "updated" | "expires"> = {
   registration: "created",
@@ -24,7 +25,11 @@ export function readRdap(json: unknown): Found {
     const date = parseDate(string(event.eventDate) ?? "");
     if (field && date) dates[field] ??= date;
   }
-  const registrar = registrarOf(objects(root.entities).find((entity) => strings(entity.roles).includes("registrar")));
+  const withRole = (role: string): JsonObject | undefined =>
+    objects(root.entities).find((entity) => strings(entity.roles).includes(role));
+  const registrar = registrarOf(withRole("registrar"));
+  const holder = registrantOf(withRole("registrant"));
+  const handle = visible(string(root.handle));
   const dnssec = boolean(object(root.secureDNS)?.delegationSigned);
   const registrarRdap = relatedRdap(root);
   return {
@@ -35,6 +40,8 @@ export function readRdap(json: unknown): Found {
       ...new Set(objects(root.nameservers).flatMap((ns) => string(ns.ldhName)?.toLowerCase().replace(/\.$/, "") ?? [])),
     ],
     ...(registrar && { registrar }),
+    ...(holder && { registrant: holder }),
+    ...(handle !== undefined && { handle }),
     ...(dnssec !== undefined && { dnssec }),
     ...(registrarRdap !== undefined && { registrarRdap }),
   };
@@ -57,13 +64,30 @@ function registrarOf(entity: JsonObject | undefined): Registrar | undefined {
   };
 }
 
-function vcard(entity: JsonObject, property: string): string | undefined {
+function registrantOf(entity: JsonObject | undefined): Registrant | undefined {
+  if (!entity) return undefined;
+  const address = vcardEntry(entity, "adr");
+  return registrant(
+    visible(vcard(entity, "fn")),
+    visible(vcard(entity, "org")),
+    countryCode(string(object(address?.[1])?.cc) ?? strings(address?.[3]).at(-1)),
+  );
+}
+
+function vcardEntry(entity: JsonObject, property: string): unknown[] | undefined {
   const card = entity.vcardArray;
   if (!Array.isArray(card) || !Array.isArray(card[1])) return undefined;
-  for (const entry of card[1]) {
-    if (Array.isArray(entry) && entry[0] === property) return string(entry[3]);
+  const entries: unknown[] = card[1];
+  for (const entry of entries) {
+    if (!Array.isArray(entry)) continue;
+    const fields: unknown[] = entry;
+    if (fields[0] === property) return fields;
   }
   return undefined;
+}
+
+function vcard(entity: JsonObject, property: string): string | undefined {
+  return string(vcardEntry(entity, property)?.[3]);
 }
 
 function relatedRdap(root: JsonObject): string | undefined {

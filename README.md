@@ -13,6 +13,8 @@ const domain = await lookup("example.co");
 
 domain.state;       // "registered" | "expired" | "redemption" | "pendingDelete" | "available" | "reserved" | "unknown"
 domain.registrar;   // { name: "NameCheap, Inc.", ianaId: 1068, url, abuseEmail }
+domain.registrant;  // { organization, name, country } when the registry publishes them
+domain.registry;    // { id: "mintic", name: "MinTIC" }
 domain.dates;       // { created, updated, expires } as UTC Dates
 domain.statuses;    // ["clientTransferProhibited"]
 domain.nameservers; // ["dns1.registrar-servers.com", "dns2.registrar-servers.com"]

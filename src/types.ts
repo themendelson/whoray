@@ -23,6 +23,17 @@ export interface Registrar {
   abuseEmail?: string;
 }
 
+export interface Registry {
+  id: string;
+  name: string;
+}
+
+export interface Registrant {
+  name?: string;
+  organization?: string;
+  country?: string;
+}
+
 export interface Drop {
   at: Date;
   confidence: "high" | "low";
@@ -35,7 +46,9 @@ export interface DomainRecord {
   tld: string;
   state: DomainState;
   registrar?: Registrar;
-  registry?: string;
+  registrant?: Registrant;
+  registry?: Registry;
+  handle?: string;
   dates: { created?: Date; updated?: Date; expires?: Date };
   statuses: string[];
   nameservers: string[];

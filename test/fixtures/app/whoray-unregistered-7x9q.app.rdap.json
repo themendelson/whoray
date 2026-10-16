@@ -3,7 +3,10 @@
   "unicode": "whoray-unregistered-7x9q.app",
   "tld": "app",
   "state": "available",
-  "registry": "google",
+  "registry": {
+    "id": "google",
+    "name": "Google Registry"
+  },
   "dates": {},
   "statuses": [],
   "nameservers": [],
