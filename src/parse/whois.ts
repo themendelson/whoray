@@ -3,7 +3,8 @@ import { aliases } from "#data/aliases.ts";
 import { blocked, firstLine, notFound, rateLimited, reserved, retired, revoked } from "#data/phrases.ts";
 import { quirks } from "#data/quirks.ts";
 import type { Name } from "#domain.ts";
-import { lastLabel, registryInText } from "#lifecycle.ts";
+import { bySuffix } from "#domain.ts";
+import { registryInText } from "#lifecycle.ts";
 import { parseDate } from "#parse/dates.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { pairs } from "#parse/pairs.ts";
@@ -14,7 +15,7 @@ import type { Registrant, Registrar } from "#types.ts";
 const fieldByKey = new Map(aliases.flatMap(([field, keys]) => keys.map((key) => [key, field] as const)));
 
 export function readWhois(text: string, name: Name): Found {
-  const transforms = quirks[name.tld] ?? quirks[lastLabel(name.tld)] ?? [];
+  const transforms = bySuffix(quirks, name.tld) ?? [];
   const fields = collect(transforms.reduce((current, transform) => transform(current), text));
   const created = firstDate(fields.get("created"));
   const expires = firstDate(fields.get("expires"));

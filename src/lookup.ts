@@ -1,7 +1,6 @@
 import { availabilityConfirmedByWhois, servers } from "#data/servers.ts";
 import type { Name } from "#domain.ts";
-import { normalize } from "#domain.ts";
-import { hasLifecycleData, lastLabel } from "#lifecycle.ts";
+import { bySuffix, lastLabel, normalize } from "#domain.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { readRdap } from "#parse/rdap.ts";
 import { toRecord } from "#parse/record.ts";
@@ -27,18 +26,15 @@ interface Outcome {
   source: "rdap" | "whois";
 }
 
-export function isKnownSuffix(suffix: string, overrides?: Record<string, ServerEntry>): boolean {
-  return suffix in servers || (overrides !== undefined && suffix in overrides) || hasLifecycleData(suffix);
-}
-
 export function createLookup(defaultConnect: Connect): Lookup {
   return async (domain, options = {}) => {
     options.signal?.throwIfAborted();
-    const name = normalize(domain, (suffix) => isKnownSuffix(suffix, options.servers));
+    const overrides = options.servers ?? {};
+    const name = normalize(domain, (suffix) => Object.hasOwn(overrides, suffix));
     const timeout = AbortSignal.timeout(options.timeout ?? 10_000);
     const context: Context = {
       name,
-      entry: { ...(servers[name.tld] ?? servers[lastLabel(name.tld)]), ...options.servers?.[name.tld] },
+      entry: { ...bySuffix(servers, name.tld), ...bySuffix(overrides, name.tld) },
       registrar: options.follow === "registrar",
       connect: options.connect ?? defaultConnect,
       fetch: options.fetch ?? globalThis.fetch,

@@ -1,19 +1,16 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { servers } from "#data/servers.ts";
-import { normalize } from "#domain.ts";
-import { hasLifecycleData, lastLabel } from "#lifecycle.ts";
+import { bySuffix, lastLabel, normalize } from "#domain.ts";
 import { fetchRdap, ianaRdapBase } from "#rdap.ts";
 import { connect } from "#socket/node.ts";
 import { ianaWhoisHost, queryWhois } from "#whois.ts";
 
-const knownSuffix = (suffix: string): boolean => suffix in servers || hasLifecycleData(suffix);
-
 async function capture(input: string): Promise<void> {
-  const { domain, tld } = normalize(input, knownSuffix);
+  const { domain, tld } = normalize(input);
   const dir = `test/fixtures/${tld}`;
   await mkdir(dir, { recursive: true });
   const signal = AbortSignal.timeout(20_000);
-  const entry = servers[tld] ?? servers[lastLabel(tld)];
+  const entry = bySuffix(servers, tld);
   const rdapBase = entry?.rdap ?? (await ianaRdapBase(fetch, lastLabel(tld), signal).catch(() => undefined));
   if (rdapBase !== undefined) {
     const reply = await fetchRdap(fetch, `${rdapBase}domain/${domain}`, signal).catch((error: unknown) =>

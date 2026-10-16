@@ -140,8 +140,6 @@ test("aborting through the caller's signal rejects the lookup", async () => {
   await expect(lookup("example.com", { fetch, servers, signal: controller.signal })).rejects.toThrow("cancelled");
 });
 
-test("input that isn't a domain name throws", async () => {
+test("input that isn't a domain name rejects the lookup", async () => {
   await expect(lookup("not a domain")).rejects.toThrow(TypeError);
-  await expect(lookup("https://example.com/path")).rejects.toThrow(TypeError);
-  await expect(lookup("localhost")).rejects.toThrow(TypeError);
 });

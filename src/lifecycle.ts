@@ -1,29 +1,22 @@
 import { dropRules } from "#data/drop-rules.ts";
 import type { Registry } from "#data/registries.ts";
 import { registries } from "#data/registries.ts";
+import { bySuffix } from "#domain.ts";
 import type { Facts } from "#drop.ts";
 import { fixedPeriods, redemptionGracePeriod } from "#drop.ts";
 import type { DomainState } from "#types.ts";
 
-const registryByTld = new Map(registries.flatMap((registry) => registry.tlds.map((tld) => [tld, registry] as const)));
+const registryByTld: Readonly<Record<string, Registry>> = Object.fromEntries(
+  registries.flatMap((registry) => registry.tlds.map((tld) => [tld, registry] as const)),
+);
 const defaultPeriods = fixedPeriods(45, 30, 5);
 
 export function registryOf(tld: string, id?: string): Registry | undefined {
-  return (
-    registryByTld.get(tld) ?? registryByTld.get(lastLabel(tld)) ?? registries.find((registry) => registry.id === id)
-  );
+  return bySuffix(registryByTld, tld) ?? registries.find((registry) => registry.id === id);
 }
 
 export function registryInText(text: string): Registry | undefined {
   return registries.find((registry) => registry.textPattern?.test(text) === true);
-}
-
-export function hasLifecycleData(suffix: string): boolean {
-  return registryByTld.has(suffix) || suffix in dropRules;
-}
-
-export function lastLabel(tld: string): string {
-  return tld.slice(tld.lastIndexOf(".") + 1);
 }
 
 export function stateOf(statuses: ReadonlySet<string>, expires: Date | undefined): DomainState {
@@ -42,7 +35,7 @@ export interface DropDates {
 
 export function dropOf(tld: string, state: DomainState, facts: Facts, registry?: Registry): DropDates | undefined {
   if (state !== "expired" && state !== "redemption" && state !== "pendingDelete") return undefined;
-  const fromTld = (dropRules[tld] ?? dropRules[lastLabel(tld)])?.(facts);
+  const fromTld = bySuffix(dropRules, tld)?.(facts);
   if (fromTld) return { dropDate: fromTld };
   if (facts.released) return { dropDate: facts.released };
   const fromRegistry = registry && redemptionGracePeriod(registry.redemption, registry.pendingDelete)(facts);
