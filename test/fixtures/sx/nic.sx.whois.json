@@ -1,0 +1,25 @@
+{
+  "domain": "nic.sx",
+  "tld": "sx",
+  "state": "registered",
+  "isRegistered": true,
+  "registrar": {
+    "name": "SX Registry O",
+    "url": "www.registry.sx"
+  },
+  "registrant": {
+    "organization": "SX Registry SA",
+    "country": "LU"
+  },
+  "handle": "22414-SX",
+  "creationDate": "2011-12-09T15:07:07.000Z",
+  "updatedDate": "2026-01-23T15:14:21.000Z",
+  "expirationDate": "2026-12-09T15:07:07.000Z",
+  "snapshotDate": "2026-10-16T23:50:09.000Z",
+  "statuses": [
+    "inactive"
+  ],
+  "nameservers": [],
+  "dnssec": true,
+  "source": "whois"
+}
