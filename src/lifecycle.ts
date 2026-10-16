@@ -1,7 +1,7 @@
 import { dropRules } from "#data/drop-rules.ts";
-import { servers } from "#data/servers.ts";
 import type { Registry } from "#data/registries.ts";
 import { registries } from "#data/registries.ts";
+import { servers } from "#data/servers.ts";
 import { bySuffix } from "#domain.ts";
 import type { Facts } from "#drop.ts";
 import { fixedPeriods, redemptionGracePeriod } from "#drop.ts";

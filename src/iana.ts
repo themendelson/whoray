@@ -1,30 +1,28 @@
 import { object, strings } from "#json.ts";
-import { Memo } from "#memo.ts";
-import { DAY } from "#time.ts";
 import type { Connect } from "#types.ts";
 import { queryWhois } from "#whois.ts";
 
-const TIMEOUT = 15_000;
-const rdapBases = new Memo<ReadonlyMap<string, string>>(DAY);
-const whoisHosts = new Memo<string | undefined>(DAY);
+let rdapBases: ReadonlyMap<string, string> | undefined;
+const whoisHosts = new Map<string, string | undefined>();
 
 export async function ianaRdapBase(
   fetcher: typeof fetch,
   tld: string,
   signal: AbortSignal,
 ): Promise<string | undefined> {
-  const bases = await rdapBases.get("dns", () => loadBootstrap(fetcher), signal);
-  return bases.get(tld);
+  rdapBases ??= await loadBootstrap(fetcher, signal);
+  return rdapBases.get(tld);
 }
 
-export function ianaWhoisHost(connect: Connect, tld: string, signal: AbortSignal): Promise<string | undefined> {
-  const load = (): Promise<string | undefined> =>
-    queryWhois(connect, "whois.iana.org", tld, AbortSignal.timeout(TIMEOUT)).then(whoisHostIn);
-  return whoisHosts.get(tld, load, signal);
+export async function ianaWhoisHost(connect: Connect, tld: string, signal: AbortSignal): Promise<string | undefined> {
+  if (whoisHosts.has(tld)) return whoisHosts.get(tld);
+  const host = whoisHostIn(await queryWhois(connect, "whois.iana.org", tld, signal));
+  whoisHosts.set(tld, host);
+  return host;
 }
 
-async function loadBootstrap(fetcher: typeof fetch): Promise<Map<string, string>> {
-  const response = await fetcher("https://data.iana.org/rdap/dns.json", { signal: AbortSignal.timeout(TIMEOUT) });
+async function loadBootstrap(fetcher: typeof fetch, signal: AbortSignal): Promise<Map<string, string>> {
+  const response = await fetcher("https://data.iana.org/rdap/dns.json", { signal });
   if (!response.ok) throw new Error(`IANA RDAP bootstrap returned HTTP ${response.status}`);
   const json: unknown = await response.json();
   const bases = new Map<string, string>();
