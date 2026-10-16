@@ -281,3 +281,11 @@ test("a WHOIS host IANA didn't answer for is asked again on the next lookup", as
   expect(first.error).toMatchObject({ code: "network", server: "whois.iana.org" });
   expect(second.state).toBe("available");
 });
+
+test("a reserved name stays reserved although RDAP has no record of it", async () => {
+  const { fetch, urls } = httpServer(() => ({ status: 404, body: "" }));
+  const { connect } = whoisServer(() => "Reserved Domain Name\nURL of the ICANN Whois Inaccuracy Complaint Form");
+  const result = await lookup("example.com", { fetch, connect, servers });
+  expect(urls).toEqual([]);
+  expect(result).toMatchObject({ state: "reserved", isRegistered: false, source: "whois" });
+});

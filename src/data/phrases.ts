@@ -31,17 +31,19 @@ export const reserved: RegExp[] = [
   /\bstatus:\s*reserved\b/i,
   /\bdomain is reserved\b/i,
   /\breserved by the registry\b/i,
+  /^reserved domain name$/im,
+  /\bnot available for registration\b/i,
 ];
 
-export const rateLimited: RegExp[] = [
-  /\brate ?limit exceeded\b/i,
-  /\blimit exceeded\b/i,
-  /\bexceeded the maximum\b/i,
-  /\btoo many (queries|requests)\b/i,
-  /\bquery rate\b/i,
-  /\btry again later\b/i,
-];
-
-export const blocked: RegExp[] = [/\bnot permitted\b/i, /\baccess denied\b/i, /\bblacklisted\b/i];
-
-export const retired: RegExp[] = [/\bwhois service has been retired\b/i, /\btld is not supported\b/i];
+export const notices: Record<"rateLimited" | "blocked" | "retired", RegExp[]> = {
+  rateLimited: [
+    /\brate ?limit exceeded\b/i,
+    /\blimit exceeded\b/i,
+    /\bexceeded the maximum\b/i,
+    /\btoo many (queries|requests)\b/i,
+    /\bquery rate\b/i,
+    /\btry again later\b/i,
+  ],
+  blocked: [/\bnot permitted\b/i, /\baccess denied\b/i, /\bblacklisted\b/i],
+  retired: [/\bwhois service has been retired\b/i, /\btld is not supported\b/i],
+};

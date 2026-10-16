@@ -79,3 +79,20 @@ test("a premium marker in the WHOIS reply survives a full lookup", async () => {
   expect(urls).toEqual([]);
   expect(result).toMatchObject({ state: "available", premium: true, source: "whois" });
 });
+
+test("throttling and refusal words in a reply's terms of use don't make it an error", () => {
+  const text =
+    "This name is unknown to us.\n\nTerms: abuse will get you permanently blacklisted. Copying is not permitted.";
+  expect(parseWhois(text, "example.xyz").error?.code).toBe("unparseable");
+});
+
+test("throttling and refusal notices at the top of a reply are errors", () => {
+  expect(parseWhois("Error: ratelimit exceeded", "example.nl").error?.code).toBe("rate_limited");
+  expect(parseWhois("Requests of this client are not permitted.", "example.ch").error?.code).toBe("blocked");
+});
+
+test("a notice written as a comment error after the server's header is still read", () => {
+  const text =
+    "% This is the Example Whois server.\n% Use of this service is not permitted for marketing.\n\n%ERROR:201: access denied";
+  expect(parseWhois(text, "example.cz").error?.code).toBe("blocked");
+});

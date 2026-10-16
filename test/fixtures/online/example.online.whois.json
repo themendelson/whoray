@@ -1,0 +1,13 @@
+{
+  "domain": "example.online",
+  "tld": "online",
+  "state": "reserved",
+  "isRegistered": false,
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "statuses": [],
+  "nameservers": [],
+  "source": "whois"
+}

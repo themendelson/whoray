@@ -1,6 +1,6 @@
 import type { Field } from "#data/aliases.ts";
 import { aliases } from "#data/aliases.ts";
-import { blocked, firstLine, notFound, rateLimited, reserved, retired, revoked } from "#data/phrases.ts";
+import { firstLine, notFound, notices, reserved, revoked } from "#data/phrases.ts";
 import { quirks } from "#data/quirks.ts";
 import type { Name } from "#domain.ts";
 import { bySuffix } from "#domain.ts";
@@ -71,17 +71,28 @@ function collect(text: string): Map<Field, string[]> {
 }
 
 function withoutRecord(text: string): Found {
-  const matches = (phrases: RegExp[]): boolean => phrases.some((phrase) => phrase.test(text));
-  const opening = text.trim().split(/\r?\n/)[0] ?? "";
-  if (firstLine.dropzone.test(opening)) return { kind: "dropzone" };
-  if (firstLine.dpml.test(opening) || matches(reserved)) return { kind: "reserved" };
-  if (matches(notFound)) return { kind: "available", ...(firstLine.premium.test(opening) && { premium: true }) };
-  if (matches(rateLimited))
+  const lines = text.split(/\r?\n/).filter((line) => line.trim() !== "");
+  const first = lines[0] ?? "";
+  const notice = noticeOf(lines);
+  const said = (phrases: RegExp[], within = text): boolean => phrases.some((phrase) => phrase.test(within));
+  if (firstLine.dropzone.test(first)) return { kind: "dropzone" };
+  if (firstLine.dpml.test(first) || said(reserved)) return { kind: "reserved" };
+  if (said(notFound)) return { kind: "available", ...(firstLine.premium.test(first) && { premium: true }) };
+  if (said(notices.rateLimited, notice)) {
     return { kind: "error", code: "rate_limited", message: "The server is rate limiting queries" };
-  if (matches(blocked)) return { kind: "error", code: "blocked", message: "The server refused this client" };
-  if (matches(retired))
+  }
+  if (said(notices.blocked, notice))
+    return { kind: "error", code: "blocked", message: "The server refused this client" };
+  if (said(notices.retired, notice)) {
     return { kind: "error", code: "no_server", message: "The server no longer answers for this TLD" };
+  }
   return { kind: "error", code: "unparseable", message: "No registration data or known not-found reply" };
+}
+
+// A throttling, refusal or retirement notice is the first line after the server's comment header;
+// the same words further down are terms of use.
+function noticeOf(lines: string[]): string {
+  return lines.find((line) => /^\s*[%#]+\s*error\b/i.test(line) || !/^\s*[%#]/.test(line)) ?? "";
 }
 
 function firstDate(values: string[] | undefined): Date | undefined {
