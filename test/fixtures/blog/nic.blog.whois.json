@@ -8,7 +8,8 @@
     "ianaId": 9999,
     "url": "https://my.blog",
     "abuseEmail": "admin@my.blog",
-    "abusePhone": "+1.8772733049"
+    "abusePhone": "+1.8772733049",
+    "whoisServer": "whois.blog.fury.ca"
   },
   "handle": "303-BLOG",
   "creationDate": "2025-04-08T18:27:53.000Z",
