@@ -28,7 +28,7 @@ export const servers: Record<string, ServerEntry> = {
   college: { whois: "whois.nic.college" },
   courses: { whois: "whois.nic.courses" },
   cyou: { whois: "whois.nic.cyou" },
-  de: { rdap: "https://rdap.denic.de/", whois: "whois.denic.de", query: "-T dn {domain}" },
+  de: { rdap: "https://rdap.denic.de/", whois: "whois.denic.de", query: "-T dn,ace {domain}" },
   design: { whois: "whois.nic.design" },
   do: { whois: "whois.nic.do" },
   earth: { whois: "whois.nic.earth" },

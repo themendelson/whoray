@@ -155,13 +155,13 @@ test("WHOIS hosts come from whois.iana.org when the TLD isn't in the server list
 test("registries that need a query format get it", async () => {
   const server = whoisServer(() => "Domain: nic.de\nStatus: free");
   await lookup("nic.de", { connect: server.connect, protocol: "whois" });
-  expect(server.queries).toEqual([{ host: "whois.denic.de", query: "-T dn nic.de" }]);
+  expect(server.queries).toEqual([{ host: "whois.denic.de", query: "-T dn,ace nic.de" }]);
 });
 
 test("international names are queried in punycode and returned in both forms", async () => {
   const server = whoisServer(() => "Domain: xn--bcher-kva.de\nStatus: free");
   const result = await lookup("Bücher.de", { connect: server.connect, protocol: "whois" });
-  expect(server.queries.at(0)?.query).toBe("-T dn xn--bcher-kva.de");
+  expect(server.queries.at(0)?.query).toBe("-T dn,ace xn--bcher-kva.de");
   expect(result).toMatchObject({ domain: "xn--bcher-kva.de", unicode: "bücher.de" });
 });
 
