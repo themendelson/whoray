@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 536 128" width="536" height="128">
+  <title>whoray</title>
+  <defs><linearGradient id="sun" x1="0" y1="100" x2="0" y2="372" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFC94D"/><stop offset="1" stop-color="#FF5E3A"/>
+    </linearGradient>
+    <clipPath id="sky"><rect width="512" height="330"/></clipPath>
+    <linearGradient id="ray" x1="0" y1="0" x2="0" y2="80" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFB13D"/><stop offset="1" stop-color="#FF5E3A"/>
+    </linearGradient>
+  </defs>
+  <g transform="scale(.25)">
+  <rect width="512" height="512" rx="112" fill="#0B1220"/>
+  <g stroke="url(#sun)" stroke-width="30" stroke-linecap="round">
+    <path d="M110.5 246 67.2 221M172 184.5 147 141.2M256 162V112M340 184.5 365 141.2M401.5 246 444.8 221"/>
+  </g>
+  <g clip-path="url(#sky)">
+    <circle cx="256" cy="330" r="132" fill="url(#sun)"/>
+    <g fill="none" stroke="#0B1220" stroke-width="12">
+      <ellipse cx="256" cy="330" rx="56" ry="132"/>
+      <path d="M256 190V330M130 264H382"/>
+    </g>
+  </g>
+  <path d="M112 372H400" stroke="#FF5E3A" stroke-width="24" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(160 37.5) scale(.66)" fill="none" stroke-width="20" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#0B1220"><path transform="translate(0 0)" d="M0 0 16 80 36 20 56 80 72 0"/><path transform="translate(100 0)" d="M0-40V80M0 36C0 14 14 0 32 0S62 14 62 36V80"/><path transform="translate(190 0)" d="M40 0A40 40 0 1 1 40 80 40 40 0 1 1 40 0Z"/></g>
+    <g stroke="url(#ray)"><path transform="translate(298 0)" d="M0 80V0M0 34C0 13 16 0 40 2"/><path transform="translate(364 0)" d="M40 0A40 40 0 1 1 40 80 40 40 0 1 1 40 0ZM80 0V80"/><path transform="translate(472 0)" d="M0 0 36 76M72 0 26 120"/></g>
+  </g>
+</svg>

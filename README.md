@@ -1,4 +1,9 @@
-# whoray
+<h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/wordmark-dark.svg">
+    <img src="assets/wordmark-light.svg" alt="whoray" width="360">
+  </picture>
+</h1>
 
 > WHOIS and RDAP lookups for every TLD, with one normalized result and drop-date estimates
 
