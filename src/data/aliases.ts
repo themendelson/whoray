@@ -102,6 +102,7 @@ export const aliases: [Field, string[]][] = [
       "expiration time",
       "expires",
       "expires on",
+      "expired on",
       "expire",
       "expire date",
       "paid-till",
