@@ -39,6 +39,7 @@ export const dropRules: Record<string, DropRule> = {
     if (!statuses.has("pendingDelete")) return addDays(expirationDate, 28);
     return addDays(updatedDate, statuses.has("redemptionPeriod") ? 36 : 7);
   },
+  md: ({ expirationDate }) => expirationDate && addDays(expirationDate, 31),
   me: ({ updatedDate, statuses }) => updatedDate && addDays(updatedDate, statuses.has("redemptionPeriod") ? 35 : 6),
   "me.uk": uk,
   "org.uk": uk,
