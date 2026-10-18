@@ -1,0 +1,25 @@
+{
+  "domain": "google.lu",
+  "tld": "lu",
+  "state": "registered",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Markmonitor",
+    "url": "http://www.markmonitor.com/",
+    "country": "GB",
+    "email": "ccops@markmonitor.com"
+  },
+  "registrant": {
+    "country": "US"
+  },
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "source": "whois"
+}
