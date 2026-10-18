@@ -15,3 +15,8 @@ export const commentedSections: Transform = (text) =>
   text
     .replace(/^%[ \t]*([\p{L} ]+):[ \t]*\n%[ \t]*=+[ \t]*$/gmu, "\n$1:")
     .replace(/^(Registrar:\n)registrar:/m, "$1handle:");
+
+export const domainEppStatuses: Transform = (text) => {
+  const block = /^domain:[\s\S]*?(?=\n[ \t]*\n)/m.exec(text)?.[0];
+  return block === undefined ? text : text.replace(block, block.replace(/^eppstatus:/gm, "epp status:"));
+};

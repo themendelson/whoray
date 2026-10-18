@@ -19,7 +19,7 @@ export type Field =
   | "dnssec";
 
 export const aliases: [Field, string[]][] = [
-  ["registrantName", ["registrant name", "registrant contact name"]],
+  ["registrantName", ["registrant name", "registrant contact name", "registrant"]],
   [
     "registrantOrganization",
     [
@@ -111,6 +111,7 @@ export const aliases: [Field, string[]][] = [
       "expiration time",
       "expires",
       "expires on",
+      "expired on",
       "expire",
       "expire date",
       "paid-till",
