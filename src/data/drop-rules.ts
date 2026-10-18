@@ -68,6 +68,7 @@ export const dropRules: Record<string, DropRule> = {
   "org.uk": uk,
   pid: registryClick,
   property: registryClick,
+  pt: ({ expirationDate }) => expirationDate && addDays(expirationDate, 31),
   qa: ({ updatedDate, statuses }) =>
     statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 32) : undefined,
   realty: registryClick,
