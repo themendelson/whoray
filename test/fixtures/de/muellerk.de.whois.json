@@ -1,0 +1,13 @@
+{
+  "domain": "muellerk.de",
+  "tld": "de",
+  "state": "redemption",
+  "isRegistered": true,
+  "updatedDate": "2026-09-30T08:34:45.000Z",
+  "dropDate": "2026-10-31T08:34:45.000Z",
+  "statuses": [
+    "redemptionPeriod"
+  ],
+  "nameservers": [],
+  "source": "whois"
+}

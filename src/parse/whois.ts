@@ -21,10 +21,13 @@ export function readWhois(text: string, name: Name): Found {
   const expirationDate = firstDate(fields.get("expires"));
   const registrar = registrarOf(fields);
   const nameservers = hostnames(fields.get("nameservers") ?? []).filter((host) => host !== name.domain);
-  if (!creationDate && !expirationDate && !registrar && nameservers.length === 0) return withoutRecord(text);
+  const statuses = statusesOf(fields, text);
+  if (!creationDate && !expirationDate && !registrar && nameservers.length === 0 && statuses.length === 0) {
+    return withoutRecord(text);
+  }
   return {
     kind: "record",
-    statuses: statusesOf(fields, text),
+    statuses,
     nameservers,
     ...(registrar && { registrar }),
     ...(creationDate && { creationDate }),
