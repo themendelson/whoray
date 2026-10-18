@@ -62,7 +62,12 @@ Fields marked `?` are left out when they don't apply or the registry doesn't pub
   premium?: true;              // an available name the registry sells at a premium price
 
   registrar?: { name: string; ianaId?: number; url?: string; abuseEmail?: string; abusePhone?: string; whoisServer?: string };
-  registrant?: { name?: string; organization?: string; country?: string };  // country: ISO 3166 code
+  registrant?: {
+    name?: string; organization?: string;
+    street?: string[]; city?: string; state?: string; postalCode?: string;
+    country?: string;          // ISO 3166 code
+    email?: string; phone?: string;
+  };                           // only what the registry publishes; redacted values are left out
   registry?: { id: string; name: string };  // the TLD's operator: { id: "mintic", name: "MinTIC" }
   handle?: string;             // the registry's ID for the domain: "D249131-CNIC"
 

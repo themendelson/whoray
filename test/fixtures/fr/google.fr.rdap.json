@@ -13,7 +13,14 @@
   "registrant": {
     "name": "Google Ireland Holdings Unlimited Company",
     "organization": "Google Ireland Holdings Unlimited Company",
-    "country": "IE"
+    "street": [
+      "70 Sir John Rogerson's Quay"
+    ],
+    "city": "Dublin",
+    "postalCode": "2",
+    "country": "IE",
+    "email": "dns-admin@google.com",
+    "phone": "+353.14361000"
   },
   "handle": "DOM000000113746-FRNIC",
   "creationDate": "2000-07-26T22:00:00.000Z",

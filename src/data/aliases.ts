@@ -7,7 +7,13 @@ export type Field =
   | "abusePhone"
   | "registrantName"
   | "registrantOrganization"
+  | "registrantStreet"
+  | "registrantCity"
+  | "registrantState"
+  | "registrantPostalCode"
   | "registrantCountry"
+  | "registrantEmail"
+  | "registrantPhone"
   | "handle"
   | "created"
   | "updated"
@@ -34,6 +40,28 @@ export const aliases: [Field, string[]][] = [
     "registrantCountry",
     ["registrant country", "registrant country code", "registrant country-loc", "domain holder country"],
   ],
+  [
+    "registrantStreet",
+    [
+      "registrant street",
+      "registrant street1",
+      "registrant street2",
+      "registrant street3",
+      "registrant address",
+      "registrant address1",
+      "registrant address2",
+      "registrant address3",
+      "holder address",
+    ],
+  ],
+  ["registrantCity", ["registrant city", "holder city"]],
+  ["registrantState", ["registrant state/province", "registrant state", "registrant province"]],
+  [
+    "registrantPostalCode",
+    ["registrant postal code", "registrant postcode", "registrant zip code", "registrant zip", "holder postal"],
+  ],
+  ["registrantEmail", ["registrant email", "registrant e-mail", "holder email"]],
+  ["registrantPhone", ["registrant phone", "registrant phone number", "holder phone"]],
   ["handle", ["registry domain id", "roid"]],
   [
     "registrar",

@@ -36,7 +36,13 @@ export interface Registry {
 export interface Registrant {
   name?: string;
   organization?: string;
+  street?: string[];
+  city?: string;
+  state?: string;
+  postalCode?: string;
   country?: string;
+  email?: string;
+  phone?: string;
 }
 
 export interface DomainRecord {

@@ -1,7 +1,7 @@
 import type { JsonObject } from "#json.ts";
 import { boolean, object, objects, string, strings } from "#json.ts";
 import { parseDate } from "#parse/dates.ts";
-import { countryCode, hostnames, registrant, registrar, visible } from "#parse/fields.ts";
+import { countryCode, email, filled, hostnames, phone, registrant, registrar, visible } from "#parse/fields.ts";
 import type { Found } from "#parse/found.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
 import type { Registrant, Registrar } from "#types.ts";
@@ -73,11 +73,20 @@ function registrarOf(entity: JsonObject | undefined): Registrar | undefined {
 function registrantOf(entity: JsonObject | undefined): Registrant | undefined {
   if (!entity) return undefined;
   const address = vcardEntry(entity, "adr");
-  return registrant(
-    visible(vcard(entity, "fn")),
-    visible(vcard(entity, "org")),
-    countryCode(string(object(address?.[1])?.cc) ?? countryOf(address?.[3])),
-  );
+  const parts: unknown[] = Array.isArray(address?.[3]) && address[3].length === ADR_PARTS ? address[3] : [];
+  return registrant({
+    name: visible(vcard(entity, "fn")),
+    organization: visible(vcard(entity, "org")),
+    street: (Array.isArray(parts[2]) ? strings(parts[2]) : [string(parts[2]) ?? []].flat()).flatMap(
+      (line) => filled(line) ?? [],
+    ),
+    city: filled(string(parts[3])),
+    state: filled(string(parts[4])),
+    postalCode: filled(string(parts[5])),
+    country: countryCode(string(object(address?.[1])?.cc) ?? countryOf(address?.[3])),
+    email: email(vcard(entity, "email")),
+    phone: phone(vcard(entity, "tel")),
+  });
 }
 
 function countryOf(parts: unknown): string | undefined {

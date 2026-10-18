@@ -13,7 +13,15 @@
   "registrant": {
     "name": "Google Canada Corporation",
     "organization": "Google Canada Corporation",
-    "country": "CA"
+    "street": [
+      "12-111 Richmond St. W"
+    ],
+    "city": "Toronto",
+    "state": "ON",
+    "postalCode": "M5H2G4",
+    "country": "CA",
+    "email": "dns-admin@google.com",
+    "phone": "+1.4162146034"
   },
   "handle": "D73081-CIRA",
   "creationDate": "2000-10-04T02:21:23.000Z",

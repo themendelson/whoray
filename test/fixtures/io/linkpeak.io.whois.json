@@ -11,6 +11,7 @@
     "whoisServer": "whois.virtualia.com"
   },
   "registrant": {
+    "state": "SP",
     "country": "BR"
   },
   "registry": {

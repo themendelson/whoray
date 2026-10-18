@@ -14,7 +14,15 @@
   "registrant": {
     "name": "Google LLC",
     "organization": "Google LLC",
-    "country": "US"
+    "street": [
+      "1600 Amphitheatre Parkway"
+    ],
+    "city": "Mountain View",
+    "state": "CA",
+    "postalCode": "94043",
+    "country": "US",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000"
   },
   "handle": "D775573-US",
   "creationDate": "2002-04-19T23:16:01.000Z",

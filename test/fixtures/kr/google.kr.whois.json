@@ -8,7 +8,11 @@
     "url": "http://whois.co.kr"
   },
   "registrant": {
-    "name": "Google Korea, LLC"
+    "name": "Google Korea, LLC",
+    "street": [
+      "22nd Floor Gangnam Finance Center, 737 Yeoksam-dong Kangnam-ku Seoul"
+    ],
+    "postalCode": "135984"
   },
   "creationDate": "2007-03-02T00:00:00.000Z",
   "updatedDate": "2026-04-15T00:00:00.000Z",
