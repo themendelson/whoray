@@ -67,6 +67,13 @@ test("a registered domain has no drop estimate", () => {
   expect(record.dropDate).toBeUndefined();
 });
 
+test("an expired .org.il drops 62 days after its validity, like .co.il", () => {
+  const text = "domain: example.org.il\nassigned: 05-06-1999\nvalidity: 05-09-2026\nstatus: Transfer Locked";
+  const record = parseWhois(text, "example.org.il");
+  expect(record).toMatchObject({ tld: "org.il", state: "expired" });
+  expect(record.dropDate).toEqual(new Date("2026-11-06T00:00:00Z"));
+});
+
 test("a date the registry publishes for release wins over formulas", () => {
   const text =
     "domain: EXAMPLE.RU\nstate: REGISTERED\npaid-till: 2026-10-01T21:00:00Z\nfree-date: 2026-11-02\nnserver: ns1.example.net.";
