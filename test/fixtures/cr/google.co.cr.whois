@@ -1,0 +1,68 @@
+whois.nic.cr
+% Domain Information over Whois protocol
+% 
+% Whoisd Server Version: 3.15.0
+% Timestamp: Sun Oct 18 21:53:15 2026
+
+domain:       google.co.cr
+registrant:   MMR-171195
+admin-c:      MMR-87489
+nsset:        MMR-541872
+registrar:    MARKMONITOR
+registered:   18.04.2002 18:00:00
+changed:      25.02.2026 09:09:23
+expire:       17.04.2027
+
+contact:      MMR-171195
+org:          Google LLC
+name:         Domain Administrator
+address:      1600 Amphitheatre Parkway
+address:      Mountain View
+address:      94043
+address:      CA
+address:      US
+phone:        +1.6502530000
+fax-no:       +1.6502530001
+e-mail:       dns-admin@google.com
+registrar:    MARKMONITOR
+created:      07.02.2025 10:49:41
+
+contact:      MMR-87489
+org:          Google Inc.
+name:         DNS Admin
+address:      1600 Amphitheatre Parkway
+address:      Mountain View
+address:      94043
+address:      CA
+address:      US
+phone:        +1.6502530000
+fax-no:       +1.6502530001
+e-mail:       dns-admin@google.com
+registrar:    MARKMONITOR
+created:      25.02.2026 09:09:21
+
+nsset:        MMR-541872
+nserver:      ns1.google.com 
+nserver:      ns2.google.com 
+nserver:      ns3.google.com 
+nserver:      ns4.google.com 
+tech-c:       MMR-45306
+registrar:    MARKMONITOR
+created:      25.02.2026 09:09:22
+
+contact:      MMR-45306
+org:          MarkMonitor, Inc.
+name:         Domain Provisioning
+address:      1120 S. Rackham Way
+address:      Suite 300
+address:      Meridian
+address:      83642
+address:      ID
+address:      US
+phone:        +1.2083895740
+fax-no:       +1.2083895771
+e-mail:       ccops@markmonitor.com
+registrar:    MARKMONITOR
+created:      06.02.2025 03:11:03
+
+

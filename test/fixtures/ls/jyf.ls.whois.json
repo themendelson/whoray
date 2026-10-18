@@ -1,0 +1,54 @@
+{
+  "domain": "jyf.ls",
+  "tld": "ls",
+  "state": "expired",
+  "isAvailable": false,
+  "registrar": {
+    "name": "REG-ZEECOM"
+  },
+  "registrant": {
+    "name": "Jane Doe",
+    "organization": "Bacon Jam LLC",
+    "street": [
+      "1 Example Street",
+      "Mountain View",
+      "94041",
+      "CA"
+    ],
+    "country": "US",
+    "email": "jane.doe@example.com"
+  },
+  "admin": {
+    "name": "Jane Doe",
+    "organization": "Bacon Jam LLC",
+    "street": [
+      "1 Example Street",
+      "Mountain View",
+      "94041",
+      "CA"
+    ],
+    "country": "US",
+    "email": "jane.doe@example.com"
+  },
+  "tech": {
+    "name": "Jane Doe",
+    "organization": "Bacon Jam LLC",
+    "street": [
+      "1 Example Street",
+      "Mountain View",
+      "94041",
+      "CA"
+    ],
+    "country": "US",
+    "email": "jane.doe@example.com"
+  },
+  "creationDate": "2024-09-12T09:19:19.000Z",
+  "expirationDate": "2026-09-12T00:00:00.000Z",
+  "dropDate": "2026-12-01T00:00:00.000Z",
+  "statuses": [],
+  "nameservers": [
+    "ns1.zeecom.org",
+    "ns2.zeecom.org"
+  ],
+  "source": "whois"
+}

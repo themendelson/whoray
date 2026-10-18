@@ -45,7 +45,7 @@ function linkedContactLines(text: string, handleKey: string, label: string): str
   ).exec(text)?.[1];
   const fields = (block ?? "").split(/\r?\n/).flatMap((line) => {
     const match = /^([\w-]+):[ \t]*(.*?)\s*$/.exec(line);
-    return match?.[1] === undefined ? [] : [{ key: match[1], value: match[2] ?? "" }];
+    return match?.[1] === undefined ? [] : [{ key: match[1].toLowerCase(), value: match[2] ?? "" }];
   });
   const addresses = fields.filter(({ key }) => key === "address").map(({ value }) => value);
   const country = /^[A-Z]{2}$/.test(addresses.at(-1) ?? "") ? addresses.pop() : undefined;

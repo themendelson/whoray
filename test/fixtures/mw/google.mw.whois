@@ -1,0 +1,53 @@
+whois.nic.mw
+% Domain Information over Whois protocol
+% 
+% Whoisd Server Version: 3.9.0
+% Timestamp: Sun Oct 18 23:51:58 2026
+
+domain:       google.mw
+registrant:   MM1171195
+admin-c:      MM1171195
+nsset:        MM1541838
+registrar:    MARKMONITOR-REG
+registered:   20.12.2002 16:08:33
+changed:      13.09.2022 04:15:25
+expire:       05.10.2027
+
+contact:      MM1171195
+org:          Google LLC
+name:         Domain Administrator
+address:      1600 Amphitheatre Parkway
+address:      Mountain View
+address:      94043
+address:      CA
+address:      US
+phone:        +1.6502530000
+fax-no:       +1.6502530001
+e-mail:       dns-admin@google.com
+registrar:    MARKMONITOR-REG
+created:      22.10.2018 23:58:51
+
+nsset:        MM1541838
+nserver:      ns2.google.com 
+nserver:      ns4.google.com 
+nserver:      ns3.google.com 
+nserver:      ns1.google.com 
+tech-c:       MM1168279
+registrar:    MARKMONITOR-REG
+created:      06.04.2017 19:22:24
+
+contact:      MM1168279
+org:          MarkMonitor Inc.
+name:         Domain Administrator
+address:      1120 S. Rackham Way, Suite 300
+address:      Meridian
+address:      83642
+address:      US
+phone:        +1.2083895740
+fax-no:       +1.2083895771
+e-mail:       ccops@markmonitor.com
+registrar:    MARKMONITOR-REG
+created:      05.04.2017 01:05:37
+changed:      07.06.2024 17:53:08
+
+
