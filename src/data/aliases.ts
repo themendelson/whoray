@@ -103,6 +103,7 @@ export const aliases: [Field, string[]][] = [
     "registrar",
     [
       "registrar",
+      "last registrar",
       "sponsoring registrar",
       "registrar name",
       "registrar organization",
@@ -196,7 +197,17 @@ export const aliases: [Field, string[]][] = [
       "fecha de vencimiento",
     ],
   ],
-  ["released", ["free-date", "available", "reservation eligibility end date", "date_to_release", "purge date"]],
+  [
+    "released",
+    [
+      "free-date",
+      "available",
+      "reservation eligibility end date",
+      "date_to_release",
+      "date out of quarantine",
+      "purge date",
+    ],
+  ],
   ["deleted", ["deleted"]],
   [
     "statuses",
