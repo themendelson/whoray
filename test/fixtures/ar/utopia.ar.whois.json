@@ -1,0 +1,19 @@
+{
+  "domain": "utopia.ar",
+  "tld": "ar",
+  "state": "expired",
+  "isAvailable": false,
+  "registrar": {
+    "name": "nicar"
+  },
+  "creationDate": "2024-09-11T05:54:21.000Z",
+  "updatedDate": "2025-09-23T05:40:23.000Z",
+  "expirationDate": "2026-09-11T00:00:00.000Z",
+  "dropDate": "2026-10-26T00:00:00.000Z",
+  "statuses": [],
+  "nameservers": [
+    "ns2.sedoparking.com",
+    "ns1.sedoparking.com"
+  ],
+  "source": "whois"
+}
