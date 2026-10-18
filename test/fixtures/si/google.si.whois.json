@@ -4,7 +4,8 @@
   "state": "registered",
   "isAvailable": false,
   "registrar": {
-    "name": "Markmonitor Inc."
+    "name": "Markmonitor Inc.",
+    "url": "http://www.markmonitor.com"
   },
   "creationDate": "2005-04-04T00:00:00.000Z",
   "expirationDate": "2027-07-19T00:00:00.000Z",

@@ -108,6 +108,7 @@ export const aliases: [Field, string[]][] = [
       "registrar website",
       "registrar www",
       "sponsoring registrar url",
+      "registrar-url",
       "registrar info",
       "registrar web",
       "referral url",
