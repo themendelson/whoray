@@ -17,12 +17,13 @@ const fieldByKey = new Map(aliases.flatMap(([field, keys]) => keys.map((key) => 
 
 export function readWhois(text: string, name: Name): Found {
   const transforms = bySuffix(quirks, name.tld) ?? [];
-  const fields = collect(transforms.reduce((current, transform) => transform(current), text));
+  const transformed = transforms.reduce((current, transform) => transform(current), text);
+  const fields = collect(transformed);
   const creationDate = firstDate(fields.get("created"));
   const expirationDate = firstDate(fields.get("expires"));
   const registrar = registrarOf(fields);
   const nameservers = hostnames(fields.get("nameservers") ?? []).filter((host) => host !== name.domain);
-  const statuses = statusesOf(fields, text);
+  const statuses = statusesOf(fields, transformed);
   if (!creationDate && !expirationDate && !registrar && nameservers.length === 0 && statuses.length === 0) {
     return withoutRecord(text);
   }
@@ -33,7 +34,7 @@ export function readWhois(text: string, name: Name): Found {
     ...(registrar && { registrar }),
     ...(creationDate && { creationDate }),
     ...(expirationDate && { expirationDate }),
-    ...details(fields, text),
+    ...details(fields, transformed),
   };
 }
 

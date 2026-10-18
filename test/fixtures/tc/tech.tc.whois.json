@@ -1,0 +1,30 @@
+{
+  "domain": "tech.tc",
+  "tld": "tc",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "NICTC",
+    "url": "https://www.nic.tc",
+    "street": [
+      ".O. Box 599, Level 2, Le Vele Plaza, Grace Bay,  Providenciales, Turks & Caicos Islands, B.W.I."
+    ],
+    "country": "TC",
+    "whoisServer": "whois.nic.tc"
+  },
+  "creationDate": "2025-09-02T04:00:00.000Z",
+  "expirationDate": "2026-09-02T04:00:00.000Z",
+  "snapshotDate": "2026-10-18T19:56:47.000Z",
+  "dropDate": "2026-11-04T04:00:00.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "pendingDelete",
+    "serverHold"
+  ],
+  "nameservers": [
+    "hope.ns.cloudflare.com",
+    "jason.ns.cloudflare.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
