@@ -2,7 +2,7 @@
   "domain": "guestharbour.se",
   "tld": "se",
   "state": "pendingDelete",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Registrar.eu"
   },
