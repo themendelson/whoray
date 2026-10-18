@@ -170,7 +170,7 @@ export const registries: Registry[] = [
   {
     id: "mintic",
     name: "MinTIC",
-    redemption: 30,
+    redemption: 35,
     pendingDelete: 5,
     tlds: list(`
       co
