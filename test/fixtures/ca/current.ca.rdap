@@ -1,0 +1,132 @@
+200
+{
+  "entities" : [ {
+    "entities" : [ {
+      "handle" : "not applicable",
+      "objectClassName" : "entity",
+      "roles" : [ "abuse" ],
+      "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "Abuse Contact" ], [ "kind", { }, "text", "individual" ], [ "role", { }, "text", "abuse" ], [ "adr", { }, "text", [ "", "", "", "", "", "", "" ] ], [ "tel", {
+        "type" : [ "voice" ]
+      }, "text", "" ], [ "email", { }, "text", "" ], [ "url", {
+        "type" : "home"
+      }, "uri", "http://www.cira.ca" ] ] ]
+    } ],
+    "handle" : "not applicable",
+    "objectClassName" : "entity",
+    "roles" : [ "registrar" ],
+    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "CIRA Default Registrar" ], [ "kind", { }, "text", "org" ], [ "role", { }, "text", "registrar" ], [ "adr", { }, "text", [ "", "", "", "", "", "", "" ] ], [ "url", {
+      "type" : "home"
+    }, "uri", "http://www.cira.ca" ] ] ]
+  }, {
+    "handle" : "98506539-CIRA",
+    "objectClassName" : "entity",
+    "roles" : [ "registrant" ],
+    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "generated registrant" ], [ "kind", { }, "text", "individual" ], [ "role", { }, "text", "registrant" ], [ "adr", {
+      "cc" : "CA"
+    }, "text", [ "", "", [ "979 Bank Street", "Suite 400" ], "Ottawa", "ON", "K1S5K5", "" ] ], [ "tel", {
+      "type" : [ "voice" ]
+    }, "uri", "tel:+1.6132375335" ], [ "email", { }, "text", "regsupport@cira.ca" ], [ "url", {
+      "type" : "home"
+    }, "uri", "http://www.cira.ca" ] ] ]
+  }, {
+    "handle" : "98506539-CIRA",
+    "objectClassName" : "entity",
+    "roles" : [ "administrative" ],
+    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "generated registrant" ], [ "kind", { }, "text", "individual" ], [ "role", { }, "text", "administrative" ], [ "adr", {
+      "cc" : "CA"
+    }, "text", [ "", "", [ "979 Bank Street", "Suite 400" ], "Ottawa", "ON", "K1S5K5", "" ] ], [ "tel", {
+      "type" : [ "voice" ]
+    }, "uri", "tel:+1.6132375335" ], [ "email", { }, "text", "regsupport@cira.ca" ], [ "url", {
+      "type" : "home"
+    }, "uri", "http://www.cira.ca" ] ] ]
+  }, {
+    "objectClassName" : "entity",
+    "roles" : [ "technical" ],
+    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "" ], [ "kind", { }, "text", "individual" ], [ "org", { }, "text", "" ], [ "role", { }, "text", "technical" ], [ "adr", { }, "text", [ "", "", "", "", "", "", "" ] ], [ "tel", {
+      "type" : [ "voice" ]
+    }, "text", "" ], [ "tel", {
+      "type" : [ "fax" ]
+    }, "text", "" ], [ "email", { }, "text", "" ], [ "url", {
+      "type" : "home"
+    }, "uri", "http://www.cira.ca" ] ] ]
+  }, {
+    "objectClassName" : "entity",
+    "roles" : [ "billing" ],
+    "vcardArray" : [ "vcard", [ [ "version", { }, "text", "4.0" ], [ "fn", { }, "text", "" ], [ "kind", { }, "text", "individual" ], [ "org", { }, "text", "" ], [ "role", { }, "text", "billing" ], [ "adr", { }, "text", [ "", "", "", "", "", "", "" ] ], [ "tel", {
+      "type" : [ "voice" ]
+    }, "text", "" ], [ "tel", {
+      "type" : [ "fax" ]
+    }, "text", "" ], [ "email", { }, "text", "" ], [ "url", {
+      "type" : "home"
+    }, "uri", "http://www.cira.ca" ] ] ]
+  } ],
+  "events" : [ {
+    "eventAction" : "registration",
+    "eventDate" : "2026-10-13T06:20:46Z"
+  }, {
+    "eventAction" : "expiration",
+    "eventDate" : "3000-01-01T00:00:00Z"
+  }, {
+    "eventAction" : "last changed",
+    "eventDate" : "2026-10-13T06:26:07Z"
+  }, {
+    "eventAction" : "last update of RDAP database",
+    "eventDate" : "2026-10-18T21:00:37Z"
+  } ],
+  "handle" : "121954784-CIRA",
+  "ldhName" : "current.ca",
+  "links" : [ {
+    "href" : "https://rdap.ca.fury.ca/rdap/domain/current.ca",
+    "rel" : "self",
+    "title" : "Authoritative URL for this resource",
+    "type" : "application/rdap+json",
+    "value" : "https://rdap.ca.fury.ca/rdap/domain/current.ca"
+  } ],
+  "nameservers" : [ ],
+  "notices" : [ {
+    "description" : [ "For more information on domain status codes, please visit https://icann.org/epp" ],
+    "links" : [ {
+      "href" : "https://icann.org/epp",
+      "rel" : "glossary",
+      "type" : "text/html",
+      "value" : "https://rdap.ca.fury.ca/rdap/domain/current.ca"
+    } ],
+    "title" : "Status Codes"
+  }, {
+    "description" : [ "Service subject to Terms of Use." ],
+    "links" : [ {
+      "href" : "https://www.cira.ca/en/resources/documents/about/website-terms-use",
+      "rel" : "terms-of-service",
+      "type" : "text/html",
+      "value" : "https://rdap.ca.fury.ca/rdap/domain/current.ca"
+    } ],
+    "title" : "Terms of Service"
+  }, {
+    "description" : [ "URL of the ICANN RDDS Inaccuracy Complaint Form: https://icann.org/wicf" ],
+    "links" : [ {
+      "href" : "https://icann.org/wicf",
+      "rel" : "help",
+      "type" : "text/html",
+      "value" : "https://rdap.ca.fury.ca/rdap/domain/current.ca"
+    } ],
+    "title" : "RDDS Inaccuracy Complaint Form"
+  }, {
+    "description" : [ "\nUse of CIRA's WHOIS service is governed by the Terms of Use in its Legal\nNotice, available at https://www.cira.ca/en/resources/documents/about/website-terms-use\n\n(c) 2026 Canadian Internet Registration Authority, (http://www.cira.ca/)" ],
+    "links" : [ {
+      "href" : "https://www.cira.ca/en/resources/documents/about/website-terms-use",
+      "rel" : "help",
+      "type" : "text/html",
+      "value" : "https://rdap.ca.fury.ca/rdap/domain/current.ca"
+    } ],
+    "title" : "Legal Notice"
+  } ],
+  "objectClassName" : "domain",
+  "port43" : "whois.ca.fury.ca",
+  "rdapConformance" : [ "icann_rdap_response_profile_1", "icann_rdap_technical_implementation_guide_1", "rdap_level_0" ],
+  "secureDNS" : {
+    "delegationSigned" : false
+  },
+  "status" : [ "inactive", "pending delete", "server hold", "server renew prohibited", "server transfer prohibited", "server update prohibited" ],
+  "unicodeName" : "current.ca",
+  "variants" : [ ]
+}
