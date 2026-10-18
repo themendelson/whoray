@@ -22,9 +22,18 @@ export const aliases: [Field, string[]][] = [
   ["registrantName", ["registrant name", "registrant contact name", "registrant"]],
   [
     "registrantOrganization",
-    ["registrant organization", "registrant organisation", "registrant org", "domain holder organization"],
+    [
+      "registrant organization",
+      "registrant organisation",
+      "registrant org",
+      "registrant organization-loc",
+      "domain holder organization",
+    ],
   ],
-  ["registrantCountry", ["registrant country", "registrant country code", "domain holder country"]],
+  [
+    "registrantCountry",
+    ["registrant country", "registrant country code", "registrant country-loc", "domain holder country"],
+  ],
   ["handle", ["registry domain id", "roid"]],
   [
     "registrar",
@@ -53,8 +62,8 @@ export const aliases: [Field, string[]][] = [
   ],
   ["registrarIanaId", ["registrar iana id", "sponsoring registrar iana id"]],
   ["registrarWhois", ["registrar whois server", "whois server", "registrar whois"]],
-  ["abuseEmail", ["registrar abuse contact email"]],
-  ["abusePhone", ["registrar abuse contact phone"]],
+  ["abuseEmail", ["registrar abuse contact email", "registrar abuse-email"]],
+  ["abusePhone", ["registrar abuse contact phone", "registrar abuse-phone"]],
   [
     "created",
     [
