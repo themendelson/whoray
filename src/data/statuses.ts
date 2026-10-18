@@ -28,6 +28,7 @@ export const statusSynonyms: Readonly<Record<string, string>> = {
   active: "ok",
   "transfer locked": "clientTransferProhibited",
   "domain transfer locked": "clientTransferProhibited",
+  "registrar locked": "clientTransferProhibited",
   "transfer prohibited by registrar": "clientTransferProhibited",
   "update prohibited by registrar": "clientUpdateProhibited",
   "delete prohibited by registrar": "clientDeleteProhibited",

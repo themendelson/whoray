@@ -1,0 +1,19 @@
+{
+  "domain": "casa.am",
+  "tld": "am",
+  "state": "expired",
+  "isAvailable": false,
+  "registrar": {
+    "name": "globalr (GLOBALR LLC)"
+  },
+  "creationDate": "2021-09-22T00:00:00.000Z",
+  "updatedDate": "2026-09-22T00:00:00.000Z",
+  "expirationDate": "2026-09-22T00:00:00.000Z",
+  "dropDate": "2026-11-06T00:00:00.000Z",
+  "statuses": [],
+  "nameservers": [
+    "ns1.globalr.com",
+    "ns2.globalr.com"
+  ],
+  "source": "whois"
+}
