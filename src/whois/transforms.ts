@@ -96,3 +96,55 @@ export const htmlEntities: Transform = (text) =>
   text.replace(/&(amp|gt|lt|quot|apos);/g, (entity, name: string) => ENTITIES[name] ?? entity);
 
 export const emptyDottedFields: Transform = (text) => text.replace(/^[\p{L}][\p{L}\d ]*\.{2,}:[ \t]*\r?\n/gmu, "");
+
+
+const RIPE_CONTACT_KEYS: Record<string, string> = {
+  person: "Name",
+  personname: "Name",
+  role: "Name",
+  organization: "Organization",
+  org: "Organization",
+  "street address": "Street",
+  "postal code": "Postal Code",
+  city: "City",
+  "state or province": "State/Province",
+  country: "Country",
+  phone: "Phone",
+  "fax-no": "Fax",
+  "e-mail": "Email",
+};
+
+const RIPE_ROLES: [string, string][] = [
+  ["registrant", "Registrant"],
+  ["admin-c", "Admin"],
+  ["tech-c", "Tech"],
+  ["billing-c", "Billing"],
+];
+
+function nicHandleLines(text: string, handleKey: string, label: string): string[] {
+  const handle = new RegExp(`^${handleKey}:[ \\t]+(\\S+)\\s*$`, "m").exec(text)?.[1];
+  if (handle === undefined) return [];
+  const escaped = handle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const block = text
+    .split(/\r?\n[ \t]*\r?\n/)
+    .find((paragraph) => new RegExp(`^nic-hdl:[ \\t]+${escaped}\\s*$`, "m").test(paragraph));
+  const fields = (block ?? "").split(/\r?\n/).flatMap((line) => {
+    const match = /^([\w -]+?):[ \t]*(.*?)\s*$/.exec(line);
+    return match?.[1] === undefined ? [] : [{ key: match[1].toLowerCase(), value: match[2] ?? "" }];
+  });
+  const addresses = fields.filter(({ key }) => key === "address").map(({ value }) => value);
+  const country = /^[A-Z]{2}$/.test(addresses.at(-1) ?? "") ? addresses.pop() : undefined;
+  return [
+    ...fields.flatMap(({ key, value }) => {
+      const part = RIPE_CONTACT_KEYS[key];
+      return part === undefined || value === "" ? [] : [`${label} ${part}: ${value}`];
+    }),
+    ...addresses.map((line) => `${label} Street: ${line}`),
+    ...(country === undefined ? [] : [`${label} Country: ${country}`]),
+  ];
+}
+
+export const nicHandleRegistrant: Transform = (text) => {
+  const lines = RIPE_ROLES.flatMap(([handleKey, label]) => nicHandleLines(text, handleKey, label));
+  return lines.length === 0 ? text : `${lines.join("\n")}\n\n${text}`;
+};
