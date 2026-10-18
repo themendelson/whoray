@@ -30,52 +30,86 @@ npm install whoray
 ```js
 import { lookup } from "whoray";
 
-await lookup("linkpeak.io");
+await lookup("sisley.pr");
 ```
 
 ```js
 {
-  domain: "linkpeak.io",
-  tld: "io",
-  state: "pendingDelete",
+  domain: "sisley.pr",
+  tld: "pr",
+  state: "redemption",
   isAvailable: false,
   registrar: {
-    name: "Virtualia LLC",
-    ianaId: 3875,
-    abuseEmail: "abuse@virtualia.com",
-    abusePhone: "+1.3072744655",
-    whoisServer: "whois.virtualia.com"
+    name: "CSC Corporate Domains, Inc.",
+    ianaId: 299,
+    url: "http://www.cscglobal.com",
+    abuseEmail: "domainabuse@cscglobal.com",
+    abusePhone: "+1.3026365400",
+    whoisServer: "www.whois.corporatedomains.com"
   },
-  registrant: { state: "SP", country: "BR" },
-  registry: { id: "internet-computer-bureau", name: "Internet Computer Bureau" },
-  creationDate: 2025-08-04T15:15:57.000Z,
-  updatedDate: 2026-10-17T00:05:10.000Z,
-  expirationDate: 2026-08-04T15:15:57.000Z,
-  snapshotDate: 2026-10-18T23:20:57.000Z,
-  dropDate: 2026-11-14T17:00:00.000Z, // set while expired, in redemption or pendingDelete
-  statuses: ["clientHold", "pendingDelete"],
-  nameservers: ["ns1.bodis.com", "ns2.bodis.com"],
+  registrant: {
+    name: "Domain Administrator",
+    organization: "Sisley Paris",
+    street: ["16 avenue George V"],
+    city: "PARIS",
+    postalCode: "75008",
+    country: "FR",
+    email: "domains.managers@sisley.fr",
+    phone: "+33.149523500"
+  },
+  admin: {
+    name: "Domain Administrator",
+    organization: "Sisley Paris",
+    street: ["16 avenue George V"],
+    city: "PARIS",
+    postalCode: "75008",
+    country: "FR",
+    email: "domains.managers@sisley.fr",
+    phone: "+33.149523500"
+  },
+  tech: {
+    name: "INDOM contact",
+    organization: "INDOM",
+    street: ["124-126 rue de Provence"],
+    city: "Paris",
+    state: "Paris",
+    postalCode: "75008",
+    country: "FR",
+    email: "indom@indom.com",
+    phone: "+33.148018360",
+    fax: "+33.148016773"
+  },
+  registry: { id: "identity-digital", name: "Identity Digital" },
+  handle: "e002c36bd1004de3a43a9ba3b899a435-DONUTS",
+  creationDate: 2012-10-22T06:01:54.000Z,
+  updatedDate: 2026-10-11T05:15:41.000Z,
+  expirationDate: 2026-10-22T00:00:00.000Z,
+  snapshotDate: 2026-10-18T23:27:18.000Z,
+  dropDate: 2026-11-15T17:15:41.000Z, // set while expired, in redemption or pendingDelete
+  deletionDate: 2026-11-15T05:15:41.000Z,
+  statuses: ["clientTransferProhibited", "redemptionPeriod"],
+  nameservers: ["indom10.indomco.com", "indom20.indomco.net"],
   dnssec: false,
   source: "whois",
-  hops: [{ protocol: "whois", server: "whois.nic.io", raw: "Domain Name: linkpeak.io\r\n…" }]
+  hops: [{ protocol: "whois", server: "whois.afilias-srs.net", raw: "Domain Name: sisley.pr\r\n…" }]
 }
 ```
 
 ## CLI
 
 ```sh
-npx whoray linkpeak.io
+npx whoray sisley.pr
 ```
 
 ```
-linkpeak.io  pendingDelete
-  registrar    Virtualia LLC
-  created      2025-08-04
-  expires      2026-08-04
-  statuses     clientHold, pendingDelete
-  nameservers  ns1.bodis.com, ns2.bodis.com
-  source       whois via whois.nic.io
-  drops        2026-11-14T17:00:00.000Z
+sisley.pr  redemption
+  registrar    CSC Corporate Domains, Inc.
+  created      2012-10-22
+  expires      2026-10-22
+  statuses     clientTransferProhibited, redemptionPeriod
+  nameservers  indom10.indomco.com, indom20.indomco.net
+  source       whois via whois.afilias-srs.net
+  drops        2026-11-15T17:15:41.000Z
 ```
 
 ```sh
