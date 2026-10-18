@@ -35,6 +35,7 @@ export const dropRules: Record<string, DropRule> = {
   co: ({ released }) => released && addDays(rolledPast(released, 17), 1),
   "co.il": isoc,
   "co.uk": uk,
+  do: ({ expirationDate }) => expirationDate && addDays(expirationDate, 47),
   de: ({ updatedDate, statuses }) =>
     statuses.has("redemptionPeriod") && updatedDate ? addDays(updatedDate, 31) : undefined,
   fr: ({ deleted }) => deleted && addDays(deleted, 30),
