@@ -80,6 +80,7 @@ export const servers: Record<string, ServerEntry> = {
   ro: { whois: "whois.rotld.ro" },
   rs: { whois: "whois.rnids.rs" },
   sbs: { whois: "whois.nic.sbs" },
+  sc: { rdap: identityDigital },
   sh: { rdap: identityDigital, whois: "whois.nic.sh" },
   shop: { whois: "whois.nic.shop" },
   site: { whois: "whois.nic.site" },
