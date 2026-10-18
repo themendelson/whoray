@@ -1,0 +1,37 @@
+{
+  "domain": "store.vg",
+  "tld": "vg",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "TLD Registrar Solutions Ltd.",
+    "ianaId": 1564,
+    "url": "http://www.tldregistrarsolutions.com",
+    "abuseEmail": "abuse@tldregistrarsolutions.com",
+    "abusePhone": "+1.5167401179",
+    "whoisServer": "whois.tldregistrarsolutions.com"
+  },
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "handle": "D587710086-CNIC",
+  "creationDate": "2025-08-31T11:42:38.000Z",
+  "updatedDate": "2026-10-14T01:22:24.000Z",
+  "expirationDate": "2026-08-31T23:59:59.000Z",
+  "snapshotDate": "2026-10-18T20:04:28.000Z",
+  "dropDate": "2026-11-17T01:22:24.000Z",
+  "statuses": [
+    "serverHold",
+    "serverTransferProhibited",
+    "clientTransferProhibited",
+    "pendingDelete",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "ns1.ibspark.com",
+    "ns2.ibspark.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
