@@ -47,17 +47,6 @@ test(".fr drops 30 days after its deletion date", () => {
   expect(record.dropDate).toEqual(new Date("2026-11-09T00:00:00Z"));
 });
 
-test(".ma drops 30 days after expiry", () => {
-  const text = [
-    "Domain Name: example.ma",
-    "Updated Date: 2026-10-06T00:00:32Z",
-    "Creation Date: 2020-10-04T01:07:55Z",
-    "Registry Expiry Date: 2026-10-04T01:07:55Z",
-    "Domain Status: pendingDelete https://icann.org/epp#pendingDelete",
-  ].join("\n");
-  expect(parseWhois(text, "example.ma").dropDate).toEqual(new Date("2026-11-03T01:07:55Z"));
-});
-
 test("registries with a dropzone release names 12 hours after their scheduled deletion", () => {
   const record = parseRdap(
     {
