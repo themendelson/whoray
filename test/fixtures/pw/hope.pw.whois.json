@@ -1,0 +1,37 @@
+{
+  "domain": "hope.pw",
+  "tld": "pw",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Alibaba Cloud Computing Ltd. d/b/a HiChina (www.net.cn)",
+    "ianaId": 1599,
+    "url": "https://wanwang.aliyun.com/",
+    "abuseEmail": "domainabuse@service.aliyun.com",
+    "abusePhone": "+86.18515850767",
+    "whoisServer": "whois.hichina.com"
+  },
+  "registry": {
+    "id": "tucows-registry",
+    "name": "Tucows Registry Services"
+  },
+  "handle": "D118242866-CNIC",
+  "creationDate": "2019-08-16T03:58:40.000Z",
+  "updatedDate": "2026-09-25T14:30:50.000Z",
+  "expirationDate": "2026-08-16T23:59:59.000Z",
+  "snapshotDate": "2026-10-18T19:41:48.000Z",
+  "dropDate": "2026-10-30T14:30:50.000Z",
+  "statuses": [
+    "serverTransferProhibited",
+    "serverUpdateProhibited",
+    "pendingDelete",
+    "serverHold",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "expirens3.hichina.com",
+    "expirens4.hichina.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
