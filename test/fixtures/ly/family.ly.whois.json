@@ -8,6 +8,10 @@
     "abuseEmail": "abuse@libyanspider.com",
     "abusePhone": "+218213632323"
   },
+  "registry": {
+    "id": "cocca",
+    "name": "CoCCA"
+  },
   "handle": "426438-nicly",
   "creationDate": "2025-08-27T13:10:18.000Z",
   "updatedDate": "2026-10-12T10:55:16.000Z",
