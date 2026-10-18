@@ -1,0 +1,33 @@
+whois.tznic.or.tz
+%  https://karibu.tz/media/WHOIS_TERMS_TOU.pdf
+% 
+% Whoisd Server Version: 3.15.0
+% Timestamp: Sun Oct 18 23:03:24 2026
+
+domain:       find.tz
+registrant:   MCRC426907
+admin-c:      MCRC000000
+nsset:        MCRC133062
+registrar:    REG-MARCARIA
+status:       Expired
+status:       The domain isn't generated in the zone
+registered:   28.08.2024 01:35:16
+changed:      29.08.2024 00:28:12
+expire:       27.08.2026
+
+contact:      MCRC426907
+registrar:    REG-MARCARIA
+created:      21.03.2024 19:33:34
+
+contact:      MCRC000000
+registrar:    REG-MARCARIA
+created:      12.08.2023 02:58:24
+
+nsset:        MCRC133062
+nserver:      chris.ns.cloudflare.com 
+nserver:      julissa.ns.cloudflare.com 
+tech-c:       MCRC000000
+registrar:    REG-MARCARIA
+created:      29.08.2024 00:28:01
+
+
