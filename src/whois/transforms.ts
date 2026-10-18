@@ -21,32 +21,45 @@ export const domainEppStatuses: Transform = (text) => {
   return block === undefined ? text : text.replace(block, block.replace(/^eppstatus:/gm, "epp status:"));
 };
 
-const CONTACT_KEYS: Record<string, string> = {
-  org: "Registrant Organization",
-  name: "Registrant Name",
-  "e-mail": "Registrant Email",
-  phone: "Registrant Phone",
+const FRED_CONTACT_KEYS: Record<string, string> = {
+  org: "Organization",
+  name: "Name",
+  "e-mail": "Email",
+  phone: "Phone",
+  "fax-no": "Fax",
 };
 
-export const linkedRegistrant: Transform = (text) => {
-  const handle = /^registrant:[ \t]+(\S+)\s*$/m.exec(text)?.[1];
-  if (handle === undefined) return text;
+const FRED_ROLES: [string, string][] = [
+  ["registrant", "Registrant"],
+  ["admin-c", "Admin"],
+  ["tech-c", "Tech"],
+];
+
+function linkedContactLines(text: string, handleKey: string, label: string): string[] {
+  const handle = new RegExp(`^${handleKey}:[ \\t]+(\\S+)\\s*$`, "m").exec(text)?.[1];
+  if (handle === undefined) return [];
   const escaped = handle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const block = new RegExp(
     `^contact:[ \\t]+${escaped}[ \\t]*\\r?\\n([\\s\\S]*?)(?:\\r?\\n[ \\t]*\\r?\\n|(?![\\s\\S]))`,
     "m",
   ).exec(text)?.[1];
-  if (block === undefined) return text;
-  const fields = block.split(/\r?\n/).flatMap((line) => {
+  const fields = (block ?? "").split(/\r?\n/).flatMap((line) => {
     const match = /^([\w-]+):[ \t]*(.*?)\s*$/.exec(line);
     return match?.[1] === undefined ? [] : [{ key: match[1], value: match[2] ?? "" }];
   });
   const addresses = fields.filter(({ key }) => key === "address").map(({ value }) => value);
   const country = /^[A-Z]{2}$/.test(addresses.at(-1) ?? "") ? addresses.pop() : undefined;
-  const lines = [
-    ...fields.flatMap(({ key, value }) => (CONTACT_KEYS[key] === undefined ? [] : [`${CONTACT_KEYS[key]}: ${value}`])),
-    ...addresses.map((line) => `Registrant Street: ${line}`),
-    ...(country === undefined ? [] : [`Registrant Country: ${country}`]),
+  return [
+    ...fields.flatMap(({ key, value }) => {
+      const part = FRED_CONTACT_KEYS[key];
+      return part === undefined ? [] : [`${label} ${part}: ${value}`];
+    }),
+    ...addresses.map((line) => `${label} Street: ${line}`),
+    ...(country === undefined ? [] : [`${label} Country: ${country}`]),
   ];
-  return `${lines.join("\n")}\n\n${text}`;
+}
+
+export const linkedRegistrant: Transform = (text) => {
+  const lines = FRED_ROLES.flatMap(([handleKey, label]) => linkedContactLines(text, handleKey, label));
+  return lines.length === 0 ? text : `${lines.join("\n")}\n\n${text}`;
 };
