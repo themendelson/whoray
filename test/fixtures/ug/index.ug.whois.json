@@ -1,0 +1,54 @@
+{
+  "domain": "index.ug",
+  "tld": "ug",
+  "state": "expired",
+  "isAvailable": false,
+  "registrant": {
+    "name": "Jane Doe",
+    "organization": "Index Digital",
+    "street": [
+      "Kampala"
+    ],
+    "city": "kampala",
+    "state": "central",
+    "postalCode": "256",
+    "country": "UG",
+    "email": "jane.doe@example.com",
+    "phone": "0700000000"
+  },
+  "admin": {
+    "name": "Jane Doe",
+    "organization": "Index Digital",
+    "street": [
+      "Kampala"
+    ],
+    "city": "kampala",
+    "state": "central",
+    "postalCode": "256",
+    "country": "UG",
+    "email": "jane.doe@example.com",
+    "phone": "0700000000"
+  },
+  "tech": {
+    "name": "Jane Doe",
+    "organization": "Index Digital",
+    "street": [
+      "Kampala"
+    ],
+    "city": "kampala",
+    "state": "central",
+    "postalCode": "256",
+    "country": "UG",
+    "email": "jane.doe@example.com",
+    "phone": "0700000000"
+  },
+  "creationDate": "2023-07-21T00:00:00.000Z",
+  "expirationDate": "2026-10-16T00:00:00.000Z",
+  "dropDate": "2027-01-04T00:00:00.000Z",
+  "statuses": [],
+  "nameservers": [
+    "ns1.greengeeks.net",
+    "ns2.greengeeks.net"
+  ],
+  "source": "whois"
+}

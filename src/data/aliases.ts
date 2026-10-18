@@ -72,7 +72,7 @@ const PART_SUFFIXES: [ContactPart, string[]][] = [
     ],
   ],
   ["City", ["city", "locality", "ville", "ciudad"]],
-  ["State", ["state/province", "state", "province"]],
+  ["State", ["state/province", "state / province", "state", "province"]],
   ["PostalCode", ["postal code", "postcode", "zip code", "zipcode", "zip", "code postal"]],
   ["Country", ["country", "country code", "pays", "pais"]],
   ["Email", ["email", "e-mail", "courriel", "email address"]],

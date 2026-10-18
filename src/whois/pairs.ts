@@ -8,6 +8,7 @@ const BRACKET = /^(?:[a-z]\.\s*)?\[([^\]]+)\]\s*(.*)$/i;
 const KEY_VALUE = /^([\p{L}][\p{L} .\-_/()'&]{0,60}?)[\s.]*:(?!\/\/)\s*(.*)$/u;
 const IMPLICIT_HEADER = /^[\p{L}][\p{L} /&()-]{0,40}$/u;
 const CONTACT_SECTION = /registrant|admin|tech|billing|contact|holder|owner|manager|on-site/;
+const ROLE_KEY = /^(?:registrant|admin|tech|billing) /;
 
 function normalizeKey(key: string): string {
   return key
@@ -48,7 +49,9 @@ class Reader {
   pair(key: string, value: string, indented: boolean): void {
     if (!indented && !this.capturesPairs) this.section = undefined;
     this.midParagraph = true;
-    if (this.section === undefined || !CONTACT_SECTION.test(this.section)) this.found.push({ key, value });
+    if (this.section === undefined || !CONTACT_SECTION.test(this.section) || ROLE_KEY.test(key)) {
+      this.found.push({ key, value });
+    }
     if (this.section !== undefined && this.section !== key) {
       this.found.push({ key: key.startsWith(`${this.section} `) ? key : `${this.section} ${key}`, value });
     }
