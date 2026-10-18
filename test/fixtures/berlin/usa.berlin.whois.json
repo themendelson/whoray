@@ -1,0 +1,40 @@
+{
+  "domain": "usa.berlin",
+  "tld": "berlin",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "1&1 Internet SE",
+    "ianaId": 83,
+    "url": "https://ionos.com",
+    "abuseEmail": "abuse@ionos.com",
+    "abusePhone": "+1.6105601459",
+    "whoisServer": "whois.ionos.com"
+  },
+  "registry": {
+    "id": "dotberlin",
+    "name": "dotBERLIN"
+  },
+  "handle": "D0000516916-BERLIN",
+  "creationDate": "2020-09-16T16:28:29.000Z",
+  "updatedDate": "2026-09-26T16:41:43.000Z",
+  "expirationDate": "2027-09-16T16:28:29.000Z",
+  "snapshotDate": "2026-10-18T20:17:31.000Z",
+  "dropDate": "2026-10-31T16:41:43.000Z",
+  "statuses": [
+    "clientHold",
+    "clientTransferProhibited",
+    "pendingDelete",
+    "serverHold",
+    "serverRenewProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "ns1.sedoparking.com",
+    "ns2.sedoparking.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
