@@ -5,6 +5,14 @@ import { addDays, atUtcHour, daysBetween, rolledPast } from "#time.ts";
 const uk = fixedPeriods(60, 30, 5);
 const isoc: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 61);
 
+// Observed on .ai: names drop at 17:00 UTC, and an update after 14:00 UTC counts from the next day.
+// .io, on the same Identity Digital back end, matched the 28-day pendingDelete.
+const identityDigitalCcTld: DropRule = ({ updatedDate, statuses }) => {
+  if (!updatedDate) return undefined;
+  const days = statuses.has("pendingDelete") ? 28 : statuses.has("redemptionPeriod") ? 58 : undefined;
+  return days === undefined ? undefined : atUtcHour(addDays(rolledPast(updatedDate, 14), days), 17);
+};
+
 // Offsets observed in .us deletions; they depend on how long after expiry the name was last updated
 // and are measured from whichever date the observations lined up with.
 function usSchedule(expirationDate: Date, updatedDate: Date): Date {
@@ -21,18 +29,14 @@ function usSchedule(expirationDate: Date, updatedDate: Date): Date {
 }
 
 export const dropRules: Record<string, DropRule> = {
-  // Observed: .ai names drop at 17:00 UTC, and an update after 14:00 UTC counts from the next day.
-  ai: ({ updatedDate, statuses }) => {
-    if (!updatedDate) return undefined;
-    const days = statuses.has("pendingDelete") ? 28 : statuses.has("redemptionPeriod") ? 58 : undefined;
-    return days === undefined ? undefined : atUtcHour(addDays(rolledPast(updatedDate, 14), days), 17);
-  },
+  ai: identityDigitalCcTld,
   co: ({ released }) => released && addDays(rolledPast(released, 17), 1),
   "co.il": isoc,
   "co.uk": uk,
   de: ({ updatedDate, statuses }) =>
     statuses.has("redemptionPeriod") && updatedDate ? addDays(updatedDate, 31) : undefined,
   fr: ({ deleted }) => deleted && addDays(deleted, 30),
+  io: identityDigitalCcTld,
   it: ({ updatedDate, statuses }) =>
     statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 33) : undefined,
   ly: ({ expirationDate, updatedDate, statuses }) => {
