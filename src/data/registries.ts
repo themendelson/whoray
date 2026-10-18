@@ -225,6 +225,15 @@ export const registries: Registry[] = [
     `),
   },
   {
+    id: "sidn",
+    name: "SIDN",
+    redemption: 39,
+    pendingDelete: 5,
+    tlds: list(`
+      amsterdam
+    `),
+  },
+  {
     id: "nominet",
     name: "Nominet",
     textPattern: /nominet/,
