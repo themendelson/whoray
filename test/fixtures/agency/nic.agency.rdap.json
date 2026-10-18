@@ -2,7 +2,7 @@
   "domain": "nic.agency",
   "tld": "agency",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Registry Operator acts as Registrar (9999)",
     "ianaId": 9999,

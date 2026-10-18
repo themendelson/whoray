@@ -2,13 +2,14 @@
   "domain": "nic.inc",
   "tld": "inc",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Intercap Registry Inc.",
     "ianaId": 9999,
     "url": "https://intercap.inc/",
     "abuseEmail": "abuse@my.box",
-    "abusePhone": "+44.123456789"
+    "abusePhone": "+44.123456789",
+    "whoisServer": "whois.nic.inc"
   },
   "registrant": {
     "organization": "Uniregistry, Corp",

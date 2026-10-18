@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, expect, test, vi } from "vitest";
-import { lookup, parseRdap, parseWhois } from "#node.ts";
+import { lookup, parseRdap, parseWhois } from "#runtime/node.ts";
 import { httpServer, whoisServer } from "./support.ts";
 
 beforeAll(() => {
@@ -21,6 +21,10 @@ test("a DPML block on the first line means reserved", () => {
   expect(parseWhois("This name is protected by the DPML Brand Protection policy.", "example.io").state).toBe(
     "reserved",
   );
+});
+
+test("'allowed queries exceeded' is a rate limit, not an unparseable reply", () => {
+  expect(parseWhois("Number of allowed queries exceeded.", "example.de").error?.code).toBe("rate_limited");
 });
 
 test("'Domain not renewed. Being revoked' counts as pending delete", () => {

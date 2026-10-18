@@ -2,13 +2,14 @@
   "domain": "nic.com",
   "tld": "com",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Network Solutions, LLC",
     "ianaId": 2,
     "url": "http://networksolutions.com",
     "abuseEmail": "domain.operations@web.com",
-    "abusePhone": "+1.8777228662"
+    "abusePhone": "+1.8777228662",
+    "whoisServer": "whois.networksolutions.com"
   },
   "registry": {
     "id": "verisign",

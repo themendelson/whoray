@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { lookup } from "#browser.ts";
+import { lookup } from "#runtime/browser.ts";
 import { httpServer, whoisServer } from "./support.ts";
 
 const servers = { com: { rdap: "https://rdap.test/", whois: "whois.registry.test" } };

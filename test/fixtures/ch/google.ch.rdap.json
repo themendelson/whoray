@@ -2,7 +2,7 @@
   "domain": "google.ch",
   "tld": "ch",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor"
   },

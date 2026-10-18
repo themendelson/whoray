@@ -2,7 +2,7 @@
   "domain": "google.de",
   "tld": "de",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "updatedDate": "2018-03-12T20:44:25.000Z",
   "statuses": [],
   "nameservers": [

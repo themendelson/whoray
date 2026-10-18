@@ -2,7 +2,7 @@
   "domain": "google.it",
   "tld": "it",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor International Limited",
     "url": "https://www.markmonitor.com/"

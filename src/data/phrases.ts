@@ -33,12 +33,14 @@ export const reserved: RegExp[] = [
   /\breserved by the registry\b/i,
   /^reserved domain name$/im,
   /\bnot available for registration\b/i,
+  /\bhas usage restrictions applied\b/i,
 ];
 
 export const notices: Record<"rateLimited" | "blocked" | "retired", RegExp[]> = {
   rateLimited: [
     /\brate ?limit exceeded\b/i,
     /\blimit exceeded\b/i,
+    /\ballowed queries exceeded\b/i,
     /\bexceeded the maximum\b/i,
     /\btoo many (queries|requests)\b/i,
     /\bquery rate\b/i,

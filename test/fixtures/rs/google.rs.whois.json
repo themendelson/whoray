@@ -2,9 +2,12 @@
   "domain": "google.rs",
   "tld": "rs",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Webglobe d.o.o."
+  },
+  "registrant": {
+    "name": "Google LLC"
   },
   "creationDate": "2008-03-10T12:31:19.000Z",
   "updatedDate": "2026-02-17T22:18:21.000Z",

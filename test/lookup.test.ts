@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { lookup } from "#node.ts";
+import { lookup } from "#runtime/node.ts";
 import type { Connect } from "#types.ts";
 import { freshLookup, httpServer, ianaBootstrap, silentServer, whoisServer } from "./support.ts";
 
@@ -125,7 +125,11 @@ test("follow: registrar queries the referral server and keeps the registry's dat
   );
   const result = await lookup("example.com", { connect: server.connect, servers, follow: "registrar" });
   expect(server.queries.map((query) => query.host)).toEqual(["whois.registry.test", "whois.registrar.test"]);
-  expect(result.registrar).toEqual({ name: "Example Registrar, Inc.", abuseEmail: "abuse@registrar.test" });
+  expect(result.registrar).toEqual({
+    name: "Example Registrar, Inc.",
+    abuseEmail: "abuse@registrar.test",
+    whoisServer: "whois.registrar.test",
+  });
   expect(result.creationDate).toEqual(new Date("2001-02-03T04:05:06Z"));
 });
 
@@ -236,7 +240,7 @@ test("a reserved name stays reserved although RDAP has no record of it", async (
   const { connect } = whoisServer(() => "Reserved Domain Name\nURL of the ICANN Whois Inaccuracy Complaint Form");
   const result = await lookup("example.com", { fetch, connect, servers });
   expect(urls).toEqual([]);
-  expect(result).toMatchObject({ state: "reserved", isRegistered: false, source: "whois" });
+  expect(result).toMatchObject({ state: "reserved", isAvailable: false, source: "whois" });
 });
 
 test("follow: registrar doesn't follow a referral to a private address", async () => {

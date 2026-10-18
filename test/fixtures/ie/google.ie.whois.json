@@ -2,12 +2,13 @@
   "domain": "google.ie",
   "tld": "ie",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Markmonitor Inc",
     "url": "http://www.eMarkmonitor.com",
     "abuseEmail": "abusecomplaints@markmonitor.com",
-    "abusePhone": "+1.2086851865"
+    "abusePhone": "+1.2086851865",
+    "whoisServer": "whois.weare.ie"
   },
   "registrant": {
     "name": "Google LLC"

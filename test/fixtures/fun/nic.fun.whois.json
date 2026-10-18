@@ -2,13 +2,14 @@
   "domain": "nic.fun",
   "tld": "fun",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Radix Technologies Inc. SEZC / CO Services Cayman Limited",
     "ianaId": 9999,
     "url": "https://radix.website/",
     "abuseEmail": "admin@radix.email",
-    "abusePhone": "+971.44487934"
+    "abusePhone": "+971.44487934",
+    "whoisServer": "whois.radix.host"
   },
   "registry": {
     "id": "centralnic",

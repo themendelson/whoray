@@ -2,7 +2,7 @@
   "domain": "google.nu",
   "tld": "nu",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc"
   },

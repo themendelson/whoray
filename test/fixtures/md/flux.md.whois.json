@@ -1,0 +1,18 @@
+{
+  "domain": "flux.md",
+  "tld": "md",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "ITCONCEPT SRL"
+  },
+  "creationDate": "2025-09-29T00:00:00.000Z",
+  "expirationDate": "2026-09-29T00:00:00.000Z",
+  "dropDate": "2026-10-30T00:00:00.000Z",
+  "statuses": [
+    "inactive",
+    "redemptionPeriod"
+  ],
+  "nameservers": [],
+  "source": "whois"
+}

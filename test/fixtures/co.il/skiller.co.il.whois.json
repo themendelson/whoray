@@ -1,0 +1,29 @@
+{
+  "domain": "skiller.co.il",
+  "tld": "co.il",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "InterSpace Ltd",
+    "url": "https://www.internic.co.il"
+  },
+  "registrant": {
+    "name": "Yuval Perez"
+  },
+  "creationDate": "2025-08-20T00:00:00.000Z",
+  "updatedDate": "2026-01-07T00:00:00.000Z",
+  "expirationDate": "2026-08-20T00:00:00.000Z",
+  "dropDate": "2026-10-20T00:00:00.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "pendingDelete"
+  ],
+  "nameservers": [
+    "ns-146.awsdns-18.com",
+    "ns-989.awsdns-59.net",
+    "ns-1492.awsdns-58.org",
+    "ns-1564.awsdns-03.co.uk"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

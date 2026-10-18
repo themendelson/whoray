@@ -1,0 +1,24 @@
+{
+  "domain": "guestharbour.se",
+  "tld": "se",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Registrar.eu"
+  },
+  "creationDate": "2025-08-27T00:00:00.000Z",
+  "updatedDate": "2026-09-18T00:00:00.000Z",
+  "expirationDate": "2026-08-27T00:00:00.000Z",
+  "dropDate": "2026-11-12T00:00:00.000Z",
+  "statuses": [
+    "pendingDelete",
+    "serverHold",
+    "clientHold"
+  ],
+  "nameservers": [
+    "simone.ns.cloudflare.com",
+    "yichun.ns.cloudflare.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

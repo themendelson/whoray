@@ -58,10 +58,10 @@ Fields marked `?` are left out when they don't apply or the registry doesn't pub
   unicode?: string;            // "bücher.de", only for internationalized names
   tld: string;                 // "co", or "co.uk" for second-level suffixes
   state: State;                // see the table below
-  isRegistered?: boolean;      // missing only when the lookup failed
+  isAvailable?: boolean;       // true only when the name can be registered now; missing only when the lookup failed
   premium?: true;              // an available name the registry sells at a premium price
 
-  registrar?: { name: string; ianaId?: number; url?: string; abuseEmail?: string; abusePhone?: string };
+  registrar?: { name: string; ianaId?: number; url?: string; abuseEmail?: string; abusePhone?: string; whoisServer?: string };
   registrant?: { name?: string; organization?: string; country?: string };  // country: ISO 3166 code
   registry?: { id: string; name: string };  // the TLD's operator: { id: "mintic", name: "MinTIC" }
   handle?: string;             // the registry's ID for the domain: "D249131-CNIC"
@@ -100,7 +100,8 @@ Fields marked `?` are left out when they don't apply or the registry doesn't pub
 
 Browsers can't open port 43, so `lookup` asks RDAP only. Two things change:
 
-- RDAP answers a reserved, premium or dropzone name with a 404, so those come back as `available`.
+- RDAP answers a reserved, premium or dropzone name with a 404, so those come back as `available`
+  with `isAvailable: true`: reserved and dropzone names can't be registered, and premium ones cost more.
 - A registry whose RDAP server doesn't allow cross-origin requests (DENIC, for `.de`) fails with a `network` error.
 
 ## Using a proxy

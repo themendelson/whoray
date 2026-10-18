@@ -2,9 +2,12 @@
   "domain": "google.tr",
   "tld": "tr",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "ODTÜ GELİŞTİRME VAKFI BİLGİ TEKNOLOJİLERİ SAN. VE TİC. A.Ş."
+  },
+  "registrant": {
+    "name": "Google LLC"
   },
   "creationDate": "2024-08-26T00:00:00.000Z",
   "expirationDate": "2027-08-25T00:00:00.000Z",

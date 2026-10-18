@@ -3,6 +3,15 @@ import { fixedPeriods } from "#drop.ts";
 import { addDays, atUtcHour, daysBetween, rolledPast } from "#time.ts";
 
 const uk = fixedPeriods(60, 30, 5);
+const isoc: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 61);
+
+// Observed on .ai: names drop at 17:00 UTC, and an update after 14:00 UTC counts from the next day.
+// .io, on the same Identity Digital back end, matched the 28-day pendingDelete.
+const identityDigitalCcTld: DropRule = ({ updatedDate, statuses }) => {
+  if (!updatedDate) return undefined;
+  const days = statuses.has("pendingDelete") ? 28 : statuses.has("redemptionPeriod") ? 58 : undefined;
+  return days === undefined ? undefined : atUtcHour(addDays(rolledPast(updatedDate, 14), days), 17);
+};
 
 // Offsets observed in .us deletions; they depend on how long after expiry the name was last updated
 // and are measured from whichever date the observations lined up with.
@@ -20,18 +29,14 @@ function usSchedule(expirationDate: Date, updatedDate: Date): Date {
 }
 
 export const dropRules: Record<string, DropRule> = {
-  // Observed: .ai names drop at 17:00 UTC, and an update after 14:00 UTC counts from the next day.
-  ai: ({ updatedDate, statuses }) => {
-    if (!updatedDate) return undefined;
-    const days = statuses.has("pendingDelete") ? 28 : statuses.has("redemptionPeriod") ? 58 : undefined;
-    return days === undefined ? undefined : atUtcHour(addDays(rolledPast(updatedDate, 14), days), 17);
-  },
+  ai: identityDigitalCcTld,
   co: ({ released }) => released && addDays(rolledPast(released, 17), 1),
-  "co.il": ({ expirationDate }) => expirationDate && addDays(expirationDate, 62),
+  "co.il": isoc,
   "co.uk": uk,
   de: ({ updatedDate, statuses }) =>
     statuses.has("redemptionPeriod") && updatedDate ? addDays(updatedDate, 31) : undefined,
   fr: ({ deleted }) => deleted && addDays(deleted, 30),
+  io: identityDigitalCcTld,
   it: ({ updatedDate, statuses }) =>
     statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 33) : undefined,
   ly: ({ expirationDate, updatedDate, statuses }) => {
@@ -39,11 +44,18 @@ export const dropRules: Record<string, DropRule> = {
     if (!statuses.has("pendingDelete")) return addDays(expirationDate, 28);
     return addDays(updatedDate, statuses.has("redemptionPeriod") ? 36 : 7);
   },
+  md: ({ expirationDate }) => expirationDate && addDays(expirationDate, 31),
   me: ({ updatedDate, statuses }) => updatedDate && addDays(updatedDate, statuses.has("redemptionPeriod") ? 35 : 6),
   "me.uk": uk,
+  "org.il": isoc,
   "org.uk": uk,
   si: ({ expirationDate, statuses }) =>
     statuses.has("pendingDelete") && expirationDate ? addDays(expirationDate, 30) : undefined,
+  // ZDNS dates a deletion in Beijing time (UTC+8): an update after 16:00 UTC counts from the next day.
+  top: ({ updatedDate, statuses }) =>
+    updatedDate && (statuses.has("pendingDelete") || statuses.has("redemptionPeriod"))
+      ? atUtcHour(addDays(rolledPast(updatedDate, 16), 36), 0)
+      : undefined,
   uk,
   us: ({ expirationDate, updatedDate, statuses }) =>
     statuses.has("pendingDelete") && expirationDate && updatedDate

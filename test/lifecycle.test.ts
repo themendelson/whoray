@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, expect, test, vi } from "vitest";
-import { parseRdap, parseWhois } from "#node.ts";
+import { parseRdap, parseWhois } from "#runtime/node.ts";
 
 beforeAll(() => {
   vi.useFakeTimers({ toFake: ["Date"] });
@@ -16,7 +16,7 @@ function rdap(domain: string, status: string[], events: Record<string, string>):
   };
 }
 
-test("a pendingDelete .com drops five days after its last update", () => {
+test("a pendingDelete .com drops six days after its last update", () => {
   const record = parseRdap(
     rdap("example.com", ["pending delete"], {
       "last changed": "2026-10-14T18:00:00Z",
@@ -25,10 +25,21 @@ test("a pendingDelete .com drops five days after its last update", () => {
     "example.com",
   );
   expect(record.state).toBe("pendingDelete");
-  expect(record.dropDate).toEqual(new Date("2026-10-19T18:00:00Z"));
+  expect(record.dropDate).toEqual(new Date("2026-10-20T18:00:00Z"));
 });
 
-test("a domain in redemption drops after redemption plus pending delete", () => {
+test("a .com updated five days ago is still within its pendingDelete", () => {
+  const record = parseRdap(
+    rdap("example.com", ["pending delete"], {
+      "last changed": "2026-10-11T09:30:00Z",
+      expiration: "2026-09-11T04:00:00Z",
+    }),
+    "example.com",
+  );
+  expect(record.dropDate).toEqual(new Date("2026-10-17T09:30:00Z"));
+});
+
+test("a domain in redemption drops once its redemption cycle ends, pending delete included", () => {
   const record = parseRdap(
     rdap("example.com", ["redemption period", "pending delete"], {
       "last changed": "2026-10-01T00:00:00Z",
@@ -37,7 +48,7 @@ test("a domain in redemption drops after redemption plus pending delete", () => 
     "example.com",
   );
   expect(record.state).toBe("redemption");
-  expect(record.dropDate).toEqual(new Date("2026-11-10T00:00:00Z"));
+  expect(record.dropDate).toEqual(new Date("2026-11-05T00:00:00Z"));
 });
 
 test("a past expiry in the auto-renew period is a renewed domain, not an expired one", () => {
@@ -65,6 +76,13 @@ test("a registered domain has no drop estimate", () => {
   const record = parseRdap(rdap("example.com", ["active"], { expiration: "2030-01-01T00:00:00Z" }), "example.com");
   expect(record).toMatchObject({ state: "registered", statuses: ["ok"] });
   expect(record.dropDate).toBeUndefined();
+});
+
+test("an expired .org.il drops 61 days after its validity, like .co.il", () => {
+  const text = "domain: example.org.il\nassigned: 05-06-1999\nvalidity: 05-09-2026\nstatus: Transfer Locked";
+  const record = parseWhois(text, "example.org.il");
+  expect(record).toMatchObject({ tld: "org.il", state: "expired" });
+  expect(record.dropDate).toEqual(new Date("2026-11-05T00:00:00Z"));
 });
 
 test("a date the registry publishes for release wins over formulas", () => {

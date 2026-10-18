@@ -8,9 +8,9 @@ import { registryInText } from "#lifecycle.ts";
 import { parseDate } from "#parse/dates.ts";
 import { countryCode, hostnames, registrant, registrar, visible } from "#parse/fields.ts";
 import type { Found, Registration } from "#parse/found.ts";
-import { pairs } from "#parse/pairs.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
 import type { Registrant, Registrar } from "#types.ts";
+import { pairs } from "#whois/pairs.ts";
 
 const fieldByKey = new Map(aliases.flatMap(([field, keys]) => keys.map((key) => [key, field] as const)));
 
@@ -21,10 +21,13 @@ export function readWhois(text: string, name: Name): Found {
   const expirationDate = firstDate(fields.get("expires"));
   const registrar = registrarOf(fields);
   const nameservers = hostnames(fields.get("nameservers") ?? []).filter((host) => host !== name.domain);
-  if (!creationDate && !expirationDate && !registrar && nameservers.length === 0) return withoutRecord(text);
+  const statuses = statusesOf(fields, text);
+  if (!creationDate && !expirationDate && !registrar && nameservers.length === 0 && statuses.length === 0) {
+    return withoutRecord(text);
+  }
   return {
     kind: "record",
-    statuses: statusesOf(fields, text),
+    statuses,
     nameservers,
     ...(registrar && { registrar }),
     ...(creationDate && { creationDate }),
@@ -107,9 +110,11 @@ function present(values: string[] | undefined): string | undefined {
   return values?.find((value) => visible(value) !== undefined);
 }
 
+const CONTACT_HANDLE = /^(?=\S*\d)[a-z0-9-]{5,}$/i;
+
 function registrantOf(fields: Map<Field, string[]>): Registrant | undefined {
   return registrant(
-    present(fields.get("registrantName")),
+    present(fields.get("registrantName")?.filter((value) => !CONTACT_HANDLE.test(value.trim()))),
     present(fields.get("registrantOrganization")),
     countryCode(present(fields.get("registrantCountry"))),
   );
@@ -125,6 +130,7 @@ function registrarOf(fields: Map<Field, string[]>): Registrar | undefined {
     url: present(fields.get("registrarUrl")) ?? inline?.[2],
     abuseEmail: present(fields.get("abuseEmail")),
     abusePhone: present(fields.get("abusePhone")),
+    whoisServer: hostnames(fields.get("registrarWhois") ?? []).at(0),
   });
 }
 

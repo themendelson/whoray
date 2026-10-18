@@ -2,13 +2,14 @@
   "domain": "nic.org",
   "tld": "org",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "NameCheap, Inc.",
     "ianaId": 1068,
     "url": "http://www.namecheap.com",
     "abuseEmail": "abuse@namecheap.com",
-    "abusePhone": "+1.9854014545"
+    "abusePhone": "+1.9854014545",
+    "whoisServer": "whois.namecheap.com"
   },
   "registry": {
     "id": "public-interest-registry",

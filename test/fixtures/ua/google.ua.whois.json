@@ -2,9 +2,16 @@
   "domain": "google.ua",
   "tld": "ua",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
-    "name": "ua.markmonitor"
+    "name": "MarkMonitor Inc.",
+    "url": "http://markmonitor.com",
+    "abuseEmail": "abusecomplaints@markmonitor.com",
+    "abusePhone": "+12083895740"
+  },
+  "registrant": {
+    "organization": "Google LLC",
+    "country": "US"
   },
   "creationDate": "2011-07-21T15:03:50.000Z",
   "updatedDate": "2026-06-19T10:07:10.000Z",
@@ -12,8 +19,7 @@
   "statuses": [
     "clientDeleteProhibited",
     "clientTransferProhibited",
-    "clientUpdateProhibited",
-    "ok"
+    "clientUpdateProhibited"
   ],
   "nameservers": [
     "ns1.google.com",

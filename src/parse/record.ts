@@ -3,17 +3,6 @@ import { dropOf, registryOf, stateOf } from "#lifecycle.ts";
 import type { Found } from "#parse/found.ts";
 import type { DomainRecord, DomainState } from "#types.ts";
 
-const REGISTERED: Record<DomainState, boolean | undefined> = {
-  registered: true,
-  expired: true,
-  redemption: true,
-  pendingDelete: true,
-  available: false,
-  dropzone: false,
-  reserved: false,
-  unknown: undefined,
-};
-
 export function toRecord(name: Name, found: Found): DomainRecord {
   const operator = registryOf(name.tld, found.kind === "record" ? found.registryId : undefined);
   const registry = operator && { id: operator.id, name: operator.name };
@@ -31,7 +20,7 @@ export function toRecord(name: Name, found: Found): DomainRecord {
     return { ...empty("unknown"), error };
   }
   const statuses = new Set(found.statuses);
-  const state = stateOf(statuses, found.expirationDate);
+  const state = stateOf(statuses, found.expirationDate, found.registrar);
   const { registrar, registrant, handle, creationDate, updatedDate, expirationDate, snapshotDate, dnssec } = found;
   return {
     ...identity(name, state),
@@ -53,13 +42,12 @@ export function toRecord(name: Name, found: Found): DomainRecord {
 function identity(
   name: Name,
   state: DomainState,
-): Pick<DomainRecord, "domain" | "unicode" | "tld" | "state" | "isRegistered"> {
-  const isRegistered = REGISTERED[state];
+): Pick<DomainRecord, "domain" | "unicode" | "tld" | "state" | "isAvailable"> {
   return {
     domain: name.domain,
     ...(name.unicode !== name.domain && { unicode: name.unicode }),
     tld: name.tld,
     state,
-    ...(isRegistered !== undefined && { isRegistered }),
+    ...(state !== "unknown" && { isAvailable: state === "available" }),
   };
 }

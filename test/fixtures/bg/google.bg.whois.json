@@ -2,7 +2,7 @@
   "domain": "google.bg",
   "tld": "bg",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "statuses": [
     "ok"
   ],

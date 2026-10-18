@@ -2,7 +2,7 @@
   "domain": "google.fi",
   "tld": "fi",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrant": {
     "name": "Google LLC"
   },

@@ -2,7 +2,7 @@
   "domain": "google.so",
   "tld": "so",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Mark Monitor",
     "ianaId": 9999,

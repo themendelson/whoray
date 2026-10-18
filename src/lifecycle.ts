@@ -1,11 +1,12 @@
 import { dropRules } from "#data/drop-rules.ts";
+import { reservingRegistrars } from "#data/registrars.ts";
 import type { Registry } from "#data/registries.ts";
 import { registries } from "#data/registries.ts";
 import { servers } from "#data/servers.ts";
 import { bySuffix } from "#domain.ts";
 import type { Facts } from "#drop.ts";
 import { fixedPeriods, redemptionGracePeriod } from "#drop.ts";
-import type { DomainState } from "#types.ts";
+import type { DomainState, Registrar } from "#types.ts";
 
 const registryByTld: Readonly<Record<string, Registry>> = Object.fromEntries(
   registries.flatMap((registry) => registry.tlds.map((tld) => [tld, registry] as const)),
@@ -24,7 +25,12 @@ export function registryInText(text: string): Registry | undefined {
   return registries.find((registry) => registry.textPattern?.test(text) === true);
 }
 
-export function stateOf(statuses: ReadonlySet<string>, expirationDate: Date | undefined): DomainState {
+export function stateOf(
+  statuses: ReadonlySet<string>,
+  expirationDate: Date | undefined,
+  registrar: Registrar | undefined,
+): DomainState {
+  if (registrar?.ianaId !== undefined && reservingRegistrars.has(registrar.ianaId)) return "reserved";
   if (statuses.has("redemptionPeriod")) return "redemption";
   if (statuses.has("pendingDelete")) return "pendingDelete";
   const renewed = statuses.has("autoRenewPeriod") || statuses.has("renewPeriod");

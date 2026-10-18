@@ -2,7 +2,7 @@
   "domain": "google.kr",
   "tld": "kr",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "creationDate": "2007-03-01T15:00:00.000Z",
   "updatedDate": "2026-04-14T15:07:47.000Z",
   "expirationDate": "2027-03-01T15:00:00.000Z",

@@ -1,6 +1,6 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { vi } from "vitest";
-import type { Lookup } from "#node.ts";
+import type { Lookup } from "#runtime/node.ts";
 import type { Connect } from "#types.ts";
 
 export interface Capture {
@@ -89,6 +89,6 @@ export function ianaBootstrap(tld: string, base: string): HttpReply {
 
 export async function freshLookup(): Promise<Lookup> {
   vi.resetModules();
-  const fresh = await import("#node.ts");
+  const fresh = await import("#runtime/node.ts");
   return fresh.lookup;
 }

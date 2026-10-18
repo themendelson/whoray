@@ -2,13 +2,14 @@
   "domain": "google.ws",
   "tld": "ws",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
     "url": "http://www.markmonitor.com/whois.asp",
     "abuseEmail": "ccops@markmonitor.com",
-    "abusePhone": "2083895740"
+    "abusePhone": "2083895740",
+    "whoisServer": "whois.markmonitor.com"
   },
   "creationDate": "2002-03-03T18:00:26.000Z",
   "updatedDate": "2026-01-31T10:43:38.000Z",

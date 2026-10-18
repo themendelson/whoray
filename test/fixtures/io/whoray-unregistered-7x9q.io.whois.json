@@ -2,7 +2,7 @@
   "domain": "whoray-unregistered-7x9q.io",
   "tld": "io",
   "state": "available",
-  "isRegistered": false,
+  "isAvailable": true,
   "registry": {
     "id": "internet-computer-bureau",
     "name": "Internet Computer Bureau"

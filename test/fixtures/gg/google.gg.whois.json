@@ -2,10 +2,13 @@
   "domain": "google.gg",
   "tld": "gg",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "url": "http://www.markmonitor.com"
+  },
+  "registrant": {
+    "name": "Google LLC"
   },
   "creationDate": "2003-04-30T00:00:00.000Z",
   "statuses": [

@@ -25,6 +25,7 @@ export interface Registrar {
   url?: string;
   abuseEmail?: string;
   abusePhone?: string;
+  whoisServer?: string;
 }
 
 export interface Registry {
@@ -43,7 +44,7 @@ export interface DomainRecord {
   unicode?: string;
   tld: string;
   state: DomainState;
-  isRegistered?: boolean;
+  isAvailable?: boolean;
   premium?: true;
   registrar?: Registrar;
   registrant?: Registrant;

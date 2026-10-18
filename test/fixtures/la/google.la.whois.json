@@ -2,7 +2,7 @@
   "domain": "google.la",
   "tld": "la",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "TLD Registrar Solutions Ltd",
     "abuseEmail": "abuse@centralnic.com",

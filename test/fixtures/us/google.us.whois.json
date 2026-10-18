@@ -2,13 +2,14 @@
   "domain": "google.us",
   "tld": "us",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor, Inc.",
     "ianaId": 292,
     "url": "www.markmonitor.com",
     "abuseEmail": "registry.admin@markmonitor.com",
-    "abusePhone": "+1.2083895740"
+    "abusePhone": "+1.2083895740",
+    "whoisServer": "whois.markmonitor.com"
   },
   "registrant": {
     "name": "Google LLC",

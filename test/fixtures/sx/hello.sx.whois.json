@@ -1,0 +1,9 @@
+{
+  "domain": "hello.sx",
+  "tld": "sx",
+  "state": "reserved",
+  "isAvailable": false,
+  "statuses": [],
+  "nameservers": [],
+  "source": "whois"
+}

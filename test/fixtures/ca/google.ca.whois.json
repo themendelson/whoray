@@ -2,12 +2,13 @@
   "domain": "google.ca",
   "tld": "ca",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor International Canada Ltd.",
     "url": "Markmonitor.com",
     "abuseEmail": "abusecomplaints@markmonitor.com",
-    "abusePhone": "+1.2083895740"
+    "abusePhone": "+1.2083895740",
+    "whoisServer": "whois.ca.fury.ca"
   },
   "registrant": {
     "name": "Google Canada Corporation",

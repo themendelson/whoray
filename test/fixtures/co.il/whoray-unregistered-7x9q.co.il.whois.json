@@ -2,7 +2,7 @@
   "domain": "whoray-unregistered-7x9q.co.il",
   "tld": "co.il",
   "state": "available",
-  "isRegistered": false,
+  "isAvailable": true,
   "statuses": [],
   "nameservers": [],
   "source": "whois"

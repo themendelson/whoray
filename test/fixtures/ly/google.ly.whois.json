@@ -2,7 +2,7 @@
   "domain": "google.ly",
   "tld": "ly",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Libyan Spider Network (int)",
     "abuseEmail": "abuse@register.ly",

@@ -1,5 +1,5 @@
 import type { Found } from "#parse/found.ts";
-import { readRdap } from "#parse/rdap.ts";
+import { readRdap } from "#rdap/parse.ts";
 
 export interface RdapReply {
   status: number;

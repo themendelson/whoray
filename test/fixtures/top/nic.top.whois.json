@@ -2,13 +2,14 @@
   "domain": "nic.top",
   "tld": "top",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Bangning Digital Technology Co.,Ltd",
     "ianaId": 4158,
     "url": "http://www.com.top",
     "abuseEmail": "abuse@nic.top",
-    "abusePhone": "+86.02586883421"
+    "abusePhone": "+86.02586883421",
+    "whoisServer": "whois.com.top"
   },
   "registrant": {
     "country": "CN"

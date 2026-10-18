@@ -2,13 +2,14 @@
   "domain": "nic.vip",
   "tld": "vip",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MMX",
     "ianaId": 9999,
     "url": "http://registry.godaddy",
     "abuseEmail": "reg-help@registry.godaddy",
-    "abusePhone": "+61.398663710"
+    "abusePhone": "+61.398663710",
+    "whoisServer": "whois.dnrs.godaddy"
   },
   "registrant": {
     "organization": "Godaddy Registry",

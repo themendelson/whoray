@@ -2,7 +2,7 @@
   "domain": "nic.design",
   "tld": "design",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MMX",
     "ianaId": 9999,
