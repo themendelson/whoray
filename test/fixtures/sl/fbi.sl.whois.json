@@ -1,0 +1,69 @@
+{
+  "domain": "fbi.sl",
+  "tld": "sl",
+  "state": "expired",
+  "isAvailable": false,
+  "registrar": {
+    "name": "101domain GRS Ltd.",
+    "whoisServer": "whois.nic.sl"
+  },
+  "registrant": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "washington",
+    "postalCode": "20001",
+    "country": "AS",
+    "email": "jane.doe@example.com",
+    "phone": "+1.6000000000"
+  },
+  "admin": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "washington",
+    "postalCode": "20001",
+    "country": "AS",
+    "email": "jane.doe@example.com",
+    "phone": "+1.6000000000"
+  },
+  "tech": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "washington",
+    "postalCode": "20001",
+    "country": "AS",
+    "email": "jane.doe@example.com",
+    "phone": "+1.6000000000"
+  },
+  "billing": {
+    "name": "Billing Department",
+    "organization": "101domain GRS Ltd.",
+    "street": [
+      "Level 2, Plaza 3",
+      "Custom House Plaza",
+      "Harbourmaster Place"
+    ],
+    "city": "Dublin",
+    "state": "D",
+    "postalCode": "D01 VY76",
+    "country": "IE",
+    "email": "tech1@101domain.com",
+    "phone": "+1.7604448674",
+    "fax": "+1.7605794996"
+  },
+  "creationDate": "2025-10-03T15:08:03.000Z",
+  "expirationDate": "2026-10-03T15:08:03.000Z",
+  "snapshotDate": "2026-10-16T23:07:07.000Z",
+  "dropDate": "2026-12-22T15:08:03.000Z",
+  "statuses": [],
+  "nameservers": [
+    "jail1.101domain.com",
+    "jail2.101domain.com"
+  ],
+  "source": "whois"
+}

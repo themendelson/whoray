@@ -86,6 +86,7 @@ export const servers: Record<string, ServerEntry> = {
   sh: { rdap: identityDigital, whois: "whois.nic.sh" },
   shop: { whois: "whois.nic.shop" },
   site: { whois: "whois.nic.site" },
+  sl: { whois: "whois.nic.sl" },
   sn: { rdap: "https://rdap.nic.sn/" },
   so: { rdap: "https://rdap.nic.so/", whois: "whois.nic.so" },
   // whois.sx's address: ns4.ns.sx answers NXDOMAIN for whois.sx, so resolvers that cache it can't connect.
