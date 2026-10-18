@@ -1,0 +1,47 @@
+{
+  "domain": "fly.bo",
+  "tld": "bo",
+  "state": "expired",
+  "isAvailable": false,
+  "registrant": {
+    "street": [
+      "Alicia Moreau de Justo 170 1B"
+    ],
+    "city": "Caba",
+    "email": "domreg@101domain.com",
+    "phone": "541126529782"
+  },
+  "admin": {
+    "name": "Domain",
+    "street": [
+      "4th Floor International House 3 Harbourmaster Place,"
+    ],
+    "city": "Dublin",
+    "email": "domains@rwgusa.com",
+    "phone": "7604448673"
+  },
+  "tech": {
+    "name": "Domain",
+    "street": [
+      "4th Floor International House 3 Harbourmaster Place,"
+    ],
+    "city": "Dublin",
+    "email": "domains@rwgusa.com",
+    "phone": "7604448673"
+  },
+  "billing": {
+    "name": "Domain",
+    "street": [
+      "4th Floor International House 3 Harbourmaster Place,"
+    ],
+    "city": "Dublin",
+    "email": "domains@rwgusa.com",
+    "phone": "7604448673"
+  },
+  "creationDate": "2017-08-30T00:00:00.000Z",
+  "expirationDate": "2026-10-02T00:00:00.000Z",
+  "dropDate": "2026-12-21T00:00:00.000Z",
+  "statuses": [],
+  "nameservers": [],
+  "source": "whois"
+}

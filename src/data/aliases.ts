@@ -30,18 +30,30 @@ export type Field =
   | "dnssec";
 
 const ROLE_PREFIXES: [ContactRole, string[]][] = [
-  ["registrant", ["registrant", "holder", "owner", "owner contact"]],
+  ["registrant", ["registrant", "holder", "owner", "owner contact", "titular"]],
   [
     "admin",
-    ["admin", "administrative", "administrative contact", "admin contact", "admin_c", "administrativ contact", "ac"],
+    [
+      "admin",
+      "administrative",
+      "administrative contact",
+      "admin contact",
+      "admin_c",
+      "administrativ contact",
+      "ac",
+      "contacto administrativo",
+    ],
   ],
-  ["tech", ["tech", "technical", "technical contact", "tech contact", "tech_c", "technical contacts"]],
-  ["billing", ["billing", "billing contact", "billing_c"]],
+  [
+    "tech",
+    ["tech", "technical", "technical contact", "tech contact", "tech_c", "technical contacts", "contacto tecnico"],
+  ],
+  ["billing", ["billing", "billing contact", "billing_c", "contacto financiero"]],
   ["registrar", ["registrar", "sponsoring registrar"]],
 ];
 
 const PART_SUFFIXES: [ContactPart, string[]][] = [
-  ["Name", ["name", "contact name", "nom"]],
+  ["Name", ["name", "contact name", "nom", "nombre"]],
   ["Organization", ["organization", "organisation", "org", "organization name"]],
   [
     "Street",
@@ -56,14 +68,15 @@ const PART_SUFFIXES: [ContactPart, string[]][] = [
       "address3",
       "street address",
       "adresse",
+      "direccion",
     ],
   ],
-  ["City", ["city", "locality", "ville"]],
+  ["City", ["city", "locality", "ville", "ciudad"]],
   ["State", ["state/province", "state", "province"]],
   ["PostalCode", ["postal code", "postcode", "zip code", "zipcode", "zip", "code postal"]],
-  ["Country", ["country", "country code", "pays"]],
+  ["Country", ["country", "country code", "pays", "pais"]],
   ["Email", ["email", "e-mail", "courriel", "email address"]],
-  ["Phone", ["phone", "phone number", "téléphone"]],
+  ["Phone", ["phone", "phone number", "téléphone", "telefono"]],
   ["Fax", ["fax", "fax number"]],
 ];
 
@@ -138,6 +151,7 @@ export const aliases: [Field, string[]][] = [
       "record created",
       "registered date",
       "date de création",
+      "fecha de registro",
     ],
   ],
   [
@@ -179,6 +193,7 @@ export const aliases: [Field, string[]][] = [
       "record expires on",
       "exp date",
       "date d'expiration",
+      "fecha de vencimiento",
     ],
   ],
   ["released", ["free-date", "available", "reservation eligibility end date", "date_to_release", "purge date"]],
