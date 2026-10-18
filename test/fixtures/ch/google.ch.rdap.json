@@ -4,7 +4,13 @@
   "state": "registered",
   "isAvailable": false,
   "registrar": {
-    "name": "MarkMonitor"
+    "name": "MarkMonitor",
+    "street": [
+      "1120 S. Rackham Way, Suite 300"
+    ],
+    "city": "Meridian",
+    "postalCode": "ID 83642",
+    "country": "US"
   },
   "handle": "google.ch",
   "creationDate": "1999-05-31T00:00:00.000Z",

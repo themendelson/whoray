@@ -6,6 +6,16 @@
   "registrar": {
     "name": "T.H.NIC Co., Ltd.",
     "ianaId": 10001,
+    "street": [
+      "111 Mu 9, Thailand Science Park, 2nd Fl. P-206",
+      "Phahon Yothin Rd.",
+      "Khlong Nueng"
+    ],
+    "city": "Khlong Luang",
+    "state": "Pathum Thani",
+    "postalCode": "12120",
+    "email": "staff@thnic.co.th",
+    "phone": "+66.21054007",
     "abuseEmail": "abuse@thnic.co.th",
     "abusePhone": "+66.21054007"
   },

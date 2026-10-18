@@ -21,7 +21,36 @@
     "postalCode": "94043",
     "country": "US",
     "email": "dns-admin@google.com",
-    "phone": "+1.6502530000"
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
+  },
+  "admin": {
+    "name": "Domain Administrator",
+    "organization": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway"
+    ],
+    "city": "Mountain View",
+    "state": "CA",
+    "postalCode": "94043",
+    "country": "US",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
+  },
+  "tech": {
+    "name": "Domain Administrator",
+    "organization": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway"
+    ],
+    "city": "Mountain View",
+    "state": "CA",
+    "postalCode": "94043",
+    "country": "US",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
   },
   "handle": "6eddd132ab114b12bd2bd4cf9c492a04-DONUTS",
   "creationDate": "2017-12-16T05:37:20.000Z",

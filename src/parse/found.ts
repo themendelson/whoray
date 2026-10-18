@@ -4,6 +4,9 @@ type Published = Pick<
   DomainRecord,
   | "registrar"
   | "registrant"
+  | "admin"
+  | "tech"
+  | "billing"
   | "handle"
   | "creationDate"
   | "updatedDate"

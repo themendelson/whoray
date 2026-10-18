@@ -1,7 +1,7 @@
-import type { Registrant, Registrar } from "#types.ts";
+import type { Address, Contact, Registrar } from "#types.ts";
 
 const REDACTED =
-  /redacted|not disclosed|data protected|withheld|gdpr|not applicable|privacy|hidden upon|not shown|web-?based whois|^n\/a$/i;
+  /redacted|not disclosed|data protected|withheld|gdpr|not applicable|privacy|hidden upon|not shown|web-?based whois|^n\/a$|^personal information$/i;
 
 export function visible(value: string | undefined): string | undefined {
   return value === undefined || REDACTED.test(value) ? undefined : value;
@@ -32,35 +32,45 @@ export function phone(value: string | undefined): string | undefined {
   return number !== undefined && PHONE.test(number) ? number : undefined;
 }
 
-interface RegistrantDetails {
-  name?: string | undefined;
-  organization?: string | undefined;
-  street?: string[] | undefined;
-  city?: string | undefined;
-  state?: string | undefined;
-  postalCode?: string | undefined;
-  country?: string | undefined;
-  email?: string | undefined;
-  phone?: string | undefined;
-}
+export type Details<T> = { [K in keyof T]?: T[K] | undefined };
 
-export function registrant(details: RegistrantDetails): Registrant | undefined {
-  const { name, organization, street, city, state, postalCode, country } = details;
-  const known = {
-    ...(name !== undefined && { name }),
-    ...(organization !== undefined && { organization }),
+function address(details: Details<Address>): Address {
+  const { street, city, state, postalCode, country, email, phone, fax } = details;
+  return {
     ...(street !== undefined && street.length > 0 && { street }),
     ...(city !== undefined && { city }),
     ...(state !== undefined && { state }),
     ...(postalCode !== undefined && { postalCode }),
     ...(country !== undefined && { country }),
-    ...(details.email !== undefined && { email: details.email }),
-    ...(details.phone !== undefined && { phone: details.phone }),
+    ...(email !== undefined && { email }),
+    ...(phone !== undefined && { phone }),
+    ...(fax !== undefined && { fax }),
+  };
+}
+
+export function contact(details: Details<Contact>): Contact | undefined {
+  const { name, organization } = details;
+  const known = {
+    ...(name !== undefined && { name }),
+    ...(organization !== undefined && { organization }),
+    ...address(details),
   };
   return Object.keys(known).length > 0 ? known : undefined;
 }
 
-interface RegistrarDetails {
+type Contacts = Partial<Record<"registrant" | "admin" | "tech" | "billing", Contact>>;
+
+export function contacts(found: Details<Contacts>): Contacts {
+  const { registrant, admin, tech, billing } = found;
+  return {
+    ...(registrant && { registrant }),
+    ...(admin && { admin }),
+    ...(tech && { tech }),
+    ...(billing && { billing }),
+  };
+}
+
+interface RegistrarDetails extends Details<Address> {
   ianaId?: number | undefined;
   url?: string | undefined;
   abuseEmail?: string | undefined;
@@ -76,6 +86,7 @@ export function registrar(name: string, details: RegistrarDetails): Registrar {
     name,
     ...(ianaId !== undefined && Number.isInteger(ianaId) && ianaId > 0 && { ianaId }),
     ...(url !== undefined && { url }),
+    ...address(details),
     ...(abuseEmail?.includes("@") === true && { abuseEmail }),
     ...(abusePhone !== undefined && { abusePhone }),
     ...(whoisServer !== undefined && { whoisServer }),

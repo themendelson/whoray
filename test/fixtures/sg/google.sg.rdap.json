@@ -11,6 +11,13 @@
   "registrant": {
     "name": "GOOGLE LLC"
   },
+  "admin": {
+    "name": "MARKMONITOR INC."
+  },
+  "tech": {
+    "name": "GOOGLE LLC",
+    "email": "dns-admin@google.com"
+  },
   "handle": "513152-SGNIC",
   "creationDate": "2005-01-03T04:00:00.000Z",
   "updatedDate": "2025-12-01T10:41:02.000Z",

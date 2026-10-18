@@ -19,7 +19,18 @@ export interface WhorayError {
   retryAfter?: number;
 }
 
-export interface Registrar {
+export interface Address {
+  street?: string[];
+  city?: string;
+  state?: string;
+  postalCode?: string;
+  country?: string;
+  email?: string;
+  phone?: string;
+  fax?: string;
+}
+
+export interface Registrar extends Address {
   name: string;
   ianaId?: number;
   url?: string;
@@ -33,17 +44,12 @@ export interface Registry {
   name: string;
 }
 
-export interface Registrant {
+export interface Contact extends Address {
   name?: string;
   organization?: string;
-  street?: string[];
-  city?: string;
-  state?: string;
-  postalCode?: string;
-  country?: string;
-  email?: string;
-  phone?: string;
 }
+
+export type Registrant = Contact;
 
 export interface DomainRecord {
   domain: string;
@@ -53,7 +59,10 @@ export interface DomainRecord {
   isAvailable?: boolean;
   premium?: true;
   registrar?: Registrar;
-  registrant?: Registrant;
+  registrant?: Contact;
+  admin?: Contact;
+  tech?: Contact;
+  billing?: Contact;
   registry?: Registry;
   handle?: string;
   creationDate?: Date;

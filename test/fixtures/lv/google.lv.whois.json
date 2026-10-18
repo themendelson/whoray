@@ -4,12 +4,17 @@
   "state": "registered",
   "isAvailable": false,
   "registrar": {
-    "name": "MarkMonitor Inc."
+    "name": "MarkMonitor Inc.",
+    "street": [
+      "1120 S. Rackham Way, Suite 300, Meridian, ID, 83642, USA"
+    ]
   },
   "registrant": {
+    "name": "Google LLC",
     "street": [
       "1600 Amphitheatre Parkway, Mountain View, CA, 94043, USA"
-    ]
+    ],
+    "country": "US"
   },
   "updatedDate": "2026-10-16T17:12:38.000Z",
   "statuses": [

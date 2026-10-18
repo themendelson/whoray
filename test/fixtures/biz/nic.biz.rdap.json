@@ -7,6 +7,15 @@
     "name": "Registry Services, LLC",
     "ianaId": 9999,
     "url": "registry.godaddy",
+    "street": [
+      "2155 E GoDaddy Way"
+    ],
+    "city": "Tempe",
+    "state": "AZ",
+    "postalCode": "85264",
+    "country": "US",
+    "email": "registry-help@registry.godaddy",
+    "phone": "+1.4806519999",
     "abuseEmail": "reg-support@team.neustar",
     "abusePhone": "+1.8446772878"
   },

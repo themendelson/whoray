@@ -1,3 +1,16 @@
+export type ContactRole = "registrant" | "admin" | "tech" | "billing" | "registrar";
+export type ContactPart =
+  | "Name"
+  | "Organization"
+  | "Street"
+  | "City"
+  | "State"
+  | "PostalCode"
+  | "Country"
+  | "Email"
+  | "Phone"
+  | "Fax";
+
 export type Field =
   | "registrar"
   | "registrarUrl"
@@ -5,15 +18,7 @@ export type Field =
   | "registrarWhois"
   | "abuseEmail"
   | "abusePhone"
-  | "registrantName"
-  | "registrantOrganization"
-  | "registrantStreet"
-  | "registrantCity"
-  | "registrantState"
-  | "registrantPostalCode"
-  | "registrantCountry"
-  | "registrantEmail"
-  | "registrantPhone"
+  | `${ContactRole}${ContactPart}`
   | "handle"
   | "created"
   | "updated"
@@ -24,44 +29,47 @@ export type Field =
   | "nameservers"
   | "dnssec";
 
+const ROLE_PREFIXES: [ContactRole, string[]][] = [
+  ["registrant", ["registrant", "holder", "owner"]],
+  ["admin", ["admin", "administrative", "administrative contact", "admin contact"]],
+  ["tech", ["tech", "technical", "technical contact", "tech contact"]],
+  ["billing", ["billing", "billing contact"]],
+  ["registrar", ["registrar", "sponsoring registrar"]],
+];
+
+const PART_SUFFIXES: [ContactPart, string[]][] = [
+  ["Name", ["name", "contact name"]],
+  ["Organization", ["organization", "organisation", "org"]],
+  [
+    "Street",
+    ["street", "street1", "street2", "street3", "address", "address1", "address2", "address3", "street address"],
+  ],
+  ["City", ["city"]],
+  ["State", ["state/province", "state", "province"]],
+  ["PostalCode", ["postal code", "postcode", "zip code", "zip"]],
+  ["Country", ["country", "country code"]],
+  ["Email", ["email", "e-mail"]],
+  ["Phone", ["phone", "phone number"]],
+  ["Fax", ["fax", "fax number"]],
+];
+
+const REGISTRAR_OWN_PARTS = new Set<ContactPart>(["Name", "Organization"]);
+
+const contactAliases: [Field, string[]][] = ROLE_PREFIXES.flatMap(([role, prefixes]) =>
+  PART_SUFFIXES.filter(([part]) => role !== "registrar" || !REGISTRAR_OWN_PARTS.has(part)).map(
+    ([part, suffixes]): [Field, string[]] => [
+      `${role}${part}`,
+      prefixes.flatMap((prefix) => suffixes.map((suffix) => `${prefix} ${suffix}`)),
+    ],
+  ),
+);
+
 export const aliases: [Field, string[]][] = [
-  ["registrantName", ["registrant name", "registrant contact name", "registrant"]],
-  [
-    "registrantOrganization",
-    [
-      "registrant organization",
-      "registrant organisation",
-      "registrant org",
-      "registrant organization-loc",
-      "domain holder organization",
-    ],
-  ],
-  [
-    "registrantCountry",
-    ["registrant country", "registrant country code", "registrant country-loc", "domain holder country"],
-  ],
-  [
-    "registrantStreet",
-    [
-      "registrant street",
-      "registrant street1",
-      "registrant street2",
-      "registrant street3",
-      "registrant address",
-      "registrant address1",
-      "registrant address2",
-      "registrant address3",
-      "holder address",
-    ],
-  ],
-  ["registrantCity", ["registrant city", "holder city"]],
-  ["registrantState", ["registrant state/province", "registrant state", "registrant province"]],
-  [
-    "registrantPostalCode",
-    ["registrant postal code", "registrant postcode", "registrant zip code", "registrant zip", "holder postal"],
-  ],
-  ["registrantEmail", ["registrant email", "registrant e-mail", "holder email"]],
-  ["registrantPhone", ["registrant phone", "registrant phone number", "holder phone"]],
+  ...contactAliases,
+  ["registrantName", ["registrant"]],
+  ["registrantOrganization", ["registrant organization-loc", "domain holder organization"]],
+  ["registrantCountry", ["registrant country-loc", "domain holder country"]],
+  ["registrantPostalCode", ["holder postal"]],
   ["handle", ["registry domain id", "roid"]],
   [
     "registrar",

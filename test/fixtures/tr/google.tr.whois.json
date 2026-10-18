@@ -4,7 +4,11 @@
   "state": "registered",
   "isAvailable": false,
   "registrar": {
-    "name": "ODTÜ GELİŞTİRME VAKFI BİLGİ TEKNOLOJİLERİ SAN. VE TİC. A.Ş."
+    "name": "ODTÜ GELİŞTİRME VAKFI BİLGİ TEKNOLOJİLERİ SAN. VE TİC. A.Ş.",
+    "street": [
+      "Mustafa Kemal Mahallesi Dumlupınar Bulvarı"
+    ],
+    "phone": "90-312-9881106-"
   },
   "registrant": {
     "name": "Google LLC"

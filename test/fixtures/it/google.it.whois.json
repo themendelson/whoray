@@ -17,6 +17,17 @@
       "IE"
     ]
   },
+  "admin": {
+    "name": "Jared Oberhaus",
+    "organization": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway",
+      "Mountain View",
+      "94043",
+      "CA",
+      "US"
+    ]
+  },
   "creationDate": "1999-12-10T00:00:00.000Z",
   "updatedDate": "2026-06-09T23:13:34.000Z",
   "expirationDate": "2027-04-21T00:00:00.000Z",

@@ -21,7 +21,21 @@
     "postalCode": "EC2R 6AR",
     "country": "GB",
     "email": "domains@centralnic.com",
-    "phone": "+44.2033880600"
+    "phone": "+44.2033880600",
+    "fax": "+44.2033880601"
+  },
+  "tech": {
+    "name": "Domain Administrator",
+    "organization": "CentralNic Ltd",
+    "street": [
+      "35-39 Moorgate"
+    ],
+    "city": "London",
+    "postalCode": "EC2R 6AR",
+    "country": "GB",
+    "email": "domains@centralnic.com",
+    "phone": "+44.2033880600",
+    "fax": "+44.2033880601"
   },
   "registry": {
     "id": "centralnic",

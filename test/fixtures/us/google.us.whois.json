@@ -22,7 +22,36 @@
     "postalCode": "94043",
     "country": "US",
     "email": "dns-admin@google.com",
-    "phone": "+1.6502530000"
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
+  },
+  "admin": {
+    "name": "Colm Buckley",
+    "organization": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway"
+    ],
+    "city": "Mountain View",
+    "state": "CA",
+    "postalCode": "94043",
+    "country": "US",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
+  },
+  "tech": {
+    "name": "Colm Buckley",
+    "organization": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway"
+    ],
+    "city": "Mountain View",
+    "state": "CA",
+    "postalCode": "94043",
+    "country": "US",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
   },
   "handle": "D775573-US",
   "creationDate": "2002-04-19T23:16:01.000Z",

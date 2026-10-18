@@ -21,11 +21,25 @@ export function toRecord(name: Name, found: Found): DomainRecord {
   }
   const statuses = new Set(found.statuses);
   const state = stateOf(statuses, found.expirationDate, found.registrar);
-  const { registrar, registrant, handle, creationDate, updatedDate, expirationDate, snapshotDate, dnssec } = found;
+  const {
+    registrar,
+    registrant,
+    admin,
+    tech,
+    billing,
+    handle,
+    creationDate,
+    updatedDate,
+    expirationDate,
+    snapshotDate,
+  } = found;
   return {
     ...identity(name, state),
     ...(registrar && { registrar }),
     ...(registrant && { registrant }),
+    ...(admin && { admin }),
+    ...(tech && { tech }),
+    ...(billing && { billing }),
     ...(registry && { registry }),
     ...(handle !== undefined && { handle }),
     ...(creationDate && { creationDate }),
@@ -35,7 +49,7 @@ export function toRecord(name: Name, found: Found): DomainRecord {
     ...dropOf(name.tld, state, { ...found, statuses }, operator),
     statuses: found.statuses,
     nameservers: found.nameservers,
-    ...(dnssec !== undefined && { dnssec }),
+    ...(found.dnssec !== undefined && { dnssec: found.dnssec }),
   };
 }
 

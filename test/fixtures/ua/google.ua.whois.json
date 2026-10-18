@@ -6,6 +6,8 @@
   "registrar": {
     "name": "MarkMonitor Inc.",
     "url": "http://markmonitor.com",
+    "city": "Meridian, Idaho",
+    "country": "US",
     "abuseEmail": "abusecomplaints@markmonitor.com",
     "abusePhone": "+12083895740"
   },
@@ -13,7 +15,8 @@
     "organization": "Google LLC",
     "country": "US",
     "email": "dns-admin@google.com",
-    "phone": "+1.6502530000"
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
   },
   "creationDate": "2011-07-21T15:03:50.000Z",
   "updatedDate": "2026-06-19T10:07:10.000Z",

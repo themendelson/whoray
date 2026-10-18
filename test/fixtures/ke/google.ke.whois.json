@@ -4,7 +4,12 @@
   "state": "registered",
   "isAvailable": false,
   "registrar": {
-    "name": "Afriregister Limited"
+    "name": "Afriregister Limited",
+    "street": [
+      "Riara Rd, Bamboo ln, P.O. Box 21682 - 00100, Nairobi"
+    ],
+    "email": "admin@afriregister.co.ke",
+    "phone": "+254 20 711101253"
   },
   "handle": "542953-KENIC",
   "creationDate": "2018-01-10T11:43:08.000Z",

@@ -1,4 +1,4 @@
-import type { Field } from "#data/aliases.ts";
+import type { ContactPart, ContactRole, Field } from "#data/aliases.ts";
 import { aliases } from "#data/aliases.ts";
 import { dnssec, firstLine, notFound, notices, reserved, revoked } from "#data/phrases.ts";
 import { quirks } from "#data/quirks.ts";
@@ -6,10 +6,11 @@ import type { Name } from "#domain.ts";
 import { bySuffix } from "#domain.ts";
 import { registryInText } from "#lifecycle.ts";
 import { parseDate } from "#parse/dates.ts";
-import { countryCode, email, filled, hostnames, phone, registrant, registrar, visible } from "#parse/fields.ts";
+import type { Details } from "#parse/fields.ts";
+import { contact, contacts, countryCode, email, filled, hostnames, phone, registrar, visible } from "#parse/fields.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
-import type { Registrant, Registrar } from "#types.ts";
+import type { Address, Contact, Registrar } from "#types.ts";
 import { pairs } from "#whois/pairs.ts";
 
 const fieldByKey = new Map(aliases.flatMap(([field, keys]) => keys.map((key) => [key, field] as const)));
@@ -48,11 +49,15 @@ function details(fields: Map<Field, string[]>, text: string): Partial<Registrati
   const snapshotDate = parseDate(/>>> Last update of WHOIS database:\s*(\S+)/i.exec(text)?.[1] ?? "");
   const registrarWhois = hostnames(fields.get("registrarWhois") ?? []).at(0);
   const dnssec = (fields.get("dnssec") ?? []).map(dnssecOf).find((value) => value !== undefined);
-  const holder = registrantOf(fields);
   const handle = visible(fields.get("handle")?.[0]);
   const registryId = registryInText(text)?.id;
   return {
-    ...(holder && { registrant: holder }),
+    ...contacts({
+      registrant: contactOf(fields, "registrant"),
+      admin: contactOf(fields, "admin"),
+      tech: contactOf(fields, "tech"),
+      billing: contactOf(fields, "billing"),
+    }),
     ...(handle !== undefined && { handle }),
     ...(updatedDate && { updatedDate }),
     ...(released && { released }),
@@ -112,28 +117,35 @@ function present(values: string[] | undefined): string | undefined {
 
 const CONTACT_HANDLE = /^(?=\S*\d)[a-z0-9-]{5,}$/i;
 
-function registrantOf(fields: Map<Field, string[]>): Registrant | undefined {
-  const first = (field: Field): string | undefined =>
-    fields
-      .get(field)
-      ?.flatMap((value) => filled(value) ?? [])
+function addressOf(fields: Map<Field, string[]>, role: ContactRole): Details<Address> {
+  const values = (part: ContactPart): string[] => fields.get(`${role}${part}`) ?? [];
+  const first = (part: ContactPart): string | undefined =>
+    values(part)
+      .flatMap((value) => filled(value) ?? [])
       .at(0);
-  return registrant({
-    name: present(fields.get("registrantName")?.filter((value) => !CONTACT_HANDLE.test(value.trim()))),
-    organization: present(fields.get("registrantOrganization")),
-    street: fields.get("registrantStreet")?.flatMap((line) => filled(line) ?? []),
-    city: first("registrantCity"),
-    state: first("registrantState"),
-    postalCode: first("registrantPostalCode"),
-    country: countryCode(present(fields.get("registrantCountry"))),
-    email: fields
-      .get("registrantEmail")
-      ?.flatMap((value) => email(value) ?? [])
+  return {
+    street: values("Street").flatMap((line) => filled(line) ?? []),
+    city: first("City"),
+    state: first("State"),
+    postalCode: first("PostalCode"),
+    country: countryCode(present(values("Country"))),
+    email: values("Email")
+      .flatMap((value) => email(value) ?? [])
       .at(0),
-    phone: fields
-      .get("registrantPhone")
-      ?.flatMap((value) => phone(value) ?? [])
+    phone: values("Phone")
+      .flatMap((value) => phone(value) ?? [])
       .at(0),
+    fax: values("Fax")
+      .flatMap((value) => phone(value) ?? [])
+      .at(0),
+  };
+}
+
+function contactOf(fields: Map<Field, string[]>, role: ContactRole): Contact | undefined {
+  return contact({
+    name: present(fields.get(`${role}Name`)?.filter((value) => !CONTACT_HANDLE.test(value.trim()))),
+    organization: present(fields.get(`${role}Organization`)),
+    ...addressOf(fields, role),
   });
 }
 
@@ -145,6 +157,7 @@ function registrarOf(fields: Map<Field, string[]>): Registrar | undefined {
   return registrar(name, {
     ianaId: Number(fields.get("registrarIanaId")?.[0]),
     url: present(fields.get("registrarUrl")) ?? inline?.[2],
+    ...addressOf(fields, "registrar"),
     abuseEmail: present(fields.get("abuseEmail")),
     abusePhone: present(fields.get("abusePhone")),
     whoisServer: hostnames(fields.get("registrarWhois") ?? []).at(0),

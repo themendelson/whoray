@@ -19,6 +19,11 @@
     "city": "London",
     "postalCode": "EC2R 6AR",
     "country": "GB",
+    "phone": "+44.2033880600",
+    "fax": "+44.2033880601"
+  },
+  "tech": {
+    "name": "Domain Administrator",
     "phone": "+44.2033880600"
   },
   "registry": {

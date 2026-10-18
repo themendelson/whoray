@@ -4,7 +4,13 @@
   "state": "registered",
   "isAvailable": false,
   "registrar": {
-    "name": "MarkMonitor Inc."
+    "name": "MarkMonitor Inc.",
+    "street": [
+      "1120 S. Rackham Way Suite 300 IDAHO"
+    ],
+    "city": "Meridian",
+    "postalCode": "83642",
+    "country": "US"
   },
   "creationDate": "1999-05-27T07:42:08.000Z",
   "updatedDate": "2025-04-18T12:28:53.000Z",

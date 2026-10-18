@@ -4,7 +4,19 @@
   "state": "registered",
   "isAvailable": false,
   "registrar": {
-    "name": "MarkMonitor Inc."
+    "name": "MarkMonitor Inc.",
+    "street": [
+      "1120 S. Rackham Way, Suite 300"
+    ],
+    "city": "Meridian, Idaho",
+    "postalCode": "83642",
+    "email": "ccops@markmonitor.com",
+    "phone": "+1.2083895740"
+  },
+  "tech": {
+    "name": "Google LLC",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000"
   },
   "handle": "GOO371D-NORID",
   "creationDate": "2001-02-26T20:24:40.000Z",

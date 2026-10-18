@@ -5,6 +5,13 @@
   "isAvailable": false,
   "registrar": {
     "name": "Mark Monitor",
+    "street": [
+      "1120 S. Rackham Way, Suite 300"
+    ],
+    "city": "Meridian",
+    "state": "ID",
+    "postalCode": "83642",
+    "email": "ccops@markmonitor.com",
     "abuseEmail": "ccops@markmonitor.com"
   },
   "handle": "34544-sonic",

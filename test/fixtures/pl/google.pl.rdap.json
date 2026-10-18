@@ -5,7 +5,16 @@
   "isAvailable": false,
   "registrar": {
     "name": "Markmonitor, Inc.",
-    "url": "https://www.markmonitor.com/"
+    "url": "https://www.markmonitor.com/",
+    "street": [
+      "1120 S. Rackham Way, Suite 300"
+    ],
+    "city": "Meridian",
+    "state": "Idaho",
+    "postalCode": "83642",
+    "country": "US",
+    "email": "ccops@markmonitor.com",
+    "phone": "+1.2083895740"
   },
   "registrant": {
     "name": "Domain Administrator",
@@ -17,7 +26,8 @@
     "state": "CA",
     "postalCode": "94043",
     "country": "US",
-    "phone": "+1.6502530001"
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
   },
   "creationDate": "2002-09-19T11:00:00.000Z",
   "updatedDate": "2026-08-17T10:47:01.000Z",

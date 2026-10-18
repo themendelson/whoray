@@ -7,6 +7,15 @@
     "name": "Radix Technologies Inc. SEZC / CO Services Cayman Limited",
     "ianaId": 9999,
     "url": "https://rdap.radix.host/rdap/entity/9999",
+    "street": [
+      "P.O. Box 10008"
+    ],
+    "city": "Grand Cayman",
+    "state": "Grand Cayman",
+    "postalCode": "KY1-1001",
+    "country": "KY",
+    "email": "admin@radix.email",
+    "phone": "+971.44487934",
     "abuseEmail": "admin@radix.email",
     "abusePhone": "+971.44487934"
   },

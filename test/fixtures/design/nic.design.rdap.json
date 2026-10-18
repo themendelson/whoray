@@ -7,6 +7,18 @@
     "name": "MMX",
     "ianaId": 9999,
     "url": "http://registry.godaddy",
+    "street": [
+      "Level 8",
+      "10",
+      "Queens Road"
+    ],
+    "city": "Melbourne",
+    "state": "Victoria",
+    "postalCode": "3004",
+    "country": "AU",
+    "email": "reg-help@registry.godaddy",
+    "phone": "+61.398663710",
+    "fax": "+61.398663710",
     "abuseEmail": "reg-help@registry.godaddy",
     "abusePhone": "+61.398663710"
   },
