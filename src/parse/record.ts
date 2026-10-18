@@ -20,7 +20,7 @@ export function toRecord(name: Name, found: Found): DomainRecord {
     return { ...empty("unknown"), error };
   }
   const statuses = new Set(found.statuses);
-  const state = stateOf(statuses, found.expirationDate);
+  const state = stateOf(statuses, found.expirationDate, found.registrar);
   const { registrar, registrant, handle, creationDate, updatedDate, expirationDate, snapshotDate, dnssec } = found;
   return {
     ...identity(name, state),

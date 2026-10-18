@@ -24,14 +24,20 @@ class Reader {
   private filled = false;
   private midParagraph = false;
   private lastKey: string | undefined;
+  private sectionIndent = 0;
+
+  get indent(): number {
+    return this.section === undefined ? 0 : this.sectionIndent;
+  }
 
   blank(): void {
     if (this.filled || this.section === undefined) this.section = this.lastKey = undefined;
     this.midParagraph = false;
   }
 
-  header(key: string, explicit: boolean): void {
+  header(key: string, explicit: boolean, indent = 0): void {
     this.section = key;
+    this.sectionIndent = indent;
     this.explicit = explicit;
     this.capturesPairs = !explicit || !this.midParagraph;
     this.filled = false;
@@ -69,9 +75,10 @@ export function pairs(text: string): Pair[] {
     const match = BRACKET.exec(line) ?? KEY_VALUE.exec(line);
     const key = match?.[1] === undefined ? undefined : normalizeKey(match[1]);
     const value = match?.[2]?.trim() ?? "";
-    const indented = /^\s/.test(raw);
+    const indent = raw.length - raw.trimStart().length;
+    const indented = indent > reader.indent;
     if (key === undefined) reader.bare(line, indented);
-    else if (value === "") reader.header(key, true);
+    else if (value === "") reader.header(key, true, indent);
     else reader.pair(key, value, indented);
   }
   return reader.found;
