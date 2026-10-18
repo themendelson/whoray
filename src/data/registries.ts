@@ -35,7 +35,7 @@ export const registries: Registry[] = [
     id: "verisign",
     name: "Verisign Global Registry Services",
     redemption: 35,
-    pendingDelete: 5,
+    pendingDelete: 6,
     tlds: list(`
       cc com edu name net web
     `),

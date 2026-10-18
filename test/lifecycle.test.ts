@@ -16,7 +16,7 @@ function rdap(domain: string, status: string[], events: Record<string, string>):
   };
 }
 
-test("a pendingDelete .com drops five days after its last update", () => {
+test("a pendingDelete .com drops six days after its last update", () => {
   const record = parseRdap(
     rdap("example.com", ["pending delete"], {
       "last changed": "2026-10-14T18:00:00Z",
@@ -25,7 +25,18 @@ test("a pendingDelete .com drops five days after its last update", () => {
     "example.com",
   );
   expect(record.state).toBe("pendingDelete");
-  expect(record.dropDate).toEqual(new Date("2026-10-19T18:00:00Z"));
+  expect(record.dropDate).toEqual(new Date("2026-10-20T18:00:00Z"));
+});
+
+test("a .com updated five days ago is still within its pendingDelete", () => {
+  const record = parseRdap(
+    rdap("example.com", ["pending delete"], {
+      "last changed": "2026-10-11T09:30:00Z",
+      expiration: "2026-09-11T04:00:00Z",
+    }),
+    "example.com",
+  );
+  expect(record.dropDate).toEqual(new Date("2026-10-17T09:30:00Z"));
 });
 
 test("a domain in redemption drops once its redemption cycle ends, pending delete included", () => {
