@@ -79,6 +79,7 @@ export const dropRules: Record<string, DropRule> = {
   si: ({ expirationDate, statuses }) =>
     statuses.has("pendingDelete") && expirationDate ? addDays(expirationDate, 30) : undefined,
   // ZDNS dates a deletion in Beijing time (UTC+8): an update after 16:00 UTC counts from the next day.
+  sn: redemptionGracePeriod(35, 5),
   tf: afnic,
   top: ({ updatedDate, statuses }) =>
     updatedDate && (statuses.has("pendingDelete") || statuses.has("redemptionPeriod"))

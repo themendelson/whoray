@@ -1,0 +1,67 @@
+{
+  "domain": "hey.sn",
+  "tld": "sn",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "OVH"
+  },
+  "registrant": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Furth",
+    "postalCode": "90762",
+    "country": "DE",
+    "email": "jane.doe@example.com",
+    "phone": "+49.600000000"
+  },
+  "admin": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Furth",
+    "postalCode": "90762",
+    "country": "DE",
+    "email": "jane.doe@example.com",
+    "phone": "+49.600000000"
+  },
+  "tech": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Furth",
+    "postalCode": "90762",
+    "country": "DE",
+    "email": "jane.doe@example.com",
+    "phone": "+49.600000000"
+  },
+  "billing": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Furth",
+    "postalCode": "90762",
+    "country": "DE",
+    "email": "jane.doe@example.com",
+    "phone": "+49.600000000"
+  },
+  "creationDate": "2025-09-03T21:17:41.000Z",
+  "updatedDate": "2026-10-01T19:20:33.000Z",
+  "expirationDate": "2026-09-03T21:17:41.000Z",
+  "snapshotDate": "2026-10-18T19:52:33.000Z",
+  "dropDate": "2026-11-05T19:20:33.000Z",
+  "statuses": [
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "dns10.ovh.net",
+    "ns10.ovh.net"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

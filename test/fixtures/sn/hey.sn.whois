@@ -1,0 +1,69 @@
+whois.nic.sn
+============================================================================
+Whois du Registre .SN
+Les informations fournies par ce service ne sont qu'à titre informatif.
+
+Les données collectées via le formulaire d'enregistrement sont traitées exclusivement à des fins liées au traitement des domaines conformément à la RFC 3912 par le NIC Sénégal.
+
+En application des dispositions de la loi n°2008-12 du 25 janvier 2008 portant sur la protection des données à caractère personnel, vous pouvez exercer vos droits d'accès, d'opposition, de rectification et de suppression auprès du NIC Sénégal - abuse(at)nic.sn.
+============================================================================
+
+Domain ID:                     DOM6130467-SN
+Nom de domaine:                hey.sn
+Date de création:              2025-09-03T21:17:41.759252Z
+Dernière modification:         2026-10-01T19:20:33.636801Z
+Date d'expiration:             2026-09-03T21:17:41.721937Z
+Registrar:                     OVH
+Statut:                        rédemption
+
+[HOLDER]
+ID Contact:                    CTC24248
+Type:                          Personne Physique
+Nom:                           Jane Doe
+Adresse:                       1 Example Street
+Code postal:                   90762
+Ville:                         Furth
+Pays:                          DE
+Téléphone:                     +49.600000000
+Courriel:                      jane.doe@example.com
+
+[ADMIN_C]
+ID Contact:                    CTC24250
+Type:                          Personne Physique
+Nom:                           Jane Doe
+Adresse:                       1 Example Street
+Code postal:                   90762
+Ville:                         Furth
+Pays:                          DE
+Téléphone:                     +49.600000000
+Courriel:                      jane.doe@example.com
+
+[BILLING_C]
+ID Contact:                    CTC24252
+Type:                          Personne Physique
+Nom:                           Jane Doe
+Adresse:                       1 Example Street
+Code postal:                   90762
+Ville:                         Furth
+Pays:                          DE
+Téléphone:                     +49.600000000
+Courriel:                      jane.doe@example.com
+
+[TECH_C]
+ID Contact:                    CTC24251
+Type:                          Personne Physique
+Nom:                           Jane Doe
+Adresse:                       1 Example Street
+Code postal:                   90762
+Ville:                         Furth
+Pays:                          DE
+Téléphone:                     +49.600000000
+Courriel:                      jane.doe@example.com
+
+Serveur de noms:               dns10.ovh.net
+Serveur de noms:               ns10.ovh.net
+
+DNSSEC:                        unsigned
+
+>>> Last update of WHOIS database: 2026-10-18T19:52:33.130182Z <<<
+

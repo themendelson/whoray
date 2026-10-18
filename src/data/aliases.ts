@@ -31,25 +31,36 @@ export type Field =
 
 const ROLE_PREFIXES: [ContactRole, string[]][] = [
   ["registrant", ["registrant", "holder", "owner"]],
-  ["admin", ["admin", "administrative", "administrative contact", "admin contact"]],
-  ["tech", ["tech", "technical", "technical contact", "tech contact"]],
-  ["billing", ["billing", "billing contact"]],
+  ["admin", ["admin", "administrative", "administrative contact", "admin contact", "admin_c"]],
+  ["tech", ["tech", "technical", "technical contact", "tech contact", "tech_c"]],
+  ["billing", ["billing", "billing contact", "billing_c"]],
   ["registrar", ["registrar", "sponsoring registrar"]],
 ];
 
 const PART_SUFFIXES: [ContactPart, string[]][] = [
-  ["Name", ["name", "contact name"]],
+  ["Name", ["name", "contact name", "nom"]],
   ["Organization", ["organization", "organisation", "org"]],
   [
     "Street",
-    ["street", "street1", "street2", "street3", "address", "address1", "address2", "address3", "street address"],
+    [
+      "street",
+      "street1",
+      "street2",
+      "street3",
+      "address",
+      "address1",
+      "address2",
+      "address3",
+      "street address",
+      "adresse",
+    ],
   ],
-  ["City", ["city", "locality"]],
+  ["City", ["city", "locality", "ville"]],
   ["State", ["state/province", "state", "province"]],
-  ["PostalCode", ["postal code", "postcode", "zip code", "zipcode", "zip"]],
-  ["Country", ["country", "country code"]],
-  ["Email", ["email", "e-mail"]],
-  ["Phone", ["phone", "phone number"]],
+  ["PostalCode", ["postal code", "postcode", "zip code", "zipcode", "zip", "code postal"]],
+  ["Country", ["country", "country code", "pays"]],
+  ["Email", ["email", "e-mail", "courriel"]],
+  ["Phone", ["phone", "phone number", "téléphone"]],
   ["Fax", ["fax", "fax number"]],
 ];
 
@@ -118,6 +129,7 @@ export const aliases: [Field, string[]][] = [
       "assigned",
       "record created",
       "registered date",
+      "date de création",
     ],
   ],
   [
@@ -135,6 +147,7 @@ export const aliases: [Field, string[]][] = [
       "domain record last updated",
       "last updated date",
       "modification date",
+      "dernière modification",
     ],
   ],
   [
@@ -157,13 +170,24 @@ export const aliases: [Field, string[]][] = [
       "renewal date",
       "record expires on",
       "exp date",
+      "date d'expiration",
     ],
   ],
   ["released", ["free-date", "available", "reservation eligibility end date", "date_to_release", "purge date"]],
   ["deleted", ["deleted"]],
   [
     "statuses",
-    ["domain status", "status", "state", "domain state", "registration status", "flags", "lock status", "epp status"],
+    [
+      "domain status",
+      "status",
+      "state",
+      "domain state",
+      "registration status",
+      "flags",
+      "lock status",
+      "epp status",
+      "statut",
+    ],
   ],
   [
     "nameservers",
@@ -183,6 +207,7 @@ export const aliases: [Field, string[]][] = [
       "domain servers",
       "domain servers in listed order",
       "dns servers",
+      "serveur de noms",
     ],
   ],
   ["dnssec", ["dnssec", "signed", "dnssec status", "dnssec signed"]],

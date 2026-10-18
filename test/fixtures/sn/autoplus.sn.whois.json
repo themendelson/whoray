@@ -1,0 +1,67 @@
+{
+  "domain": "autoplus.sn",
+  "tld": "sn",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "AFRIREGISTER SENEGAL"
+  },
+  "registrant": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Dakar",
+    "postalCode": "25753",
+    "country": "SN",
+    "email": "jane.doe@example.com",
+    "phone": "+221.600000000"
+  },
+  "admin": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Dakar",
+    "postalCode": "25753",
+    "country": "SN",
+    "email": "jane.doe@example.com",
+    "phone": "+221.600000000"
+  },
+  "tech": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Dakar",
+    "postalCode": "25753",
+    "country": "SN",
+    "email": "jane.doe@example.com",
+    "phone": "+221.600000000"
+  },
+  "billing": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Dakar",
+    "postalCode": "25753",
+    "country": "SN",
+    "email": "jane.doe@example.com",
+    "phone": "+221.600000000"
+  },
+  "creationDate": "2022-08-16T20:19:36.000Z",
+  "updatedDate": "2026-10-15T21:02:58.000Z",
+  "expirationDate": "2026-08-16T20:19:36.000Z",
+  "snapshotDate": "2026-10-18T19:52:33.000Z",
+  "dropDate": "2026-10-20T21:02:58.000Z",
+  "statuses": [
+    "pendingDelete"
+  ],
+  "nameservers": [
+    "ns5.afriregister.co.ke",
+    "ns6.afriregister.co.ke"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
