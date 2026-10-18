@@ -11,7 +11,6 @@ export const latestChange: Transform = (text) => {
 
 export const headerStatus: Transform = (text) => text.replace(/^Domain \S+ \(([^)]+)\)$/m, "$&\nStatus: $1");
 
-
 export const addressContinuations: Transform = (text) =>
   text.replace(/^Address[ \t]*:.*(?:\n[ \t]+\S.*)+/gm, (block) => block.replace(/\n[ \t]+/g, "\nAddress: "));
 
