@@ -4,9 +4,25 @@
   "state": "pendingDelete",
   "isAvailable": false,
   "registrar": {
-    "name": "Registrar NIC .DO (midominio.do)"
+    "name": "Registrar NIC .DO (midominio.do)",
+    "street": [
+      "Av. Rómulo Betancourt 1108, La Julia"
+    ],
+    "country": "DO"
   },
   "registrant": {
+    "name": "Domain Administrator",
+    "organization": "SiteConfidential.com"
+  },
+  "admin": {
+    "name": "Domain Administrator",
+    "organization": "SiteConfidential.com"
+  },
+  "tech": {
+    "name": "Domain Administrator",
+    "organization": "SiteConfidential.com"
+  },
+  "billing": {
     "name": "Domain Administrator",
     "organization": "SiteConfidential.com"
   },
