@@ -1,0 +1,35 @@
+{
+  "domain": "link.ngo",
+  "tld": "ngo",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "NameCheap, Inc.",
+    "ianaId": 1068,
+    "url": "http://www.namecheap.com",
+    "abuseEmail": "abuse@namecheap.com",
+    "abusePhone": "+1.9854014545",
+    "whoisServer": "whois.namecheap.com"
+  },
+  "registry": {
+    "id": "public-interest-registry",
+    "name": "Public Interest Registry"
+  },
+  "creationDate": "2025-08-26T21:40:21.000Z",
+  "updatedDate": "2026-10-07T21:44:05.000Z",
+  "expirationDate": "2026-08-26T21:40:21.000Z",
+  "snapshotDate": "2026-10-18T20:10:53.000Z",
+  "dropDate": "2026-11-12T09:44:05.000Z",
+  "deletionDate": "2026-11-11T21:44:05.000Z",
+  "statuses": [
+    "serverHold",
+    "clientTransferProhibited",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "dns101.registrar-servers.com",
+    "dns102.registrar-servers.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

@@ -28,7 +28,7 @@ export const registries: Registry[] = [
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
-      org
+      charity foundation gives ngo ong org
     `),
   },
   {
