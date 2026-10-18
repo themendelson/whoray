@@ -31,7 +31,10 @@ export type Field =
 
 const ROLE_PREFIXES: [ContactRole, string[]][] = [
   ["registrant", ["registrant", "holder", "owner", "owner contact"]],
-  ["admin", ["admin", "administrative", "administrative contact", "admin contact", "admin_c", "administrativ contact", "ac"]],
+  [
+    "admin",
+    ["admin", "administrative", "administrative contact", "admin contact", "admin_c", "administrativ contact", "ac"],
+  ],
   ["tech", ["tech", "technical", "technical contact", "tech contact", "tech_c", "technical contacts"]],
   ["billing", ["billing", "billing contact", "billing_c"]],
   ["registrar", ["registrar", "sponsoring registrar"]],
