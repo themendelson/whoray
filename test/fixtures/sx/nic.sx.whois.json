@@ -5,7 +5,8 @@
   "isRegistered": true,
   "registrar": {
     "name": "SX Registry O",
-    "url": "www.registry.sx"
+    "url": "www.registry.sx",
+    "whoisServer": "whois.sx"
   },
   "registrant": {
     "organization": "SX Registry SA",
