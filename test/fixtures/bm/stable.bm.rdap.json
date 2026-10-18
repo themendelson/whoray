@@ -1,0 +1,44 @@
+{
+  "domain": "stable.bm",
+  "tld": "bm",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "The Registry General, Government of Bermuda",
+    "ianaId": 801154,
+    "url": "https://rdap.identitydigital.services/rdap"
+  },
+  "registrant": {
+    "name": "Jane Doe",
+    "organization": "Stable Corporation Ltd",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Hamilton",
+    "postalCode": "HM12",
+    "country": "BM",
+    "email": "jane.doe@example.com",
+    "phone": "+44.2000000000"
+  },
+  "registry": {
+    "id": "identity-digital",
+    "name": "Identity Digital"
+  },
+  "handle": "efe6b182b3204d909ced70c80a022d37-DONUTS",
+  "creationDate": "2020-08-26T12:21:18.000Z",
+  "updatedDate": "2026-10-01T00:48:08.000Z",
+  "expirationDate": "2026-08-26T12:21:18.000Z",
+  "snapshotDate": "2026-10-18T19:22:22.000Z",
+  "dropDate": "2026-11-05T12:48:08.000Z",
+  "deletionDate": "2026-11-05T00:48:08.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "dns8.parkpage.foundationapi.com",
+    "dns7.parkpage.foundationapi.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}
