@@ -1,0 +1,21 @@
+{
+  "domain": "our.qa",
+  "tld": "qa",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Q HOST TECHNOLOGIES"
+  },
+  "updatedDate": "2026-09-26T07:02:46.000Z",
+  "dropDate": "2026-10-28T07:02:46.000Z",
+  "statuses": [
+    "serverHold",
+    "serverUpdateProhibited",
+    "pendingDelete"
+  ],
+  "nameservers": [
+    "ns1.atom.com",
+    "ns2.atom.com"
+  ],
+  "source": "whois"
+}

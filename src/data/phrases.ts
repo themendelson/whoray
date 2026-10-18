@@ -4,7 +4,7 @@ export const firstLine: Record<"dropzone" | "premium" | "dpml", RegExp> = {
   dpml: /DPML/,
 };
 
-export const revoked: RegExp = /Domain not renewed\. Being revoked/;
+export const revoked: RegExp[] = [/Domain not renewed\. Being revoked/, /^Status:.*\(Expired\)\s*$/m];
 
 export const notFound: RegExp[] = [
   /\bno match\b/i,
