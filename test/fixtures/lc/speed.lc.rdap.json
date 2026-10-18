@@ -23,8 +23,7 @@
   "updatedDate": "2026-10-03T13:46:12.000Z",
   "expirationDate": "2026-08-21T12:20:19.000Z",
   "snapshotDate": "2026-10-18T21:40:13.000Z",
-  "dropDate": "2026-11-08T01:46:12.000Z",
-  "deletionDate": "2026-11-07T13:46:12.000Z",
+  "dropDate": "2026-11-07T13:46:12.000Z",
   "statuses": [
     "redemptionPeriod",
     "inactive"

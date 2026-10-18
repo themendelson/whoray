@@ -131,7 +131,6 @@ interface WhorayResult {
   creationDate?: Date;
   updatedDate?: Date;
   expirationDate?: Date;
-  deletionDate?: Date;       // for registries that hold deleted names 12 hours before release
   dropDate?: Date;           // estimated from the registry's deletion schedule
   snapshotDate?: Date;       // when the registry took the copy of the data you received
 
