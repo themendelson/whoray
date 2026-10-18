@@ -8,7 +8,8 @@
     "ianaId": 146,
     "url": "https://www.godaddy.com/",
     "abuseEmail": "abuse@godaddy.com",
-    "abusePhone": "+1.4805058800"
+    "abusePhone": "+1.4805058800",
+    "whoisServer": "whois.godaddy.com"
   },
   "registry": {
     "id": "centralnic",

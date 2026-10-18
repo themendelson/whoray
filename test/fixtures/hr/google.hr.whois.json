@@ -5,7 +5,8 @@
   "isRegistered": true,
   "registrar": {
     "name": "Sayber d.o.o.",
-    "url": "http://whois.dns.hr"
+    "url": "http://whois.dns.hr",
+    "whoisServer": "whois.dns.hr"
   },
   "registrant": {
     "name": "Google Hrvatska d.o.o.",
