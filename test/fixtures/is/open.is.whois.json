@@ -1,0 +1,16 @@
+{
+  "domain": "open.is",
+  "tld": "is",
+  "state": "expired",
+  "isAvailable": false,
+  "creationDate": "2021-09-30T00:00:00.000Z",
+  "expirationDate": "2026-09-30T00:00:00.000Z",
+  "dropDate": "2026-11-01T00:00:00.000Z",
+  "statuses": [],
+  "nameservers": [
+    "delilah.ns.cloudflare.com",
+    "kirk.ns.cloudflare.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
