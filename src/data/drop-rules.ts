@@ -63,6 +63,10 @@ export const dropRules: Record<string, DropRule> = {
   hiv: registryClick,
   hk: ({ expirationDate }) => expirationDate && addDays(expirationDate, 90),
   hr: ({ expirationDate }) => expirationDate && addDays(expirationDate, 31),
+  id: ({ updatedDate, statuses }) =>
+    updatedDate && (statuses.has("redemptionPeriod") || statuses.has("pendingDelete"))
+      ? addDays(updatedDate, 37)
+      : undefined,
   io: identityDigitalCcTld,
   is: ({ expirationDate }) => expirationDate && addDays(expirationDate, 32),
   it: ({ updatedDate, statuses }) =>

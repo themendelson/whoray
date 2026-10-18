@@ -1,0 +1,28 @@
+{
+  "domain": "media.id",
+  "tld": "id",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "PT Digital Registra Indonesia",
+    "ianaId": 1,
+    "url": "www.digitalregistra.co.id",
+    "abuseEmail": "info@digitalregistra.co.id"
+  },
+  "handle": "329791_DOMAIN_ID-ID",
+  "creationDate": "2014-08-18T03:18:42.000Z",
+  "updatedDate": "2026-09-27T22:08:31.000Z",
+  "expirationDate": "2026-08-18T23:59:59.000Z",
+  "snapshotDate": "2026-10-18T21:17:00.000Z",
+  "dropDate": "2026-11-03T22:08:31.000Z",
+  "statuses": [
+    "pendingDelete",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "expire1.mysrsx.com",
+    "expire2.mysrsx.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
