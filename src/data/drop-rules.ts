@@ -31,6 +31,7 @@ function usSchedule(expirationDate: Date, updatedDate: Date): Date {
 export const dropRules: Record<string, DropRule> = {
   ai: identityDigitalCcTld,
   am: ({ expirationDate }) => expirationDate && addDays(expirationDate, 45),
+  ar: ({ expirationDate }) => expirationDate && addDays(expirationDate, 45),
   co: ({ released }) => released && addDays(rolledPast(released, 17), 1),
   "co.il": isoc,
   "co.uk": uk,

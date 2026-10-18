@@ -1,0 +1,34 @@
+whois.nic.ar
+% La información a la que estás accediendo se provee exclusivamente para
+% fines relacionados con operaciones sobre nombres de dominios y DNS,
+% quedando absolutamente prohibido su uso para otros fines.
+%
+% La DIRECCIÓN NACIONAL DEL REGISTRO DE DOMINIOS DE INTERNET es depositaria
+% de la información que los usuarios declaran con la sola finalidad de
+% registrar nombres de dominio en ‘.ar’, para ser publicada en el sitio web
+% de NIC Argentina.
+%
+% La información personal que consta en la base de datos generada a partir
+% del sistema de registro de nombres de dominios se encuentra amparada por
+% la Ley N° 25326 “Protección de Datos Personales” y el Decreto
+% Reglamentario 1558/01.
+
+domain:		utopia.ar
+registrant:	50233136589
+registrar:	nicar
+registered:	2024-09-11 05:54:21.640575
+changed:	2025-09-23 05:40:23.678578
+expire:		2026-09-11 00:00:00
+
+contact:	50233136589
+name:		NETIM
+registrar:	nicar
+created:	2015-07-16 00:00:00
+changed:	2026-10-16 12:35:01.855719
+
+nserver:	ns2.sedoparking.com ()
+nserver:	ns1.sedoparking.com ()
+registrar:	nicar
+created:	2024-09-11 05:55:52.722176
+
+
