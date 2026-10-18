@@ -107,9 +107,11 @@ function present(values: string[] | undefined): string | undefined {
   return values?.find((value) => visible(value) !== undefined);
 }
 
+const CONTACT_HANDLE = /^(?=\S*\d)[a-z0-9-]{5,}$/i;
+
 function registrantOf(fields: Map<Field, string[]>): Registrant | undefined {
   return registrant(
-    present(fields.get("registrantName")),
+    present(fields.get("registrantName")?.filter((value) => !CONTACT_HANDLE.test(value.trim()))),
     present(fields.get("registrantOrganization")),
     countryCode(present(fields.get("registrantCountry"))),
   );
@@ -125,6 +127,7 @@ function registrarOf(fields: Map<Field, string[]>): Registrar | undefined {
     url: present(fields.get("registrarUrl")) ?? inline?.[2],
     abuseEmail: present(fields.get("abuseEmail")),
     abusePhone: present(fields.get("abusePhone")),
+    whoisServer: hostnames(fields.get("registrarWhois") ?? []).at(0),
   });
 }
 

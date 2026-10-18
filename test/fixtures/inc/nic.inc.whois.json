@@ -8,7 +8,8 @@
     "ianaId": 9999,
     "url": "https://intercap.inc/",
     "abuseEmail": "abuse@my.box",
-    "abusePhone": "+44.123456789"
+    "abusePhone": "+44.123456789",
+    "whoisServer": "whois.nic.inc"
   },
   "registrant": {
     "organization": "Uniregistry, Corp",

@@ -8,7 +8,8 @@
     "ianaId": 9999,
     "url": "get.cloud",
     "abuseEmail": "registry@get.cloud",
-    "abusePhone": "+39.05750505"
+    "abusePhone": "+39.05750505",
+    "whoisServer": "whois.nic.cloud"
   },
   "registry": {
     "id": "tucows-registry",

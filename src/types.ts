@@ -25,6 +25,7 @@ export interface Registrar {
   url?: string;
   abuseEmail?: string;
   abusePhone?: string;
+  whoisServer?: string;
 }
 
 export interface Registry {

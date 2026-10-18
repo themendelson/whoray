@@ -7,6 +7,9 @@
     "name": "Whois Corp.",
     "url": "http://whois.co.kr"
   },
+  "registrant": {
+    "name": "Google Korea, LLC"
+  },
   "creationDate": "2007-03-02T00:00:00.000Z",
   "updatedDate": "2026-04-15T00:00:00.000Z",
   "expirationDate": "2027-03-02T00:00:00.000Z",

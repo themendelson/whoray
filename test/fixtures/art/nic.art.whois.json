@@ -8,7 +8,8 @@
     "ianaId": 9999,
     "url": "https://www.centralnic.com/",
     "abuseEmail": "ops@centralnic.com",
-    "abusePhone": "+44.2033880600"
+    "abusePhone": "+44.2033880600",
+    "whoisServer": "whois.centralnic.com"
   },
   "registrant": {
     "name": "Domain Administrator",

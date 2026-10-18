@@ -1,6 +1,7 @@
 import type { Registrant, Registrar } from "#types.ts";
 
-const REDACTED = /redacted|not disclosed|data protected|withheld|gdpr|not applicable|privacy|hidden upon/i;
+const REDACTED =
+  /redacted|not disclosed|data protected|withheld|gdpr|not applicable|privacy|hidden upon|not shown|web-?based whois/i;
 
 export function visible(value: string | undefined): string | undefined {
   return value === undefined || REDACTED.test(value) ? undefined : value;
@@ -29,10 +30,11 @@ interface RegistrarDetails {
   url?: string | undefined;
   abuseEmail?: string | undefined;
   abusePhone?: string | undefined;
+  whoisServer?: string | undefined;
 }
 
 export function registrar(name: string, details: RegistrarDetails): Registrar {
-  const { ianaId, url } = details;
+  const { ianaId, url, whoisServer } = details;
   const abuseEmail = details.abuseEmail?.toLowerCase();
   const abusePhone = details.abusePhone?.replace(/^tel:/, "");
   return {
@@ -41,6 +43,7 @@ export function registrar(name: string, details: RegistrarDetails): Registrar {
     ...(url !== undefined && { url }),
     ...(abuseEmail?.includes("@") === true && { abuseEmail }),
     ...(abusePhone !== undefined && { abusePhone }),
+    ...(whoisServer !== undefined && { whoisServer }),
   };
 }
 
