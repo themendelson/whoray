@@ -1,0 +1,23 @@
+{
+  "domain": "portal.ge",
+  "tld": "ge",
+  "state": "expired",
+  "isAvailable": false,
+  "registrar": {
+    "name": "namespace.ge"
+  },
+  "registrant": {
+    "name": "shps emberi"
+  },
+  "creationDate": "2017-09-27T00:00:00.000Z",
+  "expirationDate": "2026-09-28T00:00:00.000Z",
+  "dropDate": "2026-10-28T00:00:00.000Z",
+  "statuses": [
+    "inactive"
+  ],
+  "nameservers": [
+    "naomi.ns.cloudflare.com",
+    "norm.ns.cloudflare.com"
+  ],
+  "source": "whois"
+}
