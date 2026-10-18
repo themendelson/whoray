@@ -39,7 +39,7 @@ domain.expirationDate;  //=> 2027-07-19T23:59:59.000Z
 | Option | Default | |
 | --- | --- | --- |
 | `follow` | `"registry"` | Set to `"registrar"` to also query the registrar's server for fuller registrar details |
-| `protocol` | `"auto"` | `"auto"` asks WHOIS and moves to RDAP when WHOIS has no server, fails or is slow; `"whois"` or `"rdap"` asks only that one |
+| `protocol` | `"auto"` | `"auto"` asks WHOIS and moves to RDAP when WHOIS has no server, fails or is slow; `"whois"` or `"rdap"` asks only that one. In a browser it defaults to `"rdap"` unless you pass `connect` |
 | `timeout` | `10000` | Milliseconds for the whole lookup |
 | `signal` | | `AbortSignal` to cancel the lookup |
 | `servers` | | Your own servers for a TLD, e.g. `{ io: { whois: "whois.nic.io" } }`; `whois: false` or `rdap: false` skips that protocol for it |

@@ -1,4 +1,5 @@
 import { expect, test } from "vitest";
+import { lookup as browserLookup } from "#runtime/browser.ts";
 import { lookup } from "#runtime/node.ts";
 import type { Connect } from "#types.ts";
 import { freshLookup, httpServer, ianaBootstrap, silentServer, whoisServer } from "./support.ts";
@@ -247,4 +248,12 @@ test("follow: registrar doesn't follow a referral to a private address", async (
   const whois = whoisServer(() => WHOIS_REGISTRY.replace("whois.registrar.test", "169.254.169.254"));
   await lookup("example.com", { connect: whois.connect, servers, follow: "registrar", protocol: "whois" });
   expect(whois.connections).toEqual(["whois.registry.test"]);
+});
+
+test("a browser lookup asks only RDAP, so an RDAP failure is the error it reports", async () => {
+  const { fetch, urls } = httpServer(() => ({ status: 503, body: "" }));
+  const servers = { com: { rdap: "https://rdap.test/", whois: "whois.registry.test" } };
+  const result = await browserLookup("example.com", { fetch, servers });
+  expect(urls).toEqual(["https://rdap.test/domain/example.com"]);
+  expect(result).toMatchObject({ state: "unknown", source: "rdap", error: { message: "HTTP 503" } });
 });
