@@ -49,3 +49,6 @@ pnpm build
 
 `pnpm check` passes, the diff touches only what the task needs, and the summary lists the commands
 you ran with their results.
+
+Label each PR `breaking`, `fix` or `internal` (or leave it unlabelled for an improvement): release
+notes are grouped by these labels, and `internal` is left out. PRs are squash-merged into `main`.
