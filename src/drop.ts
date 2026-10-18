@@ -14,9 +14,7 @@ const EXPIRY_TO_DROP_DAYS = 77;
 export function redemptionGracePeriod(redemption: number, pendingDelete: number): DropRule {
   return ({ expirationDate, updatedDate, statuses }) => {
     if (!updatedDate) return undefined;
-    if (statuses.has("redemptionPeriod")) {
-      return addDays(updatedDate, statuses.has("pendingDelete") ? redemption + pendingDelete : redemption);
-    }
+    if (statuses.has("redemptionPeriod")) return addDays(updatedDate, redemption);
     if (!statuses.has("pendingDelete")) return undefined;
     const pendingDeleteOver = addDays(updatedDate, pendingDelete).getTime() < Date.now();
     if (expirationDate && updatedDate > expirationDate && pendingDeleteOver) {
