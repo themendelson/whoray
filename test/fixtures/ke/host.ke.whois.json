@@ -1,0 +1,37 @@
+{
+  "domain": "host.ke",
+  "tld": "ke",
+  "state": "expired",
+  "isAvailable": false,
+  "registrar": {
+    "name": "HOSTAFRICA EAC",
+    "url": "https://hostafrica.com",
+    "street": [
+      "NEXTGEN MALL 5th FLOOR Office NO. 14, MOMBASA ROAD NAIROBI, P.O. Box 3543 - 00200 Nairobi"
+    ],
+    "city": "Nairobi",
+    "state": "Nairobi",
+    "postalCode": "001000",
+    "email": "support@hostafrica.com",
+    "phone": "+254709399000",
+    "abuseEmail": "abuse@hostafrica.com",
+    "abusePhone": "+254709399000",
+    "whoisServer": "hostafrica.com"
+  },
+  "handle": "1364406-KENIC",
+  "creationDate": "2022-07-29T05:17:18.000Z",
+  "updatedDate": "2026-08-29T06:00:07.000Z",
+  "expirationDate": "2026-07-29T05:17:18.000Z",
+  "snapshotDate": "2026-10-18T20:53:48.000Z",
+  "dropDate": "2026-10-31T05:17:18.000Z",
+  "statuses": [
+    "inactive",
+    "serverHold"
+  ],
+  "nameservers": [
+    "ns1.parkingcrew.net",
+    "ns2.parkingcrew.net"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
