@@ -1,0 +1,23 @@
+{
+  "domain": "connections.cn",
+  "tld": "cn",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "阿里云计算有限公司（万网）"
+  },
+  "registrant": {
+    "name": "北京东方华巨咨询有限公司"
+  },
+  "handle": "20060903s10001s78347493-cn",
+  "creationDate": "2006-09-03T10:19:00.000Z",
+  "expirationDate": "2026-09-03T10:19:00.000Z",
+  "dropDate": "2026-10-20T10:19:00.000Z",
+  "statuses": [
+    "pendingDelete",
+    "inactive"
+  ],
+  "nameservers": [],
+  "dnssec": false,
+  "source": "whois"
+}

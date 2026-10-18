@@ -44,6 +44,7 @@ export const dropRules: Record<string, DropRule> = {
       : undefined,
   capetown: zacr,
   click: registryClick,
+  cn: ({ expirationDate }) => expirationDate && addDays(expirationDate, 47),
   co: ({ released }) => released && addDays(rolledPast(released, 17), 1),
   "co.il": isoc,
   "co.uk": uk,
