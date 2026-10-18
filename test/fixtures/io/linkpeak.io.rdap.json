@@ -1,0 +1,35 @@
+{
+  "domain": "linkpeak.io",
+  "tld": "io",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Virtualia LLC",
+    "ianaId": 3875,
+    "url": "https://rdap.virtualia.com/rdap/",
+    "abuseEmail": "abuse@virtualia.com",
+    "abusePhone": "+1.3072744655"
+  },
+  "registrant": {
+    "country": "BR"
+  },
+  "registry": {
+    "id": "internet-computer-bureau",
+    "name": "Internet Computer Bureau"
+  },
+  "creationDate": "2025-08-04T15:15:57.000Z",
+  "updatedDate": "2026-10-17T00:05:10.000Z",
+  "expirationDate": "2026-08-04T15:15:57.000Z",
+  "snapshotDate": "2026-10-18T16:52:14.000Z",
+  "dropDate": "2026-11-14T17:00:00.000Z",
+  "statuses": [
+    "clientHold",
+    "pendingDelete"
+  ],
+  "nameservers": [
+    "ns1.bodis.com",
+    "ns2.bodis.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}
