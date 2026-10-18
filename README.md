@@ -42,7 +42,7 @@ domain.expirationDate;  //=> 2027-07-19T23:59:59.000Z
 | `protocol` | `"auto"` | `"auto"` asks WHOIS and moves to RDAP when WHOIS has no server, fails or is slow; `"whois"` or `"rdap"` asks only that one. In a browser it defaults to `"rdap"` unless you pass `connect` |
 | `timeout` | `10000` | Milliseconds for the whole lookup |
 | `signal` | | `AbortSignal` to cancel the lookup |
-| `servers` | | Your own servers for a TLD, e.g. `{ io: { whois: "whois.nic.io" } }`; `whois: false` or `rdap: false` skips that protocol for it |
+| `servers` | | Your own servers for a TLD, e.g. `{ io: { whois: "whois.nic.io" } }`; `whois: false` or `rdap: false` skips that protocol for it; `prefer: "rdap"` makes `auto` ask RDAP first |
 | `connect` | | Your own port 43 connection, e.g. through a [proxy](#using-a-proxy) |
 | `fetch` | `globalThis.fetch` | Your own fetch for RDAP |
 

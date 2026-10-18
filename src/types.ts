@@ -92,6 +92,7 @@ export interface ServerEntry {
   whois?: string | false;
   rdap?: string | false;
   query?: string;
+  prefer?: Protocol;
 }
 
 export interface Socket {

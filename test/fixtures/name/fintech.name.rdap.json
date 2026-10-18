@@ -1,0 +1,33 @@
+{
+  "domain": "fintech.name",
+  "tld": "name",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "NameCheap, Inc.",
+    "ianaId": 1068,
+    "url": "http://www.namecheap.com",
+    "abuseEmail": "abuse@namecheap.com",
+    "abusePhone": "+1.6613102107"
+  },
+  "registry": {
+    "id": "verisign",
+    "name": "Verisign Global Registry Services"
+  },
+  "handle": "206095813_DOMAIN_NAME-VRSN",
+  "creationDate": "2025-08-09T20:50:23.000Z",
+  "updatedDate": "2026-09-20T20:53:39.000Z",
+  "expirationDate": "2026-08-09T20:50:23.000Z",
+  "snapshotDate": "2026-10-18T20:30:59.000Z",
+  "dropDate": "2026-10-25T20:53:39.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "dns101.registrar-servers.com",
+    "dns102.registrar-servers.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

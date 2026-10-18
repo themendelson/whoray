@@ -62,6 +62,26 @@ test("a TLD without WHOIS goes straight to RDAP", async () => {
   expect(result).toMatchObject({ state: "available", source: "rdap" });
 });
 
+test("prefer: rdap asks RDAP first and leaves WHOIS unasked", async () => {
+  const { fetch, urls } = httpServer(() => ({ status: 200, body: RDAP_DOMAIN }));
+  const whois = whoisServer(() => WHOIS_REGISTRY);
+  const result = await lookup("example.com", {
+    fetch,
+    connect: whois.connect,
+    servers: { com: { ...servers.com, prefer: "rdap" } },
+  });
+  expect(urls).toEqual(["https://rdap.test/domain/example.com"]);
+  expect(whois.connections).toEqual([]);
+  expect(result).toMatchObject({ source: "rdap", expirationDate: new Date("2030-02-03T04:05:06Z") });
+});
+
+test("prefer: rdap still falls back to WHOIS when RDAP fails", async () => {
+  const { fetch } = httpServer(() => ({ status: 503, body: "" }));
+  const { connect } = whoisServer(() => WHOIS_REGISTRY);
+  const result = await lookup("example.com", { fetch, connect, servers: { com: { ...servers.com, prefer: "rdap" } } });
+  expect(result).toMatchObject({ source: "whois", registrar: { name: "Example Registrar, Inc." } });
+});
+
 test("a retired WHOIS service hands the lookup to RDAP", async () => {
   const { fetch } = httpServer(() => ({ status: 404, body: "" }));
   const { connect } = whoisServer(() => "Notice: the WHOIS service has been retired. Use RDAP.");

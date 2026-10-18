@@ -66,7 +66,8 @@ export const servers: Record<string, ServerEntry> = {
   mn: { rdap: identityDigital },
   moe: { whois: "whois.nic.moe" },
   mom: { whois: "whois.nic.mom" },
-  name: { whois: "whois.nic.name" },
+  // Verisign's .name WHOIS is thin: it publishes no creation, expiry or update date.
+  name: { whois: "whois.nic.name", prefer: "rdap" },
   nyc: { whois: "whois.nic.nyc" },
   one: { whois: "whois.nic.one" },
   online: { whois: "whois.nic.online" },
