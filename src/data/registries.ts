@@ -163,7 +163,7 @@ export const registries: Registry[] = [
     redemption: 35,
     pendingDelete: 7,
     tlds: list(`
-      gs ly
+      gs ki ly
     `),
   },
   {
