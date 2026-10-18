@@ -62,6 +62,7 @@ export const servers: Record<string, ServerEntry> = {
   me: { rdap: identityDigital, whois: "whois.nic.me" },
   men: { whois: "whois.nic.men" },
   miami: { whois: "whois.nic.miami" },
+  mn: { rdap: identityDigital },
   moe: { whois: "whois.nic.moe" },
   mom: { whois: "whois.nic.mom" },
   name: { whois: "whois.nic.name" },

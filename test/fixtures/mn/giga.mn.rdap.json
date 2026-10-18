@@ -1,0 +1,46 @@
+{
+  "domain": "giga.mn",
+  "tld": "mn",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Datacom Co., Ltd.",
+    "ianaId": 800036,
+    "url": "https://rdap.identitydigital.services/rdap",
+    "abuseEmail": "abuse@datacom.mn",
+    "abusePhone": "+976.70000505"
+  },
+  "registrant": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Ulaanbaatar",
+    "state": "Bayanzurh",
+    "postalCode": "11000",
+    "country": "MN",
+    "email": "jane.doe@example.com",
+    "phone": "+976.60000000"
+  },
+  "registry": {
+    "id": "identity-digital",
+    "name": "Identity Digital"
+  },
+  "handle": "f54b123e53794bf687d8b211dec189dd-DONUTS",
+  "creationDate": "2025-08-22T09:09:17.000Z",
+  "updatedDate": "2026-10-02T00:32:48.000Z",
+  "expirationDate": "2026-08-22T09:09:17.000Z",
+  "snapshotDate": "2026-10-18T19:31:15.000Z",
+  "dropDate": "2026-11-06T12:32:48.000Z",
+  "deletionDate": "2026-11-06T00:32:48.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "ns1.nameserver.mn",
+    "ns2.nameserver.mn"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}
