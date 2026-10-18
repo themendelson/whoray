@@ -1,0 +1,37 @@
+{
+  "domain": "creative.jobs",
+  "tld": "jobs",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "INWX GmbH & Co. KG",
+    "ianaId": 1420,
+    "url": "http://www.inwx.com",
+    "abuseEmail": "abuse@inwx.com",
+    "abusePhone": "+49.30983212123"
+  },
+  "registrant": {
+    "country": "DE"
+  },
+  "registry": {
+    "id": "nominet",
+    "name": "Nominet"
+  },
+  "handle": "D40638781-JOBS",
+  "creationDate": "2022-08-18T20:01:23.000Z",
+  "updatedDate": "2026-09-27T20:02:01.000Z",
+  "expirationDate": "2027-08-18T20:01:23.000Z",
+  "snapshotDate": "2026-10-18T20:22:12.000Z",
+  "dropDate": "2026-11-01T20:02:01.000Z",
+  "statuses": [
+    "pendingDelete",
+    "clientTransferProhibited",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "expired-domain.domrobot.com",
+    "please-renew-domain.domrobot.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}
