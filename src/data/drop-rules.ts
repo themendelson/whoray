@@ -53,6 +53,7 @@ export const dropRules: Record<string, DropRule> = {
     statuses.has("redemptionPeriod") && updatedDate ? addDays(updatedDate, 31) : undefined,
   diy: registryClick,
   durban: zacr,
+  ee: ({ expirationDate }) => expirationDate && addDays(expirationDate, 45),
   feedback: registryClick,
   food: registryClick,
   forum: registryClick,

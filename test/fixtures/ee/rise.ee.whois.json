@@ -1,0 +1,23 @@
+{
+  "domain": "rise.ee",
+  "tld": "ee",
+  "state": "expired",
+  "isAvailable": false,
+  "registrar": {
+    "name": "NETIM",
+    "url": "http://www.netim.com/domain-name/ee-domain.html"
+  },
+  "creationDate": "2025-10-01T08:55:31.000Z",
+  "updatedDate": "2026-10-16T21:52:09.000Z",
+  "expirationDate": "2026-10-02T00:00:00.000Z",
+  "dropDate": "2026-11-16T00:00:00.000Z",
+  "statuses": [
+    "serverHold"
+  ],
+  "nameservers": [
+    "ns1.netim.net",
+    "ns2.netim.net",
+    "ns3.netim.net"
+  ],
+  "source": "whois"
+}
