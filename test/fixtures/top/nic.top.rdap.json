@@ -2,7 +2,7 @@
   "domain": "nic.top",
   "tld": "top",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "邦宁数字技术股份有限公司",
     "ianaId": 4158,

@@ -2,7 +2,7 @@
   "domain": "nic.app",
   "tld": "app",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Charleston Road Registry NonBillable",
     "ianaId": 9999,

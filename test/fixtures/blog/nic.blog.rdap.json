@@ -2,7 +2,7 @@
   "domain": "nic.blog",
   "tld": "blog",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Knock Knock WHOIS There, LLC",
     "ianaId": 9999,

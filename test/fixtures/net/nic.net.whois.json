@@ -2,7 +2,7 @@
   "domain": "nic.net",
   "tld": "net",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Domain.com - Network Solutions, LLC",
     "ianaId": 886,

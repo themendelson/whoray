@@ -1,0 +1,40 @@
+{
+  "domain": "finasteride.best",
+  "tld": "best",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Dynadot Inc",
+    "ianaId": 472,
+    "url": "http://www.dynadot.com",
+    "abuseEmail": "abuse@dynadot.com",
+    "abusePhone": "+1.6502620100",
+    "whoisServer": "whois.dynadot.com"
+  },
+  "registrant": {
+    "country": "US"
+  },
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "handle": "D392474028-CNIC",
+  "creationDate": "2023-08-30T19:59:38.000Z",
+  "updatedDate": "2026-10-10T14:43:09.000Z",
+  "expirationDate": "2026-08-30T23:59:59.000Z",
+  "snapshotDate": "2026-10-18T16:26:15.000Z",
+  "dropDate": "2026-11-14T14:43:09.000Z",
+  "statuses": [
+    "serverHold",
+    "serverTransferProhibited",
+    "clientTransferProhibited",
+    "pendingDelete",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "5014.ns1.abovedomains.com",
+    "5014.ns2.abovedomains.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

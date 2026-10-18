@@ -2,7 +2,7 @@
   "domain": "nic.mobi",
   "tld": "mobi",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Registry Operator acts as Registrar (9999)",
     "ianaId": 9999,

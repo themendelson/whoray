@@ -2,7 +2,7 @@
   "domain": "google.sg",
   "tld": "sg",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc."
   },

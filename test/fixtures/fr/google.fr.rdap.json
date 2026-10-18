@@ -2,7 +2,7 @@
   "domain": "google.fr",
   "tld": "fr",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MARKMONITOR Inc.",
     "ianaId": 292,

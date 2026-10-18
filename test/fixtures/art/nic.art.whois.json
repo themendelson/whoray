@@ -2,7 +2,7 @@
   "domain": "nic.art",
   "tld": "art",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "CentralNic Ltd",
     "ianaId": 9999,

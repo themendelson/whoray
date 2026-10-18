@@ -2,7 +2,7 @@
   "domain": "google.rs",
   "tld": "rs",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Webglobe d.o.o."
   },

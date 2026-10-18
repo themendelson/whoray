@@ -2,7 +2,7 @@
   "domain": "google.hr",
   "tld": "hr",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Sayber d.o.o.",
     "url": "http://whois.dns.hr",

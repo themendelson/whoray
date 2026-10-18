@@ -2,7 +2,7 @@
   "domain": "teachi.xyz",
   "tld": "xyz",
   "state": "redemption",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "GoDaddy.com, LLC",
     "ianaId": 146,

@@ -2,7 +2,7 @@
   "domain": "google.ru",
   "tld": "ru",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "RU-CENTER-RU"
   },

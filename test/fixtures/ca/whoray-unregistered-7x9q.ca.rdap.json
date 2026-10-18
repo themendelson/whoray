@@ -2,7 +2,7 @@
   "domain": "whoray-unregistered-7x9q.ca",
   "tld": "ca",
   "state": "available",
-  "isRegistered": false,
+  "isAvailable": true,
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

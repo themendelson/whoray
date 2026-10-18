@@ -2,7 +2,7 @@
   "domain": "google.us",
   "tld": "us",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor, Inc.",
     "ianaId": 292,

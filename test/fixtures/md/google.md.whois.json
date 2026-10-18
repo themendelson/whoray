@@ -2,7 +2,7 @@
   "domain": "google.md",
   "tld": "md",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "creationDate": "2006-05-02T00:00:00.000Z",
   "expirationDate": "2027-05-02T00:00:00.000Z",
   "statuses": [

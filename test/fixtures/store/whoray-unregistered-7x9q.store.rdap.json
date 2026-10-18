@@ -2,7 +2,7 @@
   "domain": "whoray-unregistered-7x9q.store",
   "tld": "store",
   "state": "available",
-  "isRegistered": false,
+  "isAvailable": true,
   "registry": {
     "id": "centralnic",
     "name": "CentralNic"

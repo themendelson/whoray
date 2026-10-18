@@ -2,7 +2,7 @@
   "domain": "nic.org",
   "tld": "org",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "NameCheap, Inc.",
     "ianaId": 1068,

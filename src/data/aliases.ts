@@ -122,7 +122,7 @@ export const aliases: [Field, string[]][] = [
       "exp date",
     ],
   ],
-  ["released", ["free-date", "available", "reservation eligibility end date"]],
+  ["released", ["free-date", "available", "reservation eligibility end date", "date_to_release"]],
   ["deleted", ["deleted"]],
   [
     "statuses",

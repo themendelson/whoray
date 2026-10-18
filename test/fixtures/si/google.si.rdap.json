@@ -2,7 +2,7 @@
   "domain": "google.si",
   "tld": "si",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor, Inc."
   },

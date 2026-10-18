@@ -2,7 +2,7 @@
   "domain": "whoray-unregistered-7x9q.dev",
   "tld": "dev",
   "state": "available",
-  "isRegistered": false,
+  "isAvailable": true,
   "registry": {
     "id": "google-registry",
     "name": "Charleston Road Registry Inc"

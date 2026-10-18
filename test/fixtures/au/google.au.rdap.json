@@ -2,7 +2,7 @@
   "domain": "google.au",
   "tld": "au",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Corporate Services Inc",
     "abuseEmail": "abusecomplaints@markmonitor.com",

@@ -2,7 +2,7 @@
   "domain": "google.cz",
   "tld": "cz",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "REG-MARKMONITOR"
   },

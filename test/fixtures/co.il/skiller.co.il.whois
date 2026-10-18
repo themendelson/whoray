@@ -1,0 +1,70 @@
+whois.isoc.org.il
+
+% The data in the WHOIS database of the .il registry is provided
+% by ISOC-IL for information purposes, and to assist persons in 
+% obtaining information about or related to a domain name 
+% registration record. ISOC-IL does not guarantee its accuracy.
+% By submitting a WHOIS query, you agree that you will use this
+% Data only for lawful purposes and that, under no circumstances
+% will you use this Data to: (1) allow, enable, or otherwise 
+% support the transmission of mass unsolicited, commercial 
+% advertising or solicitations via e-mail (spam); 
+% or  (2) enable high volume, automated, electronic processes that 
+% apply to ISOC-IL (or its systems).
+% ISOC-IL reserves the right to modify these terms at any time.
+% By submitting this query, you agree to abide by this policy.
+ 
+query:        skiller.co.il
+
+reg-name:     skiller
+domain:       skiller.co.il
+
+registrant:   Yuval Perez
+e-mail:       yuvalp0401 AT gmail.com
+nserver:      ns-146.awsdns-18.com  (Disabled)
+nserver:      ns-989.awsdns-59.net  (Disabled)
+nserver:      ns-1492.awsdns-58.org  (Disabled)
+nserver:      ns-1564.awsdns-03.co.uk  (Disabled)
+remarks:      Domain not renewed. Being revoked.
+assigned:     20-08-2025
+validity:     20-08-2026
+DNSSEC:       unsigned
+status:       Transfer Locked
+changed:      domain-registrar AT isoc.org.il 20250820 (Assigned)
+changed:      domain-registrar AT isoc.org.il 20250820 (Changed)
+changed:      domain-registrar AT isoc.org.il 20250820 (Changed)
+changed:      domain-registrar AT isoc.org.il 20250829 (Changed)
+changed:      domain-registrar AT isoc.org.il 20260107 (Changed)
+
+admin e-mail: yuvalp0401 AT gmail.com
+changed:      domain-registrar AT isoc.org.il 20250820
+
+tech e-mail:  domreg AT interspace.net
+changed:      Managing Registrar 20070110
+changed:      Managing Registrar 20070319
+changed:      Managing Registrar 20070909
+changed:      Managing Registrar 20090514
+changed:      Managing Registrar 20110720
+changed:      Managing Registrar 20110720
+changed:      Managing Registrar 20110721
+changed:      Managing Registrar 20111128
+changed:      Managing Registrar 20111128
+changed:      Managing Registrar 20130924
+changed:      Managing Registrar 20130924
+changed:      Managing Registrar 20130924
+changed:      Managing Registrar 20130924
+changed:      Managing Registrar 20130924
+changed:      Managing Registrar 20170518
+changed:      Managing Registrar 20170716
+changed:      Managing Registrar 20190203
+changed:      Managing Registrar 20190213
+changed:      Managing Registrar 20190512
+changed:      Managing Registrar 20190514
+changed:      Managing Registrar 20200212
+changed:      Managing Registrar 20201224
+changed:      Managing Registrar 20201224
+
+registrar name: InterSpace Ltd
+registrar info: https://www.internic.co.il
+
+% Rights to the data above are restricted by copyright.

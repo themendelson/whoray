@@ -240,7 +240,7 @@ test("a reserved name stays reserved although RDAP has no record of it", async (
   const { connect } = whoisServer(() => "Reserved Domain Name\nURL of the ICANN Whois Inaccuracy Complaint Form");
   const result = await lookup("example.com", { fetch, connect, servers });
   expect(urls).toEqual([]);
-  expect(result).toMatchObject({ state: "reserved", isRegistered: false, source: "whois" });
+  expect(result).toMatchObject({ state: "reserved", isAvailable: false, source: "whois" });
 });
 
 test("follow: registrar doesn't follow a referral to a private address", async () => {

@@ -3,7 +3,7 @@ import { fixedPeriods } from "#drop.ts";
 import { addDays, atUtcHour, daysBetween, rolledPast } from "#time.ts";
 
 const uk = fixedPeriods(60, 30, 5);
-const isoc: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 62);
+const isoc: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 61);
 
 // Offsets observed in .us deletions; they depend on how long after expiry the name was last updated
 // and are measured from whichever date the observations lined up with.

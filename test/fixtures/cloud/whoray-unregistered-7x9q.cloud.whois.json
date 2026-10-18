@@ -2,7 +2,7 @@
   "domain": "whoray-unregistered-7x9q.cloud",
   "tld": "cloud",
   "state": "available",
-  "isRegistered": false,
+  "isAvailable": true,
   "registry": {
     "id": "tucows-registry",
     "name": "Tucows Registry Services"

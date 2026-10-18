@@ -2,7 +2,7 @@
   "domain": "google.co.il",
   "tld": "co.il",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Domain The Net Technologies Ltd",
     "url": "https://www.domainthenet.com"

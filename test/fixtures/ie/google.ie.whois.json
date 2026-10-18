@@ -2,7 +2,7 @@
   "domain": "google.ie",
   "tld": "ie",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Markmonitor Inc",
     "url": "http://www.eMarkmonitor.com",

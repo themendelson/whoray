@@ -2,7 +2,7 @@
   "domain": "nic.biz",
   "tld": "biz",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Registry Services, LLC",
     "ianaId": 9999,
