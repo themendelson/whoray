@@ -130,6 +130,5 @@ export const handleParagraphs: Transform = (text) =>
       paragraph.replace(/^([^:\r\n]+:)/gm, "Registrar $1"),
     );
 
-
 export const registrantEmail: Transform = (text) =>
   text.replace(/^(registrant:.*\r?\n)e-mail:/m, "$1registrant e-mail:");
