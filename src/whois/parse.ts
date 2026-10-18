@@ -114,7 +114,7 @@ const CONTACT_HANDLE = /^(?=\S*\d)[a-z0-9-]{5,}$/i;
 
 function registrantOf(fields: Map<Field, string[]>): Registrant | undefined {
   return registrant(
-    present(fields.get("registrantName")?.filter((value) => !CONTACT_HANDLE.test(value.trim()))),
+    visible(fields.get("registrantName")?.find((value) => !CONTACT_HANDLE.test(value.trim()))),
     present(fields.get("registrantOrganization")),
     countryCode(present(fields.get("registrantCountry"))),
   );

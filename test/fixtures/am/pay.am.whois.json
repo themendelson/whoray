@@ -1,0 +1,21 @@
+{
+  "domain": "pay.am",
+  "tld": "am",
+  "state": "registered",
+  "isAvailable": false,
+  "registrar": {
+    "name": "name (NAME LLC)"
+  },
+  "creationDate": "2019-11-13T00:00:00.000Z",
+  "updatedDate": "2025-11-16T00:00:00.000Z",
+  "expirationDate": "2026-11-13T00:00:00.000Z",
+  "statuses": [
+    "ok",
+    "clientTransferProhibited"
+  ],
+  "nameservers": [
+    "park1.name.am",
+    "park2.name.am"
+  ],
+  "source": "whois"
+}
