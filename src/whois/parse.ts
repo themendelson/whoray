@@ -39,7 +39,8 @@ export function readWhois(text: string, name: Name): Found {
 
 function statusesOf(fields: Map<Field, string[]>, text: string): string[] {
   const statuses = normalizeStatuses(fields.get("statuses") ?? []);
-  return revoked.test(text) && !statuses.includes("pendingDelete") ? [...statuses, "pendingDelete"] : statuses;
+  const deleting = revoked.some((phrase) => phrase.test(text));
+  return deleting && !statuses.includes("pendingDelete") ? [...statuses, "pendingDelete"] : statuses;
 }
 
 function details(fields: Map<Field, string[]>, text: string): Partial<Registration> {

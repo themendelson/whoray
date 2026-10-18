@@ -1,0 +1,21 @@
+{
+  "domain": "google.qa",
+  "tld": "qa",
+  "state": "registered",
+  "isAvailable": false,
+  "registrar": {
+    "name": "ROUTEDGE"
+  },
+  "updatedDate": "2026-08-16T12:04:58.000Z",
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns3.google.com",
+    "ns2.google.com",
+    "ns4.google.com"
+  ],
+  "source": "whois"
+}
