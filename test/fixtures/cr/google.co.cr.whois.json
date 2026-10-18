@@ -1,0 +1,63 @@
+{
+  "domain": "google.co.cr",
+  "tld": "cr",
+  "state": "registered",
+  "isAvailable": false,
+  "registrar": {
+    "name": "MARKMONITOR"
+  },
+  "registrant": {
+    "name": "Domain Administrator",
+    "organization": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway",
+      "Mountain View",
+      "94043",
+      "CA"
+    ],
+    "country": "US",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
+  },
+  "admin": {
+    "name": "DNS Admin",
+    "organization": "Google Inc.",
+    "street": [
+      "1600 Amphitheatre Parkway",
+      "Mountain View",
+      "94043",
+      "CA"
+    ],
+    "country": "US",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
+  },
+  "tech": {
+    "name": "Domain Provisioning",
+    "organization": "MarkMonitor, Inc.",
+    "street": [
+      "1120 S. Rackham Way",
+      "Suite 300",
+      "Meridian",
+      "83642",
+      "ID"
+    ],
+    "country": "US",
+    "email": "ccops@markmonitor.com",
+    "phone": "+1.2083895740",
+    "fax": "+1.2083895771"
+  },
+  "creationDate": "2002-04-18T18:00:00.000Z",
+  "updatedDate": "2026-02-25T09:09:23.000Z",
+  "expirationDate": "2027-04-17T00:00:00.000Z",
+  "statuses": [],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "source": "whois"
+}

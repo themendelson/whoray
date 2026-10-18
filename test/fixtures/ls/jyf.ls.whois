@@ -1,0 +1,72 @@
+whois.nic.ls
+% Domain Information over Whois protocol
+% 
+% Whoisd Server Version: 3.10.2
+% Timestamp: Sun Oct 18 23:52:47 2026
+
+domain:       jyf.ls
+registrant:   ADMIN-REGISTRANT3825
+admin-c:      ADMIN-ADMIN3825
+nsset:        ADMIN-NS-3825
+registrar:    REG-ZEECOM
+status:       The domain isn't generated in the zone
+status:       Domain expired
+registered:   12.09.2024 09:19:19
+expire:       12.09.2026
+
+contact:      ADMIN-REGISTRANT3825
+org:          Bacon Jam LLC
+name:         Jane Doe
+address:      1 Example Street
+address:      false
+address:      false
+address:      Mountain View
+address:      94041
+address:      CA
+address:      US
+Phone: [REDACTED].1600000000
+e-mail:       jane.doe@example.com
+registrar:    REG-ZEECOM
+created:      12.09.2024 09:19:13
+
+contact:      ADMIN-ADMIN3825
+org:          Bacon Jam LLC
+name:         Jane Doe
+address:      1 Example Street
+address:      false
+address:      false
+address:      Mountain View
+address:      94041
+address:      CA
+address:      US
+Phone: [REDACTED].1600000000
+e-mail:       jane.doe@example.com
+registrar:    REG-ZEECOM
+created:      12.09.2024 09:19:14
+
+nsset:        ADMIN-NS-3825
+nserver:      ns1.zeecom.org 
+nserver:      ns2.zeecom.org 
+tech-c:       ADMIN-BILLING3825
+registrar:    REG-ZEECOM
+created:      12.09.2024 09:19:18
+
+contact:      ADMIN-BILLING3825
+org:          Bacon Jam LLC
+name:         Jane Doe
+address:      1 Example Street
+address:      false
+address:      false
+address:      Mountain View
+address:      94041
+address:      CA
+address:      US
+Phone: [REDACTED].1600000000
+e-mail:       jane.doe@example.com
+registrar:    REG-ZEECOM
+created:      12.09.2024 09:19:17
+
+
+>>> Terms: Data provided for information purposes only.
+>>> Rate limited; bulk access prohibited.
+

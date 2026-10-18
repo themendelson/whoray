@@ -1,0 +1,34 @@
+{
+  "domain": "leo.mk",
+  "tld": "mk",
+  "state": "expired",
+  "isAvailable": false,
+  "registrar": {
+    "name": "MKHOST-REG"
+  },
+  "registrant": {
+    "name": "Jane Doe",
+    "country": "CN",
+    "email": "jane.doe@example.com"
+  },
+  "admin": {
+    "name": "Jane Doe",
+    "country": "CN",
+    "email": "jane.doe@example.com"
+  },
+  "tech": {
+    "name": "Jane Doe",
+    "country": "CN",
+    "email": "jane.doe@example.com"
+  },
+  "creationDate": "2022-06-28T13:16:22.000Z",
+  "updatedDate": "2022-06-28T13:20:44.000Z",
+  "expirationDate": "2026-06-28T00:00:00.000Z",
+  "dropDate": "2026-10-28T00:00:00.000Z",
+  "statuses": [],
+  "nameservers": [
+    "ns1.alidns.com",
+    "ns2.alidns.com"
+  ],
+  "source": "whois"
+}
