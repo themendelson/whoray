@@ -1,0 +1,47 @@
+whois.marnet.mk
+% Domain Information over Whois protocol
+%
+% MARnet whois proxy server
+% Timestamp: Sun Oct 18 2026 21:31:41
+
+domain:       leo.mk
+registrant:   MKHOST-R17071
+admin-c:      MKHOST-C15279
+nsset:        MKHOST-NS17583
+registrar:    MKHOST-REG
+status:       The domain isn't generated in the zone
+status:       Domain expired
+registered:   28.06.2022 13:16:22
+expire:       28.06.2026
+
+contact:      MKHOST-R17071
+name:         Jane Doe
+address:      DATA REDACTED
+address:      DATA REDACTED
+address:      DATA REDACTED
+address:      CN
+phone:        DATA REDACTED
+e-mail:       jane.doe@example.com
+registrar:    MKHOST-REG
+created:      DATA REDACTED
+
+contact:      MKHOST-C15279
+name:         Jane Doe
+address:      DATA REDACTED
+address:      DATA REDACTED
+address:      DATA REDACTED
+address:      CN
+phone:        DATA REDACTED
+e-mail:       jane.doe@example.com
+registrar:    MKHOST-REG
+created:      DATA REDACTED
+
+nsset:        MKHOST-NS17583
+nserver:      ns1.alidns.com 
+nserver:      ns2.alidns.com 
+tech-c:       MKHOST-C15279
+registrar:    MKHOST-REG
+created:      28.06.2022 13:16:20
+changed:      28.06.2022 13:20:44
+
+

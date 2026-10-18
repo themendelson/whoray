@@ -51,6 +51,7 @@ export const dropRules: Record<string, DropRule> = {
   ma: ({ expirationDate }) => expirationDate && addDays(expirationDate, 30),
   md: ({ expirationDate }) => expirationDate && addDays(expirationDate, 31),
   me: ({ updatedDate, statuses }) => updatedDate && addDays(updatedDate, statuses.has("redemptionPeriod") ? 35 : 6),
+  mk: ({ expirationDate }) => expirationDate && addDays(expirationDate, 122),
   "me.uk": uk,
   "org.il": isoc,
   "org.uk": uk,
