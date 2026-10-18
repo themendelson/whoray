@@ -1,0 +1,35 @@
+{
+  "domain": "tele.pt",
+  "tld": "pt",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrant": {
+    "name": "ARGUMENTO INFALÍVEL - UNIPESSOAL LDA",
+    "street": [
+      "Rua Cidade de Halton, Lote 50, 3º Dtº"
+    ],
+    "city": "Leiria",
+    "postalCode": "2400-703",
+    "country": "PT"
+  },
+  "admin": {
+    "name": "AMENWORLD Serviços Internet - Sociedade Unipessoal Lda",
+    "street": [
+      "Edifício Escritórios do Tejo, Rua do Pólo Sul, Parque Expo Nº 2 – 3ºB-1"
+    ],
+    "city": "Lisboa",
+    "postalCode": "1990-273",
+    "country": "PT"
+  },
+  "creationDate": "2024-10-04T11:43:59.000Z",
+  "expirationDate": "2026-10-04T11:43:59.000Z",
+  "dropDate": "2026-11-04T11:43:59.000Z",
+  "statuses": [
+    "pendingDelete"
+  ],
+  "nameservers": [
+    "ns1.amenworld.com",
+    "ns2.amenworld.com"
+  ],
+  "source": "whois"
+}
