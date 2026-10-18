@@ -1,0 +1,46 @@
+{
+  "domain": "sisley.pr",
+  "tld": "pr",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "CSC Corporate Domains, Inc.",
+    "ianaId": 299,
+    "url": "https://rdap.cscglobal.com/dbs/rdap-api/v1/",
+    "abuseEmail": "domainabuse@cscglobal.com",
+    "abusePhone": "+1.3026365400"
+  },
+  "registrant": {
+    "name": "Domain Administrator",
+    "organization": "Sisley Paris",
+    "street": [
+      "16 avenue George V"
+    ],
+    "city": "PARIS",
+    "postalCode": "75008",
+    "country": "FR",
+    "email": "domains.managers@sisley.fr",
+    "phone": "+33.149523500"
+  },
+  "registry": {
+    "id": "identity-digital",
+    "name": "Identity Digital"
+  },
+  "handle": "e002c36bd1004de3a43a9ba3b899a435-DONUTS",
+  "creationDate": "2012-10-22T06:01:54.000Z",
+  "updatedDate": "2026-10-11T05:15:41.000Z",
+  "expirationDate": "2026-10-22T00:00:00.000Z",
+  "snapshotDate": "2026-10-18T19:38:54.000Z",
+  "dropDate": "2026-11-15T17:15:41.000Z",
+  "deletionDate": "2026-11-15T05:15:41.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "indom10.indomco.com",
+    "indom20.indomco.net"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}

@@ -71,6 +71,7 @@ export const servers: Record<string, ServerEntry> = {
   online: { whois: "whois.nic.online" },
   party: { whois: "whois.nic.party" },
   photo: { whois: "whois.nic.photo" },
+  pr: { rdap: identityDigital },
   press: { whois: "whois.nic.press" },
   pw: { whois: "whois.nic.pw" },
   quest: { whois: "whois.nic.quest" },
