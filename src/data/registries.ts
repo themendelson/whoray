@@ -196,6 +196,16 @@ export const registries: Registry[] = [
     `),
   },
   {
+    id: "dotberlin",
+    name: "dotBERLIN",
+    textPattern: /dotBERLIN GmbH/,
+    redemption: 35,
+    pendingDelete: 5,
+    tlds: list(`
+      berlin
+    `),
+  },
+  {
     id: "nominet",
     name: "Nominet",
     textPattern: /nominet/,
