@@ -3,6 +3,46 @@
   "tld": "is",
   "state": "registered",
   "isAvailable": false,
+  "registrant": {
+    "name": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway",
+      "Mountain View, CA 94043"
+    ],
+    "country": "US",
+    "email": "ccops@markmonitor.com",
+    "phone": "+1 6502530000"
+  },
+  "admin": {
+    "name": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway",
+      "Mountain View, CA 94043"
+    ],
+    "country": "US",
+    "email": "ccops@markmonitor.com",
+    "phone": "+1 6502530000"
+  },
+  "tech": {
+    "name": "MarkMonitor Tech Contact",
+    "street": [
+      "1120 S. Rackham Way, Suite 300",
+      "Meridian, ID 83642"
+    ],
+    "country": "US",
+    "email": "ccops@markmonitor.com",
+    "phone": "+1 2083895740"
+  },
+  "billing": {
+    "name": "MarkMonitor Tech Contact",
+    "street": [
+      "1120 S. Rackham Way, Suite 300",
+      "Meridian, ID 83642"
+    ],
+    "country": "US",
+    "email": "ccops@markmonitor.com",
+    "phone": "+1 2083895740"
+  },
   "creationDate": "2002-05-22T00:00:00.000Z",
   "expirationDate": "2027-05-22T00:00:00.000Z",
   "statuses": [],

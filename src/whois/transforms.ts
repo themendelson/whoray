@@ -21,28 +21,57 @@ export const domainEppStatuses: Transform = (text) => {
   return block === undefined ? text : text.replace(block, block.replace(/^eppstatus:/gm, "epp status:"));
 };
 
-function contactBlock(text: string, handleKey: string, blockKey: string): { key: string; value: string }[] {
+const ENTITIES: Record<string, string> = { amp: "&", gt: ">", lt: "<", quot: '"', apos: "'" };
+
+export const htmlEntities: Transform = (text) =>
+  text.replace(/&(amp|gt|lt|quot|apos);/g, (entity, name: string) => ENTITIES[name] ?? entity);
+
+export const emptyDottedFields: Transform = (text) => text.replace(/^[\p{L}][\p{L}\d ]*\.{2,}:[ \t]*\r?\n/gmu, "");
+
+type HandleField = { key: string; value: string };
+
+function contactBlock(text: string, handleKey: string, blockKey: string): HandleField[] {
   const handle = new RegExp(`^${handleKey}:[ \\t]+(\\S+)\\s*$`, "m").exec(text)?.[1];
   if (handle === undefined) return [];
-  const escaped = handle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const pattern = `^${blockKey}:[ \\t]+${escaped}[ \\t]*\\r?\\n([\\s\\S]*?)(?:\\r?\\n[ \\t]*\\r?\\n|(?![\\s\\S]))`;
-  const block = new RegExp(pattern, "m").exec(text)?.[1];
+  const header = new RegExp(`^${blockKey}:[ \\t]+${handle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*$`, "m");
+  const block = text.split(/\r?\n[ \t]*\r?\n/).find((paragraph) => header.test(paragraph));
   return (block ?? "").split(/\r?\n/).flatMap((line) => {
-    const match = /^([\w-]+):[ \t]*(.*?)\s*$/.exec(line);
+    const match = /^([\w -]+?):[ \t]*(.*?)\s*$/.exec(line);
     return match?.[1] === undefined ? [] : [{ key: match[1].toLowerCase(), value: match[2] ?? "" }];
   });
 }
 
-function prepended(text: string, lines: string[]): string {
-  return lines.length === 0 ? text : `${lines.join("\n")}\n\n${text}`;
+function contactLines(fields: HandleField[], parts: Record<string, string>, label: string): string[] {
+  const addresses = fields.filter(({ key }) => key === "address").map(({ value }) => value);
+  const country = /^[A-Z]{2}$/.test(addresses.at(-1) ?? "") ? addresses.pop() : undefined;
+  return [
+    ...fields.flatMap(({ key, value }) => {
+      const part = parts[key];
+      return part === undefined || value === "" ? [] : [`${label} ${part}: ${value}`];
+    }),
+    ...addresses.map((line) => `${label} Street: ${line}`),
+    ...(country === undefined ? [] : [`${label} Country: ${country}`]),
+  ];
+}
+
+function handleContacts(
+  handles: [string, string][],
+  blockKey: string,
+  parts: (fields: HandleField[]) => Record<string, string>,
+): Transform {
+  return (text) => {
+    const lines = handles.flatMap(([handleKey, label]) => {
+      const fields = contactBlock(text, handleKey, blockKey);
+      return contactLines(fields, parts(fields), label);
+    });
+    return lines.length === 0 ? text : `${lines.join("\n")}\n\n${text}`;
+  };
 }
 
 const CONTACT_HANDLES: [string, string][] = [
   ["admin-c", "Admin"],
   ["tech-c", "Tech"],
 ];
-const FRED_HANDLES: [string, string][] = [["registrant", "Registrant"], ...CONTACT_HANDLES];
-const AFNIC_HANDLES: [string, string][] = [["holder-c", "Registrant"], ...CONTACT_HANDLES];
 
 const FRED_CONTACT_KEYS: Record<string, string> = {
   org: "Organization",
@@ -52,47 +81,42 @@ const FRED_CONTACT_KEYS: Record<string, string> = {
   "fax-no": "Fax",
 };
 
-function linkedContactLines(text: string, handleKey: string, label: string): string[] {
-  const fields = contactBlock(text, handleKey, "contact");
-  const addresses = fields.filter(({ key }) => key === "address").map(({ value }) => value);
-  const country = /^[A-Z]{2}$/.test(addresses.at(-1) ?? "") ? addresses.pop() : undefined;
-  return [
-    ...fields.flatMap(({ key, value }) => {
-      const part = FRED_CONTACT_KEYS[key];
-      return part === undefined ? [] : [`${label} ${part}: ${value}`];
-    }),
-    ...addresses.map((line) => `${label} Street: ${line}`),
-    ...(country === undefined ? [] : [`${label} Country: ${country}`]),
-  ];
-}
+export const linkedRegistrant: Transform = handleContacts(
+  [["registrant", "Registrant"], ...CONTACT_HANDLES],
+  "contact",
+  () => FRED_CONTACT_KEYS,
+);
 
-export const linkedRegistrant: Transform = (text) =>
-  prepended(
-    text,
-    FRED_HANDLES.flatMap(([handleKey, label]) => linkedContactLines(text, handleKey, label)),
-  );
+export const afnicHolder: Transform = handleContacts(
+  [["holder-c", "Registrant"], ...CONTACT_HANDLES],
+  "nic-hdl",
+  (fields) => ({
+    contact: fields.some(({ key, value }) => key === "type" && value === "ORGANIZATION") ? "Organization" : "Name",
+    country: "Country",
+    "e-mail": "Email",
+    phone: "Phone",
+    "fax-no": "Fax",
+  }),
+);
 
-export const afnicHolder: Transform = (text) =>
-  prepended(
-    text,
-    AFNIC_HANDLES.flatMap(([handleKey, label]) => {
-      const fields = contactBlock(text, handleKey, "nic-hdl");
-      const organization = fields.some(({ key, value }) => key === "type" && value === "ORGANIZATION");
-      const parts: Record<string, string> = {
-        contact: organization ? "Organization" : "Name",
-        address: "Street",
-        country: "Country",
-        "e-mail": "Email",
-        phone: "Phone",
-        "fax-no": "Fax",
-      };
-      return fields.flatMap(({ key, value }) => (parts[key] === undefined ? [] : [`${label} ${parts[key]}: ${value}`]));
-    }),
-  );
+const RIPE_CONTACT_KEYS: Record<string, string> = {
+  person: "Name",
+  personname: "Name",
+  role: "Name",
+  organization: "Organization",
+  org: "Organization",
+  "street address": "Street",
+  "postal code": "Postal Code",
+  city: "City",
+  "state or province": "State/Province",
+  country: "Country",
+  phone: "Phone",
+  "fax-no": "Fax",
+  "e-mail": "Email",
+};
 
-const ENTITIES: Record<string, string> = { amp: "&", gt: ">", lt: "<", quot: '"', apos: "'" };
-
-export const htmlEntities: Transform = (text) =>
-  text.replace(/&(amp|gt|lt|quot|apos);/g, (entity, name: string) => ENTITIES[name] ?? entity);
-
-export const emptyDottedFields: Transform = (text) => text.replace(/^[\p{L}][\p{L}\d ]*\.{2,}:[ \t]*\r?\n/gmu, "");
+export const nicHandleRegistrant: Transform = handleContacts(
+  [["registrant", "Registrant"], ...CONTACT_HANDLES, ["billing-c", "Billing"]],
+  "nic-hdl",
+  () => RIPE_CONTACT_KEYS,
+);

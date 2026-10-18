@@ -7,6 +7,28 @@
     "name": "MarkMonitor Inc.",
     "url": "https://nic.at/registrar/434"
   },
+  "registrant": {
+    "name": "Domain Administrator",
+    "organization": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway"
+    ],
+    "city": "Mountain View",
+    "postalCode": "94043",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000"
+  },
+  "tech": {
+    "name": "DNS Admin",
+    "organization": "Google Inc.",
+    "street": [
+      "1600 Amphitheatre Parkway"
+    ],
+    "city": "Mountain View",
+    "postalCode": "94043",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000"
+  },
   "creationDate": "2000-12-04T20:03:13.000Z",
   "updatedDate": "2024-11-13T19:36:02.000Z",
   "statuses": [],
