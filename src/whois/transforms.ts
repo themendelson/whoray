@@ -89,3 +89,8 @@ export const afnicHolder: Transform = (text) =>
       return fields.flatMap(({ key, value }) => (parts[key] === undefined ? [] : [`${label} ${parts[key]}: ${value}`]));
     }),
   );
+
+const ENTITIES: Record<string, string> = { amp: "&", gt: ">", lt: "<", quot: '"', apos: "'" };
+
+export const htmlEntities: Transform = (text) =>
+  text.replace(/&(amp|gt|lt|quot|apos);/g, (entity, name: string) => ENTITIES[name] ?? entity);
