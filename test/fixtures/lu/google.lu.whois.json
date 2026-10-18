@@ -5,6 +5,7 @@
   "isAvailable": false,
   "registrar": {
     "name": "Markmonitor",
+    "url": "http://www.markmonitor.com/",
     "country": "GB",
     "email": "ccops@markmonitor.com"
   },
