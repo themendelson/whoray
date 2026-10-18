@@ -76,7 +76,6 @@ Fields marked `?` are left out when they don't apply or the registry doesn't pub
   creationDate?: Date;
   updatedDate?: Date;
   expirationDate?: Date;
-  deletionDate?: Date;         // registries that hold deleted names 12 hours before release
   dropDate?: Date;             // when an expiring domain becomes available
   snapshotDate?: Date;         // when the registry took the copy of the data you received
 

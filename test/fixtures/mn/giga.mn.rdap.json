@@ -56,7 +56,6 @@
   "expirationDate": "2026-08-22T09:09:17.000Z",
   "snapshotDate": "2026-10-18T19:31:15.000Z",
   "dropDate": "2026-11-06T12:32:48.000Z",
-  "deletionDate": "2026-11-06T00:32:48.000Z",
   "statuses": [
     "clientTransferProhibited",
     "redemptionPeriod"

@@ -59,10 +59,7 @@ test("registries with a dropzone release names 12 hours after their scheduled de
     },
     "example.org",
   );
-  expect(record).toMatchObject({
-    deletionDate: new Date("2026-10-19T00:00:00Z"),
-    dropDate: new Date("2026-10-19T12:00:00Z"),
-  });
+  expect(record.dropDate).toEqual(new Date("2026-10-19T12:00:00Z"));
 });
 
 test("an unmapped TLD gets its registry from the reply text", () => {

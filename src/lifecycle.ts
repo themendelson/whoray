@@ -40,20 +40,12 @@ export function stateOf(
 
 const DROPZONE_HOLD_HOURS = 12;
 
-export interface DropDates {
-  dropDate: Date;
-  deletionDate?: Date;
-}
-
-export function dropOf(tld: string, state: DomainState, facts: Facts, registry?: Registry): DropDates | undefined {
+export function dropOf(tld: string, state: DomainState, facts: Facts, registry?: Registry): Date | undefined {
   if (state !== "expired" && state !== "redemption" && state !== "pendingDelete") return undefined;
-  const fromTld = bySuffix(dropRules, tld)?.(facts);
-  if (fromTld) return { dropDate: fromTld };
-  if (facts.released) return { dropDate: facts.released };
-  const fromRegistry = registry && redemptionGracePeriod(registry.redemption, registry.pendingDelete)(facts);
-  if (fromRegistry && registry.dropzone === true) {
-    return { dropDate: new Date(fromRegistry.getTime() + DROPZONE_HOLD_HOURS * 3_600_000), deletionDate: fromRegistry };
-  }
-  const dropDate = registry ? fromRegistry : defaultPeriods(facts);
-  return dropDate && { dropDate };
+  const known = bySuffix(dropRules, tld)?.(facts) ?? facts.released;
+  if (known) return known;
+  if (!registry) return defaultPeriods(facts);
+  const deletion = redemptionGracePeriod(registry.redemption, registry.pendingDelete)(facts);
+  if (deletion && registry.dropzone === true) return new Date(deletion.getTime() + DROPZONE_HOLD_HOURS * 3_600_000);
+  return deletion;
 }
