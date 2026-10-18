@@ -59,6 +59,7 @@ export const dropRules: Record<string, DropRule> = {
   fr: afnic,
   ge: ({ expirationDate }) => expirationDate && addDays(expirationDate, 30),
   hiv: registryClick,
+  hk: ({ expirationDate }) => expirationDate && addDays(expirationDate, 90),
   io: identityDigitalCcTld,
   it: ({ updatedDate, statuses }) =>
     statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 33) : undefined,

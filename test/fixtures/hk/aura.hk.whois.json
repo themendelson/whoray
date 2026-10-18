@@ -1,0 +1,21 @@
+{
+  "domain": "aura.hk",
+  "tld": "hk",
+  "state": "expired",
+  "isAvailable": false,
+  "registrar": {
+    "name": "SPEEDY GROUP CORP. LIMITED"
+  },
+  "creationDate": "2025-08-19T00:00:00.000Z",
+  "expirationDate": "2026-08-19T00:00:00.000Z",
+  "dropDate": "2026-11-17T00:00:00.000Z",
+  "statuses": [],
+  "nameservers": [
+    "dns1.domain.net.hk",
+    "dns2.domain.net.hk",
+    "dns3.domain.net.hk",
+    "dns4.domain.net.hk"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
