@@ -6,7 +6,7 @@ import type { Name } from "#domain.ts";
 import { bySuffix } from "#domain.ts";
 import { registryInText } from "#lifecycle.ts";
 import { parseDate } from "#parse/dates.ts";
-import { countryCode, hostnames, registrant, registrar, visible } from "#parse/fields.ts";
+import { countryCode, email, filled, hostnames, phone, registrant, registrar, visible } from "#parse/fields.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
 import type { Registrant, Registrar } from "#types.ts";
@@ -113,11 +113,28 @@ function present(values: string[] | undefined): string | undefined {
 const CONTACT_HANDLE = /^(?=\S*\d)[a-z0-9-]{5,}$/i;
 
 function registrantOf(fields: Map<Field, string[]>): Registrant | undefined {
-  return registrant(
-    present(fields.get("registrantName")?.filter((value) => !CONTACT_HANDLE.test(value.trim()))),
-    present(fields.get("registrantOrganization")),
-    countryCode(present(fields.get("registrantCountry"))),
-  );
+  const first = (field: Field): string | undefined =>
+    fields
+      .get(field)
+      ?.flatMap((value) => filled(value) ?? [])
+      .at(0);
+  return registrant({
+    name: present(fields.get("registrantName")?.filter((value) => !CONTACT_HANDLE.test(value.trim()))),
+    organization: present(fields.get("registrantOrganization")),
+    street: fields.get("registrantStreet")?.flatMap((line) => filled(line) ?? []),
+    city: first("registrantCity"),
+    state: first("registrantState"),
+    postalCode: first("registrantPostalCode"),
+    country: countryCode(present(fields.get("registrantCountry"))),
+    email: fields
+      .get("registrantEmail")
+      ?.flatMap((value) => email(value) ?? [])
+      .at(0),
+    phone: fields
+      .get("registrantPhone")
+      ?.flatMap((value) => phone(value) ?? [])
+      .at(0),
+  });
 }
 
 function registrarOf(fields: Map<Field, string[]>): Registrar | undefined {

@@ -12,6 +12,7 @@
     "whoisServer": "whois.spaceship.com"
   },
   "registrant": {
+    "state": "Delaware",
     "country": "US"
   },
   "registry": {

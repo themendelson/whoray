@@ -4,7 +4,12 @@
   "state": "registered",
   "isAvailable": false,
   "registrant": {
-    "name": "Google LLC"
+    "name": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway"
+    ],
+    "city": "Mountain View",
+    "postalCode": "94043"
   },
   "creationDate": "2006-06-29T21:00:00.000Z",
   "updatedDate": "2026-06-02T10:04:19.000Z",

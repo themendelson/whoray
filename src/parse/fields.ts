@@ -1,7 +1,7 @@
 import type { Registrant, Registrar } from "#types.ts";
 
 const REDACTED =
-  /redacted|not disclosed|data protected|withheld|gdpr|not applicable|privacy|hidden upon|not shown|web-?based whois/i;
+  /redacted|not disclosed|data protected|withheld|gdpr|not applicable|privacy|hidden upon|not shown|web-?based whois|^n\/a$/i;
 
 export function visible(value: string | undefined): string | undefined {
   return value === undefined || REDACTED.test(value) ? undefined : value;
@@ -12,15 +12,50 @@ export function countryCode(value: string | undefined): string | undefined {
   return country !== undefined && /^[a-z]{2}$/i.test(country) ? country.toUpperCase() : undefined;
 }
 
-export function registrant(
-  name: string | undefined,
-  organization: string | undefined,
-  country: string | undefined,
-): Registrant | undefined {
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE = /^\+?[\d\s.()-]{5,}(?:\s*(?:x|ext\.?)\s*\d+)?$/i;
+
+export function filled(value: string | undefined): string | undefined {
+  const trimmed = value?.trim();
+  return trimmed === undefined || trimmed === "" ? undefined : visible(trimmed);
+}
+
+export function email(value: string | undefined): string | undefined {
+  const address = filled(value)
+    ?.replace(/^mailto:/i, "")
+    .toLowerCase();
+  return address !== undefined && EMAIL.test(address) ? address : undefined;
+}
+
+export function phone(value: string | undefined): string | undefined {
+  const number = filled(value)?.replace(/^tel:/i, "");
+  return number !== undefined && PHONE.test(number) ? number : undefined;
+}
+
+interface RegistrantDetails {
+  name?: string | undefined;
+  organization?: string | undefined;
+  street?: string[] | undefined;
+  city?: string | undefined;
+  state?: string | undefined;
+  postalCode?: string | undefined;
+  country?: string | undefined;
+  email?: string | undefined;
+  phone?: string | undefined;
+}
+
+export function registrant(details: RegistrantDetails): Registrant | undefined {
+  const { name, organization, street, city, state, postalCode, country } = details;
   const known = {
     ...(name !== undefined && { name }),
     ...(organization !== undefined && { organization }),
+    ...(street !== undefined && street.length > 0 && { street }),
+    ...(city !== undefined && { city }),
+    ...(state !== undefined && { state }),
+    ...(postalCode !== undefined && { postalCode }),
     ...(country !== undefined && { country }),
+    ...(details.email !== undefined && { email: details.email }),
+    ...(details.phone !== undefined && { phone: details.phone }),
   };
   return Object.keys(known).length > 0 ? known : undefined;
 }

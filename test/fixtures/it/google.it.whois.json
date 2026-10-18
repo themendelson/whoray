@@ -8,7 +8,14 @@
     "url": "https://www.markmonitor.com/"
   },
   "registrant": {
-    "organization": "Google Ireland Holdings Unlimited Company"
+    "organization": "Google Ireland Holdings Unlimited Company",
+    "street": [
+      "70 Sir John Rogerson's Quay",
+      "Dublin",
+      "2",
+      "Dublin",
+      "IE"
+    ]
   },
   "creationDate": "1999-12-10T00:00:00.000Z",
   "updatedDate": "2026-06-09T23:13:34.000Z",

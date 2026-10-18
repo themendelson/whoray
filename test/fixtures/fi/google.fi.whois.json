@@ -6,6 +6,13 @@
   "registrar": {
     "name": "MarkMonitor Inc."
   },
+  "registrant": {
+    "street": [
+      "1600 Amphitheatre Parkway"
+    ],
+    "city": "Mountain View",
+    "postalCode": "94043"
+  },
   "creationDate": "2006-06-30T00:00:00.000Z",
   "updatedDate": "2026-06-02T13:04:19.000Z",
   "expirationDate": "2027-07-04T10:15:55.000Z",

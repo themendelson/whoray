@@ -6,6 +6,11 @@
   "registrar": {
     "name": "MarkMonitor Inc."
   },
+  "registrant": {
+    "street": [
+      "1600 Amphitheatre Parkway, Mountain View, CA, 94043, USA"
+    ]
+  },
   "updatedDate": "2026-10-16T17:12:38.000Z",
   "statuses": [
     "ok"

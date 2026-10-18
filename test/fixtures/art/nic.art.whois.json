@@ -14,7 +14,14 @@
   "registrant": {
     "name": "Domain Administrator",
     "organization": "CentralNic Ltd",
-    "country": "GB"
+    "street": [
+      "35-39 Moorgate"
+    ],
+    "city": "London",
+    "postalCode": "EC2R 6AR",
+    "country": "GB",
+    "email": "domains@centralnic.com",
+    "phone": "+44.2033880600"
   },
   "registry": {
     "id": "centralnic",

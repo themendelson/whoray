@@ -10,7 +10,13 @@
   },
   "registrant": {
     "name": "Google Hrvatska d.o.o.",
-    "country": "HR"
+    "street": [
+      "SAVSKA CESTA 32"
+    ],
+    "city": "ZAGREB",
+    "postalCode": "10000",
+    "country": "HR",
+    "email": "dns-admin@google.com"
   },
   "creationDate": "2011-09-20T22:00:00.000Z",
   "updatedDate": "2024-10-06T22:00:00.000Z",

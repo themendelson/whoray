@@ -49,7 +49,9 @@ class Reader {
     if (!indented && !this.capturesPairs) this.section = undefined;
     this.midParagraph = true;
     if (this.section === undefined || !CONTACT_SECTION.test(this.section)) this.found.push({ key, value });
-    if (this.section !== undefined && this.section !== key) this.found.push({ key: `${this.section} ${key}`, value });
+    if (this.section !== undefined && this.section !== key) {
+      this.found.push({ key: key.startsWith(`${this.section} `) ? key : `${this.section} ${key}`, value });
+    }
     this.filled = true;
     this.lastKey = key;
   }
