@@ -106,6 +106,8 @@ export const dropRules: Record<string, DropRule> = {
   sn: redemptionGracePeriod(35, 5),
   tc: ({ expirationDate }) => expirationDate && addDays(expirationDate, 63),
   tf: afnic,
+  th: ({ updatedDate, statuses }) =>
+    statuses.has("redemptionPeriod") && updatedDate ? addDays(updatedDate, 35) : undefined,
   top: ({ updatedDate, statuses }) =>
     updatedDate && (statuses.has("pendingDelete") || statuses.has("redemptionPeriod"))
       ? atUtcHour(addDays(rolledPast(updatedDate, 16), 36), 0)

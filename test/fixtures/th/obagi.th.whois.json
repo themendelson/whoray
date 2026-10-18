@@ -1,0 +1,26 @@
+{
+  "domain": "obagi.th",
+  "tld": "th",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "THNIC"
+  },
+  "registrant": {
+    "organization": "OBAGI HOLDINGS LIMITED COMPANY (โอบากิ โฮลดิ้งส์ คัมพานี ลิมิเต็ด)",
+    "country": "TH"
+  },
+  "creationDate": "2024-09-11T00:00:00.000Z",
+  "updatedDate": "2026-10-12T00:00:00.000Z",
+  "expirationDate": "2026-09-11T00:00:00.000Z",
+  "dropDate": "2026-11-16T00:00:00.000Z",
+  "statuses": [
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "armando.ns.cloudflare.com",
+    "aspen.ns.cloudflare.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
