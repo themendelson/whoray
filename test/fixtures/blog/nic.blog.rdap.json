@@ -10,6 +10,10 @@
     "abuseEmail": "admin@my.blog",
     "abusePhone": "+1.8772733049"
   },
+  "registry": {
+    "id": "cira",
+    "name": "CIRA"
+  },
   "handle": "303-BLOG",
   "creationDate": "2025-04-08T18:27:53.000Z",
   "updatedDate": "2026-05-06T14:56:02.000Z",
