@@ -23,6 +23,10 @@
     "phone": "+1.6502530000",
     "fax": "+1.6502530001"
   },
+  "registry": {
+    "id": "cocca",
+    "name": "CoCCA"
+  },
   "handle": "30119-CoCCA",
   "creationDate": "2007-10-02T22:00:00.000Z",
   "updatedDate": "2026-09-02T15:40:14.000Z",

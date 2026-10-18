@@ -1,0 +1,40 @@
+{
+  "domain": "echo.gs",
+  "tld": "gs",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Key-Systems GmbH",
+    "ianaId": 269,
+    "url": "http://www.key-systems.net",
+    "street": [
+      "Kaiserstraße 172-174\r\n66386 St. Ingbert"
+    ],
+    "country": "DE",
+    "email": "registry@key-systems.net",
+    "phone": "+49.68949396850",
+    "abuseEmail": "abuse@key-systems.net",
+    "abusePhone": "+49.68949396850"
+  },
+  "registry": {
+    "id": "cocca",
+    "name": "CoCCA"
+  },
+  "handle": "2079449-CoCCA",
+  "creationDate": "2025-09-27T16:53:03.000Z",
+  "updatedDate": "2026-09-25T22:00:15.000Z",
+  "expirationDate": "2026-09-27T16:53:06.000Z",
+  "snapshotDate": "2026-10-18T19:03:44.000Z",
+  "dropDate": "2026-10-30T21:44:33.000Z",
+  "statuses": [
+    "redemptionPeriod",
+    "inactive",
+    "serverHold"
+  ],
+  "nameservers": [
+    "cartman.ns.cloudflare.com",
+    "meiling.ns.cloudflare.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}
