@@ -8,6 +8,7 @@
       "Alicia Moreau de Justo 170 1B"
     ],
     "city": "Caba",
+    "email": "domreg@101domain.com",
     "phone": "541126529782"
   },
   "admin": {
@@ -16,6 +17,7 @@
       "4th Floor International House 3 Harbourmaster Place,"
     ],
     "city": "Dublin",
+    "email": "domains@rwgusa.com",
     "phone": "7604448673"
   },
   "tech": {
@@ -24,6 +26,7 @@
       "4th Floor International House 3 Harbourmaster Place,"
     ],
     "city": "Dublin",
+    "email": "domains@rwgusa.com",
     "phone": "7604448673"
   },
   "billing": {
@@ -32,6 +35,7 @@
       "4th Floor International House 3 Harbourmaster Place,"
     ],
     "city": "Dublin",
+    "email": "domains@rwgusa.com",
     "phone": "7604448673"
   },
   "creationDate": "2017-08-30T00:00:00.000Z",

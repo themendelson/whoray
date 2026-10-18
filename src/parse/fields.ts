@@ -23,7 +23,7 @@ export function filled(value: string | undefined): string | undefined {
 export function email(value: string | undefined): string | undefined {
   const address = filled(value)
     ?.replace(/^mailto:/i, "")
-    .replace(/\s+AT\s+/, "@")
+    .replace(/\s+(?:AT|en)\s+/, "@")
     .toLowerCase();
   return address !== undefined && EMAIL.test(address) ? address : undefined;
 }
