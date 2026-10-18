@@ -187,6 +187,15 @@ export const registries: Registry[] = [
     `),
   },
   {
+    id: "nic-br",
+    name: "NIC.br",
+    redemption: 35,
+    pendingDelete: 5,
+    tlds: list(`
+      rio
+    `),
+  },
+  {
     id: "nominet",
     name: "Nominet",
     textPattern: /nominet/,

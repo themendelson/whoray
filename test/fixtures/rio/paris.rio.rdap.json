@@ -1,0 +1,43 @@
+{
+  "domain": "paris.rio",
+  "tld": "rio",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "One.com A/S",
+    "ianaId": 1462,
+    "url": "https://rdap.one.com/v1/",
+    "abuseEmail": "abuse@one.com",
+    "abusePhone": "+45.44451220"
+  },
+  "registrant": {
+    "name": "Jane Doe",
+    "state": "RJ",
+    "country": "BR"
+  },
+  "tech": {
+    "name": "Jane Doe",
+    "state": "RJ",
+    "country": "BR"
+  },
+  "registry": {
+    "id": "nic-br",
+    "name": "NIC.br"
+  },
+  "handle": "D2551-RIO",
+  "creationDate": "2019-08-19T13:59:18.000Z",
+  "updatedDate": "2026-09-18T14:07:41.000Z",
+  "expirationDate": "2026-08-19T00:00:00.000Z",
+  "snapshotDate": "2026-10-18T20:16:46.000Z",
+  "dropDate": "2026-10-23T14:07:41.000Z",
+  "statuses": [
+    "pendingDelete",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "parked.g1-dns.one",
+    "parked.g1-dns.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}
