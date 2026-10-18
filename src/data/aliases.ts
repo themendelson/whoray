@@ -86,7 +86,7 @@ const contactAliases: [Field, string[]][] = ROLE_PREFIXES.flatMap(([role, prefix
   PART_SUFFIXES.filter(([part]) => role !== "registrar" || !REGISTRAR_OWN_PARTS.has(part)).map(
     ([part, suffixes]): [Field, string[]] => [
       `${role}${part}`,
-      prefixes.flatMap((prefix) => suffixes.map((suffix) => `${prefix} ${suffix}`)),
+      prefixes.flatMap((prefix) => suffixes.flatMap((suffix) => [`${prefix} ${suffix}`, `${prefix}-${suffix}`])),
     ],
   ),
 );
@@ -98,7 +98,7 @@ export const aliases: [Field, string[]][] = [
   ["techName", ["technical contact"]],
   ["billingName", ["billing contact"]],
   ["registrantOrganization", ["registrant organization-loc", "domain holder organization"]],
-  ["registrantCountry", ["registrant country-loc", "domain holder country"]],
+  ["registrantCountry", ["registrant country-loc", "domain holder country", "org-country"]],
   ["registrantPostalCode", ["holder postal"]],
   ["handle", ["registry domain id", "roid"]],
   [
@@ -112,7 +112,7 @@ export const aliases: [Field, string[]][] = [
       "registrar organisation",
       "registrar registrar name",
       "registrar organization name",
-      "current registrar",
+      "current registrar", "registrar-name",
       "registration service provider",
       "authorized agency",
     ],
@@ -222,7 +222,7 @@ export const aliases: [Field, string[]][] = [
       "registration status",
       "flags",
       "lock status",
-      "epp status",
+      "epp status", "domaintype",
       "statut",
     ],
   ],

@@ -1,0 +1,61 @@
+{
+  "domain": "nic.st",
+  "tld": "st",
+  "state": "registered",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Reserved by ST Registry"
+  },
+  "registrant": {
+    "name": "ST Registry (TEM525418775359E)",
+    "organization": "ST Registry",
+    "street": [
+      "Travessa Joao de Deus C.P. 709"
+    ],
+    "country": "ST",
+    "email": "support@nic.st"
+  },
+  "admin": {
+    "name": "ST Registry (TEM525418775359E)",
+    "organization": "ST Registry",
+    "street": [
+      "Travessa Joao de Deus C.P. 709"
+    ],
+    "country": "ST",
+    "email": "support@nic.st"
+  },
+  "tech": {
+    "name": "Sao Tome Registry (TEM5254196D69171)",
+    "organization": "Bahnhof Internet AB",
+    "street": [
+      "Travessa Joao de Deus C.P. 709"
+    ],
+    "country": "ST",
+    "email": "st-registry@tecnisys.net"
+  },
+  "billing": {
+    "name": "ST Registry (TEM52541B0789228)",
+    "organization": "ST Registry",
+    "street": [
+      "Travessa Joao de Deus C.P. 709"
+    ],
+    "country": "ST",
+    "email": "support@nic.st"
+  },
+  "creationDate": "1999-06-19T00:00:00.000Z",
+  "updatedDate": "2018-03-29T00:00:00.000Z",
+  "expirationDate": "2035-06-19T00:00:00.000Z",
+  "snapshotDate": "2026-10-18T21:54:54.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "serverDeleteProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.bahnhof.net",
+    "dns-st.bahnhof.net",
+    "dns-au.st",
+    "dns-us.st"
+  ],
+  "source": "whois"
+}
