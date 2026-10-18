@@ -7,6 +7,13 @@
     "name": "Key-Systems GmbH",
     "ianaId": 269,
     "url": "http://www.key-systems.net",
+    "street": [
+      "Kaiserstraße 172-174, 66386 St. Ingbert"
+    ],
+    "country": "DE",
+    "email": "registry@key-systems.net",
+    "phone": "+49 (0)68949396850",
+    "fax": "+49 (0)68949396851",
     "abuseEmail": "abuse@key-systems.net",
     "abusePhone": "+49 (0)68949396850"
   },
