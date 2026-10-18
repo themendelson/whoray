@@ -8,7 +8,14 @@
     "url": "https://www.domainthenet.com"
   },
   "registrant": {
-    "name": "Google LLC."
+    "name": "Google LLC.",
+    "email": "dns-admin@google.com"
+  },
+  "admin": {
+    "email": "ccops@markmonitor.com"
+  },
+  "tech": {
+    "email": "ccops@markmonitor.com"
   },
   "creationDate": "1999-06-05T00:00:00.000Z",
   "updatedDate": "2018-12-16T00:00:00.000Z",
