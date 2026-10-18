@@ -1,0 +1,60 @@
+{
+  "domain": "camp.abudhabi",
+  "tld": "abudhabi",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Etisalat",
+    "ianaId": 1738,
+    "url": "https://www.nic.ae/",
+    "abuseEmail": "abuse@nic.ae",
+    "abusePhone": "+971.43717272"
+  },
+  "registrant": {
+    "name": "Jane Doe",
+    "city": "Shakbout city",
+    "state": "Abu Dhabi",
+    "postalCode": "00000",
+    "country": "AE",
+    "email": "jane.doe@example.com",
+    "phone": "+971.600000000"
+  },
+  "admin": {
+    "name": "Jane Doe",
+    "city": "Shakbout city",
+    "state": "Abu Dhabi",
+    "postalCode": "00000",
+    "country": "AE",
+    "email": "jane.doe@example.com",
+    "phone": "+971.600000000"
+  },
+  "tech": {
+    "name": "Jane Doe",
+    "city": "Shakbout city",
+    "state": "Abu Dhabi",
+    "postalCode": "00000",
+    "country": "AE",
+    "email": "jane.doe@example.com",
+    "phone": "+971.600000000"
+  },
+  "registry": {
+    "id": "godaddy-registry",
+    "name": "GoDaddy Registry"
+  },
+  "handle": "D586EFF5336E045CFA299F28B378FC37D-NSR",
+  "creationDate": "2021-09-01T13:52:34.000Z",
+  "updatedDate": "2026-10-12T21:02:20.000Z",
+  "expirationDate": "2026-09-01T13:52:34.000Z",
+  "snapshotDate": "2026-10-18T20:18:34.000Z",
+  "dropDate": "2026-11-16T21:02:20.000Z",
+  "statuses": [
+    "pendingDelete",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "parkns1.nic.ae",
+    "parkns2.nic.ae"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

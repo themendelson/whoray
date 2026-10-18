@@ -3,6 +3,10 @@
   "tld": "biz",
   "state": "available",
   "isAvailable": true,
+  "registry": {
+    "id": "godaddy-registry",
+    "name": "GoDaddy Registry"
+  },
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

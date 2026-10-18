@@ -87,10 +87,11 @@ export const registries: Registry[] = [
   {
     id: "godaddy-registry",
     name: "GoDaddy Registry",
-    textPattern: /represent administrative and technical management of the TLD/,
+    textPattern: /represent administrative and technical management of the TLD|^Registry Domain ID: \S+-NSR\s*$/m,
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
+      abudhabi biz
       aaa aarp able abogado accountant adult aetna afl aig ally americanexpress americanfamily amex amfam
       amica analytics anz aramco athleta auspost axa banamex bank baseball basketball beer bible bid
       blackfriday booking boston buzz calvinklein caravan casa catholic cba cbn cbre chase chintai cisco
