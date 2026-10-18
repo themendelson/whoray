@@ -1,0 +1,36 @@
+{
+  "domain": "super.fo",
+  "tld": "fo",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Porkbun LLC",
+    "ianaId": 1861,
+    "url": "https://porkbun.com/",
+    "abuseEmail": "abuse@porkbun.com",
+    "abusePhone": "+1.8557675286"
+  },
+  "registrant": {
+    "state": "NC",
+    "country": "US"
+  },
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "handle": "D576967194-CNIC",
+  "creationDate": "2025-08-03T09:02:17.000Z",
+  "updatedDate": "2026-10-16T12:21:02.000Z",
+  "expirationDate": "2026-08-03T23:59:59.000Z",
+  "snapshotDate": "2026-10-18T19:08:25.000Z",
+  "dropDate": "2026-10-21T12:21:02.000Z",
+  "statuses": [
+    "serverHold",
+    "serverTransferProhibited",
+    "pendingDelete",
+    "inactive"
+  ],
+  "nameservers": [],
+  "dnssec": false,
+  "source": "rdap"
+}

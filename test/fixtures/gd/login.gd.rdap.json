@@ -1,0 +1,41 @@
+{
+  "domain": "login.gd",
+  "tld": "gd",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "1API GmbH",
+    "ianaId": 1387,
+    "url": "http://www.1api.net",
+    "abuseEmail": "abuse@1api.net",
+    "abusePhone": "+49.68949396850"
+  },
+  "registrant": {
+    "state": "CA",
+    "country": "US"
+  },
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "handle": "D482557320-CNIC",
+  "creationDate": "2024-08-30T15:08:55.000Z",
+  "updatedDate": "2026-10-13T01:22:51.000Z",
+  "expirationDate": "2026-08-30T23:59:59.000Z",
+  "snapshotDate": "2026-10-18T19:08:25.000Z",
+  "dropDate": "2026-11-17T01:22:51.000Z",
+  "statuses": [
+    "serverHold",
+    "serverTransferProhibited",
+    "clientTransferProhibited",
+    "pendingDelete",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "dns1.iwantmyname.com",
+    "dns2.iwantmyname.com",
+    "dns3.iwantmyname.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}
