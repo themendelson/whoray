@@ -224,6 +224,7 @@ export const aliases: [Field, string[]][] = [
       "flags",
       "lock status",
       "epp status",
+      "transfer status",
       "domaintype",
       "statut",
     ],
