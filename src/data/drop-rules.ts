@@ -111,6 +111,7 @@ export const dropRules: Record<string, DropRule> = {
       ? atUtcHour(addDays(rolledPast(updatedDate, 16), 36), 0)
       : undefined,
   trust: registryClick,
+  tw: ({ expirationDate }) => expirationDate && addDays(expirationDate, 33),
   tz: ({ expirationDate }) => expirationDate && addDays(expirationDate, 59),
   uk,
   us: ({ expirationDate, updatedDate, statuses }) =>

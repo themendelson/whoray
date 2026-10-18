@@ -1,0 +1,28 @@
+{
+  "domain": "delta.tw",
+  "tld": "tw",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "NET-CHINESE",
+    "url": "https://www.net-chinese.com.tw",
+    "abuseEmail": "service@net-chinese.com.tw"
+  },
+  "registrant": {
+    "name": "大家的資訊有限公司"
+  },
+  "creationDate": "2019-09-19T16:58:28.000Z",
+  "expirationDate": "2026-09-19T16:58:28.000Z",
+  "dropDate": "2026-10-22T16:58:28.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "pendingDelete",
+    "serverHold",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "ns1.osdog.com",
+    "ns2.osdog.com"
+  ],
+  "source": "whois"
+}
