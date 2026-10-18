@@ -8,7 +8,8 @@
     "ianaId": 9999,
     "url": "https://gen.xyz/",
     "abuseEmail": "xyz_abuse@gen.xyz",
-    "abusePhone": "+1.8009998422"
+    "abusePhone": "+1.8009998422",
+    "whoisServer": "whois.nic.xyz"
   },
   "registry": {
     "id": "centralnic",

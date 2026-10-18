@@ -125,7 +125,11 @@ test("follow: registrar queries the referral server and keeps the registry's dat
   );
   const result = await lookup("example.com", { connect: server.connect, servers, follow: "registrar" });
   expect(server.queries.map((query) => query.host)).toEqual(["whois.registry.test", "whois.registrar.test"]);
-  expect(result.registrar).toEqual({ name: "Example Registrar, Inc.", abuseEmail: "abuse@registrar.test" });
+  expect(result.registrar).toEqual({
+    name: "Example Registrar, Inc.",
+    abuseEmail: "abuse@registrar.test",
+    whoisServer: "whois.registrar.test",
+  });
   expect(result.creationDate).toEqual(new Date("2001-02-03T04:05:06Z"));
 });
 

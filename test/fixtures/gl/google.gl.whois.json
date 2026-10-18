@@ -7,7 +7,8 @@
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
     "abuseEmail": "ccops@markmonitor.com",
-    "abusePhone": "+1.2083895740"
+    "abusePhone": "+1.2083895740",
+    "whoisServer": "whois.markmonitor.com"
   },
   "registry": {
     "id": "centralnic",

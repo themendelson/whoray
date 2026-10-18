@@ -127,6 +127,7 @@ function registrarOf(fields: Map<Field, string[]>): Registrar | undefined {
     url: present(fields.get("registrarUrl")) ?? inline?.[2],
     abuseEmail: present(fields.get("abuseEmail")),
     abusePhone: present(fields.get("abusePhone")),
+    whoisServer: hostnames(fields.get("registrarWhois") ?? []).at(0),
   });
 }
 

@@ -8,7 +8,8 @@
     "ianaId": 9999,
     "url": "http://nic.icu/",
     "abuseEmail": "info@centralnic.com",
-    "abusePhone": "+352.621811103"
+    "abusePhone": "+352.621811103",
+    "whoisServer": "whois.nic.icu"
   },
   "registry": {
     "id": "centralnic",

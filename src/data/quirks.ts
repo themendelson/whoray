@@ -1,5 +1,11 @@
 import type { Transform } from "#whois/transforms.ts";
-import { domainEppStatuses, latestChange, recordOnDates, registeredOnDate } from "#whois/transforms.ts";
+import {
+  commentedSections,
+  domainEppStatuses,
+  latestChange,
+  recordOnDates,
+  registeredOnDate,
+} from "#whois/transforms.ts";
 
 export const quirks: Record<string, Transform[]> = {
   fr: [domainEppStatuses],
@@ -7,4 +13,5 @@ export const quirks: Record<string, Transform[]> = {
   il: [latestChange],
   je: [registeredOnDate],
   tw: [recordOnDates],
+  ua: [commentedSections],
 };
