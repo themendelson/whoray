@@ -2,7 +2,7 @@
   "domain": "google.nz",
   "tld": "nz",
   "state": "reserved",
-  "isRegistered": false,
+  "isAvailable": false,
   "statuses": [],
   "nameservers": [],
   "source": "whois"

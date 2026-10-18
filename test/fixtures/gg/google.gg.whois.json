@@ -2,7 +2,7 @@
   "domain": "google.gg",
   "tld": "gg",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "url": "http://www.markmonitor.com"

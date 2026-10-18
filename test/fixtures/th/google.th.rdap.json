@@ -2,7 +2,7 @@
   "domain": "google.th",
   "tld": "th",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "T.H.NIC Co., Ltd.",
     "ianaId": 10001,

@@ -2,7 +2,7 @@
   "domain": "google.ca",
   "tld": "ca",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor International Canada Ltd.",
     "url": "Markmonitor.com",

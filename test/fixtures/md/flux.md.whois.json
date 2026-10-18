@@ -2,7 +2,7 @@
   "domain": "flux.md",
   "tld": "md",
   "state": "redemption",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "ITCONCEPT SRL"
   },

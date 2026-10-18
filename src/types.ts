@@ -44,7 +44,7 @@ export interface DomainRecord {
   unicode?: string;
   tld: string;
   state: DomainState;
-  isRegistered?: boolean;
+  isAvailable?: boolean;
   premium?: true;
   registrar?: Registrar;
   registrant?: Registrant;

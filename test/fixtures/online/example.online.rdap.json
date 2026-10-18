@@ -2,7 +2,7 @@
   "domain": "example.online",
   "tld": "online",
   "state": "available",
-  "isRegistered": false,
+  "isAvailable": true,
   "registry": {
     "id": "centralnic",
     "name": "CentralNic"

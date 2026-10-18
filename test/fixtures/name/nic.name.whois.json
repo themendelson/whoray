@@ -2,7 +2,7 @@
   "domain": "nic.name",
   "tld": "name",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "CSC Corporate Domains, Inc.",
     "ianaId": 299

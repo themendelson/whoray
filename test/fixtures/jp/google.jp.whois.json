@@ -2,7 +2,7 @@
   "domain": "google.jp",
   "tld": "jp",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrant": {
     "name": "Google LLC"
   },

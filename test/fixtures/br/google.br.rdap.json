@@ -2,7 +2,7 @@
   "domain": "google.br",
   "tld": "br",
   "state": "available",
-  "isRegistered": false,
+  "isAvailable": true,
   "statuses": [],
   "nameservers": [],
   "source": "rdap"

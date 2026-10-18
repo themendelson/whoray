@@ -2,7 +2,7 @@
   "domain": "muellerk.de",
   "tld": "de",
   "state": "redemption",
-  "isRegistered": true,
+  "isAvailable": false,
   "statuses": [
     "redemptionPeriod"
   ],

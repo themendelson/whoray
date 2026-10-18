@@ -2,7 +2,7 @@
   "domain": "whoray-unregistered-7x9q.info",
   "tld": "info",
   "state": "available",
-  "isRegistered": false,
+  "isAvailable": true,
   "registry": {
     "id": "identity-digital",
     "name": "Identity Digital"

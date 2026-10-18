@@ -2,7 +2,7 @@
   "domain": "whoray-unregistered-7x9q.net",
   "tld": "net",
   "state": "available",
-  "isRegistered": false,
+  "isAvailable": true,
   "registry": {
     "id": "verisign",
     "name": "Verisign Global Registry Services"

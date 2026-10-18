@@ -2,7 +2,7 @@
   "domain": "google.ee",
   "tld": "ee",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Zone Media OÜ",
     "url": "http://www.zone.ee"

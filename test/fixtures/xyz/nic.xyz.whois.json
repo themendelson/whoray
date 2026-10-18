@@ -2,7 +2,7 @@
   "domain": "nic.xyz",
   "tld": "xyz",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "XYZ.com, LLC",
     "ianaId": 9999,

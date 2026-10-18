@@ -2,7 +2,7 @@
   "domain": "google.im",
   "tld": "im",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "expirationDate": "2027-08-16T23:59:39.000Z",
   "statuses": [],
   "nameservers": [

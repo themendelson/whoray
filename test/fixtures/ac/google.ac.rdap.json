@@ -2,7 +2,7 @@
   "domain": "google.ac",
   "tld": "ac",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "ianaId": 292,

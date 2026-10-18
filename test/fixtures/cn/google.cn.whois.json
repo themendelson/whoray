@@ -2,7 +2,7 @@
   "domain": "google.cn",
   "tld": "cn",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "厦门易名科技股份有限公司"
   },

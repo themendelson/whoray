@@ -2,7 +2,7 @@
   "domain": "nic.sx",
   "tld": "sx",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "SX Registry O",
     "url": "www.registry.sx",
