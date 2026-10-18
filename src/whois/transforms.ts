@@ -94,3 +94,5 @@ const ENTITIES: Record<string, string> = { amp: "&", gt: ">", lt: "<", quot: '"'
 
 export const htmlEntities: Transform = (text) =>
   text.replace(/&(amp|gt|lt|quot|apos);/g, (entity, name: string) => ENTITIES[name] ?? entity);
+
+export const emptyDottedFields: Transform = (text) => text.replace(/^[\p{L}][\p{L}\d ]*\.{2,}:[ \t]*\r?\n/gmu, "");

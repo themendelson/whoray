@@ -1,0 +1,46 @@
+{
+  "domain": "flora.tn",
+  "tld": "tn",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "OVH"
+  },
+  "registrant": {
+    "name": "PHOENIX DISTRIBUTION",
+    "street": [
+      "LOT 115 ZI CHOTRANA 2 LA SOUKRA ARIANA",
+      "ARIANA"
+    ],
+    "email": "jane.doe@example.com",
+    "phone": "71000000"
+  },
+  "admin": {
+    "name": "PHOENIX DISTRIBUTION",
+    "street": [
+      "LOT 115 ZI CHOTRANA 2 LA SOUKRA ARIANA",
+      "ARIANA"
+    ],
+    "email": "jane.doe@example.com",
+    "phone": "71000000"
+  },
+  "tech": {
+    "name": "PHOENIX DISTRIBUTION",
+    "street": [
+      "LOT 115 ZI CHOTRANA 2 LA SOUKRA ARIANA",
+      "ARIANA"
+    ],
+    "email": "jane.doe@example.com",
+    "phone": "71000000"
+  },
+  "creationDate": "2020-09-02T16:18:02.000Z",
+  "statuses": [
+    "pendingDelete"
+  ],
+  "nameservers": [
+    "dns1.tn.ovh.net",
+    "ns1.tn.ovh.net"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

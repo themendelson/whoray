@@ -1,0 +1,48 @@
+{
+  "domain": "google.tn",
+  "tld": "tn",
+  "state": "registered",
+  "isAvailable": false,
+  "registrar": {
+    "name": "ELB"
+  },
+  "registrant": {
+    "name": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway, Mountain View, CA 94043 US"
+    ],
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
+  },
+  "admin": {
+    "name": "Abu ghazalah intellectual property",
+    "street": [
+      "P.O.Box 1, Montplaisir 1073, Tunis, Tunisia"
+    ],
+    "email": "tunisia@agip.com",
+    "phone": "71 90 3141",
+    "fax": "71 90 9426"
+  },
+  "tech": {
+    "name": "MarkMonitor Inc.",
+    "street": [
+      "391 N. Ancestor Pl., Boise, ID 83704 US"
+    ],
+    "email": "ccops@markmonitor.com",
+    "phone": "+1.2083895740",
+    "fax": "+1.2083895771"
+  },
+  "creationDate": "2018-12-05T10:02:02.000Z",
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "ns4.google.com",
+    "ns1.google.com",
+    "ns3.google.com",
+    "ns2.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
