@@ -213,6 +213,7 @@ export const registries: Registry[] = [
     redemption: 35,
     pendingDelete: 35,
     tlds: list(`
+      jobs
       abbvie amazon audible author aws azure bbc bbva bing book bot broadway buy call career circle cymru
       deal desi fairwinds fast fire free gop got gucci hot hotmail ieee imdb jot joy kindle like locus med
       microsoft moi mtn now nowruz office omega pars pay pharmacy pin pioneer prime read realestate
