@@ -216,6 +216,15 @@ export const registries: Registry[] = [
     `),
   },
   {
+    id: "zacr",
+    name: "ZA Central Registry",
+    redemption: 30,
+    pendingDelete: 5,
+    tlds: list(`
+      africa capetown durban joburg
+    `),
+  },
+  {
     id: "nominet",
     name: "Nominet",
     textPattern: /nominet/,

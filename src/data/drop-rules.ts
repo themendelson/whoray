@@ -5,6 +5,7 @@ import { addDays, atUtcHour, daysBetween, rolledPast } from "#time.ts";
 const uk = fixedPeriods(60, 30, 5);
 const registryClick = redemptionGracePeriod(34, 4);
 const afnic: DropRule = ({ deleted }) => deleted && addDays(deleted, 30);
+const zacr: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 30);
 const isoc: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 61);
 
 // Observed on .ai: names drop at 17:00 UTC, and an update after 14:00 UTC counts from the next day.
@@ -31,9 +32,11 @@ function usSchedule(expirationDate: Date, updatedDate: Date): Date {
 }
 
 export const dropRules: Record<string, DropRule> = {
+  africa: zacr,
   ai: identityDigitalCcTld,
   am: ({ expirationDate }) => expirationDate && addDays(expirationDate, 45),
   ar: ({ expirationDate }) => expirationDate && addDays(expirationDate, 45),
+  capetown: zacr,
   click: registryClick,
   co: ({ released }) => released && addDays(rolledPast(released, 17), 1),
   "co.il": isoc,
@@ -43,6 +46,7 @@ export const dropRules: Record<string, DropRule> = {
   de: ({ updatedDate, statuses }) =>
     statuses.has("redemptionPeriod") && updatedDate ? addDays(updatedDate, 31) : undefined,
   diy: registryClick,
+  durban: zacr,
   feedback: registryClick,
   food: registryClick,
   forum: registryClick,
@@ -52,6 +56,7 @@ export const dropRules: Record<string, DropRule> = {
   io: identityDigitalCcTld,
   it: ({ updatedDate, statuses }) =>
     statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 33) : undefined,
+  joburg: zacr,
   lifestyle: registryClick,
   living: registryClick,
   ly: ({ expirationDate, updatedDate, statuses }) => {
