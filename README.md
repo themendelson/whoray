@@ -96,14 +96,6 @@ Fields marked `?` are left out when they don't apply or the registry doesn't pub
 | `reserved` | Reserved or blocked by the registry |
 | `unknown` | The lookup failed. `error.code` is one of `timeout`, `rate_limited`, `blocked`, `no_server`, `unparseable` or `network` |
 
-## In a browser
-
-Browsers can't open port 43, so `lookup` asks RDAP only. Two things change:
-
-- RDAP answers a reserved, premium or dropzone name with a 404, so those come back as `available`
-  with `isAvailable: true`: reserved and dropzone names can't be registered, and premium ones cost more.
-- A registry whose RDAP server doesn't allow cross-origin requests (DENIC, for `.de`) fails with a `network` error.
-
 ## Using a proxy
 
 ```js
