@@ -1,0 +1,30 @@
+{
+  "domain": "example.com",
+  "tld": "com",
+  "state": "reserved",
+  "isAvailable": false,
+  "registrar": {
+    "name": "RESERVED-Internet Assigned Numbers Authority",
+    "ianaId": 376
+  },
+  "registry": {
+    "id": "verisign",
+    "name": "Verisign Global Registry Services"
+  },
+  "handle": "2336799_DOMAIN_COM-VRSN",
+  "creationDate": "1995-08-14T04:00:00.000Z",
+  "updatedDate": "2026-08-14T08:01:43.000Z",
+  "expirationDate": "2027-08-13T04:00:00.000Z",
+  "snapshotDate": "2026-10-18T16:48:43.000Z",
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientTransferProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [
+    "elliott.ns.cloudflare.com",
+    "hera.ns.cloudflare.com"
+  ],
+  "dnssec": true,
+  "source": "rdap"
+}
