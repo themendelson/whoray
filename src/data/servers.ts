@@ -4,6 +4,7 @@ const identityDigital = "https://rdap.identitydigital.services/rdap/";
 
 export const servers: Record<string, ServerEntry> = {
   ac: { rdap: identityDigital, whois: "whois.nic.ac" },
+  ag: { rdap: identityDigital },
   ai: { whois: "whois.nic.ai" },
   art: { whois: "whois.nic.art" },
   au: { whois: "whois.auda.org.au" },
@@ -14,7 +15,7 @@ export const servers: Record<string, ServerEntry> = {
   biz: { whois: "whois.nic.biz" },
   blog: { whois: "whois.nic.blog" },
   buzz: { whois: "whois.nic.buzz" },
-  bz: { whois: "whois.identity.digital" },
+  bz: { rdap: identityDigital, whois: "whois.identity.digital" },
   ca: { whois: "whois.cira.ca" },
   cam: { whois: "whois.nic.cam" },
   casa: { whois: "whois.nic.casa" },

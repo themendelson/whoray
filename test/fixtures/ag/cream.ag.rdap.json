@@ -1,0 +1,35 @@
+{
+  "domain": "cream.ag",
+  "tld": "ag",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "GoDaddy.com, LLC",
+    "ianaId": 146,
+    "url": "https://rdap.godaddy.com/v1/",
+    "abuseEmail": "abuse@godaddy.com",
+    "abusePhone": "+1.4806242505"
+  },
+  "registrant": {
+    "organization": "Machi Originals Co.",
+    "state": "Tai Bei Shi",
+    "country": "TW"
+  },
+  "registry": {
+    "id": "identity-digital",
+    "name": "Identity Digital"
+  },
+  "creationDate": "2020-08-30T04:38:11.000Z",
+  "updatedDate": "2026-10-11T08:22:29.000Z",
+  "expirationDate": "2026-08-30T04:38:11.000Z",
+  "snapshotDate": "2026-10-18T19:06:49.000Z",
+  "dropDate": "2026-11-15T20:22:29.000Z",
+  "deletionDate": "2026-11-15T08:22:29.000Z",
+  "statuses": [
+    "redemptionPeriod",
+    "inactive"
+  ],
+  "nameservers": [],
+  "dnssec": false,
+  "source": "rdap"
+}

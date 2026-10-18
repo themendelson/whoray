@@ -32,6 +32,12 @@ test("'Domain not renewed. Being revoked' counts as pending delete", () => {
   expect(parseWhois(text, "example.ru")).toMatchObject({ state: "pendingDelete", statuses: ["pendingDelete"] });
 });
 
+test("'Not Available' and 'n/a' in a contact field mean the registry doesn't publish it", () => {
+  const text =
+    "Domain Name: example.com\nCreation Date: 2020-01-01T00:00:00Z\nRegistrant Organization: Example Ltd\nRegistrant State/Province: Not Available\nRegistrant City: n/a";
+  expect(parseWhois(text, "example.com").registrant).toEqual({ organization: "Example Ltd" });
+});
+
 test(".fr drops 30 days after its deletion date", () => {
   const record = parseRdap(
     {

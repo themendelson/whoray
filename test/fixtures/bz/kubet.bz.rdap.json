@@ -1,0 +1,34 @@
+{
+  "domain": "kubet.bz",
+  "tld": "bz",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "NameCheap, Inc.",
+    "ianaId": 1068,
+    "url": "https://rdap.namecheap.com/",
+    "abuseEmail": "abuse@namecheap.com",
+    "abusePhone": "+1.9854014545"
+  },
+  "registry": {
+    "id": "identity-digital",
+    "name": "Identity Digital"
+  },
+  "handle": "15bfbca8cf7846b6be0f1998b8ee6088-DONUTS",
+  "creationDate": "2022-08-29T08:09:48.000Z",
+  "updatedDate": "2026-10-10T08:13:41.000Z",
+  "expirationDate": "2026-08-29T08:09:48.000Z",
+  "snapshotDate": "2026-10-18T19:06:49.000Z",
+  "dropDate": "2026-11-14T20:13:41.000Z",
+  "deletionDate": "2026-11-14T08:13:41.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "dns102.registrar-servers.com",
+    "dns101.registrar-servers.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}
