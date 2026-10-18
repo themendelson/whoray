@@ -1,0 +1,71 @@
+{
+  "domain": "google.sn",
+  "tld": "sn",
+  "state": "registered",
+  "isAvailable": false,
+  "registrar": {
+    "name": "MARKMONITOR Inc."
+  },
+  "registrant": {
+    "name": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway"
+    ],
+    "city": "Mountain View",
+    "postalCode": "94043",
+    "country": "US",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
+  },
+  "admin": {
+    "name": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway"
+    ],
+    "city": "Mountain View",
+    "postalCode": "94043",
+    "country": "US",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
+  },
+  "tech": {
+    "name": "Google LLC",
+    "street": [
+      "1600 Amphitheatre Parkway"
+    ],
+    "city": "Mountain View",
+    "postalCode": "94043",
+    "country": "US",
+    "email": "dns-admin@google.com",
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
+  },
+  "billing": {
+    "name": "MarkMonitor",
+    "street": [
+      "1120 S. Rackham Way,Suite 300"
+    ],
+    "city": "Meridian",
+    "postalCode": "83642",
+    "country": "US",
+    "email": "ccopsbilling@markmonitor.com",
+    "phone": "+1.2083895740"
+  },
+  "creationDate": "2003-03-22T00:00:00.000Z",
+  "updatedDate": "2025-12-06T17:12:28.000Z",
+  "expirationDate": "2026-12-31T12:00:00.000Z",
+  "snapshotDate": "2026-10-18T19:52:33.000Z",
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
