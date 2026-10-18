@@ -3,6 +3,10 @@
   "tld": "ly",
   "state": "available",
   "isAvailable": true,
+  "registry": {
+    "id": "cocca",
+    "name": "CoCCA"
+  },
   "statuses": [],
   "nameservers": [],
   "source": "whois"

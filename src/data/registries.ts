@@ -157,6 +157,16 @@ export const registries: Registry[] = [
     `),
   },
   {
+    id: "cocca",
+    name: "CoCCA",
+    textPattern: /-CoCCA$/m,
+    redemption: 35,
+    pendingDelete: 7,
+    tlds: list(`
+      gs ly
+    `),
+  },
+  {
     id: "nominet",
     name: "Nominet",
     textPattern: /nominet/,
