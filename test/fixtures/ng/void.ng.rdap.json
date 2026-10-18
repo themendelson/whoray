@@ -1,0 +1,50 @@
+{
+  "domain": "void.ng",
+  "tld": "ng",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Harmonweb Limited",
+    "ianaId": 9999,
+    "url": "https://harmonweb.com",
+    "street": [
+      "2 Aduloju St, Baruwa, Idimu, Lagos 102213, Lagos"
+    ],
+    "country": "NG",
+    "email": "contact@harmonweb.com",
+    "phone": "+0.8121588790",
+    "abuseEmail": "abuse@harmonweb.com",
+    "abusePhone": "+0.8121588790"
+  },
+  "registrant": {
+    "country": "NG"
+  },
+  "admin": {
+    "country": "NG"
+  },
+  "tech": {
+    "country": "NG"
+  },
+  "billing": {
+    "country": "NG"
+  },
+  "handle": "3037176-NIRA",
+  "creationDate": "2025-08-05T10:46:43.000Z",
+  "updatedDate": "2026-10-05T00:11:24.000Z",
+  "expirationDate": "2026-08-05T10:46:49.000Z",
+  "snapshotDate": "2026-10-18T21:02:31.000Z",
+  "dropDate": "2026-11-16T10:46:49.000Z",
+  "statuses": [
+    "redemptionPeriod",
+    "inactive",
+    "serverHold",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "dns1.harmonweb.net",
+    "dns2.harmonweb.net"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}
