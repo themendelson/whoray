@@ -8,6 +8,10 @@
     "abuseEmail": "abuse@centralnic.com",
     "abusePhone": "+44.20338806"
   },
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
   "handle": "D471480-LANIC",
   "creationDate": "2002-07-18T01:00:00.000Z",
   "updatedDate": "2026-10-16T08:19:37.000Z",

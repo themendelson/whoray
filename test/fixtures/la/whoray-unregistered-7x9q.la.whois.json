@@ -3,6 +3,10 @@
   "tld": "la",
   "state": "available",
   "isAvailable": true,
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
   "statuses": [],
   "nameservers": [],
   "source": "whois"
