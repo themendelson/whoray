@@ -1,0 +1,18 @@
+{
+  "domain": "compass.kg",
+  "tld": "kg",
+  "state": "expired",
+  "isAvailable": false,
+  "creationDate": "2023-09-25T16:49:23.000Z",
+  "updatedDate": "2025-10-02T14:10:40.000Z",
+  "expirationDate": "2026-09-24T16:49:23.000Z",
+  "dropDate": "2026-10-24T16:49:23.000Z",
+  "statuses": [
+    "serverHold"
+  ],
+  "nameservers": [
+    "ns1.hostim.kg",
+    "ns2.hostim.kg"
+  ],
+  "source": "rdap"
+}

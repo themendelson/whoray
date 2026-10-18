@@ -28,6 +28,7 @@ export const statusSynonyms: Readonly<Record<string, string>> = {
   active: "ok",
   actif: "ok",
   "in quarantine": "redemptionPeriod",
+  "on hold": "serverHold",
   "pending cancel": "pendingDelete",
   rédemption: "redemptionPeriod",
   supprimé: "pendingDelete",

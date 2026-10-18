@@ -73,6 +73,7 @@ export const dropRules: Record<string, DropRule> = {
     statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 33) : undefined,
   joburg: zacr,
   ke: ({ expirationDate }) => expirationDate && addDays(expirationDate, 94),
+  kg: ({ expirationDate }) => expirationDate && addDays(expirationDate, 30),
   kr: ({ expirationDate }) => expirationDate && addDays(expirationDate, 32),
   lifestyle: registryClick,
   living: registryClick,

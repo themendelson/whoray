@@ -1,0 +1,88 @@
+200
+{
+  "objectClassName": "domain",
+  "port43": "whois.cctld.kg",
+  "handle": "",
+  "ldhName": "COMPASS.KG",
+  "links": [
+    {
+      "value": "https://rdap.cctld.kg/domain/COMPASS.KG",
+      "rel": "self",
+      "href": "https://rdap.cctld.kg/domain/COMPASS.KG",
+      "type": "application/rdap+json"
+    }
+  ],
+  "remarks": [
+    {
+      "description": [
+        "AsiaInfo",
+        "Copyright © Ilya O. Levin & Sergey D. Piryazev & Vitaliy Urlov, 2000 All rights reserved."
+      ]
+    }
+  ],
+  "status": [
+    "On Hold"
+  ],
+  "nameservers": [
+    {
+      "objectClassName": "nameserver",
+      "ldhName": "NS1.HOSTIM.KG"
+    },
+    {
+      "objectClassName": "nameserver",
+      "ldhName": "NS2.HOSTIM.KG"
+    }
+  ],
+  "entities": [
+    {
+      "objectClassName": "entity",
+      "handle": "Private",
+      "roles": "administrative",
+      "publicIds": [
+        {
+          "type": "cctld.kg Registrar ID",
+          "identifier": "Private"
+        }
+      ]
+    },
+    {
+      "objectClassName": "entity",
+      "handle": "Private",
+      "roles": "technical",
+      "publicIds": [
+        {
+          "type": "cctld.kg Registrar ID",
+          "identifier": "Private"
+        }
+      ]
+    },
+    {
+      "objectClassName": "entity",
+      "handle": "Private",
+      "roles": "billing",
+      "publicIds": [
+        {
+          "type": "cctld.kg Registrar ID",
+          "identifier": "Private"
+        }
+      ]
+    }
+  ],
+  "secureDNS": {
+    "delegationSigned": "false"
+  },
+  "events": [
+    {
+      "eventAction": "registration",
+      "eventDate": "2023-09-25T16:49:23Z"
+    },
+    {
+      "eventAction": "last changed",
+      "eventDate": "2025-10-02T14:10:40Z"
+    },
+    {
+      "eventAction": "Record expires",
+      "eventDate": "2026-09-24T16:49:23Z"
+    }
+  ]
+}
