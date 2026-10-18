@@ -25,7 +25,9 @@
   "updatedDate": "2022-06-28T13:20:44.000Z",
   "expirationDate": "2026-06-28T00:00:00.000Z",
   "dropDate": "2026-10-28T00:00:00.000Z",
-  "statuses": [],
+  "statuses": [
+    "serverHold"
+  ],
   "nameservers": [
     "ns1.alidns.com",
     "ns2.alidns.com"
