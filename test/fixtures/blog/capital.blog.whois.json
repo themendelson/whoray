@@ -1,0 +1,38 @@
+{
+  "domain": "capital.blog",
+  "tld": "blog",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Dynadot LLC",
+    "ianaId": 472,
+    "url": "http://www.dynadot.com",
+    "abuseEmail": "info@dynadot.com",
+    "whoisServer": "whois.blog.fury.ca"
+  },
+  "registry": {
+    "id": "cira",
+    "name": "CIRA"
+  },
+  "handle": "1182256-BLOG",
+  "creationDate": "2025-08-11T06:25:07.000Z",
+  "updatedDate": "2026-09-20T17:14:34.000Z",
+  "expirationDate": "2026-08-11T06:25:07.000Z",
+  "snapshotDate": "2026-10-18T20:12:47.000Z",
+  "dropDate": "2026-10-25T17:14:34.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "pendingDelete",
+    "redemptionPeriod",
+    "serverHold",
+    "serverRenewProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "5014.ns1.abovedomains.com",
+    "5014.ns2.abovedomains.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

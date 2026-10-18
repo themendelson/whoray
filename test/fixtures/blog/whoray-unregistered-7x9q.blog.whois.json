@@ -3,6 +3,10 @@
   "tld": "blog",
   "state": "available",
   "isAvailable": true,
+  "registry": {
+    "id": "cira",
+    "name": "CIRA"
+  },
   "statuses": [],
   "nameservers": [],
   "source": "whois"
