@@ -1,0 +1,49 @@
+{
+  "domain": "open.is",
+  "tld": "is",
+  "state": "expired",
+  "isAvailable": false,
+  "registrant": {
+    "country": "US"
+  },
+  "admin": {
+    "name": "NameCheap, Inc.",
+    "street": [
+      "4600 East Washington Street, Suite 305",
+      "Phoenix, AZ 85034"
+    ],
+    "country": "US",
+    "email": "isnicdomains@namecheap.com",
+    "phone": "+1 6613102107"
+  },
+  "tech": {
+    "name": "NameCheap, Inc.",
+    "street": [
+      "4600 East Washington Street, Suite 305",
+      "Phoenix, AZ 85034"
+    ],
+    "country": "US",
+    "email": "isnicdomains@namecheap.com",
+    "phone": "+1 6613102107"
+  },
+  "billing": {
+    "name": "NameCheap, Inc.",
+    "street": [
+      "4600 East Washington Street, Suite 305",
+      "Phoenix, AZ 85034"
+    ],
+    "country": "US",
+    "email": "isnicdomains2@namecheap.com",
+    "phone": "+1 6613102107"
+  },
+  "creationDate": "2021-09-30T00:00:00.000Z",
+  "expirationDate": "2026-09-30T00:00:00.000Z",
+  "dropDate": "2026-11-01T00:00:00.000Z",
+  "statuses": [],
+  "nameservers": [
+    "delilah.ns.cloudflare.com",
+    "kirk.ns.cloudflare.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
