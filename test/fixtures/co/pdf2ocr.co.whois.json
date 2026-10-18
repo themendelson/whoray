@@ -1,0 +1,36 @@
+{
+  "domain": "pdf2ocr.co",
+  "tld": "co",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Automattic, Inc",
+    "ianaId": 1531,
+    "url": "http://automattic.com",
+    "abuseEmail": "registrar@automattic.com",
+    "abusePhone": "+43.6767649349",
+    "whoisServer": "whois.sawbuck.com"
+  },
+  "registry": {
+    "id": "mintic",
+    "name": "MinTIC"
+  },
+  "handle": "D11207378-CNIC",
+  "creationDate": "2022-08-29T10:08:25.000Z",
+  "updatedDate": "2026-10-17T14:25:01.000Z",
+  "expirationDate": "2026-08-29T23:59:59.000Z",
+  "snapshotDate": "2026-10-18T16:55:08.000Z",
+  "dropDate": "2026-10-22T14:25:01.000Z",
+  "statuses": [
+    "serverHold",
+    "serverTransferProhibited",
+    "clientTransferProhibited",
+    "pendingDelete"
+  ],
+  "nameservers": [
+    "rafe.ns.cloudflare.com",
+    "jason.ns.cloudflare.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

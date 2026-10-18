@@ -1,0 +1,37 @@
+{
+  "domain": "finspark.co",
+  "tld": "co",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Dynadot Inc",
+    "ianaId": 472,
+    "url": "https://www.dynadot.com/",
+    "abuseEmail": "abuse@dynadot.com",
+    "abusePhone": "+1.6502620100",
+    "whoisServer": "whois.dynadot.com"
+  },
+  "registry": {
+    "id": "mintic",
+    "name": "MinTIC"
+  },
+  "handle": "D29186777-CNIC",
+  "creationDate": "2025-08-27T17:00:19.000Z",
+  "updatedDate": "2026-10-07T03:37:15.000Z",
+  "expirationDate": "2026-08-27T23:59:59.000Z",
+  "snapshotDate": "2026-10-18T16:54:47.000Z",
+  "dropDate": "2026-11-11T03:37:15.000Z",
+  "statuses": [
+    "serverHold",
+    "serverTransferProhibited",
+    "clientTransferProhibited",
+    "pendingDelete",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "5014.ns1.abovedomains.com",
+    "5014.ns2.abovedomains.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
