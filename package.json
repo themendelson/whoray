@@ -1,7 +1,7 @@
 {
   "name": "whoray",
   "version": "0.1.0",
-  "description": "WHOIS and RDAP for every TLD: one call, one normalized result, lifecycle and drop dates. Zero dependencies.",
+  "description": "WHOIS and RDAP lookups for any domain, with expiry and drop dates",
   "keywords": [
     "whois",
     "rdap",
@@ -14,7 +14,10 @@
   ],
   "license": "MIT",
   "author": "Amir Mendelson",
-  "repository": "github:themendelson/whoray",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/themendelson/whoray.git"
+  },
   "type": "module",
   "sideEffects": false,
   "engines": {
