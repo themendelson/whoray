@@ -1,0 +1,30 @@
+{
+  "domain": "family.ly",
+  "tld": "ly",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Libyan Spider Network (loc)",
+    "abuseEmail": "abuse@libyanspider.com",
+    "abusePhone": "+218213632323"
+  },
+  "handle": "426438-nicly",
+  "creationDate": "2025-08-27T13:10:18.000Z",
+  "updatedDate": "2026-10-12T10:55:16.000Z",
+  "expirationDate": "2026-08-27T13:10:19.000Z",
+  "snapshotDate": "2026-10-18T21:13:02.000Z",
+  "dropDate": "2026-11-17T10:55:16.000Z",
+  "statuses": [
+    "redemptionPeriod",
+    "inactive",
+    "serverHold",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "verification-xh3n5joe6ula5ptmb82yfk.ns101.verify.hn",
+    "ns2.afternic.com",
+    "ns1.afternic.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

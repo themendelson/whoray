@@ -74,8 +74,8 @@ export const dropRules: Record<string, DropRule> = {
   living: registryClick,
   ly: ({ expirationDate, updatedDate, statuses }) => {
     if (!expirationDate || !updatedDate) return undefined;
-    if (!statuses.has("pendingDelete")) return addDays(expirationDate, 28);
-    return addDays(updatedDate, statuses.has("redemptionPeriod") ? 36 : 7);
+    if (statuses.has("redemptionPeriod")) return addDays(updatedDate, 36);
+    return statuses.has("pendingDelete") ? addDays(updatedDate, 7) : addDays(expirationDate, 28);
   },
   ma: ({ expirationDate }) => expirationDate && addDays(expirationDate, 30),
   md: ({ expirationDate }) => expirationDate && addDays(expirationDate, 31),
