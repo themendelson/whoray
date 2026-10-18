@@ -1,0 +1,39 @@
+{
+  "domain": "orion.ky",
+  "tld": "ky",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Uniregistrar Corp",
+    "ianaId": 1659,
+    "url": "uniregistrar.com",
+    "abuseEmail": "contact@uniregistry.com",
+    "abusePhone": "+1.3457496263",
+    "whoisServer": "whois.uniregistrar.com"
+  },
+  "registrant": {
+    "organization": "Domains By Proxy, LLC",
+    "state": "Arizona",
+    "country": "US"
+  },
+  "registry": {
+    "id": "tucows-registry",
+    "name": "Tucows Registry Services"
+  },
+  "handle": "DO_0ae566d81a76802058d43a5dddeafedb-UR",
+  "creationDate": "2021-03-03T21:04:08.000Z",
+  "updatedDate": "2026-10-10T08:27:48.000Z",
+  "expirationDate": "2026-03-03T21:04:08.000Z",
+  "snapshotDate": "2026-10-18T21:45:36.000Z",
+  "dropDate": "2026-11-10T08:27:48.000Z",
+  "statuses": [
+    "serverUpdateProhibited",
+    "pendingDelete",
+    "serverHold",
+    "serverTransferProhibited",
+    "inactive"
+  ],
+  "nameservers": [],
+  "dnssec": false,
+  "source": "whois"
+}

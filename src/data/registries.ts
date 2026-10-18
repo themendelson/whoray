@@ -155,7 +155,7 @@ export const registries: Registry[] = [
     tlds: list(`
       pw
       bar click cloud country creditunion diy feedback food forum gift hiphop hiv lifestyle link living
-      locker love music observer pid property realty rest sexy trust vana yandex
+      ky locker love music observer pid property realty rest sexy trust vana yandex
     `),
   },
   {

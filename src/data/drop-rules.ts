@@ -75,6 +75,8 @@ export const dropRules: Record<string, DropRule> = {
   ke: ({ expirationDate }) => expirationDate && addDays(expirationDate, 94),
   kg: ({ expirationDate }) => expirationDate && addDays(expirationDate, 30),
   kr: ({ expirationDate }) => expirationDate && addDays(expirationDate, 32),
+  ky: ({ updatedDate, statuses }) =>
+    statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 31) : undefined,
   lifestyle: registryClick,
   living: registryClick,
   ly: ({ expirationDate, updatedDate, statuses }) => {
