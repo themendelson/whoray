@@ -4,7 +4,27 @@
   "state": "registered",
   "isAvailable": false,
   "registrar": {
-    "name": "MARK-0292"
+    "name": "MarkMonitor International Limited",
+    "street": [
+      "8th Floor, 70 St Mary Axe"
+    ],
+    "city": "London",
+    "postalCode": "EC3A 8BE",
+    "country": "GB",
+    "email": "registry.admin@markmonitor.com",
+    "phone": "+1.2083895740"
+  },
+  "registrant": {
+    "name": "Domain Administrator",
+    "organization": "Google Ireland Holdings Unlimited Company",
+    "street": [
+      "70 Sir John Rogerson's Quay"
+    ],
+    "city": "Dublin",
+    "postalCode": "2",
+    "country": "IE",
+    "email": "dns-admin@google.com",
+    "phone": "+353.14361000"
   },
   "creationDate": "2003-07-24T00:00:00.000Z",
   "updatedDate": "2026-06-22T00:00:00.000Z",

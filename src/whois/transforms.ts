@@ -120,3 +120,12 @@ export const nicHandleRegistrant: Transform = handleContacts(
   "nic-hdl",
   () => RIPE_CONTACT_KEYS,
 );
+
+export const handleParagraphs: Transform = (text) =>
+  text
+    .replace(/^Domain registrant:.*(?:\r?\n(?![ \t]*\r?$).*)*/m, (paragraph) =>
+      paragraph.replace(/^(?!Domain registrant:)([^:\r\n]+:)/gm, "Registrant $1"),
+    )
+    .replace(/^Registrar:.*\r?\n((?:(?![ \t]*\r?$).*(?:\r?\n|$))*)/m, (_, paragraph: string) =>
+      paragraph.replace(/^([^:\r\n]+:)/gm, "Registrar $1"),
+    );
