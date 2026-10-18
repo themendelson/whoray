@@ -1,0 +1,43 @@
+{
+  "domain": "b-art.brussels",
+  "tld": "brussels",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "OVH SAS",
+    "ianaId": 433,
+    "url": "https://www.ovh.com/fr/domaines/dotbrussels.xml",
+    "abuseEmail": "support@ovh.net",
+    "abusePhone": "+33.320827332"
+  },
+  "registrant": {
+    "organization": "ZennIT SPRL",
+    "country": "BE"
+  },
+  "registry": {
+    "id": "dns-belgium",
+    "name": "DNS Belgium"
+  },
+  "handle": "D1000006976-BRUSSELS",
+  "creationDate": "2025-09-19T17:49:24.000Z",
+  "updatedDate": "2026-10-17T15:50:21.000Z",
+  "expirationDate": "2027-09-19T17:49:24.000Z",
+  "snapshotDate": "2026-10-18T20:22:55.000Z",
+  "dropDate": "2026-10-22T15:50:21.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "clientHold",
+    "pendingDelete",
+    "serverHold",
+    "serverTransferProhibited",
+    "serverUpdateProhibited",
+    "serverRenewProhibited",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "dns10.ovh.net",
+    "ns10.ovh.net"
+  ],
+  "dnssec": true,
+  "source": "rdap"
+}

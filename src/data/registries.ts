@@ -207,6 +207,15 @@ export const registries: Registry[] = [
     `),
   },
   {
+    id: "dns-belgium",
+    name: "DNS Belgium",
+    redemption: 5,
+    pendingDelete: 5,
+    tlds: list(`
+      brussels vlaanderen
+    `),
+  },
+  {
     id: "nominet",
     name: "Nominet",
     textPattern: /nominet/,
