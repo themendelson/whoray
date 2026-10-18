@@ -47,24 +47,6 @@ test(".fr drops 30 days after its deletion date", () => {
   expect(record.dropDate).toEqual(new Date("2026-11-09T00:00:00Z"));
 });
 
-test("registries with a dropzone release names 12 hours after their scheduled deletion", () => {
-  const record = parseRdap(
-    {
-      objectClassName: "domain",
-      status: ["pending delete"],
-      events: [
-        { eventAction: "expiration", eventDate: "2026-08-01T00:00:00Z" },
-        { eventAction: "last changed", eventDate: "2026-10-14T00:00:00Z" },
-      ],
-    },
-    "example.org",
-  );
-  expect(record).toMatchObject({
-    deletionDate: new Date("2026-10-19T00:00:00Z"),
-    dropDate: new Date("2026-10-19T12:00:00Z"),
-  });
-});
-
 test("an unmapped TLD gets its registry from the reply text", () => {
   const text = "Domain Name: example.zz\nCreation Date: 2020-01-01\nAll data is (c) CentralNic Ltd";
   expect(parseWhois(text, "example.zz").registry).toEqual({ id: "centralnic", name: "CentralNic" });

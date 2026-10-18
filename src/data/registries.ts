@@ -2,7 +2,6 @@ export interface Registry {
   id: string;
   name: string;
   textPattern?: RegExp;
-  dropzone?: true;
   redemption: number;
   pendingDelete: number;
   tlds: string[];
@@ -14,7 +13,6 @@ export const registries: Registry[] = [
   {
     id: "internet-computer-bureau",
     name: "Internet Computer Bureau",
-    dropzone: true,
     redemption: 45,
     pendingDelete: 15,
     tlds: list(`
@@ -24,7 +22,6 @@ export const registries: Registry[] = [
   {
     id: "public-interest-registry",
     name: "Public Interest Registry",
-    dropzone: true,
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
@@ -56,7 +53,6 @@ export const registries: Registry[] = [
     id: "identity-digital",
     name: "Identity Digital",
     textPattern: /identity\.digital/,
-    dropzone: true,
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`

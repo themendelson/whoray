@@ -68,7 +68,6 @@ export interface DomainRecord {
   creationDate?: Date;
   updatedDate?: Date;
   expirationDate?: Date;
-  deletionDate?: Date;
   dropDate?: Date;
   snapshotDate?: Date;
   statuses: string[];
