@@ -39,6 +39,7 @@ export const notices: Record<"rateLimited" | "blocked" | "retired", RegExp[]> = 
   rateLimited: [
     /\brate ?limit exceeded\b/i,
     /\blimit exceeded\b/i,
+    /\ballowed queries exceeded\b/i,
     /\bexceeded the maximum\b/i,
     /\btoo many (queries|requests)\b/i,
     /\bquery rate\b/i,

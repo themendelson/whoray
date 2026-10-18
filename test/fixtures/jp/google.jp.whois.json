@@ -3,6 +3,9 @@
   "tld": "jp",
   "state": "registered",
   "isRegistered": true,
+  "registrant": {
+    "name": "Google LLC"
+  },
   "creationDate": "2005-05-30T00:00:00.000Z",
   "updatedDate": "2026-05-31T16:05:03.000Z",
   "expirationDate": "2027-05-31T00:00:00.000Z",

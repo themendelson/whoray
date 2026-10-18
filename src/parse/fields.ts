@@ -1,6 +1,7 @@
 import type { Registrant, Registrar } from "#types.ts";
 
-const REDACTED = /redacted|not disclosed|data protected|withheld|gdpr|not applicable|privacy|hidden upon/i;
+const REDACTED =
+  /redacted|not disclosed|data protected|withheld|gdpr|not applicable|privacy|hidden upon|not shown|web-?based whois/i;
 
 export function visible(value: string | undefined): string | undefined {
   return value === undefined || REDACTED.test(value) ? undefined : value;

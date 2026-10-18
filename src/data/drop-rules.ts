@@ -3,6 +3,7 @@ import { fixedPeriods } from "#drop.ts";
 import { addDays, atUtcHour, daysBetween, rolledPast } from "#time.ts";
 
 const uk = fixedPeriods(60, 30, 5);
+const isoc: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 62);
 
 // Offsets observed in .us deletions; they depend on how long after expiry the name was last updated
 // and are measured from whichever date the observations lined up with.
@@ -27,7 +28,7 @@ export const dropRules: Record<string, DropRule> = {
     return days === undefined ? undefined : atUtcHour(addDays(rolledPast(updatedDate, 14), days), 17);
   },
   co: ({ released }) => released && addDays(rolledPast(released, 17), 1),
-  "co.il": ({ expirationDate }) => expirationDate && addDays(expirationDate, 62),
+  "co.il": isoc,
   "co.uk": uk,
   de: ({ updatedDate, statuses }) =>
     statuses.has("redemptionPeriod") && updatedDate ? addDays(updatedDate, 31) : undefined,
@@ -39,8 +40,10 @@ export const dropRules: Record<string, DropRule> = {
     if (!statuses.has("pendingDelete")) return addDays(expirationDate, 28);
     return addDays(updatedDate, statuses.has("redemptionPeriod") ? 36 : 7);
   },
+  md: ({ expirationDate }) => expirationDate && addDays(expirationDate, 31),
   me: ({ updatedDate, statuses }) => updatedDate && addDays(updatedDate, statuses.has("redemptionPeriod") ? 35 : 6),
   "me.uk": uk,
+  "org.il": isoc,
   "org.uk": uk,
   si: ({ expirationDate, statuses }) =>
     statuses.has("pendingDelete") && expirationDate ? addDays(expirationDate, 30) : undefined,

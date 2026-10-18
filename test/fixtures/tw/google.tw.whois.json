@@ -7,6 +7,9 @@
     "name": "Markmonitor, Inc.",
     "url": "https://www.markmonitor.com/"
   },
+  "registrant": {
+    "name": "Google LLC"
+  },
   "creationDate": "2005-10-27T09:02:34.000Z",
   "expirationDate": "2027-10-31T04:47:54.000Z",
   "statuses": [

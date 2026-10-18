@@ -10,3 +10,8 @@ export const latestChange: Transform = (text) => {
 };
 
 export const recordOnDates: Transform = (text) => text.replace(/^\s*Record (expires|created) on /gm, "\n$1: ");
+
+export const domainEppStatuses: Transform = (text) => {
+  const block = /^domain:[\s\S]*?(?=\n[ \t]*\n)/m.exec(text)?.[0];
+  return block === undefined ? text : text.replace(block, block.replace(/^eppstatus:/gm, "epp status:"));
+};
