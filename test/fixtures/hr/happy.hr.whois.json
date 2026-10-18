@@ -1,0 +1,31 @@
+{
+  "domain": "happy.hr",
+  "tld": "hr",
+  "state": "expired",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Orbis d.o.o.",
+    "url": "http://whois.dns.hr",
+    "whoisServer": "whois.dns.hr"
+  },
+  "registrant": {
+    "name": "101domain GRS Limited",
+    "street": [
+      "4th Floor, International House, 3 Harbourmaster Place"
+    ],
+    "city": "Dublin",
+    "postalCode": "D01 K8F1",
+    "country": "IE",
+    "email": "domreg@101domain.com"
+  },
+  "creationDate": "2017-09-19T22:00:00.000Z",
+  "updatedDate": "2022-01-02T23:00:00.000Z",
+  "expirationDate": "2026-09-19T22:00:00.000Z",
+  "dropDate": "2026-10-20T22:00:00.000Z",
+  "statuses": [],
+  "nameservers": [
+    "ns1.linode.com",
+    "ns2.linode.com"
+  ],
+  "source": "whois"
+}
