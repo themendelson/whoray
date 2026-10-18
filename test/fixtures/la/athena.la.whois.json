@@ -1,0 +1,33 @@
+{
+  "domain": "athena.la",
+  "tld": "la",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "NameSilo, LLC",
+    "abuseEmail": "abuse@centralnic.com",
+    "abusePhone": "+1.6024928198"
+  },
+  "registry": {
+    "id": "centralnic",
+    "name": "CentralNic"
+  },
+  "handle": "D34507370-LANIC",
+  "creationDate": "2017-08-06T18:54:35.000Z",
+  "updatedDate": "2026-10-16T11:31:01.000Z",
+  "expirationDate": "2026-08-06T23:59:59.000Z",
+  "snapshotDate": "2026-10-18T21:25:50.000Z",
+  "dropDate": "2026-10-21T11:31:01.000Z",
+  "statuses": [
+    "pendingDelete",
+    "serverHold",
+    "serverTransferProhibited",
+    "clientTransferProhibited"
+  ],
+  "nameservers": [
+    "ns1.ns306.parklogic.com",
+    "ns2.ns306.parklogic.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
