@@ -7,7 +7,7 @@ import type { Found } from "#parse/found.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
 import type { Address, Contact, Registrar } from "#types.ts";
 
-type EventField = "creationDate" | "updatedDate" | "expirationDate" | "deleted" | "snapshotDate";
+type EventField = "creationDate" | "updatedDate" | "expirationDate" | "released" | "deleted" | "snapshotDate";
 
 const EVENT_FIELDS: Record<string, EventField> = {
   registration: "creationDate",
@@ -15,6 +15,7 @@ const EVENT_FIELDS: Record<string, EventField> = {
   expiration: "expirationDate",
   expired: "expirationDate",
   "last changed": "updatedDate",
+  "purge date": "released",
   transfer: "updatedDate",
   deleted: "deleted",
   deletion: "deleted",
