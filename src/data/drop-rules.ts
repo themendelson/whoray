@@ -4,6 +4,7 @@ import { addDays, atUtcHour, daysBetween, rolledPast } from "#time.ts";
 
 const uk = fixedPeriods(60, 30, 5);
 const registryClick = redemptionGracePeriod(34, 4);
+const afnic: DropRule = ({ deleted }) => deleted && addDays(deleted, 30);
 const isoc: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 61);
 
 // Observed on .ai: names drop at 17:00 UTC, and an update after 14:00 UTC counts from the next day.
@@ -45,7 +46,7 @@ export const dropRules: Record<string, DropRule> = {
   feedback: registryClick,
   food: registryClick,
   forum: registryClick,
-  fr: ({ deleted }) => deleted && addDays(deleted, 30),
+  fr: afnic,
   ge: ({ expirationDate }) => expirationDate && addDays(expirationDate, 30),
   hiv: registryClick,
   io: identityDigitalCcTld,
@@ -67,15 +68,18 @@ export const dropRules: Record<string, DropRule> = {
   "org.il": isoc,
   "org.uk": uk,
   pid: registryClick,
+  pm: afnic,
   property: registryClick,
   pt: ({ expirationDate }) => expirationDate && addDays(expirationDate, 31),
   qa: ({ updatedDate, statuses }) =>
     statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 32) : undefined,
+  re: afnic,
   realty: registryClick,
   sexy: registryClick,
   si: ({ expirationDate, statuses }) =>
     statuses.has("pendingDelete") && expirationDate ? addDays(expirationDate, 30) : undefined,
   // ZDNS dates a deletion in Beijing time (UTC+8): an update after 16:00 UTC counts from the next day.
+  tf: afnic,
   top: ({ updatedDate, statuses }) =>
     updatedDate && (statuses.has("pendingDelete") || statuses.has("redemptionPeriod"))
       ? atUtcHour(addDays(rolledPast(updatedDate, 16), 36), 0)
@@ -87,8 +91,10 @@ export const dropRules: Record<string, DropRule> = {
       ? usSchedule(expirationDate, updatedDate)
       : undefined,
   vana: registryClick,
+  wf: afnic,
   xyz: ({ updatedDate, statuses }) =>
     statuses.has("pendingDelete") && updatedDate
       ? addDays(updatedDate, statuses.has("redemptionPeriod") ? 35 : 5)
       : undefined,
+  yt: afnic,
 };

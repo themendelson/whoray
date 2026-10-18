@@ -1,0 +1,48 @@
+{
+  "domain": "borderless.paris",
+  "tld": "paris",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "OVH",
+    "ianaId": 433,
+    "url": "http://www.ovh.com",
+    "abuseEmail": "abuse@ovh.net",
+    "abusePhone": "+33.972101007",
+    "whoisServer": "whois.ovh.com"
+  },
+  "registrant": {
+    "organization": "BORDERLESS PROJECT"
+  },
+  "admin": {
+    "organization": "BORDERLESS PROJECT"
+  },
+  "tech": {
+    "organization": "BORDERLESS PROJECT"
+  },
+  "billing": {
+    "organization": "BORDERLESS PROJECT"
+  },
+  "registry": {
+    "id": "afnic",
+    "name": "AFNIC"
+  },
+  "handle": "DOM7821556-PARIS",
+  "creationDate": "2024-08-28T17:31:21.000Z",
+  "updatedDate": "2026-09-25T15:34:22.000Z",
+  "expirationDate": "2026-08-28T17:31:21.000Z",
+  "snapshotDate": "2026-10-18T20:16:20.000Z",
+  "dropDate": "2026-10-25T15:34:22.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "clientHold",
+    "pendingDelete",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "dns104.ovh.net",
+    "ns104.ovh.net"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

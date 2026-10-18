@@ -1,0 +1,58 @@
+{
+  "domain": "ada.re",
+  "tld": "re",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Dynadot Inc"
+  },
+  "registrant": {
+    "street": [
+      "DEUP Service Inc.",
+      "Palangos g. 4-327 # 7",
+      "01402 Vilnius",
+      "Vilnius County"
+    ],
+    "country": "LT",
+    "phone": "+1.3656593932"
+  },
+  "admin": {
+    "street": [
+      "DEUP Service Inc.",
+      "Palangos g. 4-327 # 7",
+      "01402 Vilnius",
+      "Vilnius County"
+    ],
+    "country": "LT",
+    "phone": "+1.3656593932"
+  },
+  "tech": {
+    "street": [
+      "DEUP Service Inc.",
+      "Palangos g. 4-327 # 7",
+      "01402 Vilnius",
+      "Vilnius County"
+    ],
+    "country": "LT",
+    "phone": "+1.3656593932"
+  },
+  "registry": {
+    "id": "afnic",
+    "name": "AFNIC"
+  },
+  "creationDate": "2025-09-25T03:52:58.000Z",
+  "updatedDate": "2026-09-21T13:52:42.000Z",
+  "expirationDate": "2026-09-25T03:52:58.000Z",
+  "snapshotDate": "2026-10-18T19:47:43.000Z",
+  "dropDate": "2026-10-21T13:52:42.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "pendingDelete",
+    "ok"
+  ],
+  "nameservers": [
+    "simon.ns.cloudflare.com",
+    "yolanda.ns.cloudflare.com"
+  ],
+  "source": "whois"
+}

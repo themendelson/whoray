@@ -1,0 +1,64 @@
+whois.nic.re
+%%
+%% This is the AFNIC Whois server.
+%%
+%% complete date format: YYYY-MM-DDThh:mm:ssZ
+%%
+%% Rights restricted by copyright.
+%% See https://www.afnic.fr/en/domain-names-and-support/everything-there-is-to-know-about-domain-names/find-a-domain-name-or-a-holder-using-whois/
+%%
+%%
+
+domain:                        ada.re
+status:                        REDEMPTION
+pending:                       DELETE
+eppstatus:                     clientTransferProhibited
+eppstatus:                     pendingDelete
+hold:                          NO
+holder-c:                      CTC88860-FRNIC
+admin-c:                       CTC88860-FRNIC
+tech-c:                        CTC88860-FRNIC
+registrar:                     Dynadot Inc
+Expiry Date:                   2026-09-25T03:52:58.876128Z
+created:                       2025-09-25T03:52:58.908539Z
+last-update:                   2026-09-21T13:52:42.47335Z
+deleted:                       2026-09-21T13:52:42.47335Z
+source:                        FRNIC
+
+nserver:                       simon.ns.cloudflare.com
+nserver:                       yolanda.ns.cloudflare.com
+source:                        FRNIC
+
+registrar:                     Dynadot Inc
+address:                       205 East 3rd Avenue, Suite 314
+address:                       94401 San Mateo
+address:                       California
+country:                       US
+phone:                         +1.6508604995
+e-mail:                        david@dynadot.com
+website:                       https://www.dynadot.com
+anonymous:                     No
+registered:                    2024-11-29T12:57:00Z
+source:                        FRNIC
+
+nic-hdl:                       CTC88860-FRNIC
+type:                          ORGANIZATION
+contact:                       DEUP Privacy Service
+address:                       DEUP Service Inc.
+address:                       Palangos g. 4-327 # 7
+address:                       01402 Vilnius
+address:                       Vilnius County
+country:                       LT
+phone:                         +1.3656593932
+e-mail:                        privacy@deuprivacy.com
+registrar:                     Dynadot Inc
+anonymous:                     NO
+obsoleted:                     NO
+eppstatus:                     associated
+eppstatus:                     active
+eligstatus:                    not identified
+reachstatus:                   not identified
+source:                        FRNIC
+
+>>> Last update of WHOIS database: 2026-10-18T19:47:43.37251Z <<<
+

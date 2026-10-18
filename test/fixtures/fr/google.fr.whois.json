@@ -6,6 +6,42 @@
   "registrar": {
     "name": "MARKMONITOR Inc."
   },
+  "registrant": {
+    "organization": "Google Ireland Holdings Unlimited Company",
+    "street": [
+      "Google Ireland Holdings Unlimited Company",
+      "70 Sir John Rogerson's Quay",
+      "2 Dublin"
+    ],
+    "country": "IE",
+    "email": "dns-admin@google.com",
+    "phone": "+353.14361000"
+  },
+  "admin": {
+    "organization": "Google Ireland Holdings Unlimited Company",
+    "street": [
+      "70 Sir John Rogerson's Quay",
+      "2 Dublin"
+    ],
+    "country": "IE",
+    "email": "dns-admin@google.com",
+    "phone": "+353.14361000"
+  },
+  "tech": {
+    "organization": "MarkMonitor Inc.",
+    "street": [
+      "2150 S. Bonito Way, Suite 150",
+      "83642 Meridian"
+    ],
+    "country": "US",
+    "email": "ccops@markmonitor.com",
+    "phone": "+1.2083895740",
+    "fax": "+1.2083895771"
+  },
+  "registry": {
+    "id": "afnic",
+    "name": "AFNIC"
+  },
   "creationDate": "2000-07-26T22:00:00.000Z",
   "updatedDate": "2025-12-03T10:12:00.000Z",
   "expirationDate": "2026-12-30T17:16:48.000Z",
