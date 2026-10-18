@@ -19,8 +19,8 @@ query:        skiller.co.il
 reg-name:     skiller
 domain:       skiller.co.il
 
-registrant:   Yuval Perez
-e-mail:       yuvalp0401 AT gmail.com
+registrant:   Jane Doe
+e-mail:       jane.doe AT example.com
 nserver:      ns-146.awsdns-18.com  (Disabled)
 nserver:      ns-989.awsdns-59.net  (Disabled)
 nserver:      ns-1492.awsdns-58.org  (Disabled)
@@ -36,7 +36,7 @@ changed:      domain-registrar AT isoc.org.il 20250820 (Changed)
 changed:      domain-registrar AT isoc.org.il 20250829 (Changed)
 changed:      domain-registrar AT isoc.org.il 20260107 (Changed)
 
-admin e-mail: yuvalp0401 AT gmail.com
+admin e-mail: jane.doe AT example.com
 changed:      domain-registrar AT isoc.org.il 20250820
 
 tech e-mail:  domreg AT interspace.net

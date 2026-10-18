@@ -8,7 +8,14 @@
     "url": "https://www.internic.co.il"
   },
   "registrant": {
-    "name": "Yuval Perez"
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com"
+  },
+  "admin": {
+    "email": "jane.doe@example.com"
+  },
+  "tech": {
+    "email": "domreg@interspace.net"
   },
   "creationDate": "2025-08-20T00:00:00.000Z",
   "updatedDate": "2026-01-07T00:00:00.000Z",

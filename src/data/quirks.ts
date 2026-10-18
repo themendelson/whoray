@@ -11,6 +11,7 @@ import {
   nicHandleRegistrant,
   recordOnDates,
   registeredOnDate,
+  registrantEmail,
 } from "#whois/transforms.ts";
 
 const afnic: Transform[] = [domainEppStatuses, afnicHolder];
@@ -21,7 +22,7 @@ export const quirks: Record<string, Transform[]> = {
   cz: [linkedRegistrant],
   fr: afnic,
   gg: [registeredOnDate],
-  il: [latestChange],
+  il: [latestChange, registrantEmail],
   is: [nicHandleRegistrant],
   je: [registeredOnDate],
   kz: [emptyDottedFields],
