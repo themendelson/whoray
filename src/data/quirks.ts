@@ -1,5 +1,6 @@
 import type { Transform } from "#whois/transforms.ts";
 import {
+  addressContinuations,
   afnicHolder,
   commentedSections,
   domainEppStatuses,
@@ -37,6 +38,7 @@ export const quirks: Record<string, Transform[]> = {
   tc: [htmlEntities],
   tf: afnic,
   tn: [emptyDottedFields],
+  tr: [addressContinuations],
   tw: [recordOnDates],
   ua: [commentedSections],
   wf: afnic,
