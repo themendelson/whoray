@@ -1,0 +1,43 @@
+{
+  "domain": "zone.ma",
+  "tld": "ma",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "NINDO HOST",
+    "street": [
+      "66, Avenue Mohammed V, 4ème étage, N°25 TANGER"
+    ],
+    "city": "TANGER",
+    "state": "TANGER",
+    "postalCode": "10000",
+    "email": "support@nindohost.com"
+  },
+  "registrant": {
+    "name": "MARKETING BRAKTHROUGHS INC"
+  },
+  "admin": {
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com",
+    "phone": "+212.600000000"
+  },
+  "tech": {
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com",
+    "phone": "+212.600000000"
+  },
+  "creationDate": "2020-10-04T01:07:55.000Z",
+  "updatedDate": "2026-10-06T00:00:32.000Z",
+  "expirationDate": "2026-10-04T01:07:55.000Z",
+  "snapshotDate": "2026-10-18T19:21:53.000Z",
+  "dropDate": "2026-11-03T01:07:55.000Z",
+  "statuses": [
+    "pendingDelete",
+    "serverHold"
+  ],
+  "nameservers": [
+    "ns2.nindoparking.com",
+    "ns1.nindoparking.com"
+  ],
+  "source": "whois"
+}
