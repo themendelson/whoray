@@ -23,6 +23,10 @@ test("a DPML block on the first line means reserved", () => {
   );
 });
 
+test("'allowed queries exceeded' is a rate limit, not an unparseable reply", () => {
+  expect(parseWhois("Number of allowed queries exceeded.", "example.de").error?.code).toBe("rate_limited");
+});
+
 test("'Domain not renewed. Being revoked' counts as pending delete", () => {
   const text = "domain: example.example\nnserver: ns1.example.net\nremarks: Domain not renewed. Being revoked";
   expect(parseWhois(text, "example.ru")).toMatchObject({ state: "pendingDelete", statuses: ["pendingDelete"] });
