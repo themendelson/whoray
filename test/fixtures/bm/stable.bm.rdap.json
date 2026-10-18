@@ -20,6 +20,30 @@
     "email": "jane.doe@example.com",
     "phone": "+44.2000000000"
   },
+  "admin": {
+    "name": "Jane Doe",
+    "organization": "Stable Corporation Ltd",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Hamilton",
+    "postalCode": "HM12",
+    "country": "BM",
+    "email": "jane.doe@example.com",
+    "phone": "+44.2000000000"
+  },
+  "tech": {
+    "name": "Jane Doe",
+    "organization": "Stable Corporation Ltd",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Hamilton",
+    "postalCode": "HM12",
+    "country": "BM",
+    "email": "jane.doe@example.com",
+    "phone": "+44.2000000000"
+  },
   "registry": {
     "id": "identity-digital",
     "name": "Identity Digital"

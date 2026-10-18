@@ -22,6 +22,32 @@
     "email": "domains.managers@sisley.fr",
     "phone": "+33.149523500"
   },
+  "admin": {
+    "name": "Domain Administrator",
+    "organization": "Sisley Paris",
+    "street": [
+      "16 avenue George V"
+    ],
+    "city": "PARIS",
+    "postalCode": "75008",
+    "country": "FR",
+    "email": "domains.managers@sisley.fr",
+    "phone": "+33.149523500"
+  },
+  "tech": {
+    "name": "INDOM contact",
+    "organization": "INDOM",
+    "street": [
+      "124-126 rue de Provence"
+    ],
+    "city": "Paris",
+    "state": "Paris",
+    "postalCode": "75008",
+    "country": "FR",
+    "email": "indom@indom.com",
+    "phone": "+33.148018360",
+    "fax": "+33.148016773"
+  },
   "registry": {
     "id": "identity-digital",
     "name": "Identity Digital"

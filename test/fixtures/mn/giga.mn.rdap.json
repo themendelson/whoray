@@ -22,6 +22,30 @@
     "email": "jane.doe@example.com",
     "phone": "+976.60000000"
   },
+  "admin": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Ulaanbaatar",
+    "state": "Bayanzurh",
+    "postalCode": "11000",
+    "country": "MN",
+    "email": "jane.doe@example.com",
+    "phone": "+976.60000000"
+  },
+  "tech": {
+    "name": "Jane Doe",
+    "street": [
+      "1 Example Street"
+    ],
+    "city": "Ulaanbaatar",
+    "state": "Bayanzurh",
+    "postalCode": "11000",
+    "country": "MN",
+    "email": "jane.doe@example.com",
+    "phone": "+976.60000000"
+  },
   "registry": {
     "id": "identity-digital",
     "name": "Identity Digital"
