@@ -31,7 +31,7 @@ export type Field =
 
 const ROLE_PREFIXES: [ContactRole, string[]][] = [
   ["registrant", ["registrant", "holder", "owner", "owner contact"]],
-  ["admin", ["admin", "administrative", "administrative contact", "admin contact", "admin_c", "administrativ contact"]],
+  ["admin", ["admin", "administrative", "administrative contact", "admin contact", "admin_c", "administrativ contact", "ac"]],
   ["tech", ["tech", "technical", "technical contact", "tech contact", "tech_c", "technical contacts"]],
   ["billing", ["billing", "billing contact", "billing_c"]],
   ["registrar", ["registrar", "sponsoring registrar"]],
@@ -78,6 +78,7 @@ const contactAliases: [Field, string[]][] = ROLE_PREFIXES.flatMap(([role, prefix
 export const aliases: [Field, string[]][] = [
   ...contactAliases,
   ["registrantName", ["registrant"]],
+  ["adminName", ["administrative contact(ac)"]],
   ["registrantOrganization", ["registrant organization-loc", "domain holder organization"]],
   ["registrantCountry", ["registrant country-loc", "domain holder country"]],
   ["registrantPostalCode", ["holder postal"]],
