@@ -1,8 +1,9 @@
 import type { DropRule } from "#drop.ts";
-import { fixedPeriods } from "#drop.ts";
+import { fixedPeriods, redemptionGracePeriod } from "#drop.ts";
 import { addDays, atUtcHour, daysBetween, rolledPast } from "#time.ts";
 
 const uk = fixedPeriods(60, 30, 5);
+const registryClick = redemptionGracePeriod(34, 4);
 const isoc: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 61);
 
 // Observed on .ai: names drop at 17:00 UTC, and an update after 14:00 UTC counts from the next day.
@@ -32,17 +33,26 @@ export const dropRules: Record<string, DropRule> = {
   ai: identityDigitalCcTld,
   am: ({ expirationDate }) => expirationDate && addDays(expirationDate, 45),
   ar: ({ expirationDate }) => expirationDate && addDays(expirationDate, 45),
+  click: registryClick,
   co: ({ released }) => released && addDays(rolledPast(released, 17), 1),
   "co.il": isoc,
   "co.uk": uk,
+  country: registryClick,
   do: ({ expirationDate }) => expirationDate && addDays(expirationDate, 47),
   de: ({ updatedDate, statuses }) =>
     statuses.has("redemptionPeriod") && updatedDate ? addDays(updatedDate, 31) : undefined,
+  diy: registryClick,
+  feedback: registryClick,
+  food: registryClick,
+  forum: registryClick,
   fr: ({ deleted }) => deleted && addDays(deleted, 30),
   ge: ({ expirationDate }) => expirationDate && addDays(expirationDate, 30),
+  hiv: registryClick,
   io: identityDigitalCcTld,
   it: ({ updatedDate, statuses }) =>
     statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 33) : undefined,
+  lifestyle: registryClick,
+  living: registryClick,
   ly: ({ expirationDate, updatedDate, statuses }) => {
     if (!expirationDate || !updatedDate) return undefined;
     if (!statuses.has("pendingDelete")) return addDays(expirationDate, 28);
@@ -53,8 +63,13 @@ export const dropRules: Record<string, DropRule> = {
   me: ({ updatedDate, statuses }) => updatedDate && addDays(updatedDate, statuses.has("redemptionPeriod") ? 35 : 6),
   mk: ({ expirationDate }) => expirationDate && addDays(expirationDate, 122),
   "me.uk": uk,
+  observer: registryClick,
   "org.il": isoc,
   "org.uk": uk,
+  pid: registryClick,
+  property: registryClick,
+  realty: registryClick,
+  sexy: registryClick,
   si: ({ expirationDate, statuses }) =>
     statuses.has("pendingDelete") && expirationDate ? addDays(expirationDate, 30) : undefined,
   // ZDNS dates a deletion in Beijing time (UTC+8): an update after 16:00 UTC counts from the next day.
@@ -62,11 +77,13 @@ export const dropRules: Record<string, DropRule> = {
     updatedDate && (statuses.has("pendingDelete") || statuses.has("redemptionPeriod"))
       ? atUtcHour(addDays(rolledPast(updatedDate, 16), 36), 0)
       : undefined,
+  trust: registryClick,
   uk,
   us: ({ expirationDate, updatedDate, statuses }) =>
     statuses.has("pendingDelete") && expirationDate && updatedDate
       ? usSchedule(expirationDate, updatedDate)
       : undefined,
+  vana: registryClick,
   xyz: ({ updatedDate, statuses }) =>
     statuses.has("pendingDelete") && updatedDate
       ? addDays(updatedDate, statuses.has("redemptionPeriod") ? 35 : 5)

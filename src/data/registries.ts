@@ -149,9 +149,10 @@ export const registries: Registry[] = [
     id: "tucows-registry",
     name: "Tucows Registry Services",
     textPattern: /Tucows Registry/,
-    redemption: 34,
+    redemption: 35,
     pendingDelete: 5,
     tlds: list(`
+      pw
       bar click cloud country creditunion diy feedback food forum gift hiphop hiv lifestyle link living
       locker love music observer pid property realty rest sexy trust vana yandex
     `),
