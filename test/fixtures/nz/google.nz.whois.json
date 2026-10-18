@@ -1,13 +1,9 @@
 {
   "domain": "google.nz",
   "tld": "nz",
-  "state": "unknown",
+  "state": "reserved",
+  "isRegistered": false,
   "statuses": [],
   "nameservers": [],
-  "error": {
-    "code": "unparseable",
-    "message": "No registration data or known not-found reply",
-    "server": "whois.test"
-  },
   "source": "whois"
 }
