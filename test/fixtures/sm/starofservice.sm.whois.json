@@ -1,0 +1,20 @@
+{
+  "domain": "starofservice.sm",
+  "tld": "sm",
+  "state": "registered",
+  "isAvailable": false,
+  "registrant": {
+    "name": "Star Of Service",
+    "email": "jane.doe@example.com",
+    "phone": "+33.600000000"
+  },
+  "tech": {
+    "name": "Jane Doe",
+    "email": "contact@domgate.com",
+    "phone": "+33.600000001"
+  },
+  "creationDate": "2015-10-05T00:00:00.000Z",
+  "statuses": [],
+  "nameservers": [],
+  "source": "whois"
+}

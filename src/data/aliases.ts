@@ -93,8 +93,8 @@ const contactAliases: [Field, string[]][] = ROLE_PREFIXES.flatMap(([role, prefix
 
 export const aliases: [Field, string[]][] = [
   ...contactAliases,
-  ["registrantName", ["registrant"]],
-  ["adminName", ["administrative contact(ac)"]],
+  ["registrantName", ["registrant", "owner"]],
+  ["adminName", "administrative contact", "techName", "technical contact", "billingName", "billing contact", ["administrative contact(ac)"]],
   ["registrantOrganization", ["registrant organization-loc", "domain holder organization"]],
   ["registrantCountry", ["registrant country-loc", "domain holder country"]],
   ["registrantPostalCode", ["holder postal"]],
