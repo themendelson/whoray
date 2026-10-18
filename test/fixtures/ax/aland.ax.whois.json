@@ -1,0 +1,31 @@
+{
+  "domain": "aland.ax",
+  "tld": "ax",
+  "state": "registered",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Ålands landskapsregering",
+    "url": "https://regeringen.ax"
+  },
+  "registrant": {
+    "name": "Ålands landskapsregering",
+    "street": [
+      "PB 1060",
+      "22111",
+      "MARIEHAMN"
+    ],
+    "country": "AX",
+    "email": "itsupport@regeringen.ax"
+  },
+  "creationDate": "2006-08-03T00:00:00.000Z",
+  "updatedDate": "2022-06-30T00:00:00.000Z",
+  "expirationDate": "2027-08-15T00:00:00.000Z",
+  "statuses": [],
+  "nameservers": [
+    "ns.regeringen.ax",
+    "ns3.alcom.fi",
+    "ns2.aland.net",
+    "ns2.regeringen.ax"
+  ],
+  "source": "whois"
+}
