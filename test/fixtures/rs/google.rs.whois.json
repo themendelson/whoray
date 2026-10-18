@@ -9,6 +9,12 @@
   "registrant": {
     "name": "Google LLC"
   },
+  "admin": {
+    "name": "Drustvo za marketing Google DOO"
+  },
+  "tech": {
+    "name": "MarkMonitor, Inc."
+  },
   "creationDate": "2008-03-10T12:31:19.000Z",
   "updatedDate": "2026-02-17T22:18:21.000Z",
   "expirationDate": "2027-03-10T12:31:19.000Z",
