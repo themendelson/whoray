@@ -107,9 +107,11 @@ function present(values: string[] | undefined): string | undefined {
   return values?.find((value) => visible(value) !== undefined);
 }
 
+const CONTACT_HANDLE = /^(?=\S*\d)[a-z0-9-]{5,}$/i;
+
 function registrantOf(fields: Map<Field, string[]>): Registrant | undefined {
   return registrant(
-    present(fields.get("registrantName")),
+    present(fields.get("registrantName")?.filter((value) => !CONTACT_HANDLE.test(value.trim()))),
     present(fields.get("registrantOrganization")),
     countryCode(present(fields.get("registrantCountry"))),
   );
