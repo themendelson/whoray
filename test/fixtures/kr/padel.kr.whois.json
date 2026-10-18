@@ -1,0 +1,26 @@
+{
+  "domain": "padel.kr",
+  "tld": "kr",
+  "state": "expired",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Megazone",
+    "url": "http://HOSTING.KR"
+  },
+  "registrant": {
+    "name": "Domain Admin"
+  },
+  "creationDate": "2016-09-23T00:00:00.000Z",
+  "updatedDate": "2024-09-14T00:00:00.000Z",
+  "expirationDate": "2026-09-23T00:00:00.000Z",
+  "dropDate": "2026-10-25T00:00:00.000Z",
+  "statuses": [
+    "clientTransferProhibited"
+  ],
+  "nameservers": [
+    "ns1.afternic.com",
+    "ns2.afternic.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
