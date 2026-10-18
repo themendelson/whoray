@@ -168,6 +168,16 @@ export const registries: Registry[] = [
     `),
   },
   {
+    id: "afnic",
+    name: "AFNIC",
+    textPattern: /This is the AFNIC Whois server/,
+    redemption: 30,
+    pendingDelete: 0,
+    tlds: list(`
+      fr paris pm re tf wf yt
+    `),
+  },
+  {
     id: "nominet",
     name: "Nominet",
     textPattern: /nominet/,

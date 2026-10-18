@@ -3,6 +3,10 @@
   "tld": "fr",
   "state": "available",
   "isAvailable": true,
+  "registry": {
+    "id": "afnic",
+    "name": "AFNIC"
+  },
   "statuses": [],
   "nameservers": [],
   "source": "whois"

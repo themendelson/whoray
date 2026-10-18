@@ -1,5 +1,6 @@
 import type { Transform } from "#whois/transforms.ts";
 import {
+  afnicHolder,
   commentedSections,
   domainEppStatuses,
   latestChange,
@@ -8,16 +9,23 @@ import {
   registeredOnDate,
 } from "#whois/transforms.ts";
 
+const afnic: Transform[] = [domainEppStatuses, afnicHolder];
+
 export const quirks: Record<string, Transform[]> = {
-  cz: [linkedRegistrant],
   cr: [linkedRegistrant],
-  fr: [domainEppStatuses],
+  cz: [linkedRegistrant],
+  fr: afnic,
   gg: [registeredOnDate],
   il: [latestChange],
   je: [registeredOnDate],
   ls: [linkedRegistrant],
   mk: [linkedRegistrant],
   mw: [linkedRegistrant],
+  pm: afnic,
+  re: afnic,
+  tf: afnic,
   tw: [recordOnDates],
   ua: [commentedSections],
+  wf: afnic,
+  yt: afnic,
 };

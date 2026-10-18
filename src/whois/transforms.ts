@@ -21,6 +21,29 @@ export const domainEppStatuses: Transform = (text) => {
   return block === undefined ? text : text.replace(block, block.replace(/^eppstatus:/gm, "epp status:"));
 };
 
+function contactBlock(text: string, handleKey: string, blockKey: string): { key: string; value: string }[] {
+  const handle = new RegExp(`^${handleKey}:[ \\t]+(\\S+)\\s*$`, "m").exec(text)?.[1];
+  if (handle === undefined) return [];
+  const escaped = handle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const pattern = `^${blockKey}:[ \\t]+${escaped}[ \\t]*\\r?\\n([\\s\\S]*?)(?:\\r?\\n[ \\t]*\\r?\\n|(?![\\s\\S]))`;
+  const block = new RegExp(pattern, "m").exec(text)?.[1];
+  return (block ?? "").split(/\r?\n/).flatMap((line) => {
+    const match = /^([\w-]+):[ \t]*(.*?)\s*$/.exec(line);
+    return match?.[1] === undefined ? [] : [{ key: match[1].toLowerCase(), value: match[2] ?? "" }];
+  });
+}
+
+function prepended(text: string, lines: string[]): string {
+  return lines.length === 0 ? text : `${lines.join("\n")}\n\n${text}`;
+}
+
+const CONTACT_HANDLES: [string, string][] = [
+  ["admin-c", "Admin"],
+  ["tech-c", "Tech"],
+];
+const FRED_HANDLES: [string, string][] = [["registrant", "Registrant"], ...CONTACT_HANDLES];
+const AFNIC_HANDLES: [string, string][] = [["holder-c", "Registrant"], ...CONTACT_HANDLES];
+
 const FRED_CONTACT_KEYS: Record<string, string> = {
   org: "Organization",
   name: "Name",
@@ -29,24 +52,8 @@ const FRED_CONTACT_KEYS: Record<string, string> = {
   "fax-no": "Fax",
 };
 
-const FRED_ROLES: [string, string][] = [
-  ["registrant", "Registrant"],
-  ["admin-c", "Admin"],
-  ["tech-c", "Tech"],
-];
-
 function linkedContactLines(text: string, handleKey: string, label: string): string[] {
-  const handle = new RegExp(`^${handleKey}:[ \\t]+(\\S+)\\s*$`, "m").exec(text)?.[1];
-  if (handle === undefined) return [];
-  const escaped = handle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const block = new RegExp(
-    `^contact:[ \\t]+${escaped}[ \\t]*\\r?\\n([\\s\\S]*?)(?:\\r?\\n[ \\t]*\\r?\\n|(?![\\s\\S]))`,
-    "m",
-  ).exec(text)?.[1];
-  const fields = (block ?? "").split(/\r?\n/).flatMap((line) => {
-    const match = /^([\w-]+):[ \t]*(.*?)\s*$/.exec(line);
-    return match?.[1] === undefined ? [] : [{ key: match[1].toLowerCase(), value: match[2] ?? "" }];
-  });
+  const fields = contactBlock(text, handleKey, "contact");
   const addresses = fields.filter(({ key }) => key === "address").map(({ value }) => value);
   const country = /^[A-Z]{2}$/.test(addresses.at(-1) ?? "") ? addresses.pop() : undefined;
   return [
@@ -59,7 +66,26 @@ function linkedContactLines(text: string, handleKey: string, label: string): str
   ];
 }
 
-export const linkedRegistrant: Transform = (text) => {
-  const lines = FRED_ROLES.flatMap(([handleKey, label]) => linkedContactLines(text, handleKey, label));
-  return lines.length === 0 ? text : `${lines.join("\n")}\n\n${text}`;
-};
+export const linkedRegistrant: Transform = (text) =>
+  prepended(
+    text,
+    FRED_HANDLES.flatMap(([handleKey, label]) => linkedContactLines(text, handleKey, label)),
+  );
+
+export const afnicHolder: Transform = (text) =>
+  prepended(
+    text,
+    AFNIC_HANDLES.flatMap(([handleKey, label]) => {
+      const fields = contactBlock(text, handleKey, "nic-hdl");
+      const organization = fields.some(({ key, value }) => key === "type" && value === "ORGANIZATION");
+      const parts: Record<string, string> = {
+        contact: organization ? "Organization" : "Name",
+        address: "Street",
+        country: "Country",
+        "e-mail": "Email",
+        phone: "Phone",
+        "fax-no": "Fax",
+      };
+      return fields.flatMap(({ key, value }) => (parts[key] === undefined ? [] : [`${label} ${parts[key]}: ${value}`]));
+    }),
+  );
