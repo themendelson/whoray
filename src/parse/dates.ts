@@ -54,7 +54,8 @@ export function parseDate(input: string): Date | undefined {
   const value = input
     .trim()
     .replace(/(\d)(st|nd|rd|th)\b/gi, "$1")
-    .replace(/^[a-z]{3},?\s+(?=[a-z]{3}\s)/i, "");
+    .replace(/^[a-z]{3},?\s+(?=[a-z]{3}\s)/i, "")
+    .replace(/^([a-z]{3}\s+\d{1,2})\s+(\d{1,2}:\d{2}(?::\d{2})?)\s+(\d{4})\b/i, "$1 $3 $2");
   for (const pattern of PATTERNS) {
     const found = pattern(value);
     const date = found && build(found);

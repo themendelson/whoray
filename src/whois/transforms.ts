@@ -9,6 +9,8 @@ export const latestChange: Transform = (text) => {
   return latest === undefined ? text : `Updated: ${latest}\n${text}`;
 };
 
+export const headerStatus: Transform = (text) => text.replace(/^Domain \S+ \(([^)]+)\)$/m, "$&\nStatus: $1");
+
 export const recordOnDates: Transform = (text) => text.replace(/^\s*Record (expires|created) on /gm, "\n$1: ");
 
 export const commentedSections: Transform = (text) =>

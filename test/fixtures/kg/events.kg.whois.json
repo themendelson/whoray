@@ -1,0 +1,25 @@
+{
+  "domain": "events.kg",
+  "tld": "kg",
+  "state": "registered",
+  "isAvailable": false,
+  "billing": {
+    "name": "ОсОО Hoster kg (Хостер кж)",
+    "street": [
+      "Kyrgyzstan г. Бишкек ул. Малдыбаева д. 6, кв. 7"
+    ],
+    "email": "domain@hoster.kg",
+    "phone": "996312986133"
+  },
+  "creationDate": "2022-10-17T14:34:08.000Z",
+  "updatedDate": "2026-10-18T15:10:04.000Z",
+  "expirationDate": "2027-10-16T14:34:08.000Z",
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "arvind.ns.cloudflare.com",
+    "asa.ns.cloudflare.com"
+  ],
+  "source": "whois"
+}
