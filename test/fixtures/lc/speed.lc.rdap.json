@@ -1,0 +1,35 @@
+{
+  "domain": "speed.lc",
+  "tld": "lc",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Porkbun LLC",
+    "ianaId": 1861,
+    "url": "https://cart-before.porkbun.horse/rdap/",
+    "abuseEmail": "abuse+registry@porkbun.com",
+    "abusePhone": "+1.8557675286"
+  },
+  "registrant": {
+    "organization": "0 .SRL Services",
+    "state": "Fujian",
+    "country": "CN"
+  },
+  "registry": {
+    "id": "identity-digital",
+    "name": "Identity Digital"
+  },
+  "creationDate": "2025-08-21T12:20:19.000Z",
+  "updatedDate": "2026-10-03T13:46:12.000Z",
+  "expirationDate": "2026-08-21T12:20:19.000Z",
+  "snapshotDate": "2026-10-18T21:40:13.000Z",
+  "dropDate": "2026-11-08T01:46:12.000Z",
+  "deletionDate": "2026-11-07T13:46:12.000Z",
+  "statuses": [
+    "redemptionPeriod",
+    "inactive"
+  ],
+  "nameservers": [],
+  "dnssec": false,
+  "source": "rdap"
+}
