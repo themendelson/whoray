@@ -50,5 +50,7 @@ pnpm build
 `pnpm check` passes, the diff touches only what the task needs, and the summary lists the commands
 you ran with their results.
 
-Label each PR `breaking`, `fix` or `internal` (or leave it unlabelled for an improvement): release
-notes are grouped by these labels, and `internal` is left out. PRs are squash-merged into `main`.
+PR titles follow Conventional Commits: `fix:`, `feat:` or `perf:`, a `!` before the colon for a
+breaking change (`feat!:`), and `refactor:`, `test:`, `docs:`, `ci:` or `chore:` for internal work.
+CI rejects other titles and labels the PR from its title; release notes are grouped by those labels.
+PRs are squash-merged into `main`, so the title becomes the commit.
