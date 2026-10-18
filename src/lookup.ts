@@ -101,9 +101,13 @@ async function resolve(
   protocol: NonNullable<LookupOptions["protocol"]>,
 ): Promise<Outcome | undefined> {
   if (protocol !== "auto") return via(context, protocol, context.signal);
-  const whois = await handingOff(context, (signal) => via(context, "whois", signal));
-  if (whois !== undefined && whois.found.kind !== "error") return whois;
-  return settle(whois, await via(context, "rdap", context.signal));
+  const whoisFirst = context.entry.prefer !== "rdap";
+  const first = whoisFirst
+    ? await handingOff(context, (signal) => via(context, "whois", signal))
+    : await via(context, "rdap", context.signal);
+  if (first !== undefined && first.found.kind !== "error") return first;
+  const second = await via(context, whoisFirst ? "rdap" : "whois", context.signal);
+  return whoisFirst ? settle(first, second) : settle(second, first);
 }
 
 function settle(whois: Outcome | undefined, rdap: Outcome | undefined): Outcome | undefined {
