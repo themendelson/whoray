@@ -19,3 +19,7 @@ export function atUtcHour(date: Date, hour: number): Date {
 export function rolledPast(date: Date, hour: number): Date {
   return date.getUTCHours() >= hour ? addDays(date, 1) : date;
 }
+
+export function onOrAfterWeekday(date: Date, weekday: number): Date {
+  return addDays(date, (weekday - date.getUTCDay() + 7) % 7);
+}

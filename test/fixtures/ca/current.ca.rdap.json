@@ -1,0 +1,53 @@
+{
+  "domain": "current.ca",
+  "tld": "ca",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "CIRA Default Registrar",
+    "url": "http://www.cira.ca"
+  },
+  "registrant": {
+    "name": "generated registrant",
+    "street": [
+      "979 Bank Street",
+      "Suite 400"
+    ],
+    "city": "Ottawa",
+    "state": "ON",
+    "postalCode": "K1S5K5",
+    "country": "CA",
+    "email": "regsupport@cira.ca",
+    "phone": "+1.6132375335"
+  },
+  "admin": {
+    "name": "generated registrant",
+    "street": [
+      "979 Bank Street",
+      "Suite 400"
+    ],
+    "city": "Ottawa",
+    "state": "ON",
+    "postalCode": "K1S5K5",
+    "country": "CA",
+    "email": "regsupport@cira.ca",
+    "phone": "+1.6132375335"
+  },
+  "handle": "121954784-CIRA",
+  "creationDate": "2026-10-13T06:20:46.000Z",
+  "updatedDate": "2026-10-13T06:26:07.000Z",
+  "expirationDate": "3000-01-01T00:00:00.000Z",
+  "snapshotDate": "2026-10-18T21:00:37.000Z",
+  "dropDate": "2026-10-21T00:00:00.000Z",
+  "statuses": [
+    "inactive",
+    "pendingDelete",
+    "serverHold",
+    "serverRenewProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [],
+  "dnssec": false,
+  "source": "rdap"
+}

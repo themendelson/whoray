@@ -1,11 +1,12 @@
 import type { DropRule } from "#drop.ts";
 import { fixedPeriods, redemptionGracePeriod } from "#drop.ts";
-import { addDays, atUtcHour, daysBetween, rolledPast } from "#time.ts";
+import { addDays, atUtcHour, daysBetween, onOrAfterWeekday, rolledPast } from "#time.ts";
 
 const uk = fixedPeriods(60, 30, 5);
 const registryClick = redemptionGracePeriod(34, 4);
 const afnic: DropRule = ({ deleted }) => deleted && addDays(deleted, 30);
 const zacr: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 30);
+const WEDNESDAY = 3;
 const isoc: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 61);
 
 // Observed on .ai: names drop at 17:00 UTC, and an update after 14:00 UTC counts from the next day.
@@ -36,6 +37,11 @@ export const dropRules: Record<string, DropRule> = {
   ai: identityDigitalCcTld,
   am: ({ expirationDate }) => expirationDate && addDays(expirationDate, 45),
   ar: ({ expirationDate }) => expirationDate && addDays(expirationDate, 45),
+  // CIRA releases a week's deleted names together, on the following Wednesday.
+  ca: ({ updatedDate, statuses }) =>
+    statuses.has("pendingDelete") && updatedDate
+      ? onOrAfterWeekday(atUtcHour(addDays(updatedDate, 3), 0), WEDNESDAY)
+      : undefined,
   capetown: zacr,
   click: registryClick,
   co: ({ released }) => released && addDays(rolledPast(released, 17), 1),
