@@ -1,0 +1,11 @@
+{
+  "domain": "muellerk.de",
+  "tld": "de",
+  "state": "redemption",
+  "isRegistered": true,
+  "statuses": [
+    "redemptionPeriod"
+  ],
+  "nameservers": [],
+  "source": "rdap"
+}
