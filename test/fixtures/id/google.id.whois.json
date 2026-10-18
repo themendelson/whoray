@@ -2,7 +2,7 @@
   "domain": "google.id",
   "tld": "id",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "PT Digital Registra Indonesia",
     "ianaId": 1,

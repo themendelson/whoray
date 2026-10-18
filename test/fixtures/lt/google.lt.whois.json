@@ -2,7 +2,7 @@
   "domain": "google.lt",
   "tld": "lt",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor, Inc.",
     "url": "http://www.markmonitor.com"

@@ -2,7 +2,7 @@
   "domain": "nic.cyou",
   "tld": "cyou",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Shortdot SA",
     "ianaId": 9999,

@@ -2,7 +2,7 @@
   "domain": "hello.sx",
   "tld": "sx",
   "state": "reserved",
-  "isRegistered": false,
+  "isAvailable": false,
   "statuses": [],
   "nameservers": [],
   "source": "whois"

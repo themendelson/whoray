@@ -2,7 +2,7 @@
   "domain": "google.mx",
   "tld": "mx",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Markmonitor"
   },

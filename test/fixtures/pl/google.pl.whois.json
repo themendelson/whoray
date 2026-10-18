@@ -2,7 +2,7 @@
   "domain": "google.pl",
   "tld": "pl",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Markmonitor, Inc."
   },

@@ -2,7 +2,7 @@
   "domain": "google.th",
   "tld": "th",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "THNIC"
   },

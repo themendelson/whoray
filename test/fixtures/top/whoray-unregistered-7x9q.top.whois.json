@@ -2,7 +2,7 @@
   "domain": "whoray-unregistered-7x9q.top",
   "tld": "top",
   "state": "available",
-  "isRegistered": false,
+  "isAvailable": true,
   "registry": {
     "id": "zdns",
     "name": "ZDNS"

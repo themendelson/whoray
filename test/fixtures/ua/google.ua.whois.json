@@ -2,7 +2,7 @@
   "domain": "google.ua",
   "tld": "ua",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "url": "http://markmonitor.com",

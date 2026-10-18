@@ -2,7 +2,7 @@
   "domain": "google.at",
   "tld": "at",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "url": "https://nic.at/registrar/434"

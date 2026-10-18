@@ -2,7 +2,7 @@
   "domain": "google.ke",
   "tld": "ke",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Afriregister Limited"
   },

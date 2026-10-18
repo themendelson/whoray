@@ -2,7 +2,7 @@
   "domain": "google.kr",
   "tld": "kr",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Whois Corp.",
     "url": "http://whois.co.kr"

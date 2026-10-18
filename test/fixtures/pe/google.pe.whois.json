@@ -2,7 +2,7 @@
   "domain": "google.pe",
   "tld": "pe",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc."
   },

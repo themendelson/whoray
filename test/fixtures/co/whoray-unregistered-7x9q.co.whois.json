@@ -2,7 +2,7 @@
   "domain": "whoray-unregistered-7x9q.co",
   "tld": "co",
   "state": "available",
-  "isRegistered": false,
+  "isAvailable": true,
   "registry": {
     "id": "mintic",
     "name": "MinTIC"

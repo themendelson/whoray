@@ -2,7 +2,7 @@
   "domain": "nic.club",
   "tld": "club",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "DOTCLUB DOMAINS, LLC",
     "ianaId": 9999

@@ -2,7 +2,7 @@
   "domain": "google.is",
   "tld": "is",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrant": {
     "name": "Google LLC",
     "country": "US"

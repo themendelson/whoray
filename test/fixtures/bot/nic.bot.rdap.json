@@ -2,7 +2,7 @@
   "domain": "nic.bot",
   "tld": "bot",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Amazon Registry Services, Inc. (Registry)",
     "ianaId": 9999,

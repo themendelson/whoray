@@ -58,7 +58,7 @@ Fields marked `?` are left out when they don't apply or the registry doesn't pub
   unicode?: string;            // "bücher.de", only for internationalized names
   tld: string;                 // "co", or "co.uk" for second-level suffixes
   state: State;                // see the table below
-  isRegistered?: boolean;      // missing only when the lookup failed
+  isAvailable?: boolean;       // true only when the name can be registered now; missing only when the lookup failed
   premium?: true;              // an available name the registry sells at a premium price
 
   registrar?: { name: string; ianaId?: number; url?: string; abuseEmail?: string; abusePhone?: string; whoisServer?: string };

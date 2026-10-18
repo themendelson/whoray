@@ -2,7 +2,7 @@
   "domain": "google.su",
   "tld": "su",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "RUCENTER-SU"
   },

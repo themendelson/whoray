@@ -2,7 +2,7 @@
   "domain": "nic.top",
   "tld": "top",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Bangning Digital Technology Co.,Ltd",
     "ianaId": 4158,

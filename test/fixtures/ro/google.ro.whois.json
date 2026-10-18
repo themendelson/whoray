@@ -2,7 +2,7 @@
   "domain": "google.ro",
   "tld": "ro",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "url": "www.markmonitor.com"

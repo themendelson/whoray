@@ -2,7 +2,7 @@
   "domain": "google.je",
   "tld": "je",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc.",
     "url": "http://www.markmonitor.com"

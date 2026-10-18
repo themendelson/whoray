@@ -2,7 +2,7 @@
   "domain": "nic.cloud",
   "tld": "cloud",
   "state": "registered",
-  "isRegistered": true,
+  "isAvailable": false,
   "registrar": {
     "name": "Aruba PEC SpA",
     "ianaId": 9999,
