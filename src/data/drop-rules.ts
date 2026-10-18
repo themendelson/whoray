@@ -80,6 +80,7 @@ export const dropRules: Record<string, DropRule> = {
   me: ({ updatedDate, statuses }) => updatedDate && addDays(updatedDate, statuses.has("redemptionPeriod") ? 35 : 6),
   mk: ({ expirationDate }) => expirationDate && addDays(expirationDate, 122),
   "me.uk": uk,
+  ng: ({ expirationDate }) => expirationDate && addDays(expirationDate, 103),
   observer: registryClick,
   "org.il": isoc,
   "org.uk": uk,
