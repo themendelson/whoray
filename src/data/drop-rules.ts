@@ -39,6 +39,7 @@ export const dropRules: Record<string, DropRule> = {
   de: ({ updatedDate, statuses }) =>
     statuses.has("redemptionPeriod") && updatedDate ? addDays(updatedDate, 31) : undefined,
   fr: ({ deleted }) => deleted && addDays(deleted, 30),
+  ge: ({ expirationDate }) => expirationDate && addDays(expirationDate, 30),
   io: identityDigitalCcTld,
   it: ({ updatedDate, statuses }) =>
     statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 33) : undefined,
