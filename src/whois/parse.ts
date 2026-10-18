@@ -143,7 +143,7 @@ function addressOf(fields: Map<Field, string[]>, role: ContactRole): Details<Add
 
 function contactOf(fields: Map<Field, string[]>, role: ContactRole): Contact | undefined {
   return contact({
-    name: present(fields.get(`${role}Name`)?.filter((value) => !CONTACT_HANDLE.test(value.trim()))),
+    name: visible(fields.get(`${role}Name`)?.find((value) => !CONTACT_HANDLE.test(value.trim()))),
     organization: present(fields.get(`${role}Organization`)),
     ...addressOf(fields, role),
   });

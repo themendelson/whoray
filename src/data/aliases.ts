@@ -181,6 +181,7 @@ export const aliases: [Field, string[]][] = [
       "domain nameservers",
       "domain servers",
       "domain servers in listed order",
+      "dns servers",
     ],
   ],
   ["dnssec", ["dnssec", "signed", "dnssec status", "dnssec signed"]],
