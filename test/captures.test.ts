@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, expect, test, vi } from "vitest";
-import { lookup } from "#node.ts";
+import { lookup } from "#runtime/node.ts";
 import type { Capture } from "./support.ts";
 import { captures, httpServer, whoisServer } from "./support.ts";
 

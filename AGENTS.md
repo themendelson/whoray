@@ -16,19 +16,20 @@ pnpm build
 
 ## Layout
 
-- `src/node.ts`, `src/workerd.ts`, `src/browser.ts`: entry points, picked by package.json export
-  conditions. Each only wires a socket into `createLookup`; the shared exports live in `src/core.ts`.
+- `src/runtime/`: one entry point per runtime, picked by package.json export conditions. Each holds
+  only its port 43 socket and wires it into `createLookup`; the shared exports live in `src/core.ts`.
 - `src/lookup.ts`: one path for both protocols (locate the server, ask the registry, follow the
   registrar). `protocol: "auto"` asks WHOIS and falls back to RDAP.
-- `src/whois.ts`, `src/rdap.ts`: the transports. `src/iana.ts`: IANA lookups, cached for a day.
+- `src/whois/`, `src/rdap/`: each protocol's transport and parser. `src/rdap/` never imports
+  `src/whois/`, so a browser bundle can leave WHOIS out. `src/iana.ts`: IANA lookups, cached for a day.
 - `src/domain.ts`: input normalization.
-- `src/parse/`: WHOIS text and RDAP JSON into a `DomainRecord`.
+- `src/parse/`: what both parsers share, and `toRecord`, which turns either one's answer into a `DomainRecord`.
 - `src/data/`: servers, registries, label aliases, phrases, statuses, per-TLD quirks. Knowledge about a TLD
   lives here, never in an `if (tld === …)` in code.
 
 ## Rules the linter can't check
 
-- No runtime dependencies, and nothing that only exists on one runtime outside `src/socket/`.
+- No runtime dependencies, and nothing that only exists on one runtime outside `src/runtime/`.
 - A new TLD, label or phrase is a data change. If the parser needs code for one TLD, add a named
   transform to `src/parse/transforms.ts` and reference it from `src/data/quirks.ts`.
 - Parse, don't cast: JSON from servers is read through `#json.ts`. Casts are a lint error; fix the

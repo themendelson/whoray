@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, expect, test, vi } from "vitest";
-import { lookup, parseRdap, parseWhois } from "#node.ts";
+import { lookup, parseRdap, parseWhois } from "#runtime/node.ts";
 import { httpServer, whoisServer } from "./support.ts";
 
 beforeAll(() => {

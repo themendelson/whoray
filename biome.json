@@ -93,6 +93,30 @@
   },
   "overrides": [
     {
+      "includes": ["src/rdap/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "patterns": [
+                  {
+                    "group": ["../**"],
+                    "message": "No ../ imports: use the # import (package.json \"imports\"), e.g. #parse/dates.ts."
+                  },
+                  {
+                    "group": ["#whois/**"],
+                    "message": "RDAP code can't import WHOIS code: a bundle that only asks RDAP should leave WHOIS out."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
       "includes": ["src/data/**"],
       "linter": {
         "rules": {

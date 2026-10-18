@@ -1,6 +1,6 @@
 import { object, strings } from "#json.ts";
 import type { Connect } from "#types.ts";
-import { queryWhois } from "#whois.ts";
+import { queryWhois } from "#whois/query.ts";
 
 let rdapBases: ReadonlyMap<string, string> | undefined;
 const whoisHosts = new Map<string, string | undefined>();
