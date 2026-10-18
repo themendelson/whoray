@@ -1,0 +1,35 @@
+{
+  "domain": "era.amsterdam",
+  "tld": "amsterdam",
+  "state": "redemption",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Key-Systems LLC",
+    "ianaId": 1345,
+    "url": "http://www.key-systems.net/tld/amsterdam",
+    "abuseEmail": "abuse@key-systems.net",
+    "abusePhone": "+49.68949396850",
+    "whoisServer": "whois.rrpproxy.net"
+  },
+  "registry": {
+    "id": "sidn",
+    "name": "SIDN"
+  },
+  "handle": "DNM_164728-SIDN",
+  "creationDate": "2023-10-09T14:01:12.000Z",
+  "updatedDate": "2026-10-07T21:17:35.000Z",
+  "expirationDate": "2026-10-09T14:01:12.000Z",
+  "snapshotDate": "2026-10-18T20:24:54.000Z",
+  "dropDate": "2026-11-15T21:17:35.000Z",
+  "statuses": [
+    "clientTransferProhibited",
+    "pendingDelete",
+    "redemptionPeriod"
+  ],
+  "nameservers": [
+    "ns01.hostnet.nl",
+    "ns02.hostnet.nl"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
