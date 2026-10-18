@@ -1,0 +1,40 @@
+{
+  "domain": "robot.africa",
+  "tld": "africa",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "Namecheap, Inc.",
+    "ianaId": 1068,
+    "url": "https://www.namecheap.com",
+    "abuseEmail": "abuse@namecheap.com",
+    "abusePhone": "+1.6613102107",
+    "whoisServer": "whois.namecheap.com"
+  },
+  "registrant": {
+    "country": "US"
+  },
+  "registry": {
+    "id": "zacr",
+    "name": "ZA Central Registry"
+  },
+  "handle": "57ap_DOMAIN-AFRICA",
+  "creationDate": "2025-10-05T21:34:45.000Z",
+  "updatedDate": "2026-10-15T21:35:03.000Z",
+  "expirationDate": "2026-10-05T21:34:45.000Z",
+  "snapshotDate": "2026-10-18T20:23:57.000Z",
+  "dropDate": "2026-11-04T21:34:45.000Z",
+  "statuses": [
+    "inactive",
+    "clientTransferProhibited",
+    "pendingDelete",
+    "serverHold",
+    "serverTransferProhibited"
+  ],
+  "nameservers": [
+    "ns1.sedoparking.com",
+    "ns2.sedoparking.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}
