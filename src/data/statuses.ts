@@ -32,6 +32,7 @@ export const statusSynonyms: Readonly<Record<string, string>> = {
   "pending cancel": "pendingDelete",
   rédemption: "redemptionPeriod",
   supprimé: "pendingDelete",
+  "the domain isn't generated in the zone": "serverHold",
   "transfer locked": "clientTransferProhibited",
   "domain transfer locked": "clientTransferProhibited",
   "registrar locked": "clientTransferProhibited",

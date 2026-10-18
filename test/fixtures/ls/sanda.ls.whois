@@ -1,0 +1,39 @@
+whois.nic.ls
+% Domain Information over Whois protocol
+% 
+% Whoisd Server Version: 3.10.2
+% Timestamp: Sun Oct 18 23:46:27 2026
+
+domain:       sanda.ls
+registrant:   ADMIN-REGISTRANT4483
+admin-c:      ADMIN-ADMIN4483
+nsset:        ADMIN-NS-4483
+registrar:    REG-ZEECOM
+status:       The domain isn't generated in the zone
+status:       Domain expired
+registered:   16.09.2025 20:46:50
+expire:       16.09.2026
+
+contact:      ADMIN-REGISTRANT4483
+registrar:    REG-ZEECOM
+created:      16.09.2025 20:46:43
+
+contact:      ADMIN-ADMIN4483
+registrar:    REG-ZEECOM
+created:      16.09.2025 20:46:45
+
+nsset:        ADMIN-NS-4483
+nserver:      pns21.cloudns.net 
+nserver:      pns22.cloudns.net 
+tech-c:       ADMIN-BILLING4483
+registrar:    REG-ZEECOM
+created:      16.09.2025 20:46:49
+
+contact:      ADMIN-BILLING4483
+registrar:    REG-ZEECOM
+created:      16.09.2025 20:46:47
+
+
+>>> Terms: Data provided for information purposes only.
+>>> Rate limited; bulk access prohibited.
+
