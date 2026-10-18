@@ -60,7 +60,7 @@ export const registries: Registry[] = [
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
-      ag bm bz mn pr sc
+      ag bm bz lc mn pr sc
       onl
       academy accountants actor agency airforce apartments archi army associates attorney auction band
       bargains bet bike bingo bio black blue boutique broker builders business cab cafe camera camp

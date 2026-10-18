@@ -54,6 +54,7 @@ export const servers: Record<string, ServerEntry> = {
   jp: { whois: "whois.jprs.jp", query: "{domain}/e" },
   la: { whois: "whois.nic.la" },
   lat: { whois: "whois.nic.lat" },
+  lc: { rdap: identityDigital },
   li: { rdap: "https://rdap.nic.ch/" },
   link: { whois: "whois.uniregistry.net" },
   lol: { whois: "whois.nic.lol" },
