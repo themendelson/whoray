@@ -10,6 +10,10 @@
   "registrant": {
     "name": "Domain Admin"
   },
+  "admin": {
+    "name": "Domain Admin",
+    "email": "name@nate.com"
+  },
   "creationDate": "2016-09-23T00:00:00.000Z",
   "updatedDate": "2024-09-14T00:00:00.000Z",
   "expirationDate": "2026-09-23T00:00:00.000Z",
