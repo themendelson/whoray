@@ -113,7 +113,7 @@ export const registries: Registry[] = [
     redemption: 35,
     pendingDelete: 5,
     tlds: list(`
-      fo gd la
+      fo gd la vg
       allfinanz aquarelle art audio auto autos baby beauty best bmw boats bond box build cam car cars case
       ceo cfd christmas college cyou dealer deloitte dhl diet dvag fans flowers fresenius frl fun game
       gent guitars hair help homes host hosting icu inc jnj kfh kpn kred lat lidl llp lol london lpl

@@ -94,6 +94,7 @@ export const dropRules: Record<string, DropRule> = {
       ? usSchedule(expirationDate, updatedDate)
       : undefined,
   vana: registryClick,
+  vg: redemptionGracePeriod(34, 5),
   wf: afnic,
   xyz: ({ updatedDate, statuses }) =>
     statuses.has("pendingDelete") && updatedDate
