@@ -1,0 +1,32 @@
+{
+  "domain": "bettafish.top",
+  "tld": "top",
+  "state": "pendingDelete",
+  "isAvailable": false,
+  "registrar": {
+    "name": "GMO Internet, Inc.",
+    "ianaId": 49,
+    "url": "http://www.gmo.jp",
+    "abuseEmail": "abuse@internet.gmo",
+    "abusePhone": "0337709199"
+  },
+  "registry": {
+    "id": "zdns",
+    "name": "ZDNS"
+  },
+  "handle": "D20250807G10001G_53560488-top",
+  "creationDate": "2025-08-07T04:26:33.000Z",
+  "updatedDate": "2026-09-17T18:11:35.000Z",
+  "expirationDate": "2026-08-07T04:26:33.000Z",
+  "snapshotDate": "2026-10-18T16:59:11.000Z",
+  "dropDate": "2026-10-24T00:00:00.000Z",
+  "statuses": [
+    "pendingDelete"
+  ],
+  "nameservers": [
+    "dns1.onamae-expired.com",
+    "dns2.onamae-expired.com"
+  ],
+  "dnssec": false,
+  "source": "rdap"
+}
