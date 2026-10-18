@@ -81,6 +81,7 @@ export const servers: Record<string, ServerEntry> = {
   shop: { whois: "whois.nic.shop" },
   site: { whois: "whois.nic.site" },
   so: { rdap: "https://rdap.nic.so/", whois: "whois.nic.so" },
+  sx: { whois: "whois.sx" },
   space: { whois: "whois.nic.space" },
   store: { whois: "whois.nic.store" },
   stream: { whois: "whois.nic.stream" },
