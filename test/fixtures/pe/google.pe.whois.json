@@ -9,6 +9,10 @@
   "registrant": {
     "name": "Google LLC"
   },
+  "admin": {
+    "name": "Google LLC",
+    "email": "dns-admin@google.com"
+  },
   "snapshotDate": "2026-10-16T18:47:33.000Z",
   "statuses": [
     "clientTransferProhibited",

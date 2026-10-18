@@ -5,7 +5,17 @@
   "isAvailable": false,
   "registrar": {
     "name": "DOTCLUB DOMAINS, LLC",
-    "ianaId": 9999
+    "ianaId": 9999,
+    "street": [
+      "1640 West Oakland Park, Blvd 304"
+    ],
+    "city": "Oakland Park",
+    "state": "FL",
+    "postalCode": "33311",
+    "country": "US",
+    "email": "howard@nic.club",
+    "phone": "+1.916307709",
+    "fax": "+1.916307709"
   },
   "registrant": {
     "state": "FL",

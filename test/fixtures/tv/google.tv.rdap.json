@@ -7,6 +7,17 @@
     "name": "MarkMonitor, Inc.",
     "ianaId": 292,
     "url": "www.markmonitor.com",
+    "street": [
+      "1120 S. Rackham Way",
+      "Suite 300"
+    ],
+    "city": "Meridian",
+    "state": "ID",
+    "postalCode": "83709",
+    "country": "US",
+    "email": "registry.admin@markmonitor.com",
+    "phone": "+1.2083895740",
+    "fax": "+1.2083895779",
     "abuseEmail": "registry.admin@markmonitor.com",
     "abusePhone": "+1.2083895740"
   },

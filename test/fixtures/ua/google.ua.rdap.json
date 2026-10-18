@@ -5,7 +5,9 @@
   "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc.",
-    "url": "http://markmonitor.com"
+    "url": "http://markmonitor.com",
+    "email": "abusecomplaints@markmonitor.com",
+    "phone": "+12083895740"
   },
   "registrant": {
     "name": "Domain Administrator",
@@ -17,7 +19,8 @@
     "state": "CA",
     "postalCode": "94043",
     "email": "dns-admin@google.com",
-    "phone": "+1.6502530000"
+    "phone": "+1.6502530000",
+    "fax": "+1.6502530001"
   },
   "handle": "google.ua",
   "creationDate": "2011-07-21T15:03:50.000Z",

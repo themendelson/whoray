@@ -23,6 +23,32 @@
     "email": "dns-admin@google.com",
     "phone": "+1.4162146034"
   },
+  "admin": {
+    "name": "Colm Buckley",
+    "organization": "Google Canada Corporation",
+    "street": [
+      "12-111 Richmond St W"
+    ],
+    "city": "Toronto",
+    "state": "ON",
+    "postalCode": "M5H2G4",
+    "country": "CA",
+    "email": "dns-admin@google.com",
+    "phone": "+1.4162146034"
+  },
+  "tech": {
+    "name": "Colm Buckley",
+    "organization": "Google Canada Corporation",
+    "street": [
+      "12-111 Richmond St W"
+    ],
+    "city": "Toronto",
+    "state": "ON",
+    "postalCode": "M5H2G4",
+    "country": "CA",
+    "email": "dns-admin@google.com",
+    "phone": "+1.4162146034"
+  },
   "handle": "D73081-CIRA",
   "creationDate": "2000-10-04T02:21:23.000Z",
   "updatedDate": "2026-04-28T04:05:31.000Z",

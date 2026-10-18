@@ -9,6 +9,13 @@
   "registrant": {
     "name": "GOOGLE LLC"
   },
+  "admin": {
+    "name": "MARKMONITOR INC."
+  },
+  "tech": {
+    "name": "GOOGLE LLC",
+    "email": "dns-admin@google.com"
+  },
   "creationDate": "2005-01-03T04:00:00.000Z",
   "updatedDate": "2025-12-01T10:41:02.000Z",
   "expirationDate": "2027-01-02T16:00:00.000Z",

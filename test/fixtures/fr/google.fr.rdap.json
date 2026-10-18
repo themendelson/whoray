@@ -7,6 +7,15 @@
     "name": "MARKMONITOR Inc.",
     "ianaId": 292,
     "url": "http://www.markmonitor.com",
+    "street": [
+      "2150 S. Bonito Way, Suite 150"
+    ],
+    "city": "MERIDIAN",
+    "postalCode": "ID 83642",
+    "country": "US",
+    "email": "registry.admin@markmonitor.com",
+    "phone": "+1.2083895740",
+    "fax": "+1.2083895771",
     "abuseEmail": "registryescalations@markmonitor.com",
     "abusePhone": "+1.2083895740"
   },
@@ -21,6 +30,29 @@
     "country": "IE",
     "email": "dns-admin@google.com",
     "phone": "+353.14361000"
+  },
+  "admin": {
+    "name": "Google Ireland Holdings Unlimited Company",
+    "street": [
+      "70 Sir John Rogerson's Quay"
+    ],
+    "city": "Dublin",
+    "postalCode": "2",
+    "country": "IE",
+    "email": "dns-admin@google.com",
+    "phone": "+353.14361000"
+  },
+  "tech": {
+    "name": "MarkMonitor Inc.",
+    "street": [
+      "2150 S. Bonito Way, Suite 150"
+    ],
+    "city": "Meridian",
+    "postalCode": "83642",
+    "country": "US",
+    "email": "ccops@markmonitor.com",
+    "phone": "+1.2083895740",
+    "fax": "+1.2083895771"
   },
   "handle": "DOM000000113746-FRNIC",
   "creationDate": "2000-07-26T22:00:00.000Z",

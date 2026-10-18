@@ -7,6 +7,16 @@
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
     "url": "https://rdap.tonicregistry.to/rdap/entity/292",
+    "street": [
+      "3540 East Longwing Lane, Suite 300"
+    ],
+    "city": "Meridian",
+    "state": "ID",
+    "postalCode": "83646",
+    "country": "US",
+    "email": "ccops@markmonitor.com",
+    "phone": "+1.208389574",
+    "fax": "+1.2083895771",
     "abuseEmail": "ccops@markmonitor.com",
     "abusePhone": "+1.208389574"
   },

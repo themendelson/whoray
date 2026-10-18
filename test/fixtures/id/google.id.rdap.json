@@ -6,6 +6,15 @@
   "registrar": {
     "name": "PT Digital Registra Indonesia",
     "ianaId": 1,
+    "street": [
+      "Jongkang RT/RW 12/35 Sariharjo"
+    ],
+    "city": "Sleman",
+    "state": "Yogyakarta",
+    "postalCode": "55281",
+    "country": "ID",
+    "email": "info@digitalregistra.co.id",
+    "phone": "+62274882257",
     "abuseEmail": "info@digitalregistra.co.id",
     "abusePhone": "+62274882257"
   },

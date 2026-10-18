@@ -6,6 +6,9 @@
   "registrar": {
     "name": "Markmonitor Inc.",
     "url": "https://www.markmonitor.com",
+    "email": "custserv@markmonitor.com",
+    "phone": "+12083895740",
+    "fax": "+12083895771",
     "abuseEmail": "abusecomplaints@markmonitor.com",
     "abusePhone": "+1.2083895740"
   },
