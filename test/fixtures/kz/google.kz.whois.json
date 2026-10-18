@@ -1,0 +1,38 @@
+{
+  "domain": "google.kz",
+  "tld": "kz",
+  "state": "registered",
+  "isAvailable": false,
+  "registrar": {
+    "name": "KAZNIC"
+  },
+  "registrant": {
+    "name": "Google Inc.",
+    "organization": "Google Inc.",
+    "street": [
+      "2400 E. Bayshore Pkwy"
+    ],
+    "city": "Mountain View",
+    "state": "CA",
+    "postalCode": "94043",
+    "country": "US"
+  },
+  "admin": {
+    "name": "DNS Admin",
+    "organization": "Google Inc.",
+    "email": "ccops@markmonitor.com",
+    "phone": "+1.6502530000",
+    "fax": "+1.6506188571"
+  },
+  "creationDate": "1999-06-07T14:01:43.000Z",
+  "updatedDate": "2012-11-28T04:16:59.000Z",
+  "expirationDate": "2027-06-06T19:00:00.000Z",
+  "statuses": [
+    "ok"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com"
+  ],
+  "source": "whois"
+}

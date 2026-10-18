@@ -30,8 +30,8 @@ export type Field =
   | "dnssec";
 
 const ROLE_PREFIXES: [ContactRole, string[]][] = [
-  ["registrant", ["registrant", "holder", "owner"]],
-  ["admin", ["admin", "administrative", "administrative contact", "admin contact", "admin_c"]],
+  ["registrant", ["registrant", "holder", "owner", "owner contact"]],
+  ["admin", ["admin", "administrative", "administrative contact", "admin contact", "admin_c", "administrativ contact"]],
   ["tech", ["tech", "technical", "technical contact", "tech contact", "tech_c"]],
   ["billing", ["billing", "billing contact", "billing_c"]],
   ["registrar", ["registrar", "sponsoring registrar"]],
@@ -39,7 +39,7 @@ const ROLE_PREFIXES: [ContactRole, string[]][] = [
 
 const PART_SUFFIXES: [ContactPart, string[]][] = [
   ["Name", ["name", "contact name", "nom"]],
-  ["Organization", ["organization", "organisation", "org"]],
+  ["Organization", ["organization", "organisation", "org", "organization name"]],
   [
     "Street",
     [
@@ -59,7 +59,7 @@ const PART_SUFFIXES: [ContactPart, string[]][] = [
   ["State", ["state/province", "state", "province"]],
   ["PostalCode", ["postal code", "postcode", "zip code", "zipcode", "zip", "code postal"]],
   ["Country", ["country", "country code", "pays"]],
-  ["Email", ["email", "e-mail", "courriel"]],
+  ["Email", ["email", "e-mail", "courriel", "email address"]],
   ["Phone", ["phone", "phone number", "téléphone"]],
   ["Fax", ["fax", "fax number"]],
 ];
@@ -92,6 +92,7 @@ export const aliases: [Field, string[]][] = [
       "registrar organisation",
       "registrar registrar name",
       "registrar organization name",
+      "current registrar",
       "registration service provider",
       "authorized agency",
     ],
@@ -118,6 +119,7 @@ export const aliases: [Field, string[]][] = [
     [
       "creation date",
       "created",
+      "domain created",
       "created on",
       "created date",
       "registered",
@@ -209,7 +211,8 @@ export const aliases: [Field, string[]][] = [
       "domain servers in listed order",
       "dns servers",
       "serveur de noms",
+      "dns servers name",
     ],
   ],
-  ["dnssec", ["dnssec", "signed", "dnssec status", "dnssec signed"]],
+  ["dnssec", ["dnssec", "signed", "dnssec status", "dnssec signed", "technical contact dnssec"]],
 ];
