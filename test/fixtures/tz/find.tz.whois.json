@@ -10,7 +10,9 @@
   "updatedDate": "2024-08-29T00:28:12.000Z",
   "expirationDate": "2026-08-27T00:00:00.000Z",
   "dropDate": "2026-10-25T00:00:00.000Z",
-  "statuses": [],
+  "statuses": [
+    "serverHold"
+  ],
   "nameservers": [
     "chris.ns.cloudflare.com",
     "julissa.ns.cloudflare.com"
