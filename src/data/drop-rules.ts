@@ -87,6 +87,7 @@ export const dropRules: Record<string, DropRule> = {
       ? atUtcHour(addDays(rolledPast(updatedDate, 16), 36), 0)
       : undefined,
   trust: registryClick,
+  tz: ({ expirationDate }) => expirationDate && addDays(expirationDate, 59),
   uk,
   us: ({ expirationDate, updatedDate, statuses }) =>
     statuses.has("pendingDelete") && expirationDate && updatedDate
