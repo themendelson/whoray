@@ -151,21 +151,27 @@ async function via(context: Context, protocol: Protocol, signal: AbortSignal): P
   }
   if (located === undefined) return undefined;
   const registry = transport.registry(context, located);
-  const found = await hop(context, protocol, registry, signal);
+  const found = await hop(context, "registry", protocol, registry, signal);
   const registrar =
     found.kind === "record" && context.registrar ? transport.registrar(context, found, registry) : undefined;
   if (found.kind !== "record" || registrar === undefined) return { found, source: protocol };
-  return { found: merge(found, await hop(context, protocol, registrar, signal)), source: protocol };
+  return { found: merge(found, await hop(context, "registrar", protocol, registrar, signal)), source: protocol };
 }
 
-async function hop(context: Context, protocol: Protocol, target: Target, signal: AbortSignal): Promise<Found> {
+async function hop(
+  context: Context,
+  role: Hop["role"],
+  protocol: Protocol,
+  target: Target,
+  signal: AbortSignal,
+): Promise<Found> {
   let reply: Awaited<ReturnType<Target["ask"]>>;
   try {
     reply = await target.ask(signal);
   } catch (error) {
     return failure(context, error, target.server, signal);
   }
-  context.hops.push({ protocol, server: target.server, raw: reply.raw });
+  context.hops.push({ role, protocol, server: target.server, raw: reply.raw });
   const found = reply.read();
   return found.kind === "error" ? { ...found, server: target.server } : found;
 }
