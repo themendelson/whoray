@@ -25,8 +25,6 @@ export function ianaWhoisHost(connect: Connect, tld: string, signal: AbortSignal
   return untilAborted(host, signal);
 }
 
-// One request serves every lookup waiting on it, so it runs on its own deadline rather than the
-// first caller's; a failed one is dropped so the next lookup asks again.
 function shared<T>(cache: Map<string, Promise<T>>, key: string, load: () => Promise<T>): Promise<T> {
   const cached = cache.get(key);
   if (cached !== undefined) return cached;
