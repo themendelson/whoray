@@ -4,14 +4,14 @@ import { readRdap } from "#rdap/parse.ts";
 export interface RdapReply {
   status: number;
   body: string;
-  retryAfter?: number;
+  retryAfter?: number | undefined;
 }
 
 export async function fetchRdap(fetcher: typeof fetch, url: string, signal: AbortSignal): Promise<RdapReply> {
   const response = await fetcher(url, { headers: { accept: "application/rdap+json" }, signal });
   const body = await response.text();
   const retryAfter = Number(response.headers.get("retry-after"));
-  return { status: response.status, body, ...(retryAfter > 0 && { retryAfter }) };
+  return { status: response.status, body, retryAfter: retryAfter > 0 ? retryAfter : undefined };
 }
 
 export function readRdapReply({ status, body, retryAfter }: RdapReply): Found {
@@ -21,7 +21,7 @@ export function readRdapReply({ status, body, retryAfter }: RdapReply): Found {
       kind: "error",
       code: "rate_limited",
       message: "HTTP 429",
-      ...(retryAfter !== undefined && { retryAfter }),
+      retryAfter,
     };
   }
   if (status !== 200) return { kind: "error", code: "network", message: `HTTP ${status}` };

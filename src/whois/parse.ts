@@ -6,8 +6,7 @@ import type { Name } from "#domain.ts";
 import { bySuffix } from "#domain.ts";
 import { registryInText } from "#lifecycle.ts";
 import { parseDate } from "#parse/dates.ts";
-import type { Details } from "#parse/fields.ts";
-import { contact, contacts, countryCode, email, filled, hostnames, phone, registrar, visible } from "#parse/fields.ts";
+import { contact, countryCode, email, filled, hostnames, phone, registrar, visible } from "#parse/fields.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
 import type { Address, Contact, Registrar } from "#types.ts";
@@ -31,9 +30,9 @@ export function readWhois(text: string, name: Name): Found {
     kind: "record",
     statuses,
     nameservers,
-    ...(registrar && { registrar }),
-    ...(creationDate && { creationDate }),
-    ...(expirationDate && { expirationDate }),
+    registrar,
+    creationDate,
+    expirationDate,
     ...details(fields, transformed),
   };
 }
@@ -54,20 +53,18 @@ function details(fields: Map<Field, string[]>, text: string): Partial<Registrati
   const handle = visible(fields.get("handle")?.[0]);
   const registryId = registryInText(text)?.id;
   return {
-    ...contacts({
-      registrant: contactOf(fields, "registrant"),
-      admin: contactOf(fields, "admin"),
-      tech: contactOf(fields, "tech"),
-      billing: contactOf(fields, "billing"),
-    }),
-    ...(handle !== undefined && { handle }),
-    ...(updatedDate && { updatedDate }),
-    ...(released && { released }),
-    ...(deleted && { deleted }),
-    ...(snapshotDate && { snapshotDate }),
-    ...(dnssec !== undefined && { dnssec }),
-    ...(registrarWhois !== undefined && { registrarWhois }),
-    ...(registryId !== undefined && { registryId }),
+    registrant: contactOf(fields, "registrant"),
+    admin: contactOf(fields, "admin"),
+    tech: contactOf(fields, "tech"),
+    billing: contactOf(fields, "billing"),
+    handle,
+    updatedDate,
+    released,
+    deleted,
+    snapshotDate,
+    dnssec,
+    registrarWhois,
+    registryId,
   };
 }
 
@@ -87,7 +84,7 @@ function withoutRecord(text: string): Found {
   const said = (phrases: RegExp[], within = text): boolean => phrases.some((phrase) => phrase.test(within));
   if (firstLine.dropzone.test(first)) return { kind: "dropzone" };
   if (firstLine.dpml.test(first) || said(reserved)) return { kind: "reserved" };
-  if (said(notFound)) return { kind: "available", ...(firstLine.premium.test(first) && { premium: true }) };
+  if (said(notFound)) return { kind: "available", premium: firstLine.premium.test(first) ? true : undefined };
   if (said(notices.rateLimited, notice)) {
     return { kind: "error", code: "rate_limited", message: "The server is rate limiting queries" };
   }
@@ -119,7 +116,7 @@ function present(values: string[] | undefined): string | undefined {
 
 const CONTACT_HANDLE = /^(?=\S*\d)[a-z0-9-]{5,}$/i;
 
-function addressOf(fields: Map<Field, string[]>, role: ContactRole): Details<Address> {
+function addressOf(fields: Map<Field, string[]>, role: ContactRole): Address {
   const values = (part: ContactPart): string[] => fields.get(`${role}${part}`) ?? [];
   const first = (part: ContactPart): string | undefined =>
     values(part)

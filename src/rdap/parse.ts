@@ -1,8 +1,7 @@
 import type { JsonObject } from "#json.ts";
 import { boolean, object, objects, string, strings } from "#json.ts";
 import { parseDate } from "#parse/dates.ts";
-import type { Details } from "#parse/fields.ts";
-import { contact, contacts, countryCode, email, filled, hostnames, phone, registrar, visible } from "#parse/fields.ts";
+import { contact, countryCode, email, filled, hostnames, phone, registrar, visible } from "#parse/fields.ts";
 import type { Found } from "#parse/found.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
 import type { Address, Contact, Registrar } from "#types.ts";
@@ -50,16 +49,14 @@ export function readRdap(json: unknown): Found {
     ...dates,
     statuses: normalizeStatuses(strings(root.status)),
     nameservers: hostnames(objects(root.nameservers ?? root.nameServers).flatMap((ns) => string(ns.ldhName) ?? [])),
-    ...(registrar && { registrar }),
-    ...contacts({
-      registrant: contactOf(withRole("registrant")),
-      admin: contactOf(withRole("administrative")),
-      tech: contactOf(withRole("technical")),
-      billing: contactOf(withRole("billing")),
-    }),
-    ...(handle !== undefined && { handle }),
-    ...(dnssec !== undefined && { dnssec }),
-    ...(registrarRdap !== undefined && { registrarRdap }),
+    registrar,
+    registrant: contactOf(withRole("registrant")),
+    admin: contactOf(withRole("administrative")),
+    tech: contactOf(withRole("technical")),
+    billing: contactOf(withRole("billing")),
+    handle,
+    dnssec,
+    registrarRdap,
   };
 }
 
@@ -78,7 +75,7 @@ function registrarOf(entity: JsonObject | undefined): Registrar | undefined {
   });
 }
 
-function addressOf(entity: JsonObject): Details<Address> {
+function addressOf(entity: JsonObject): Address {
   const address = vcardEntry(entity, "adr");
   const parts: unknown[] = Array.isArray(address?.[3]) && address[3].length === ADR_PARTS ? address[3] : [];
   return {

@@ -33,64 +33,38 @@ export function phone(value: string | undefined): string | undefined {
   return number !== undefined && PHONE.test(number) ? number : undefined;
 }
 
-export type Details<T> = { [K in keyof T]?: T[K] | undefined };
-
-function address(details: Details<Address>): Address {
+function address(details: Address): Address {
   const { street, city, state, postalCode, country, email, phone, fax } = details;
   return {
-    ...(street !== undefined && street.length > 0 && { street }),
-    ...(city !== undefined && { city }),
-    ...(state !== undefined && { state }),
-    ...(postalCode !== undefined && { postalCode }),
-    ...(country !== undefined && { country }),
-    ...(email !== undefined && { email }),
-    ...(phone !== undefined && { phone }),
-    ...(fax !== undefined && { fax }),
+    street: street !== undefined && street.length > 0 ? street : undefined,
+    city,
+    state,
+    postalCode,
+    country,
+    email,
+    phone,
+    fax,
   };
 }
 
-export function contact(details: Details<Contact>): Contact | undefined {
+export function contact(details: Contact): Contact | undefined {
   const { name, organization } = details;
-  const known = {
-    ...(name !== undefined && { name }),
-    ...(organization !== undefined && { organization }),
-    ...address(details),
-  };
-  return Object.keys(known).length > 0 ? known : undefined;
+  const known = { name, organization, ...address(details) };
+  return Object.values(known).some((value) => value !== undefined) ? known : undefined;
 }
 
-type Contacts = Partial<Record<"registrant" | "admin" | "tech" | "billing", Contact>>;
-
-export function contacts(found: Details<Contacts>): Contacts {
-  const { registrant, admin, tech, billing } = found;
-  return {
-    ...(registrant && { registrant }),
-    ...(admin && { admin }),
-    ...(tech && { tech }),
-    ...(billing && { billing }),
-  };
-}
-
-interface RegistrarDetails extends Details<Address> {
-  ianaId?: number | undefined;
-  url?: string | undefined;
-  abuseEmail?: string | undefined;
-  abusePhone?: string | undefined;
-  whoisServer?: string | undefined;
-}
-
-export function registrar(name: string, details: RegistrarDetails): Registrar {
+export function registrar(name: string, details: Omit<Registrar, "name">): Registrar {
   const { ianaId, url, whoisServer } = details;
   const abuseEmail = details.abuseEmail?.toLowerCase();
   const abusePhone = details.abusePhone?.replace(/^tel:/, "");
   return {
     name,
-    ...(ianaId !== undefined && Number.isInteger(ianaId) && ianaId > 0 && { ianaId }),
-    ...(url !== undefined && { url }),
+    ianaId: ianaId !== undefined && Number.isInteger(ianaId) && ianaId > 0 ? ianaId : undefined,
+    url,
     ...address(details),
-    ...(abuseEmail?.includes("@") === true && { abuseEmail }),
-    ...(abusePhone !== undefined && { abusePhone }),
-    ...(whoisServer !== undefined && { whoisServer }),
+    abuseEmail: abuseEmail?.includes("@") === true ? abuseEmail : undefined,
+    abusePhone,
+    whoisServer,
   };
 }
 

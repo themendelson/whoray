@@ -15,28 +15,28 @@ export type ErrorCode = "timeout" | "rate_limited" | "blocked" | "no_server" | "
 export interface WhorayError {
   code: ErrorCode;
   message: string;
-  server?: string;
-  retryAfter?: number;
+  server?: string | undefined;
+  retryAfter?: number | undefined;
 }
 
 export interface Address {
-  street?: string[];
-  city?: string;
-  state?: string;
-  postalCode?: string;
-  country?: string;
-  email?: string;
-  phone?: string;
-  fax?: string;
+  street?: string[] | undefined;
+  city?: string | undefined;
+  state?: string | undefined;
+  postalCode?: string | undefined;
+  country?: string | undefined;
+  email?: string | undefined;
+  phone?: string | undefined;
+  fax?: string | undefined;
 }
 
 export interface Registrar extends Address {
   name: string;
-  ianaId?: number;
-  url?: string;
-  abuseEmail?: string;
-  abusePhone?: string;
-  whoisServer?: string;
+  ianaId?: number | undefined;
+  url?: string | undefined;
+  abuseEmail?: string | undefined;
+  abusePhone?: string | undefined;
+  whoisServer?: string | undefined;
 }
 
 export interface Registry {
@@ -45,35 +45,35 @@ export interface Registry {
 }
 
 export interface Contact extends Address {
-  name?: string;
-  organization?: string;
+  name?: string | undefined;
+  organization?: string | undefined;
 }
 
 export type Registrant = Contact;
 
 export interface DomainRecord {
   domain: string;
-  unicode?: string;
+  unicode?: string | undefined;
   tld: string;
   state: DomainState;
-  isAvailable?: boolean;
-  premium?: true;
-  registrar?: Registrar;
-  registrant?: Contact;
-  admin?: Contact;
-  tech?: Contact;
-  billing?: Contact;
-  registry?: Registry;
-  handle?: string;
-  creationDate?: Date;
-  updatedDate?: Date;
-  expirationDate?: Date;
-  dropDate?: Date;
-  snapshotDate?: Date;
+  isAvailable?: boolean | undefined;
+  premium?: true | undefined;
+  registrar?: Registrar | undefined;
+  registrant?: Contact | undefined;
+  admin?: Contact | undefined;
+  tech?: Contact | undefined;
+  billing?: Contact | undefined;
+  registry?: Registry | undefined;
+  handle?: string | undefined;
+  creationDate?: Date | undefined;
+  updatedDate?: Date | undefined;
+  expirationDate?: Date | undefined;
+  dropDate?: Date | undefined;
+  snapshotDate?: Date | undefined;
   statuses: string[];
   nameservers: string[];
-  dnssec?: boolean;
-  error?: WhorayError;
+  dnssec?: boolean | undefined;
+  error?: WhorayError | undefined;
 }
 
 export interface Hop {
@@ -83,7 +83,7 @@ export interface Hop {
 }
 
 export interface WhorayResult extends DomainRecord {
-  source?: Protocol;
+  source?: Protocol | undefined;
   hops: Hop[];
 }
 

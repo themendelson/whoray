@@ -19,16 +19,16 @@ type Published = Pick<
 
 export interface Registration extends Published {
   kind: "record";
-  released?: Date;
-  deleted?: Date;
-  registryId?: string;
-  registrarWhois?: string;
-  registrarRdap?: string;
+  released?: Date | undefined;
+  deleted?: Date | undefined;
+  registryId?: string | undefined;
+  registrarWhois?: string | undefined;
+  registrarRdap?: string | undefined;
 }
 
 export type Found =
   | Registration
-  | { kind: "available"; premium?: true }
+  | { kind: "available"; premium?: true | undefined }
   | { kind: "dropzone" }
   | { kind: "reserved" }
   | ({ kind: "error" } & WhorayError);

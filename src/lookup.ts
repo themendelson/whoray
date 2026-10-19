@@ -90,7 +90,7 @@ export function createLookup(defaultConnect: Connect, defaultProtocol: Protocol 
     options.signal?.throwIfAborted();
     return {
       ...toRecord(name, outcome?.found ?? NO_SERVER),
-      ...(outcome && { source: outcome.source }),
+      source: outcome?.source,
       hops: context.hops,
     };
   };
@@ -202,5 +202,12 @@ function failure(context: Context, error: unknown, server: string, signal: Abort
 
 function merge(registry: Registration, registrarHop: Found): Registration {
   if (registrarHop.kind !== "record" || !registrarHop.registrar) return registry;
-  return { ...registry, registrar: { ...registrarHop.registrar, ...registry.registrar } };
+  const registrar = registry.registrar ? fillGaps(registry.registrar, registrarHop.registrar) : registrarHop.registrar;
+  return { ...registry, registrar };
+}
+
+function fillGaps<T extends object>(primary: T, fallback: T): T {
+  const filled = { ...fallback };
+  for (const key in primary) if (primary[key] !== undefined) filled[key] = primary[key];
+  return filled;
 }

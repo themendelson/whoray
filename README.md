@@ -108,8 +108,8 @@ It throws only if `domain` isn't a domain name or your `signal` aborts. Any othe
 
 ### Result
 
-Dates are UTC `Date`s. A field that doesn't apply, or that the registry redacts or doesn't publish, is left out
-rather than set to `""`.
+Dates are UTC `Date`s. A field that doesn't apply, or that the registry redacts or doesn't publish, is `undefined`,
+never `""`.
 
 ```ts
 interface WhorayResult {
@@ -117,7 +117,7 @@ interface WhorayResult {
   unicode?: string;          // only for internationalized names: "bücher.de"
   tld: string;               // "co", or "co.uk" for second-level suffixes
   state: DomainState;        // see below
-  isAvailable?: boolean;     // true only when the name can be registered now; left out when the lookup failed
+  isAvailable?: boolean;     // true only when the name can be registered now; undefined when the lookup failed
   premium?: true;            // an available name the registry sells at a premium price
 
   registrar?: Registrar;
@@ -138,7 +138,7 @@ interface WhorayResult {
   nameservers: string[];     // lowercase hostnames
   dnssec?: boolean;
 
-  source?: "whois" | "rdap"; // which protocol answered; left out when no server was found
+  source?: "whois" | "rdap"; // which protocol answered; undefined when no server was found
   hops: Hop[];               // every server asked, in order
   error?: WhorayError;       // set when state is "unknown"
 }
