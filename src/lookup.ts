@@ -43,7 +43,6 @@ interface Transport {
 }
 
 const DEFAULT_TIMEOUT = 10_000;
-const NO_SERVER: Found = { kind: "error", code: "no_server", message: "No WHOIS or RDAP server is known for this TLD" };
 
 const transports: Record<Protocol, Transport> = {
   whois: {
@@ -86,10 +85,11 @@ export function createLookup(defaultConnect: Connect, defaultProtocol: Protocol 
       timeout,
       hops: [],
     };
-    const outcome = await resolve(context, options.protocol ?? (options.connect ? "auto" : defaultProtocol));
+    const protocol = options.protocol ?? (options.connect ? "auto" : defaultProtocol);
+    const outcome = await resolve(context, protocol);
     options.signal?.throwIfAborted();
     return {
-      ...toRecord(name, outcome?.found ?? NO_SERVER),
+      ...toRecord(name, outcome?.found ?? noServer(protocol, name.tld)),
       ...(outcome && { source: outcome.source }),
       hops: context.hops,
     };
@@ -198,6 +198,11 @@ function rdapTarget(context: Context, url: string): Target {
       return { raw: reply.body, read: () => readRdapReply(reply) };
     },
   };
+}
+
+function noServer(protocol: Protocol | "auto", tld: string): Found {
+  const asked = protocol === "auto" ? "WHOIS or RDAP" : protocol.toUpperCase();
+  return { kind: "error", code: "no_server", message: `No ${asked} server is known for .${tld}` };
 }
 
 function failure(context: Context, error: unknown, server: string, signal: AbortSignal): Found {
