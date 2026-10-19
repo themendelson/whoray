@@ -1,14 +1,6 @@
 import type { DropRule } from "#drop.ts";
-import {
-  addDays,
-  afterExpiry,
-  afterUpdate,
-  atUtcHour,
-  daysBetween,
-  onOrAfterWeekday,
-  redemptionGracePeriod,
-  rolledPast,
-} from "#drop.ts";
+import { afterExpiry, afterUpdate, redemptionGracePeriod } from "#drop.ts";
+import { addDays, atUtcHour, daysBetween, onOrAfterWeekday, rolledPast } from "#utils/time.ts";
 
 const uk = afterExpiry(60 + 30 + 5);
 const registryClick = redemptionGracePeriod(34, 4);

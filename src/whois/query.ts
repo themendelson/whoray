@@ -1,7 +1,7 @@
-import { ignore, untilAborted } from "#abort.ts";
 import type { Name } from "#domain.ts";
 import type { Found } from "#parse/found.ts";
 import type { Connect } from "#types.ts";
+import { ignore, untilAborted } from "#utils/abort.ts";
 import { readWhois } from "#whois/parse.ts";
 
 const encoder = new TextEncoder();

@@ -1,6 +1,6 @@
-import { untilAborted } from "#abort.ts";
-import { object, strings } from "#json.ts";
 import type { Connect } from "#types.ts";
+import { untilAborted } from "#utils/abort.ts";
+import { object, strings } from "#utils/json.ts";
 import { queryWhois } from "#whois/query.ts";
 
 const BOOTSTRAP_URL = "https://data.iana.org/rdap/dns.json";
