@@ -126,6 +126,11 @@ test("protocol: rdap never opens a socket and reports rate limits with Retry-Aft
   expect(whois.connections).toEqual([]);
 });
 
+test("protocol: rdap on a TLD without RDAP names the missing protocol", async () => {
+  const result = await lookup("example.com", { servers: { com: { rdap: false } }, protocol: "rdap" });
+  expect(result.error).toEqual({ code: "no_server", message: "No RDAP server is known for .com" });
+});
+
 test("an RDAP 404 means the domain is available", async () => {
   const { fetch } = httpServer(() => ({ status: 404, body: "" }));
   const result = await lookup("example.com", { fetch, servers, protocol: "rdap" });
