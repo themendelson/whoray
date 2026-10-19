@@ -1,0 +1,39 @@
+{
+  "domain": "google.com",
+  "tld": "com",
+  "state": "registered",
+  "isAvailable": false,
+  "registrar": {
+    "name": "MarkMonitor Inc.",
+    "ianaId": 292,
+    "url": "http://www.markmonitor.com",
+    "abuseEmail": "abusecomplaints@markmonitor.com",
+    "abusePhone": "+1.2086851750",
+    "whoisServer": "whois.markmonitor.com"
+  },
+  "registry": {
+    "id": "verisign",
+    "name": "Verisign Global Registry Services"
+  },
+  "handle": "2138514_DOMAIN_COM-VRSN",
+  "creationDate": "1997-09-15T04:00:00.000Z",
+  "updatedDate": "2019-09-09T15:39:04.000Z",
+  "expirationDate": "2028-09-14T04:00:00.000Z",
+  "snapshotDate": "2026-10-19T10:28:49.000Z",
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientTransferProhibited",
+    "clientUpdateProhibited",
+    "serverDeleteProhibited",
+    "serverTransferProhibited",
+    "serverUpdateProhibited"
+  ],
+  "nameservers": [
+    "ns1.google.com",
+    "ns2.google.com",
+    "ns3.google.com",
+    "ns4.google.com"
+  ],
+  "dnssec": false,
+  "source": "whois"
+}

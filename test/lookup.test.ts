@@ -2,7 +2,7 @@ import { expect, test } from "vitest";
 import { lookup as browserLookup } from "#runtime/browser.ts";
 import { lookup } from "#runtime/node.ts";
 import type { Connect } from "#types.ts";
-import { freshLookup, httpServer, ianaBootstrap, silentServer, whoisServer } from "./support.ts";
+import { fixture, freshLookup, httpServer, ianaBootstrap, silentServer, whoisServer } from "./support.ts";
 
 const RDAP_RECORD = {
   objectClassName: "domain",
@@ -143,21 +143,30 @@ test("an RDAP base URL from the servers option works without a trailing slash", 
   expect(urls).toEqual(["https://rdap.test/v1/domain/example.com"]);
 });
 
-test("follow: registrar queries the referral server and keeps the registry's dates", async () => {
-  const server = whoisServer((host) =>
-    host === "whois.registrar.test"
-      ? "Registrar: Example Registrar, Inc.\nRegistrar Abuse Contact Email: Abuse@Registrar.test\nCreation Date: 1999-01-01"
-      : WHOIS_REGISTRY,
-  );
-  const result = await lookup("example.com", { connect: server.connect, servers, follow: "registrar" });
-  expect(server.queries.map((query) => query.host)).toEqual(["whois.registry.test", "whois.registrar.test"]);
-  expect(result.hops.map((hop) => hop.role)).toEqual(["registry", "registrar"]);
-  expect(result.registrar).toEqual({
-    name: "Example Registrar, Inc.",
-    abuseEmail: "abuse@registrar.test",
-    whoisServer: "whois.registrar.test",
+test.each([
+  { protocol: "whois", registrant: { organization: "Google LLC", country: "US" }, address: {} },
+  {
+    protocol: "rdap",
+    registrant: { state: "CA", country: "US" },
+    address: { street: ["3540 E Longwing Ln"], city: "Meridian", state: "ID", postalCode: "83646", country: "US" },
+  },
+] as const)("follow: registrar fills in what the registry leaves out over $protocol", async (expected) => {
+  const registry = fixture(`test/fixtures/com/google.com.${expected.protocol}`);
+  const registrar = fixture(`test/fixtures/com/google.com.${expected.protocol}.registrar`);
+  const { connect } = whoisServer((host) => (host === "whois.registry.test" ? registry : registrar).body);
+  const { fetch } = httpServer((url) => {
+    const reply = url.startsWith("https://rdap.test/") ? registry : registrar;
+    return { status: Number(reply.header), body: reply.body };
   });
-  expect(result.creationDate).toEqual(new Date("2001-02-03T04:05:06Z"));
+  const options = { connect, fetch, servers, protocol: expected.protocol };
+  const { hops: registryHops, ...fromRegistry } = await lookup("google.com", options);
+  const { hops, ...followed } = await lookup("google.com", { ...options, follow: "registrar" });
+  expect(hops).toEqual([...registryHops, expect.objectContaining({ role: "registrar", raw: registrar.body })]);
+  expect(followed).toEqual({
+    ...fromRegistry,
+    registrar: { ...expected.address, ...fromRegistry.registrar },
+    registrant: expected.registrant,
+  });
 });
 
 test("an unknown TLD is resolved through IANA once and cached", async () => {
