@@ -1,9 +1,10 @@
+import { hostnameOf } from "#domain.ts";
+
 const IP_ADDRESS = /^[\d.]+$|^\[/;
 const PRIVATE_NAME = /(?:^|\.)(?:localhost|local|internal|intranet|lan|home\.arpa)$/;
 
 function publicHostname(host: string): string | undefined {
-  if (!URL.canParse(`http://${host}`)) return undefined;
-  const { hostname } = new URL(`http://${host}`);
+  const hostname = hostnameOf(host);
   return hostname.includes(".") && !IP_ADDRESS.test(hostname) && !PRIVATE_NAME.test(hostname) ? hostname : undefined;
 }
 

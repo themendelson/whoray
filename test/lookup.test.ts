@@ -1,10 +1,10 @@
 import { expect, test } from "vitest";
 import { lookup as browserLookup } from "#runtime/browser.ts";
 import { lookup } from "#runtime/node.ts";
-import type { Connect } from "#types.ts";
+import type { Connect, LookupOptions } from "#types.ts";
 import { fixture, freshLookup, httpServer, ianaBootstrap, silentServer, whoisServer } from "./support.ts";
 
-const RDAP_RECORD = {
+const RDAP_DOMAIN = JSON.stringify({
   objectClassName: "domain",
   ldhName: "example.com",
   status: ["client transfer prohibited"],
@@ -13,8 +13,7 @@ const RDAP_RECORD = {
     { eventAction: "expiration", eventDate: "2030-02-03T04:05:06Z" },
   ],
   nameservers: [{ ldhName: "NS1.EXAMPLE.NET." }],
-};
-const RDAP_DOMAIN = JSON.stringify(RDAP_RECORD);
+});
 
 const WHOIS_REGISTRY = [
   "Domain Name: EXAMPLE.COM",
@@ -26,6 +25,17 @@ const WHOIS_REGISTRY = [
 ].join("\n");
 
 const servers = { com: { rdap: "https://rdap.test/", whois: "whois.registry.test" } };
+
+function registryAndRegistrar(domain: string): Pick<LookupOptions, "connect" | "fetch"> {
+  const reply = (protocol: string, registry: boolean) =>
+    fixture(`test/fixtures/com/${domain}.${protocol}${registry ? "" : ".registrar"}`);
+  const { connect } = whoisServer((host) => reply("whois", host === "whois.registry.test").body);
+  const { fetch } = httpServer((url) => {
+    const { header, body } = reply("rdap", url.startsWith("https://rdap.test/"));
+    return { status: Number(header), body };
+  });
+  return { connect, fetch };
+}
 
 test("WHOIS answers first and RDAP isn't asked", async () => {
   const { fetch, urls } = httpServer(() => ({ status: 200, body: RDAP_DOMAIN }));
@@ -151,14 +161,8 @@ test.each([
     address: { street: ["3540 E Longwing Ln"], city: "Meridian", state: "ID", postalCode: "83646", country: "US" },
   },
 ] as const)("follow: registrar fills in what the registry leaves out over $protocol", async (expected) => {
-  const registry = fixture(`test/fixtures/com/google.com.${expected.protocol}`);
   const registrar = fixture(`test/fixtures/com/google.com.${expected.protocol}.registrar`);
-  const { connect } = whoisServer((host) => (host === "whois.registry.test" ? registry : registrar).body);
-  const { fetch } = httpServer((url) => {
-    const reply = url.startsWith("https://rdap.test/") ? registry : registrar;
-    return { status: Number(reply.header), body: reply.body };
-  });
-  const options = { connect, fetch, servers, protocol: expected.protocol };
+  const options = { ...registryAndRegistrar("google.com"), servers, protocol: expected.protocol };
   const { hops: registryHops, ...fromRegistry } = await lookup("google.com", options);
   const { hops, ...followed } = await lookup("google.com", { ...options, follow: "registrar" });
   expect(hops).toEqual([...registryHops, expect.objectContaining({ role: "registrar", raw: registrar.body })]);
@@ -170,18 +174,7 @@ test.each([
 });
 
 test("follow: registrar asks the registrar's RDAP when its WHOIS has retired", async () => {
-  const replies = (protocol: "whois" | "rdap") => ({
-    registry: fixture(`test/fixtures/com/tuvis.com.${protocol}`),
-    registrar: fixture(`test/fixtures/com/tuvis.com.${protocol}.registrar`),
-  });
-  const whois = replies("whois");
-  const rdap = replies("rdap");
-  const { connect } = whoisServer((host) => (host === "whois.registry.test" ? whois.registry : whois.registrar).body);
-  const { fetch } = httpServer((url) => {
-    const reply = url.startsWith("https://rdap.test/") ? rdap.registry : rdap.registrar;
-    return { status: Number(reply.header), body: reply.body };
-  });
-  const options = { connect, fetch, servers, follow: "registrar" } as const;
+  const options = { ...registryAndRegistrar("tuvis.com"), servers, follow: "registrar" } as const;
   const overRdap = await lookup("tuvis.com", { ...options, protocol: "rdap" });
   const result = await lookup("tuvis.com", options);
   expect(result.hops.map((hop) => hop.server)).toEqual([
@@ -313,7 +306,6 @@ test("follow: registrar doesn't follow a referral to a private address", async (
 
 test("a browser lookup asks only RDAP, so an RDAP failure is the error it reports", async () => {
   const { fetch, urls } = httpServer(() => ({ status: 503, body: "" }));
-  const servers = { com: { rdap: "https://rdap.test/", whois: "whois.registry.test" } };
   const result = await browserLookup("example.com", { fetch, servers });
   expect(urls).toEqual(["https://rdap.test/domain/example.com"]);
   expect(result).toMatchObject({ state: "unknown", source: "rdap", error: { message: "HTTP 503" } });

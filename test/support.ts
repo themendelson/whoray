@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync } from "node:fs";
-import { vi } from "vitest";
+import { afterAll, beforeAll, vi } from "vitest";
 import type { Lookup } from "#runtime/node.ts";
 import type { Connect } from "#types.ts";
 
@@ -28,6 +28,14 @@ export function fixture(path: string): Pick<Capture, "header" | "body"> {
   const raw = readFileSync(path, "utf8");
   const newline = raw.indexOf("\n");
   return { header: raw.slice(0, newline), body: raw.slice(newline + 1) };
+}
+
+export function freezeTime(iso: string): void {
+  beforeAll(() => {
+    vi.useFakeTimers({ toFake: ["Date"] });
+    vi.setSystemTime(new Date(iso));
+  });
+  afterAll(() => vi.useRealTimers());
 }
 
 export interface FakeServer {

@@ -1,17 +1,16 @@
 import { dropRules } from "#data/drop-rules.ts";
-import { reservingRegistrars } from "#data/registrars.ts";
 import type { Registry } from "#data/registries.ts";
-import { registries } from "#data/registries.ts";
+import { registries, reservingRegistrars } from "#data/registries.ts";
 import { servers } from "#data/servers.ts";
 import { bySuffix } from "#domain.ts";
 import type { Facts } from "#drop.ts";
-import { fixedPeriods, redemptionGracePeriod } from "#drop.ts";
+import { afterExpiry, redemptionGracePeriod } from "#drop.ts";
 import type { DomainState, Registrar } from "#types.ts";
 
 const registryByTld: Readonly<Record<string, Registry>> = Object.fromEntries(
   registries.flatMap((registry) => registry.tlds.map((tld) => [tld, registry] as const)),
 );
-const defaultPeriods = fixedPeriods(45, 30, 5);
+const defaultPeriods = afterExpiry(45 + 30 + 5);
 
 export function registryOf(tld: string, id?: string): Registry | undefined {
   return bySuffix(registryByTld, tld) ?? registries.find((registry) => registry.id === id);
