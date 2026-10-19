@@ -57,7 +57,7 @@ await lookup("linkpeak.io");
   nameservers: ["ns1.bodis.com", "ns2.bodis.com"],
   dnssec: false,
   source: "whois",
-  hops: [{ protocol: "whois", server: "whois.nic.io", raw: "Domain Name: linkpeak.io\r\n…" }]
+  hops: [{ role: "registry", protocol: "whois", server: "whois.nic.io", raw: "Domain Name: linkpeak.io\r\n…" }]
 }
 ```
 
@@ -169,6 +169,7 @@ interface Address {
 }
 
 interface Hop {
+  role: "registry" | "registrar";
   protocol: "whois" | "rdap";
   server: string;
   raw: string;               // the reply as received

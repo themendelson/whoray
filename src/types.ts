@@ -77,6 +77,7 @@ export interface DomainRecord {
 }
 
 export interface Hop {
+  role: "registry" | "registrar";
   protocol: Protocol;
   server: string;
   raw: string;
