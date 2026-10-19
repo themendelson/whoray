@@ -1,3 +1,5 @@
+import { words } from "#data/lists.ts";
+
 export interface Registry {
   id: string;
   name: string;
@@ -7,7 +9,8 @@ export interface Registry {
   tlds: string[];
 }
 
-const list = (tlds: string): string[] => tlds.trim().split(/\s+/);
+// IANA holds names reserved by RFC 2606 or ICANN policy (example.com) under its own registrar ID.
+export const reservingRegistrars: ReadonlySet<number> = new Set([376]);
 
 export const registries: Registry[] = [
   {
@@ -15,27 +18,21 @@ export const registries: Registry[] = [
     name: "Internet Computer Bureau",
     redemption: 45,
     pendingDelete: 15,
-    tlds: list(`
-      ac io sh
-    `),
+    tlds: words("ac io sh"),
   },
   {
     id: "public-interest-registry",
     name: "Public Interest Registry",
     redemption: 35,
     pendingDelete: 5,
-    tlds: list(`
-      charity foundation gives ngo ong org
-    `),
+    tlds: words("charity foundation gives ngo ong org"),
   },
   {
     id: "verisign",
     name: "Verisign Global Registry Services",
     redemption: 35,
     pendingDelete: 6,
-    tlds: list(`
-      cc com edu name net web
-    `),
+    tlds: words("cc com edu name net web"),
   },
   {
     id: "google-registry",
@@ -43,7 +40,7 @@ export const registries: Registry[] = [
     textPattern: /registry\.google/,
     redemption: 35,
     pendingDelete: 5,
-    tlds: list(`
+    tlds: words(`
       ads android app boo cal channel chrome dad day dclk dev docs drive eat esq fly foo gbiz gle gmail
       goog google guge hangout here how ing map meet meme mov new nexus page phd play prod prof rsvp
       search soy xn--flw351e xn--q9jyb4c xn--qcka1pmc youtube zip
@@ -55,7 +52,7 @@ export const registries: Registry[] = [
     textPattern: /identity\.digital/,
     redemption: 35,
     pendingDelete: 5,
-    tlds: list(`
+    tlds: words(`
       ag bm bz lc mn pr sc
       onl
       academy accountants actor agency airforce apartments archi army associates attorney auction band
@@ -86,7 +83,7 @@ export const registries: Registry[] = [
     textPattern: /represent administrative and technical management of the TLD|^Registry Domain ID: \S+-NSR\s*$/m,
     redemption: 35,
     pendingDelete: 5,
-    tlds: list(`
+    tlds: words(`
       abudhabi biz
       aaa aarp able abogado accountant adult aetna afl aig ally americanexpress americanfamily amex amfam
       amica analytics anz aramco athleta auspost axa banamex bank baseball basketball beer bible bid
@@ -109,7 +106,7 @@ export const registries: Registry[] = [
     textPattern: /All data is \(c\) CentralNic Ltd/,
     redemption: 35,
     pendingDelete: 5,
-    tlds: list(`
+    tlds: words(`
       fo gd la vg
       allfinanz aquarelle art audio auto autos baby beauty best bmw boats bond box build cam car cars case
       ceo cfd christmas college cyou dealer deloitte dhl diet dvag fans flowers fresenius frl fun game
@@ -125,9 +122,7 @@ export const registries: Registry[] = [
     textPattern: /Jiangsu bangning science & technology Co/,
     redemption: 35,
     pendingDelete: 5,
-    tlds: list(`
-      baidu citic icbc redstone ren sohu top unicom wang
-    `),
+    tlds: words("baidu citic icbc redstone ren sohu top unicom wang"),
   },
   {
     id: "gmo-registry",
@@ -135,7 +130,7 @@ export const registries: Registry[] = [
     textPattern: /All data is \(c\) GMO Registry/,
     redemption: 35,
     pendingDelete: 5,
-    tlds: list(`
+    tlds: words(`
       bridgestone brother canon datsun dnp epson firestone fujitsu ggee gmo goldpoint goo hisamitsu
       hitachi honda hyundai infiniti jcb kddi kia komatsu kyoto lexus lotte mitsubishi nagoya nec nhk nico
       nissan okinawa otsuka panasonic playstation ricoh ryukyu sharp shop softbank sony suzuki tokyo toray
@@ -148,94 +143,47 @@ export const registries: Registry[] = [
     textPattern: /Tucows Registry/,
     redemption: 35,
     pendingDelete: 5,
-    tlds: list(`
+    tlds: words(`
       pw
       bar click cloud country creditunion diy feedback food forum gift hiphop hiv lifestyle link living
       ky locker love music observer pid property realty rest sexy trust vana yandex
     `),
   },
-  {
-    id: "cocca",
-    name: "CoCCA",
-    textPattern: /-CoCCA$/m,
-    redemption: 35,
-    pendingDelete: 7,
-    tlds: list(`
-      gs ki ly
-    `),
-  },
+  { id: "cocca", name: "CoCCA", textPattern: /-CoCCA$/m, redemption: 35, pendingDelete: 7, tlds: words("gs ki ly") },
   {
     id: "afnic",
     name: "AFNIC",
     textPattern: /This is the AFNIC Whois server/,
     redemption: 30,
     pendingDelete: 0,
-    tlds: list(`
-      fr paris pm re tf wf yt
-    `),
+    tlds: words("fr paris pm re tf wf yt"),
   },
-  {
-    id: "cira",
-    name: "CIRA",
-    redemption: 35,
-    pendingDelete: 5,
-    tlds: list(`
-      blog eco kiwi
-    `),
-  },
-  {
-    id: "nic-br",
-    name: "NIC.br",
-    redemption: 35,
-    pendingDelete: 5,
-    tlds: list(`
-      rio
-    `),
-  },
+  { id: "cira", name: "CIRA", redemption: 35, pendingDelete: 5, tlds: words("blog eco kiwi") },
+  { id: "nic-br", name: "NIC.br", redemption: 35, pendingDelete: 5, tlds: words("rio") },
   {
     id: "dotberlin",
     name: "dotBERLIN",
     textPattern: /dotBERLIN GmbH/,
     redemption: 35,
     pendingDelete: 5,
-    tlds: list(`
-      berlin
-    `),
+    tlds: words("berlin"),
   },
-  {
-    id: "dns-belgium",
-    name: "DNS Belgium",
-    redemption: 5,
-    pendingDelete: 5,
-    tlds: list(`
-      brussels vlaanderen
-    `),
-  },
+  { id: "dns-belgium", name: "DNS Belgium", redemption: 5, pendingDelete: 5, tlds: words("brussels vlaanderen") },
   {
     id: "zacr",
     name: "ZA Central Registry",
     redemption: 30,
     pendingDelete: 5,
-    tlds: list(`
-      africa capetown durban joburg
-    `),
+    tlds: words("africa capetown durban joburg"),
   },
-  {
-    id: "sidn",
-    name: "SIDN",
-    redemption: 39,
-    pendingDelete: 5,
-    tlds: list(`
-      amsterdam
-    `),
-  },
+  { id: "sidn", name: "SIDN", redemption: 39, pendingDelete: 5, tlds: words("amsterdam") },
   {
     id: "nominet",
     name: "Nominet",
     textPattern: /nominet/,
     redemption: 35,
     pendingDelete: 35,
-    tlds: list(`
+    tlds: words(`
       jobs
       abbvie amazon audible author aws azure bbc bbva bing book bot broadway buy call career circle cymru
       deal desi fairwinds fast fire free gop got gucci hot hotmail ieee imdb jot joy kindle like locus med
@@ -244,13 +192,5 @@ export const registries: Registry[] = [
       virgin wales wanggou wed windows wow xbox yamaxun you zappos uk
     `),
   },
-  {
-    id: "mintic",
-    name: "MinTIC",
-    redemption: 35,
-    pendingDelete: 5,
-    tlds: list(`
-      co
-    `),
-  },
+  { id: "mintic", name: "MinTIC", redemption: 35, pendingDelete: 5, tlds: words("co") },
 ];

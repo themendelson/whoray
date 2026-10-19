@@ -2,7 +2,7 @@ import type { JsonObject } from "#json.ts";
 import { boolean, object, objects, string, strings } from "#json.ts";
 import { parseDate } from "#parse/dates.ts";
 import type { Details } from "#parse/fields.ts";
-import { contact, contacts, countryCode, email, filled, hostnames, phone, registrar, visible } from "#parse/fields.ts";
+import { contact, countryCode, defined, email, hostnames, phone, registrar, visible } from "#parse/fields.ts";
 import type { Found } from "#parse/found.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
 import type { Address, Contact, Registrar } from "#types.ts";
@@ -41,36 +41,31 @@ export function readRdap(json: unknown): Found {
   }
   const withRole = (role: string): JsonObject | undefined =>
     objects(root.entities).find((entity) => strings(entity.roles).includes(role));
-  const registrar = registrarOf(withRole("registrar"));
-  const handle = visible(string(root.handle));
-  const dnssec = boolean(object(root.secureDNS)?.delegationSigned);
-  const registrarRdap = relatedRdap(root);
   return {
     kind: "record",
     ...dates,
     statuses: normalizeStatuses(strings(root.status)),
     nameservers: hostnames(objects(root.nameservers ?? root.nameServers).flatMap((ns) => string(ns.ldhName) ?? [])),
-    ...(registrar && { registrar }),
-    ...contacts({
+    ...defined({
+      registrar: registrarOf(withRole("registrar")),
       registrant: contactOf(withRole("registrant")),
       admin: contactOf(withRole("administrative")),
       tech: contactOf(withRole("technical")),
       billing: contactOf(withRole("billing")),
+      handle: visible(string(root.handle)),
+      dnssec: boolean(object(root.secureDNS)?.delegationSigned),
+      registrarRdap: relatedRdap(root),
     }),
-    ...(handle !== undefined && { handle }),
-    ...(dnssec !== undefined && { dnssec }),
-    ...(registrarRdap !== undefined && { registrarRdap }),
   };
 }
 
 function registrarOf(entity: JsonObject | undefined): Registrar | undefined {
   const name = entity && (vcard(entity, "fn") ?? vcard(entity, "org"));
   if (!entity || name === undefined) return undefined;
-  const ianaId = objects(entity.publicIds).find((id) => /iana/i.test(string(id.type) ?? ""))?.identifier;
   const abuse = objects(entity.entities).find((nested) => strings(nested.roles).includes("abuse"));
   const about = objects(entity.links).find((link) => string(link.rel) === "about");
   return registrar(name, {
-    ianaId: Number(ianaId ?? Number.NaN),
+    ianaId: Number(objects(entity.publicIds).find((id) => /iana/i.test(string(id.type) ?? ""))?.identifier),
     url: vcard(entity, "url") ?? string(about?.href),
     ...addressOf(entity),
     abuseEmail: abuse && vcard(abuse, "email"),
@@ -79,16 +74,14 @@ function registrarOf(entity: JsonObject | undefined): Registrar | undefined {
 }
 
 function addressOf(entity: JsonObject): Details<Address> {
-  const address = vcardEntry(entity, "adr");
+  const address = vcardEntries(entity, "adr")[0];
   const parts: unknown[] = Array.isArray(address?.[3]) && address[3].length === ADR_PARTS ? address[3] : [];
   return {
-    street: (Array.isArray(parts[2]) ? strings(parts[2]) : [string(parts[2]) ?? []].flat()).flatMap(
-      (line) => filled(line) ?? [],
-    ),
-    city: filled(string(parts[3])),
-    state: filled(string(parts[4])),
-    postalCode: filled(string(parts[5])),
-    country: countryCode(string(object(address?.[1])?.cc) ?? countryOf(address?.[3])),
+    street: strings([parts[2]].flat()).flatMap((line) => visible(line) ?? []),
+    city: visible(string(parts[3])),
+    state: visible(string(parts[4])),
+    postalCode: visible(string(parts[5])),
+    country: countryCode(string(object(address?.[1])?.cc) ?? string(parts[ADR_PARTS - 1])),
     email: email(vcard(entity, "email")),
     phone: phone(tel(entity, false)),
     fax: phone(tel(entity, true)),
@@ -105,36 +98,19 @@ function contactOf(entity: JsonObject | undefined): Contact | undefined {
 }
 
 function tel(entity: JsonObject, fax: boolean): string | undefined {
-  const entries = vcardEntries(entity, "tel");
-  const match = entries.find((entry) => {
-    const type = object(entry[1])?.type;
-    const types = Array.isArray(type) ? strings(type) : [string(type) ?? ""];
-    return types.some((value) => value.toLowerCase() === "fax") === fax;
-  });
-  return string(match?.[3]);
-}
-
-function countryOf(parts: unknown): string | undefined {
-  return Array.isArray(parts) && parts.length === ADR_PARTS ? string(parts[ADR_PARTS - 1]) : undefined;
+  const isFax = (entry: unknown[]): boolean =>
+    strings([object(entry[1])?.type].flat()).some((type) => type.toLowerCase() === "fax");
+  return string(vcardEntries(entity, "tel").find((entry) => isFax(entry) === fax)?.[3]);
 }
 
 function vcardEntries(entity: JsonObject, property: string): unknown[][] {
   const card = entity.vcardArray;
-  if (!Array.isArray(card) || !Array.isArray(card[1])) return [];
-  const entries: unknown[] = card[1];
-  return entries.flatMap((entry): unknown[][] => {
-    if (!Array.isArray(entry)) return [];
-    const fields: unknown[] = entry;
-    return fields[0] === property ? [fields] : [];
-  });
-}
-
-function vcardEntry(entity: JsonObject, property: string): unknown[] | undefined {
-  return vcardEntries(entity, property)[0];
+  const entries: unknown[] = Array.isArray(card) && Array.isArray(card[1]) ? card[1] : [];
+  return entries.flatMap((entry): unknown[][] => (Array.isArray(entry) && entry[0] === property ? [entry] : []));
 }
 
 function vcard(entity: JsonObject, property: string): string | undefined {
-  return string(vcardEntry(entity, property)?.[3]);
+  return string(vcardEntries(entity, property)[0]?.[3]);
 }
 
 function relatedRdap(root: JsonObject): string | undefined {

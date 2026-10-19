@@ -1,13 +1,21 @@
 import type { DropRule } from "#drop.ts";
-import { fixedPeriods, redemptionGracePeriod } from "#drop.ts";
-import { addDays, atUtcHour, daysBetween, onOrAfterWeekday, rolledPast } from "#time.ts";
+import {
+  addDays,
+  afterExpiry,
+  afterUpdate,
+  atUtcHour,
+  daysBetween,
+  onOrAfterWeekday,
+  redemptionGracePeriod,
+  rolledPast,
+} from "#drop.ts";
 
-const uk = fixedPeriods(60, 30, 5);
+const uk = afterExpiry(60 + 30 + 5);
 const registryClick = redemptionGracePeriod(34, 4);
 const afnic: DropRule = ({ deleted }) => deleted && addDays(deleted, 30);
-const zacr: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 30);
+const zacr = afterExpiry(30);
 const WEDNESDAY = 3;
-const isoc: DropRule = ({ expirationDate }) => expirationDate && addDays(expirationDate, 61);
+const isoc = afterExpiry(61);
 
 // Observed on .ai: names drop at 17:00 UTC, and an update after 14:00 UTC counts from the next day.
 // .io, on the same Identity Digital back end, matched the 28-day pendingDelete.
@@ -35,8 +43,8 @@ function usSchedule(expirationDate: Date, updatedDate: Date): Date {
 export const dropRules: Record<string, DropRule> = {
   africa: zacr,
   ai: identityDigitalCcTld,
-  am: ({ expirationDate }) => expirationDate && addDays(expirationDate, 45),
-  ar: ({ expirationDate }) => expirationDate && addDays(expirationDate, 45),
+  am: afterExpiry(45),
+  ar: afterExpiry(45),
   // CIRA releases a week's deleted names together, on the following Wednesday.
   ca: ({ updatedDate, statuses }) =>
     statuses.has("pendingDelete") && updatedDate
@@ -44,81 +52,72 @@ export const dropRules: Record<string, DropRule> = {
       : undefined,
   capetown: zacr,
   click: registryClick,
-  cn: ({ expirationDate }) => expirationDate && addDays(expirationDate, 47),
+  cn: afterExpiry(47),
   co: ({ released }) => released && addDays(rolledPast(released, 17), 1),
   "co.il": isoc,
   "co.uk": uk,
   country: registryClick,
-  de: ({ updatedDate, statuses }) =>
-    statuses.has("redemptionPeriod") && updatedDate ? addDays(updatedDate, 31) : undefined,
+  de: afterUpdate(31, "redemptionPeriod"),
   diy: registryClick,
-  do: ({ expirationDate }) => expirationDate && addDays(expirationDate, 47),
+  do: afterExpiry(47),
   durban: zacr,
-  ee: ({ expirationDate }) => expirationDate && addDays(expirationDate, 45),
+  ee: afterExpiry(45),
   feedback: registryClick,
   food: registryClick,
   forum: registryClick,
   fr: afnic,
-  ge: ({ expirationDate }) => expirationDate && addDays(expirationDate, 30),
+  ge: afterExpiry(30),
   hiv: registryClick,
-  hk: ({ expirationDate }) => expirationDate && addDays(expirationDate, 90),
-  hr: ({ expirationDate }) => expirationDate && addDays(expirationDate, 31),
-  id: ({ updatedDate, statuses }) =>
-    updatedDate && (statuses.has("redemptionPeriod") || statuses.has("pendingDelete"))
-      ? addDays(updatedDate, 37)
-      : undefined,
+  hk: afterExpiry(90),
+  hr: afterExpiry(31),
+  id: afterUpdate(37, "redemptionPeriod", "pendingDelete"),
   io: identityDigitalCcTld,
-  is: ({ expirationDate }) => expirationDate && addDays(expirationDate, 32),
-  it: ({ updatedDate, statuses }) =>
-    statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 33) : undefined,
+  is: afterExpiry(32),
+  it: afterUpdate(33, "pendingDelete"),
   joburg: zacr,
-  ke: ({ expirationDate }) => expirationDate && addDays(expirationDate, 94),
-  kg: ({ expirationDate }) => expirationDate && addDays(expirationDate, 30),
-  kr: ({ expirationDate }) => expirationDate && addDays(expirationDate, 32),
-  ky: ({ updatedDate, statuses }) =>
-    statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 31) : undefined,
+  ke: afterExpiry(94),
+  kg: afterExpiry(30),
+  kr: afterExpiry(32),
+  ky: afterUpdate(31, "pendingDelete"),
   lifestyle: registryClick,
   living: registryClick,
-  ls: ({ expirationDate }) => expirationDate && addDays(expirationDate, 61),
+  ls: afterExpiry(61),
   ly: ({ expirationDate, updatedDate, statuses }) => {
     if (!expirationDate || !updatedDate) return undefined;
     if (statuses.has("redemptionPeriod")) return addDays(updatedDate, 36);
     return statuses.has("pendingDelete") ? addDays(updatedDate, 7) : addDays(expirationDate, 28);
   },
-  ma: ({ expirationDate }) => expirationDate && addDays(expirationDate, 30),
-  md: ({ expirationDate }) => expirationDate && addDays(expirationDate, 31),
+  ma: afterExpiry(30),
+  md: afterExpiry(31),
   me: ({ updatedDate, statuses }) => updatedDate && addDays(updatedDate, statuses.has("redemptionPeriod") ? 35 : 6),
   "me.uk": uk,
-  mk: ({ expirationDate }) => expirationDate && addDays(expirationDate, 122),
-  ng: ({ expirationDate }) => expirationDate && addDays(expirationDate, 103),
+  mk: afterExpiry(122),
+  ng: afterExpiry(103),
   observer: registryClick,
   "org.il": isoc,
   "org.uk": uk,
   pid: registryClick,
   pm: afnic,
   property: registryClick,
-  pt: ({ expirationDate }) => expirationDate && addDays(expirationDate, 31),
-  qa: ({ updatedDate, statuses }) =>
-    statuses.has("pendingDelete") && updatedDate ? addDays(updatedDate, 32) : undefined,
+  pt: afterExpiry(31),
+  qa: afterUpdate(32, "pendingDelete"),
   re: afnic,
   realty: registryClick,
-  rs: ({ expirationDate }) => expirationDate && addDays(expirationDate, 31),
+  rs: afterExpiry(31),
   sexy: registryClick,
-  si: ({ expirationDate, statuses }) =>
-    statuses.has("pendingDelete") && expirationDate ? addDays(expirationDate, 30) : undefined,
-  // ZDNS dates a deletion in Beijing time (UTC+8): an update after 16:00 UTC counts from the next day.
+  si: afterExpiry(30, "pendingDelete"),
   sn: redemptionGracePeriod(35, 5),
-  tc: ({ expirationDate }) => expirationDate && addDays(expirationDate, 63),
+  tc: afterExpiry(63),
   tf: afnic,
-  th: ({ updatedDate, statuses }) =>
-    statuses.has("redemptionPeriod") && updatedDate ? addDays(updatedDate, 35) : undefined,
+  th: afterUpdate(35, "redemptionPeriod"),
+  // ZDNS dates a deletion in Beijing time (UTC+8): an update after 16:00 UTC counts from the next day.
   top: ({ updatedDate, statuses }) =>
     updatedDate && (statuses.has("pendingDelete") || statuses.has("redemptionPeriod"))
       ? atUtcHour(addDays(rolledPast(updatedDate, 16), 36), 0)
       : undefined,
   trust: registryClick,
-  tw: ({ expirationDate }) => expirationDate && addDays(expirationDate, 33),
-  tz: ({ expirationDate }) => expirationDate && addDays(expirationDate, 59),
+  tw: afterExpiry(33),
+  tz: afterExpiry(59),
   uk,
   us: ({ expirationDate, updatedDate, statuses }) =>
     statuses.has("pendingDelete") && expirationDate && updatedDate

@@ -7,10 +7,10 @@ import { bySuffix } from "#domain.ts";
 import { registryInText } from "#lifecycle.ts";
 import { parseDate } from "#parse/dates.ts";
 import type { Details } from "#parse/fields.ts";
-import { contact, contacts, countryCode, email, filled, hostnames, phone, registrar, visible } from "#parse/fields.ts";
-import type { Found, Registration } from "#parse/found.ts";
+import { contact, countryCode, defined, email, filled, hostnames, phone, registrar, visible } from "#parse/fields.ts";
+import type { Found } from "#parse/found.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
-import type { Address, Contact, Registrar } from "#types.ts";
+import type { Address, Contact, ErrorCode, Registrar } from "#types.ts";
 import { pairs } from "#whois/pairs.ts";
 
 const fieldByKey = new Map(aliases.flatMap(([field, keys]) => keys.map((key) => [key, field] as const)));
@@ -19,8 +19,8 @@ export function readWhois(text: string, name: Name): Found {
   const transforms = bySuffix(quirks, name.tld) ?? [];
   const transformed = transforms.reduce((current, transform) => transform(current), text);
   const fields = collect(transformed);
-  const creationDate = firstDate(fields.get("created"));
-  const expirationDate = firstDate(fields.get("expires"));
+  const creationDate = firstOf(fields.get("created"), parseDate);
+  const expirationDate = firstOf(fields.get("expires"), parseDate);
   const registrar = registrarOf(fields);
   const nameservers = hostnames(fields.get("nameservers") ?? []).filter((host) => host !== name.domain);
   const statuses = statusesOf(fields, transformed);
@@ -31,10 +31,23 @@ export function readWhois(text: string, name: Name): Found {
     kind: "record",
     statuses,
     nameservers,
-    ...(registrar && { registrar }),
-    ...(creationDate && { creationDate }),
-    ...(expirationDate && { expirationDate }),
-    ...details(fields, transformed),
+    ...defined({
+      registrar,
+      creationDate,
+      expirationDate,
+      registrant: contactOf(fields, "registrant"),
+      admin: contactOf(fields, "admin"),
+      tech: contactOf(fields, "tech"),
+      billing: contactOf(fields, "billing"),
+      handle: visible(fields.get("handle")?.[0]),
+      updatedDate: firstOf(fields.get("updated"), parseDate),
+      released: firstOf(fields.get("released"), parseDate),
+      deleted: firstOf(fields.get("deleted"), parseDate),
+      snapshotDate: parseDate(/>>> Last update of WHOIS database:\s*(\S+)/i.exec(transformed)?.[1] ?? ""),
+      dnssec: firstOf(fields.get("dnssec"), dnssecOf),
+      registrarWhois: hostnames(fields.get("registrarWhois") ?? []).at(0),
+      registryId: registryInText(transformed)?.id,
+    }),
   };
 }
 
@@ -42,33 +55,6 @@ function statusesOf(fields: Map<Field, string[]>, text: string): string[] {
   const statuses = normalizeStatuses(fields.get("statuses") ?? []);
   const deleting = revoked.some((phrase) => phrase.test(text));
   return deleting && !statuses.includes("pendingDelete") ? [...statuses, "pendingDelete"] : statuses;
-}
-
-function details(fields: Map<Field, string[]>, text: string): Partial<Registration> {
-  const updatedDate = firstDate(fields.get("updated"));
-  const released = firstDate(fields.get("released"));
-  const deleted = firstDate(fields.get("deleted"));
-  const snapshotDate = parseDate(/>>> Last update of WHOIS database:\s*(\S+)/i.exec(text)?.[1] ?? "");
-  const registrarWhois = hostnames(fields.get("registrarWhois") ?? []).at(0);
-  const dnssec = (fields.get("dnssec") ?? []).map(dnssecOf).find((value) => value !== undefined);
-  const handle = visible(fields.get("handle")?.[0]);
-  const registryId = registryInText(text)?.id;
-  return {
-    ...contacts({
-      registrant: contactOf(fields, "registrant"),
-      admin: contactOf(fields, "admin"),
-      tech: contactOf(fields, "tech"),
-      billing: contactOf(fields, "billing"),
-    }),
-    ...(handle !== undefined && { handle }),
-    ...(updatedDate && { updatedDate }),
-    ...(released && { released }),
-    ...(deleted && { deleted }),
-    ...(snapshotDate && { snapshotDate }),
-    ...(dnssec !== undefined && { dnssec }),
-    ...(registrarWhois !== undefined && { registrarWhois }),
-    ...(registryId !== undefined && { registryId }),
-  };
 }
 
 function collect(text: string): Map<Field, string[]> {
@@ -85,18 +71,14 @@ function withoutRecord(text: string): Found {
   const first = lines[0] ?? "";
   const notice = noticeOf(lines);
   const said = (phrases: RegExp[], within = text): boolean => phrases.some((phrase) => phrase.test(within));
+  const failed = (code: ErrorCode, message: string): Found => ({ kind: "error", code, message });
   if (firstLine.dropzone.test(first)) return { kind: "dropzone" };
   if (firstLine.dpml.test(first) || said(reserved)) return { kind: "reserved" };
   if (said(notFound)) return { kind: "available", ...(firstLine.premium.test(first) && { premium: true }) };
-  if (said(notices.rateLimited, notice)) {
-    return { kind: "error", code: "rate_limited", message: "The server is rate limiting queries" };
-  }
-  if (said(notices.blocked, notice))
-    return { kind: "error", code: "blocked", message: "The server refused this client" };
-  if (said(notices.retired, notice)) {
-    return { kind: "error", code: "no_server", message: "The server no longer answers for this TLD" };
-  }
-  return { kind: "error", code: "unparseable", message: "No registration data or known not-found reply" };
+  if (said(notices.rateLimited, notice)) return failed("rate_limited", "The server is rate limiting queries");
+  if (said(notices.blocked, notice)) return failed("blocked", "The server refused this client");
+  if (said(notices.retired, notice)) return failed("no_server", "The server no longer answers for this TLD");
+  return failed("unparseable", "No registration data or known not-found reply");
 }
 
 // A throttling, refusal or retirement notice is the first line after the server's comment header;
@@ -105,69 +87,53 @@ function noticeOf(lines: string[]): string {
   return lines.find((line) => /^\s*[%#]+\s*error\b/i.test(line) || !/^\s*[%#]/.test(line)) ?? "";
 }
 
-function firstDate(values: string[] | undefined): Date | undefined {
+function firstOf<T>(values: string[] | undefined, read: (value: string) => T | undefined): T | undefined {
   for (const value of values ?? []) {
-    const date = parseDate(value);
-    if (date) return date;
+    const result = read(value);
+    if (result !== undefined) return result;
   }
   return undefined;
-}
-
-function present(values: string[] | undefined): string | undefined {
-  return values?.find((value) => visible(value) !== undefined);
 }
 
 const CONTACT_HANDLE = /^(?=\S*\d)[a-z0-9-]{5,}$/i;
 
 function addressOf(fields: Map<Field, string[]>, role: ContactRole): Details<Address> {
   const values = (part: ContactPart): string[] => fields.get(`${role}${part}`) ?? [];
-  const first = (part: ContactPart): string | undefined =>
-    values(part)
-      .flatMap((value) => filled(value) ?? [])
-      .at(0);
   return {
     street: values("Street").flatMap((line) => filled(line) ?? []),
-    city: first("City"),
-    state: first("State"),
-    postalCode: first("PostalCode"),
-    country: countryCode(present(values("Country"))),
-    email: values("Email")
-      .flatMap((value) => email(value) ?? [])
-      .at(0),
-    phone: values("Phone")
-      .flatMap((value) => phone(value) ?? [])
-      .at(0),
-    fax: values("Fax")
-      .flatMap((value) => phone(value) ?? [])
-      .at(0),
+    city: firstOf(values("City"), filled),
+    state: firstOf(values("State"), filled),
+    postalCode: firstOf(values("PostalCode"), filled),
+    country: countryCode(firstOf(values("Country"), visible)),
+    email: firstOf(values("Email"), email),
+    phone: firstOf(values("Phone"), phone),
+    fax: firstOf(values("Fax"), phone),
   };
 }
 
 function contactOf(fields: Map<Field, string[]>, role: ContactRole): Contact | undefined {
   return contact({
     name: visible(fields.get(`${role}Name`)?.find((value) => !CONTACT_HANDLE.test(value.trim()))),
-    organization: present(fields.get(`${role}Organization`)),
+    organization: firstOf(fields.get(`${role}Organization`), visible),
     ...addressOf(fields, role),
   });
 }
 
 function registrarOf(fields: Map<Field, string[]>): Registrar | undefined {
-  const raw = present(fields.get("registrar"));
+  const raw = firstOf(fields.get("registrar"), visible);
   if (raw === undefined) return undefined;
   const inline = /^(.*?)\s*\(\s*(https?:\/\/[^\s)]+)\s*\)$/.exec(raw);
-  const name = inline?.[1] ?? raw;
-  return registrar(name, {
+  return registrar(inline?.[1] ?? raw, {
     ianaId: Number(fields.get("registrarIanaId")?.[0]),
-    url: present(fields.get("registrarUrl")) ?? inline?.[2],
+    url: firstOf(fields.get("registrarUrl"), visible) ?? inline?.[2],
     ...addressOf(fields, "registrar"),
-    abuseEmail: present(fields.get("abuseEmail")),
-    abusePhone: present(fields.get("abusePhone")),
+    abuseEmail: firstOf(fields.get("abuseEmail"), visible),
+    abusePhone: firstOf(fields.get("abusePhone"), visible),
     whoisServer: hostnames(fields.get("registrarWhois") ?? []).at(0),
   });
 }
 
 function dnssecOf(value: string): boolean | undefined {
   if (dnssec.unsigned.test(value)) return false;
-  if (dnssec.signed.test(value)) return true;
-  return undefined;
+  return dnssec.signed.test(value) ? true : undefined;
 }

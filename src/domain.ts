@@ -9,19 +9,20 @@ export interface Name {
 
 export function normalize(input: string, isKnownSuffix: (suffix: string) => boolean): Name {
   const trimmed = input.trim().toLowerCase().replace(/\.$/, "");
-  if (NOT_A_HOSTNAME.test(trimmed)) throw new TypeError(`Not a domain name: "${input}"`);
-  let ascii: string;
-  try {
-    ascii = new URL(`http://${trimmed}`).hostname;
-  } catch {
-    throw new TypeError(`Not a domain name: "${input}"`);
-  }
+  const ascii = NOT_A_HOSTNAME.test(trimmed) ? "" : (parseUrl(`http://${trimmed}`)?.hostname ?? "");
   const labels = ascii.split(".");
-  const tldLabel = labels.at(-1) ?? "";
-  if (labels.length < 2 || ascii.length > 253 || /^\d+$/.test(tldLabel) || !labels.every((l) => LABEL.test(l))) {
-    throw new TypeError(`Not a domain name: "${input}"`);
-  }
+  const valid = labels.length > 1 && ascii.length <= 253 && !/^\d+$/.test(lastLabel(ascii));
+  if (!valid || !labels.every((label) => LABEL.test(label))) throw new TypeError(`Not a domain name: "${input}"`);
   return { domain: ascii, unicode: toUnicode(ascii), tld: suffixOf(labels, isKnownSuffix) };
+}
+
+// Not URL.canParse: on Node 22 it starts rejecting valid non-ASCII hosts once the JIT optimizes it.
+export function parseUrl(href: string | undefined): URL | undefined {
+  try {
+    return href === undefined ? undefined : new URL(href);
+  } catch {
+    return undefined;
+  }
 }
 
 export function lastLabel(suffix: string): string {

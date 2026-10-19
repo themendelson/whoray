@@ -1,13 +1,9 @@
-import { afterAll, beforeAll, expect, test, vi } from "vitest";
+import { expect, test } from "vitest";
 import { lookup } from "#runtime/node.ts";
 import type { Capture } from "./support.ts";
-import { captures, httpServer, whoisServer } from "./support.ts";
+import { captures, freezeTime, httpServer, whoisServer } from "./support.ts";
 
-beforeAll(() => {
-  vi.useFakeTimers({ toFake: ["Date"] });
-  vi.setSystemTime(new Date("2026-10-16T12:00:00Z"));
-});
-afterAll(() => vi.useRealTimers());
+freezeTime("2026-10-16T12:00:00Z");
 
 function replay(capture: Capture): ReturnType<typeof lookup> {
   if (capture.protocol === "rdap") {

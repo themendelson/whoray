@@ -1,79 +1,63 @@
-import { afterAll, beforeAll, expect, test, vi } from "vitest";
+import { expect, test } from "vitest";
+import type { DomainRecord } from "#runtime/node.ts";
 import { parseRdap, parseWhois } from "#runtime/node.ts";
+import { freezeTime } from "./support.ts";
 
-beforeAll(() => {
-  vi.useFakeTimers({ toFake: ["Date"] });
-  vi.setSystemTime(new Date("2026-10-16T12:00:00Z"));
-});
-afterAll(() => vi.useRealTimers());
+freezeTime("2026-10-16T12:00:00Z");
 
-function rdap(domain: string, status: string[], events: Record<string, string>): unknown {
-  return {
-    objectClassName: "domain",
-    ldhName: domain,
-    status,
-    events: Object.entries(events).map(([eventAction, eventDate]) => ({ eventAction, eventDate })),
-  };
+function rdap(domain: string, status: string[], events: Record<string, string> = {}): DomainRecord {
+  const eventList = Object.entries(events).map(([eventAction, eventDate]) => ({ eventAction, eventDate }));
+  return parseRdap({ objectClassName: "domain", ldhName: domain, status, events: eventList }, domain);
 }
 
 test("a pendingDelete .com drops six days after its last update", () => {
-  const record = parseRdap(
-    rdap("example.com", ["pending delete"], {
-      "last changed": "2026-10-14T18:00:00Z",
-      expiration: "2026-08-01T00:00:00Z",
-    }),
-    "example.com",
-  );
+  const record = rdap("example.com", ["pending delete"], {
+    "last changed": "2026-10-14T18:00:00Z",
+    expiration: "2026-08-01T00:00:00Z",
+  });
   expect(record.state).toBe("pendingDelete");
   expect(record.dropDate).toEqual(new Date("2026-10-20T18:00:00Z"));
 });
 
 test("a .com updated five days ago is still within its pendingDelete", () => {
-  const record = parseRdap(
-    rdap("example.com", ["pending delete"], {
-      "last changed": "2026-10-11T09:30:00Z",
-      expiration: "2026-09-11T04:00:00Z",
-    }),
-    "example.com",
-  );
+  const record = rdap("example.com", ["pending delete"], {
+    "last changed": "2026-10-11T09:30:00Z",
+    expiration: "2026-09-11T04:00:00Z",
+  });
   expect(record.dropDate).toEqual(new Date("2026-10-17T09:30:00Z"));
 });
 
 test("a domain in redemption drops once its redemption cycle ends, pending delete included", () => {
-  const record = parseRdap(
-    rdap("example.com", ["redemption period", "pending delete"], {
-      "last changed": "2026-10-01T00:00:00Z",
-      expiration: "2026-08-20T00:00:00Z",
-    }),
-    "example.com",
-  );
+  const record = rdap("example.com", ["redemption period", "pending delete"], {
+    "last changed": "2026-10-01T00:00:00Z",
+    expiration: "2026-08-20T00:00:00Z",
+  });
   expect(record.state).toBe("redemption");
   expect(record.dropDate).toEqual(new Date("2026-11-05T00:00:00Z"));
 });
 
 test("a past expiry in the auto-renew period is a renewed domain, not an expired one", () => {
-  const record = parseRdap(
-    rdap("nic.vip", ["auto renew period", "server delete prohibited"], { expiration: "2026-09-07T04:15:49Z" }),
-    "nic.vip",
-  );
+  const record = rdap("nic.vip", ["auto renew period", "server delete prohibited"], {
+    expiration: "2026-09-07T04:15:49Z",
+  });
   expect(record.state).toBe("registered");
   expect(record.dropDate).toBeUndefined();
 });
 
 test("an expired domain without deletion statuses gets no drop date when its registry's schedule is known", () => {
-  const record = parseRdap(rdap("example.com", ["active"], { expiration: "2026-10-01T00:00:00Z" }), "example.com");
+  const record = rdap("example.com", ["active"], { expiration: "2026-10-01T00:00:00Z" });
   expect(record.state).toBe("expired");
   expect(record.dropDate).toBeUndefined();
 });
 
 test("a TLD without lifecycle data gets a generic estimate from its expiry", () => {
-  const record = parseRdap(rdap("example.zz", ["active"], { expiration: "2026-10-01T00:00:00Z" }), "example.zz");
+  const record = rdap("example.zz", ["active"], { expiration: "2026-10-01T00:00:00Z" });
   expect(record.state).toBe("expired");
   expect(record.dropDate).toEqual(new Date("2026-12-20T00:00:00Z"));
 });
 
 test("a registered domain has no drop estimate", () => {
-  const record = parseRdap(rdap("example.com", ["active"], { expiration: "2030-01-01T00:00:00Z" }), "example.com");
+  const record = rdap("example.com", ["active"], { expiration: "2030-01-01T00:00:00Z" });
   expect(record).toMatchObject({ state: "registered", statuses: ["ok"] });
   expect(record.dropDate).toBeUndefined();
 });
@@ -94,23 +78,17 @@ test("a date the registry publishes for release wins over formulas", () => {
 });
 
 test("TLD schedules override the registry's", () => {
-  const record = parseRdap(
-    rdap("example.ai", ["pending delete"], {
-      "last changed": "2026-10-10T15:00:00Z",
-      expiration: "2026-08-01T00:00:00Z",
-    }),
-    "example.ai",
-  );
+  const record = rdap("example.ai", ["pending delete"], {
+    "last changed": "2026-10-10T15:00:00Z",
+    expiration: "2026-08-01T00:00:00Z",
+  });
   expect(record.dropDate).toEqual(new Date("2026-11-08T17:00:00Z"));
 });
 
 test("records name the registry operator for the TLD, including second-level suffixes", () => {
-  expect(parseRdap(rdap("example.org", [], {}), "example.org").registry).toEqual({
+  expect(rdap("example.org", []).registry).toEqual({
     id: "public-interest-registry",
     name: "Public Interest Registry",
   });
-  expect(parseRdap(rdap("example.co.uk", [], {}), "example.co.uk")).toMatchObject({
-    tld: "co.uk",
-    registry: { id: "nominet" },
-  });
+  expect(rdap("example.co.uk", [])).toMatchObject({ tld: "co.uk", registry: { id: "nominet" } });
 });
