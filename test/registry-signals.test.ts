@@ -1,12 +1,8 @@
-import { afterAll, beforeAll, expect, test, vi } from "vitest";
+import { expect, test } from "vitest";
 import { lookup, parseRdap, parseWhois } from "#runtime/node.ts";
-import { httpServer, whoisServer } from "./support.ts";
+import { freezeTime, httpServer, whoisServer } from "./support.ts";
 
-beforeAll(() => {
-  vi.useFakeTimers({ toFake: ["Date"] });
-  vi.setSystemTime(new Date("2026-10-16T12:00:00Z"));
-});
-afterAll(() => vi.useRealTimers());
+freezeTime("2026-10-16T12:00:00Z");
 
 test("a WHOIS reply that opens with Dropzone means the registry holds the deleted name", () => {
   expect(parseWhois("Dropzone: this name is pending release.\nDomain not found.", "example.io").state).toBe("dropzone");

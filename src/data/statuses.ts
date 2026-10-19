@@ -1,28 +1,12 @@
-export const eppStatuses: readonly string[] = [
-  "ok",
-  "inactive",
-  "addPeriod",
-  "autoRenewPeriod",
-  "renewPeriod",
-  "transferPeriod",
-  "redemptionPeriod",
-  "pendingRestore",
-  "pendingDelete",
-  "pendingCreate",
-  "pendingRenew",
-  "pendingTransfer",
-  "pendingUpdate",
-  "clientDeleteProhibited",
-  "clientHold",
-  "clientRenewProhibited",
-  "clientTransferProhibited",
-  "clientUpdateProhibited",
-  "serverDeleteProhibited",
-  "serverHold",
-  "serverRenewProhibited",
-  "serverTransferProhibited",
-  "serverUpdateProhibited",
-];
+import { words } from "#data/lists.ts";
+
+export const eppStatuses: readonly string[] = words(`
+  ok inactive
+  addPeriod autoRenewPeriod renewPeriod transferPeriod redemptionPeriod
+  pendingCreate pendingDelete pendingRenew pendingRestore pendingTransfer pendingUpdate
+  clientDeleteProhibited clientHold clientRenewProhibited clientTransferProhibited clientUpdateProhibited
+  serverDeleteProhibited serverHold serverRenewProhibited serverTransferProhibited serverUpdateProhibited
+`);
 
 export const statusSynonyms: Readonly<Record<string, string>> = {
   active: "ok",
