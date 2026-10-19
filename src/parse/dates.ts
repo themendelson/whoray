@@ -24,31 +24,17 @@ const ZONE_MINUTES: Record<string, number> = {
   pdt: -420,
 };
 
-interface Parts {
-  year: number;
-  month: number;
-  day: number;
-  rest: string;
-}
-
 const NUMERIC_DAY_MONTH_YEAR = /^(\d{1,2})[-./](\d{1,2})[-./](\d{4})(.*)$/;
 
-const PATTERNS: ((value: string) => Parts | undefined)[] = [
-  (value) => parts(/^(\d{4})\s*[-./]\s*(\d{1,2})\s*[-./]\s*(\d{1,2})(.*)$/.exec(value), 1, 2, 3),
-  (value) => parts(/^(\d{4})-([a-z]{3})-(\d{1,2})(.*)$/i.exec(value), 1, 2, 3),
-  (value) => parts(NUMERIC_DAY_MONTH_YEAR.exec(value), 3, 2, 1),
-  (value) => parts(NUMERIC_DAY_MONTH_YEAR.exec(value), 3, 1, 2),
-  (value) => parts(/^(\d{1,2})[-\s.]+([a-z]{3})[a-z]*\.?[-\s.,]+(\d{4})(.*)$/i.exec(value), 3, 2, 1),
-  (value) => parts(/^([a-z]{3})[a-z]*\.?\s+(\d{1,2}),?\s+(\d{4})(.*)$/i.exec(value), 3, 1, 2),
-  (value) => parts(/^(\d{4})(\d{2})(\d{2})(\D.*)?$/.exec(value), 1, 2, 3),
+const PATTERNS: [pattern: RegExp, year: number, month: number, day: number][] = [
+  [/^(\d{4})\s*[-./]\s*(\d{1,2})\s*[-./]\s*(\d{1,2})(.*)$/, 1, 2, 3],
+  [/^(\d{4})-([a-z]{3})-(\d{1,2})(.*)$/i, 1, 2, 3],
+  [NUMERIC_DAY_MONTH_YEAR, 3, 2, 1],
+  [NUMERIC_DAY_MONTH_YEAR, 3, 1, 2],
+  [/^(\d{1,2})[-\s.]+([a-z]{3})[a-z]*\.?[-\s.,]+(\d{4})(.*)$/i, 3, 2, 1],
+  [/^([a-z]{3})[a-z]*\.?\s+(\d{1,2}),?\s+(\d{4})(.*)$/i, 3, 1, 2],
+  [/^(\d{4})(\d{2})(\d{2})(\D.*)?$/, 1, 2, 3],
 ];
-
-function parts(match: RegExpExecArray | null, year: number, month: number, day: number): Parts | undefined {
-  if (!match) return undefined;
-  const monthText = match[month] ?? "";
-  const monthNumber = /^\d+$/.test(monthText) ? Number(monthText) : MONTHS.indexOf(monthText.toLowerCase()) + 1;
-  return { year: Number(match[year]), month: monthNumber, day: Number(match[day]), rest: match[4] ?? "" };
-}
 
 export function parseDate(input: string): Date | undefined {
   const value = input
@@ -56,15 +42,20 @@ export function parseDate(input: string): Date | undefined {
     .replace(/(\d)(st|nd|rd|th)\b/gi, "$1")
     .replace(/^[a-z]{3},?\s+(?=[a-z]{3}\s)/i, "")
     .replace(/^([a-z]{3}\s+\d{1,2})\s+(\d{1,2}:\d{2}(?::\d{2})?)\s+(\d{4})\b/i, "$1 $3 $2");
-  for (const pattern of PATTERNS) {
-    const found = pattern(value);
-    const date = found && build(found);
+  for (const [pattern, year, month, day] of PATTERNS) {
+    const match = pattern.exec(value);
+    const date = match && build(match, Number(match[year]), monthOf(match[month] ?? ""), Number(match[day]));
     if (date) return date;
   }
   return undefined;
 }
 
-function build({ year, month, day, rest }: Parts): Date | undefined {
+function monthOf(text: string): number {
+  return /^\d+$/.test(text) ? Number(text) : MONTHS.indexOf(text.toLowerCase()) + 1;
+}
+
+function build(match: RegExpExecArray, year: number, month: number, day: number): Date | undefined {
+  const rest = match[4] ?? "";
   const time = /(\d{1,2}):(\d{2})(?::(\d{2}))?(?:\s*([ap])\.?m\b)?/i.exec(rest);
   const meridiem = time?.[4]?.toLowerCase();
   const hour = (Number(time?.[1] ?? 0) % (meridiem === undefined ? 24 : 12)) + (meridiem === "p" ? 12 : 0);

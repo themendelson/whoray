@@ -7,7 +7,7 @@ import { isKnownSuffix } from "#lifecycle.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { toRecord } from "#parse/record.ts";
 import { fetchRdap, readRdapReply } from "#rdap/fetch.ts";
-import { referralHost, referralUrl } from "#referral.ts";
+import { publicUrl } from "#referral.ts";
 import type { Connect, Hop, LookupOptions, Protocol, ServerEntry, WhorayResult } from "#types.ts";
 import { queryWhois, readWhoisReply } from "#whois/query.ts";
 
@@ -53,9 +53,11 @@ const transports: Record<Protocol, Transport> = {
       entry.whois === false ? undefined : (entry.whois ?? ianaWhoisHost(connect, lastLabel(name.tld), signal)),
     registry: (context, host) =>
       whoisTarget(context, host, (context.entry.query ?? "{domain}").replace("{domain}", context.name.domain)),
-    registrar: (context, found, registry) => {
-      const host = referralHost(found.registrarWhois, registry.server);
-      return host === undefined ? undefined : whoisTarget(context, host, context.name.domain);
+    registrar: (context, { registrarWhois }, registry) => {
+      const host = registrarWhois === undefined ? undefined : publicUrl(`https://${registrarWhois}`)?.hostname;
+      return host === undefined || host === registry.server
+        ? undefined
+        : whoisTarget(context, host, context.name.domain);
     },
   },
   rdap: {
@@ -63,8 +65,8 @@ const transports: Record<Protocol, Transport> = {
     locate: rdapBase,
     registry: (context, base) => rdapTarget(context, `${base}domain/${context.name.domain}`),
     registrar: (context, found) => {
-      const url = referralUrl(found.registrarRdap);
-      return url === undefined ? undefined : rdapTarget(context, url);
+      const url = publicUrl(found.registrarRdap);
+      return url === undefined ? undefined : rdapTarget(context, url.href);
     },
   },
 };
@@ -139,8 +141,7 @@ async function handingOff(
 }
 
 async function rdapBase(context: Context, signal: AbortSignal): Promise<string | undefined> {
-  const { rdap } = context.entry;
-  const base = rdap === undefined ? await ianaRdapBase(context.fetch, lastLabel(context.name.tld), signal) : rdap;
+  const base = context.entry.rdap ?? (await ianaRdapBase(context.fetch, lastLabel(context.name.tld), signal));
   return base === false ? undefined : base?.replace(/\/?$/, "/");
 }
 

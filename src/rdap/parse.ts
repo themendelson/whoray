@@ -39,19 +39,21 @@ export function readRdap(json: unknown): Found {
     const current = field && dates[field];
     if (field && date && (!current || date > current)) dates[field] = date;
   }
-  const withRole = (role: string): JsonObject | undefined =>
-    objects(root.entities).find((entity) => strings(entity.roles).includes(role));
+  const withRole = <T>(role: string, read: (entity: JsonObject) => T): T | undefined => {
+    const entity = objects(root.entities).find((candidate) => strings(candidate.roles).includes(role));
+    return entity && read(entity);
+  };
   return {
     kind: "record",
     ...dates,
     statuses: normalizeStatuses(strings(root.status)),
     nameservers: hostnames(objects(root.nameservers ?? root.nameServers).flatMap((ns) => string(ns.ldhName) ?? [])),
     ...defined({
-      registrar: registrarOf(withRole("registrar")),
-      registrant: contactOf(withRole("registrant")),
-      admin: contactOf(withRole("administrative")),
-      tech: contactOf(withRole("technical")),
-      billing: contactOf(withRole("billing")),
+      registrar: withRole("registrar", registrarOf),
+      registrant: withRole("registrant", contactOf),
+      admin: withRole("administrative", contactOf),
+      tech: withRole("technical", contactOf),
+      billing: withRole("billing", contactOf),
       handle: visible(string(root.handle)),
       dnssec: boolean(object(root.secureDNS)?.delegationSigned),
       registrarRdap: relatedRdap(root),
@@ -59,9 +61,9 @@ export function readRdap(json: unknown): Found {
   };
 }
 
-function registrarOf(entity: JsonObject | undefined): Registrar | undefined {
-  const name = entity && (vcard(entity, "fn") ?? vcard(entity, "org"));
-  if (!entity || name === undefined) return undefined;
+function registrarOf(entity: JsonObject): Registrar | undefined {
+  const name = vcard(entity, "fn") ?? vcard(entity, "org");
+  if (name === undefined) return undefined;
   const abuse = objects(entity.entities).find((nested) => strings(nested.roles).includes("abuse"));
   const about = objects(entity.links).find((link) => string(link.rel) === "about");
   return registrar(name, {
@@ -88,8 +90,7 @@ function addressOf(entity: JsonObject): Details<Address> {
   };
 }
 
-function contactOf(entity: JsonObject | undefined): Contact | undefined {
-  if (!entity) return undefined;
+function contactOf(entity: JsonObject): Contact | undefined {
   return contact({
     name: visible(vcard(entity, "fn")),
     organization: visible(vcard(entity, "org")),
