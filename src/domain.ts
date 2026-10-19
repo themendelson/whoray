@@ -1,3 +1,6 @@
+import { decodePunycode } from "#utils/punycode.ts";
+import { parseUrl } from "#utils/url.ts";
+
 const LABEL = /^(?!-)[a-z0-9-]{1,63}(?<!-)$/;
 const NOT_A_HOSTNAME = /[\s/\\:@?#%]/;
 
@@ -14,15 +17,6 @@ export function normalize(input: string, isKnownSuffix: (suffix: string) => bool
   const valid = labels.length > 1 && ascii.length <= 253 && !/^\d+$/.test(lastLabel(ascii));
   if (!valid || !labels.every((label) => LABEL.test(label))) throw new TypeError(`Not a domain name: "${input}"`);
   return { domain: ascii, unicode: toUnicode(ascii), tld: suffixOf(labels, isKnownSuffix) };
-}
-
-// Not URL.canParse: on Node 22 it starts rejecting valid non-ASCII hosts once the JIT optimizes it.
-export function parseUrl(href: string | undefined): URL | undefined {
-  try {
-    return href === undefined ? undefined : new URL(href);
-  } catch {
-    return undefined;
-  }
 }
 
 export function lastLabel(suffix: string): string {
@@ -49,55 +43,4 @@ function toUnicode(domain: string): string {
     .split(".")
     .map((label) => (label.startsWith("xn--") ? (decodePunycode(label.slice(4)) ?? label) : label))
     .join(".");
-}
-
-const BASE = 36;
-const T_MIN = 1;
-const T_MAX = 26;
-
-function adapt(delta: number, points: number, first: boolean): number {
-  let d = first ? Math.floor(delta / 700) : delta >> 1;
-  d += Math.floor(d / points);
-  let k = 0;
-  while (d > ((BASE - T_MIN) * T_MAX) >> 1) {
-    d = Math.floor(d / (BASE - T_MIN));
-    k += BASE;
-  }
-  return k + Math.floor(((BASE - T_MIN + 1) * d) / (d + 38));
-}
-
-function digitValue(code: number): number {
-  if (code >= 48 && code <= 57) return code - 22;
-  if (code >= 97 && code <= 122) return code - 97;
-  return BASE;
-}
-
-function decodePunycode(input: string): string | undefined {
-  const delimiter = input.lastIndexOf("-");
-  const output = input
-    .slice(0, Math.max(delimiter, 0))
-    .split("")
-    .map((c) => c.charCodeAt(0));
-  let n = 128;
-  let bias = 72;
-  let i = 0;
-  let pos = delimiter > 0 ? delimiter + 1 : 0;
-  while (pos < input.length) {
-    const previous = i;
-    let weight = 1;
-    for (let k = BASE; ; k += BASE) {
-      const digit = digitValue(input.charCodeAt(pos++));
-      if (digit >= BASE) return undefined;
-      i += digit * weight;
-      const threshold = k <= bias ? T_MIN : k >= bias + T_MAX ? T_MAX : k - bias;
-      if (digit < threshold) break;
-      weight *= BASE - threshold;
-    }
-    const length = output.length + 1;
-    bias = adapt(i - previous, length, previous === 0);
-    n += Math.floor(i / length);
-    i %= length;
-    output.splice(i++, 0, n);
-  }
-  return String.fromCodePoint(...output);
 }

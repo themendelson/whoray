@@ -27,13 +27,15 @@ pnpm build
 - `src/parse/`: what both parsers share, and `toRecord`, which turns either one's answer into a `DomainRecord`.
 - `src/data/`: servers, registries, label aliases, phrases, statuses, per-TLD quirks. Knowledge about a TLD
   lives here, never in an `if (tld === …)` in code.
+- `src/utils/`: generic helpers (JSON readers, abort signals, URLs, UTC dates, punycode) that know nothing
+  about WHOIS, RDAP or TLDs.
 
 ## Rules the linter can't check
 
 - No runtime dependencies, and nothing that only exists on one runtime outside `src/runtime/`.
 - A new TLD, label or phrase is a data change. If the parser needs code for one TLD, add a named
   transform to `src/parse/transforms.ts` and reference it from `src/data/quirks.ts`.
-- Parse, don't cast: JSON from servers is read through `#json.ts`. Casts are a lint error; fix the
+- Parse, don't cast: JSON from servers is read through `#utils/json.ts`. Casts are a lint error; fix the
   type at its source instead of working around it.
 - Dates are UTC `Date`s. Never build one from local-time parts or `new Date(someString)`.
 - A missing or redacted value is `undefined`, never `""` or a placeholder.

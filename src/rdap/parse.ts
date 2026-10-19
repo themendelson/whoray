@@ -1,11 +1,11 @@
-import type { JsonObject } from "#json.ts";
-import { boolean, object, objects, string, strings } from "#json.ts";
 import { parseDate } from "#parse/dates.ts";
 import type { Details } from "#parse/fields.ts";
 import { contact, countryCode, defined, email, hostnames, phone, registrar, visible } from "#parse/fields.ts";
 import type { Found } from "#parse/found.ts";
 import { normalizeStatuses } from "#parse/statuses.ts";
 import type { Address, Contact, Registrar } from "#types.ts";
+import type { JsonObject } from "#utils/json.ts";
+import { boolean, object, objects, string, strings } from "#utils/json.ts";
 
 type EventField = "creationDate" | "updatedDate" | "expirationDate" | "released" | "deleted" | "snapshotDate";
 

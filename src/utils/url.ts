@@ -1,4 +1,11 @@
-import { parseUrl } from "#domain.ts";
+// Not URL.canParse: on Node 22 it starts rejecting valid non-ASCII hosts once the JIT optimizes it.
+export function parseUrl(href: string | undefined): URL | undefined {
+  try {
+    return href === undefined ? undefined : new URL(href);
+  } catch {
+    return undefined;
+  }
+}
 
 const IP_ADDRESS = /^[\d.]+$|^\[/;
 const PRIVATE_NAME = /(?:^|\.)(?:localhost|local|internal|intranet|lan|home\.arpa)$/;

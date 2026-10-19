@@ -1,14 +1,14 @@
-import { ignore } from "#abort.ts";
 import { servers } from "#data/servers.ts";
 import type { Name } from "#domain.ts";
-import { bySuffix, lastLabel, normalize, parseUrl } from "#domain.ts";
+import { bySuffix, lastLabel, normalize } from "#domain.ts";
 import { ianaRdapBase, ianaWhoisHost } from "#iana.ts";
 import { isKnownSuffix } from "#lifecycle.ts";
 import type { Found, Registration } from "#parse/found.ts";
 import { toRecord } from "#parse/record.ts";
 import { fetchRdap, readRdapReply } from "#rdap/fetch.ts";
-import { publicUrl } from "#referral.ts";
 import type { Connect, Hop, LookupOptions, Protocol, ServerEntry, WhorayResult } from "#types.ts";
+import { ignore } from "#utils/abort.ts";
+import { parseUrl, publicUrl } from "#utils/url.ts";
 import { queryWhois, readWhoisReply } from "#whois/query.ts";
 
 export type Lookup = (domain: string, options?: LookupOptions) => Promise<WhorayResult>;
