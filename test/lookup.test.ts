@@ -199,6 +199,25 @@ test("an unknown TLD is resolved through IANA once and cached", async () => {
   expect(urls).toContain("https://rdap.zz.test/domain/two.zz");
 });
 
+test("parallel lookups on an unknown TLD share one IANA request per protocol", async () => {
+  const fresh = await freshLookup();
+  const { fetch, urls } = httpServer((url) =>
+    url.endsWith("dns.json") ? ianaBootstrap("zz", "https://rdap.zz.test/") : { status: 404, body: "" },
+  );
+  const { connect, queries } = whoisServer((host) =>
+    host === "whois.iana.org" ? "domain: YY\nwhois: whois.nic.yy\n" : "% No match",
+  );
+  const results = await Promise.all([
+    fresh("one.zz", { fetch, protocol: "rdap" }),
+    fresh("two.zz", { fetch, protocol: "rdap" }),
+    fresh("one.yy", { connect, protocol: "whois" }),
+    fresh("two.yy", { connect, protocol: "whois" }),
+  ]);
+  expect(results.map((result) => result.state)).toEqual(["available", "available", "available", "available"]);
+  expect(urls.filter((url) => url.endsWith("dns.json"))).toHaveLength(1);
+  expect(queries.filter((query) => query.host === "whois.iana.org")).toHaveLength(1);
+});
+
 test("WHOIS hosts come from whois.iana.org when the TLD isn't in the server list", async () => {
   const server = whoisServer((host) =>
     host === "whois.iana.org" ? "domain: YY\nwhois: whois.nic.yy\n" : "% No match",
