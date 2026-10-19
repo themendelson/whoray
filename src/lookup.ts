@@ -43,6 +43,7 @@ interface Transport {
 }
 
 const DEFAULT_TIMEOUT = 10_000;
+const CONTACT_ROLES = ["registrant", "admin", "tech", "billing"] as const;
 
 const transports: Record<Protocol, Transport> = {
   whois: {
@@ -212,6 +213,12 @@ function failure(context: Context, error: unknown, server: string, signal: Abort
 }
 
 function merge(registry: Registration, registrarHop: Found): Registration {
-  if (registrarHop.kind !== "record" || !registrarHop.registrar) return registry;
-  return { ...registry, registrar: { ...registrarHop.registrar, ...registry.registrar } };
+  if (registrarHop.kind !== "record") return registry;
+  const merged = { ...registry };
+  if (registrarHop.registrar) merged.registrar = { ...registrarHop.registrar, ...registry.registrar };
+  for (const role of CONTACT_ROLES) {
+    const contact = registrarHop[role];
+    if (contact) merged[role] = { ...contact, ...registry[role] };
+  }
+  return merged;
 }

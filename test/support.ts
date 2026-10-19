@@ -19,11 +19,15 @@ export function captures(): Capture[] {
       const protocol = match?.[2];
       if (match?.[1] === undefined || (protocol !== "rdap" && protocol !== "whois")) return [];
       const path = `test/fixtures/${tld}/${file}`;
-      const raw = readFileSync(path, "utf8");
-      const newline = raw.indexOf("\n");
-      return [{ tld, domain: match[1], protocol, path, header: raw.slice(0, newline), body: raw.slice(newline + 1) }];
+      return [{ tld, domain: match[1], protocol, path, ...fixture(path) }];
     }),
   );
+}
+
+export function fixture(path: string): Pick<Capture, "header" | "body"> {
+  const raw = readFileSync(path, "utf8");
+  const newline = raw.indexOf("\n");
+  return { header: raw.slice(0, newline), body: raw.slice(newline + 1) };
 }
 
 export interface FakeServer {
