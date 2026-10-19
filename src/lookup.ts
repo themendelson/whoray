@@ -1,7 +1,7 @@
 import { ignore } from "#abort.ts";
 import { servers } from "#data/servers.ts";
 import type { Name } from "#domain.ts";
-import { bySuffix, lastLabel, normalize } from "#domain.ts";
+import { bySuffix, lastLabel, normalize, parseUrl } from "#domain.ts";
 import { ianaRdapBase, ianaWhoisHost } from "#iana.ts";
 import { isKnownSuffix } from "#lifecycle.ts";
 import type { Found, Registration } from "#parse/found.ts";
@@ -206,7 +206,7 @@ function whoisTarget(context: Context, host: string, query: string): Target {
 
 function rdapTarget(context: Context, url: string): Target {
   return {
-    server: URL.canParse(url) ? new URL(url).host : url,
+    server: parseUrl(url)?.host ?? url,
     ask: async (signal) => {
       const reply = await fetchRdap(context.fetch, url, signal);
       return { raw: reply.body, read: () => readRdapReply(reply) };
