@@ -1,0 +1,34 @@
+{
+  "domain": "tuvis.com",
+  "tld": "com",
+  "state": "registered",
+  "isAvailable": false,
+  "registrar": {
+    "name": "GoDaddy.com, LLC",
+    "ianaId": 146,
+    "url": "http://www.godaddy.com",
+    "abuseEmail": "abuse@godaddy.com",
+    "abusePhone": "480-624-2505"
+  },
+  "registry": {
+    "id": "verisign",
+    "name": "Verisign Global Registry Services"
+  },
+  "handle": "1842413165_DOMAIN_COM-VRSN",
+  "creationDate": "2014-01-11T19:31:19.000Z",
+  "updatedDate": "2026-01-12T09:43:41.000Z",
+  "expirationDate": "2027-01-11T19:31:19.000Z",
+  "snapshotDate": "2026-10-19T16:42:19.000Z",
+  "statuses": [
+    "clientDeleteProhibited",
+    "clientRenewProhibited",
+    "clientTransferProhibited",
+    "clientUpdateProhibited"
+  ],
+  "nameservers": [
+    "ainsley.ns.cloudflare.com",
+    "sergi.ns.cloudflare.com"
+  ],
+  "dnssec": true,
+  "source": "rdap"
+}

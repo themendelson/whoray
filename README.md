@@ -96,7 +96,7 @@ It exits with 1 if any lookup failed. `npx whoray --help` lists the options.
 | Option | Default | |
 | --- | --- | --- |
 | `protocol` | `"auto"` | `"auto"` asks WHOIS and moves to RDAP when WHOIS has no server, fails or is slow; `"whois"` or `"rdap"` asks only that one. In a browser it defaults to `"rdap"` unless you pass `connect` |
-| `follow` | `"registry"` | Set to `"registrar"` to also query the registrar's server for fuller registrar details and the contacts it publishes |
+| `follow` | `"registry"` | Set to `"registrar"` to also query the registrar's server for fuller registrar details and the contacts it publishes. With `protocol: "auto"`, a registrar whose WHOIS fails is asked over RDAP |
 | `timeout` | `10000` | Milliseconds for the whole lookup |
 | `signal` | | `AbortSignal` to cancel the lookup |
 | `servers` | | Your own servers for a TLD, e.g. `{ io: { whois: "whois.nic.io" } }`; `whois: false` or `rdap: false` skips that protocol for it; `prefer: "rdap"` makes `auto` ask RDAP first |

@@ -17,6 +17,7 @@ interface Context {
   name: Name;
   entry: ServerEntry;
   registrar: boolean;
+  fallback: boolean;
   connect: Connect;
   fetch: typeof fetch;
   caller: AbortSignal | undefined;
@@ -75,10 +76,12 @@ export function createLookup(defaultConnect: Connect, defaultProtocol: Protocol 
     const name = normalize(domain, (suffix) => isKnownSuffix(suffix) || Object.hasOwn(overrides, suffix));
     const timeout = options.timeout ?? DEFAULT_TIMEOUT;
     const deadline = AbortSignal.timeout(timeout);
+    const protocol = options.protocol ?? (options.connect ? "auto" : defaultProtocol);
     const context: Context = {
       name,
       entry: { ...bySuffix(servers, name.tld), ...bySuffix(overrides, name.tld) },
       registrar: options.follow === "registrar",
+      fallback: protocol === "auto",
       connect: options.connect ?? defaultConnect,
       fetch: options.fetch ?? globalThis.fetch,
       caller: options.signal,
@@ -86,7 +89,6 @@ export function createLookup(defaultConnect: Connect, defaultProtocol: Protocol 
       timeout,
       hops: [],
     };
-    const protocol = options.protocol ?? (options.connect ? "auto" : defaultProtocol);
     const outcome = await resolve(context, protocol);
     options.signal?.throwIfAborted();
     return {
@@ -156,7 +158,18 @@ async function via(context: Context, protocol: Protocol, signal: AbortSignal): P
   const registrar =
     found.kind === "record" && context.registrar ? transport.registrar(context, found, registry) : undefined;
   if (found.kind !== "record" || registrar === undefined) return { found, source: protocol };
-  return { found: merge(found, await hop(context, "registrar", protocol, registrar, signal)), source: protocol };
+  return { found: merge(found, await registrarReply(context, protocol, registrar, signal)), source: protocol };
+}
+
+async function registrarReply(
+  context: Context,
+  protocol: Protocol,
+  registrar: Target,
+  signal: AbortSignal,
+): Promise<Found> {
+  const reply = await hop(context, "registrar", protocol, registrar, signal);
+  if (reply.kind === "record" || protocol === "rdap" || !context.fallback) return reply;
+  return (await via(context, "rdap", context.signal))?.found ?? reply;
 }
 
 async function hop(

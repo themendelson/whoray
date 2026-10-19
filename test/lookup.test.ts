@@ -169,6 +169,32 @@ test.each([
   });
 });
 
+test("follow: registrar asks the registrar's RDAP when its WHOIS has retired", async () => {
+  const replies = (protocol: "whois" | "rdap") => ({
+    registry: fixture(`test/fixtures/com/tuvis.com.${protocol}`),
+    registrar: fixture(`test/fixtures/com/tuvis.com.${protocol}.registrar`),
+  });
+  const whois = replies("whois");
+  const rdap = replies("rdap");
+  const { connect } = whoisServer((host) => (host === "whois.registry.test" ? whois.registry : whois.registrar).body);
+  const { fetch } = httpServer((url) => {
+    const reply = url.startsWith("https://rdap.test/") ? rdap.registry : rdap.registrar;
+    return { status: Number(reply.header), body: reply.body };
+  });
+  const options = { connect, fetch, servers, follow: "registrar" } as const;
+  const overRdap = await lookup("tuvis.com", { ...options, protocol: "rdap" });
+  const result = await lookup("tuvis.com", options);
+  expect(result.hops.map((hop) => hop.server)).toEqual([
+    "whois.registry.test",
+    "whois.godaddy.com",
+    "rdap.test",
+    "rdap.godaddy.com",
+  ]);
+  expect(result.source).toBe("whois");
+  expect(result.registrar).toMatchObject({ ...overRdap.registrar, whoisServer: "whois.godaddy.com" });
+  expect(result.registrant).toEqual(overRdap.registrant);
+});
+
 test("an unknown TLD is resolved through IANA once and cached", async () => {
   const fresh = await freshLookup();
   const { fetch, urls } = httpServer((url) =>
