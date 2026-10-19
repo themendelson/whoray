@@ -6,7 +6,9 @@
   "registrar": {
     "name": "ODTÜ GELİŞTİRME VAKFI BİLGİ TEKNOLOJİLERİ SAN. VE TİC. A.Ş.",
     "street": [
-      "Mustafa Kemal Mahallesi Dumlupınar Bulvarı"
+      "Mustafa Kemal Mahallesi Dumlupınar Bulvarı",
+      "No:280G/1104 Çankaya",
+      "06800 Ankara Türkiye"
     ],
     "phone": "90-312-9881106-"
   },
@@ -16,7 +18,8 @@
   "creationDate": "2024-08-26T00:00:00.000Z",
   "expirationDate": "2027-08-25T00:00:00.000Z",
   "statuses": [
-    "ok"
+    "ok",
+    "clientTransferProhibited"
   ],
   "nameservers": [
     "ns1.googledomains.com",

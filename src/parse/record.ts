@@ -33,6 +33,7 @@ export function toRecord(name: Name, found: Found): DomainRecord {
     expirationDate,
     snapshotDate,
   } = found;
+  const dropDate = dropOf(name.tld, state, { ...found, statuses }, operator);
   return {
     ...identity(name, state),
     ...(registrar && { registrar }),
@@ -46,7 +47,7 @@ export function toRecord(name: Name, found: Found): DomainRecord {
     ...(updatedDate && { updatedDate }),
     ...(expirationDate && { expirationDate }),
     ...(snapshotDate && { snapshotDate }),
-    ...dropOf(name.tld, state, { ...found, statuses }, operator),
+    ...(dropDate && { dropDate }),
     statuses: found.statuses,
     nameservers: found.nameservers,
     ...(found.dnssec !== undefined && { dnssec: found.dnssec }),
