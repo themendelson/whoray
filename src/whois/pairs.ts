@@ -78,13 +78,12 @@ export function pairs(text: string): Pair[] {
     if (line === "") reader.blank();
     if (line === "" || COMMENT.test(line)) continue;
     const match = BRACKET.exec(line) ?? KEY_VALUE.exec(line);
-    const key = match?.[1] === undefined ? undefined : normalizeKey(match[1]);
     const value = match?.[2]?.trim() ?? "";
     const indent = raw.length - raw.trimStart().length;
     const indented = indent > reader.indent;
-    if (key === undefined) reader.bare(line, indented);
-    else if (value === "") reader.header(key, true, indent);
-    else reader.pair(key, value, indented);
+    if (match?.[1] === undefined) reader.bare(line, indented);
+    else if (value === "") reader.header(normalizeKey(match[1]), true, indent);
+    else reader.pair(normalizeKey(match[1]), value, indented);
   }
   return reader.found;
 }

@@ -39,13 +39,17 @@ export function defined<T extends object>(details: Details<T>): Partial<T> {
   const known: Partial<T> = {};
   for (const key in details) {
     const value = details[key];
-    if (value !== undefined) known[key] = value;
+    if (value !== undefined && !isEmptyList(value)) known[key] = value;
   }
   return known;
 }
 
+function isEmptyList(value: unknown): boolean {
+  return Array.isArray(value) && value.length === 0;
+}
+
 export function contact(details: Details<Contact>): Contact | undefined {
-  const known = defined({ ...details, street: details.street?.length === 0 ? undefined : details.street });
+  const known = defined(details);
   return Object.keys(known).length > 0 ? known : undefined;
 }
 
@@ -57,7 +61,6 @@ export function registrar(name: string, details: Details<Omit<Registrar, "name">
     ...defined({
       ...details,
       ianaId: ianaId !== undefined && Number.isInteger(ianaId) && ianaId > 0 ? ianaId : undefined,
-      street: details.street?.length === 0 ? undefined : details.street,
       abuseEmail: abuseEmail?.includes("@") === true ? abuseEmail : undefined,
       abusePhone: details.abusePhone?.replace(/^tel:/, ""),
     }),
