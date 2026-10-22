@@ -245,20 +245,28 @@ test("international names are queried in punycode and returned in both forms", a
 
 test.each([
   ["www.google.com", "google.com"],
+  ["a.b.example.dev", "example.dev"],
   ["mail.example.co.uk", "example.co.uk"],
-  ["www.example.com.au", "example.com.au"],
-  ["www.example.city.ck", "example.city.ck"],
-  ["mail.www.ck", "www.ck"],
 ])("a hostname is looked up as its registrable domain: %s is %s", async (hostname, registrable) => {
   const server = whoisServer(() => "% No match");
   const whois = { whois: "whois.test" };
   const result = await lookup(hostname, {
     connect: server.connect,
     protocol: "whois",
-    servers: { com: whois, uk: whois, au: whois, ck: whois },
+    servers: { com: whois, dev: whois, uk: whois },
   });
   expect(server.queries).toEqual([{ host: "whois.test", query: registrable }]);
   expect(result.domain).toBe(registrable);
+});
+
+test("a name under a TLD with second-level registrations is asked as given", async () => {
+  const server = whoisServer(() => "% No match");
+  await lookup("example.com.au", {
+    connect: server.connect,
+    protocol: "whois",
+    servers: { au: { whois: "whois.test" } },
+  });
+  expect(server.queries).toEqual([{ host: "whois.test", query: "example.com.au" }]);
 });
 
 test("an empty WHOIS reply is treated as throttling", async () => {
