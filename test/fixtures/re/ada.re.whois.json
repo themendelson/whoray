@@ -47,8 +47,7 @@
   "dropDate": "2026-10-21T13:52:42.000Z",
   "statuses": [
     "clientTransferProhibited",
-    "pendingDelete",
-    "ok"
+    "pendingDelete"
   ],
   "nameservers": [
     "simon.ns.cloudflare.com",
