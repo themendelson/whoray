@@ -1,0 +1,158 @@
+404
+<!doctype html>
+
+<html lang="en">
+<!--<head>
+    <style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Pathway+Gothic+One');
+/*----------------------generales--------------------------------*/
+body{font-family: Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #333333; margin: 0;}
+
+.wrapper { margin: 0 auto; box-sizing: border-box;     position: relative;}
+
+@media ( min-width: 600px){
+.wrapper { width: 600px; margin: 0 auto; box-sizing: border-box; }
+}
+
+h1{ color: #52A9DE; line-height: 32px; font-family: 'Pathway Gothic One', sans-serif; font-size: 50px; text-align: center;}
+
+h2{color: #f7c42e;}
+
+p{ margin: 20px }
+
+a{color: #52A9DE;}
+
+/*----------------------header--------------------------------*/
+header { background: black; -webkit-box-shadow: 0 0 5px #999; box-shadow: 0 0 5px #999; border-top: 5px solid #52A9DE;  margin-bottom: 30px !important; height: 57px; }
+
+header .logo { position: absolute; top: 10px; left: 5px; }
+div .imagefooter{ opacity: 0.5;}
+/*----------------------content--------------------------------*/
+.content{  margin-bottom: 20px }
+span{color: #f7c42e;}
+.content img{ width: 85% }
+
+@media ( min-width: 600px){
+                .content img{ width: 70% }
+
+
+        }
+
+
+/*----------------------footer--------------------------------*/
+footer { background: #747474 ; overflow: hidden;  padding: 40px 0 20px 0; }
+footer .wrapper{display: flex;  display: -webkit-flex; display: flex; -webkit-flex-flow: column; flex-flow: column; justify-content: center;}
+footer .footerFacts {text-align: center;  margin-bottom:50px; color: #ccc; font-size: 11px; line-height: 12px}
+footer .footerFacts img{ display: block; margin: 0 auto; padding-bottom: 10px }
+
+@media ( min-width: 600px){
+        footer .wrapper{ display: flex;  display: -webkit-flex; -webkit-flex-flow: row; flex-flow: row; justify-content: space-between;}
+        footer .footerFacts{ text-align: left; }
+        footer .footerFacts img{ display: block; margin: 0; padding-bottom: 10px }
+}
+footer .version { color: #656565; font-size: 11px}
+	</style>
+</head>-->
+<head>
+  <meta charset="utf-8">
+
+  <title>NIC Argentina | RDAP</title>
+  <meta name="description" content="Estamos realizando tareas de mantenimiento. Por favor ingresá nuevamente más tarde.">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+   <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />	
+   <link rel="stylesheet" type="text/css" href="styles.css" />	
+</head>
+<body>
+   <!--header>
+      <div class="container">
+          <div class="navbar-header">
+              <div class="region region-navigation">
+                  <a class="logo navbar-btn pull-left" href="https://nic.ar">
+                      <img alt="NIC Argentina" src="data:image/png;base64,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" />
+                  </a>
+              </div>
+          </div>
+          <div id="navbar-collapse" class="navbar-collapse collapse">
+              <div class="region region-navigation-collapsible">
+                  <nav role="navigation" aria-labelledby="block-nic-main-menu-menu" id="block-nic-main-menu">
+                     <h2 class="sr-only" id="block-nic-main-menu-menu">Navegación Principal</h2> 
+                     <ul class="menu nav navbar-nav">
+                          <li>
+                              <a href="https://nic.ar/">Volver a NIC.ar</a>
+                          </li>
+                      </ul>
+                  </nav>
+              </div>
+          </div>
+      </div>
+      <div class="clear"></div>
+
+ </header--> 
+ <header>
+    <div class="container">
+        <div class="navbar-header">
+            <div class="region region-navigation">
+                <a class="logo navbar-btn pull-left" href="https://nic.ar">
+                    <img src="images/logo-nic_2024.png" alt="">
+                    
+                </a>
+            </div>
+            
+        </div>
+        <div id="navbar-collapse" class="navbar-collapse collapse">
+            <div class="region region-navigation-collapsible">
+                <nav role="navigation" aria-labelledby="block-nic-main-menu-menu" id="block-nic-main-menu">
+                    <h2 class="sr-only" id="block-nic-main-menu-menu">Navegación Principal</h2>
+                    <ul class="menu nav navbar-nav">
+                        <li>
+                            <a href="https://nic.ar/" style="color: #fff; font-weight: 700;">Volver a NIC.ar</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+</header> 
+    
+  <div class="wrapper content">
+       <h1>RDAP</h1>
+       <p>El <i>Registration Data Access Protocol</i> o <strong>Protocolo de Acceso a Datos de Registración</strong> es un protocolo de Internet estandarizado por un grupo de trabajo del IETF (Internet Engineering Task Force o Grupo de Trabajo de Ingeniería de Internet) y es considerado el sucesor del WHOIS. </p>
+
+       <p><strong>RDAP permite almacenar y consultar identificadores de Internet como direcciones IP, números de Sistema Autónomo y nombres de dominio en una estructura definida</strong>, con el fin de que estos datos puedan ser consumidos directamente por un sistema informático. Esto resulta útil, por ejemplo, durante la resolución de problemas, las investigaciones y la atención al cliente o usuario.</p>
+       
+       <p>¿Cómo se usa este servicio? Tenés que ingresar <strong>https://rdap.nic.ar/domain/</strong> seguido del dominio que querés consultar. Por ejemplo, para conocer la información del dominio nic.ar, se debe utilizar <a href="https://rdap.nic.ar/domain/nic.ar" target="_blank"> https://rdap.nic.ar/domain/nic.ar</a></p>
+       
+       <p>Para consultar la información del registro de manera online, podés visitar la sección <a href="https://nic.ar/whois" target="_blank">WHOIS</a> de nuestro sitio.</p>
+       
+       
+        
+        	
+      </div>
+   <footer>
+	<div class="wrapper">
+		
+		
+	
+      <div class="wrapper">
+         <div class="footerFacts">
+            <div class="imagefooter">
+   
+              <img  src="data:image/png;base64,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"  style="width: 15%;" alt="NIC.ar" />
+   
+             </div>
+            
+            <strong>NIC Argentina</strong><br />
+             Direcci&oacute;n Nacional del Registro de Dominios de Internet.		
+      </div>
+		
+
+	</div>
+	
+	</footer>
+
+   </body>
+</html>
