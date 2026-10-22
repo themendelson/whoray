@@ -71,7 +71,11 @@ const transports: Record<Protocol, Transport> = {
   },
 };
 
-export function createLookup(defaultConnect: Connect, defaultProtocol: Protocol | "auto" = "auto"): Lookup {
+export function createLookup(
+  defaultConnect: Connect,
+  defaultProtocol: Protocol | "auto" = "auto",
+  defaultFetch?: typeof fetch,
+): Lookup {
   return async (domain, options = {}) => {
     options.signal?.throwIfAborted();
     const overrides = options.servers ?? {};
@@ -85,7 +89,7 @@ export function createLookup(defaultConnect: Connect, defaultProtocol: Protocol 
       registrar: options.follow === "registrar",
       fallback: protocol === "auto",
       connect: options.connect ?? defaultConnect,
-      fetch: options.fetch ?? globalThis.fetch,
+      fetch: options.fetch ?? defaultFetch ?? globalThis.fetch,
       caller: options.signal,
       signal: options.signal ? AbortSignal.any([options.signal, deadline]) : deadline,
       timeout,
