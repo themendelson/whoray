@@ -20,7 +20,6 @@
   "expirationDate": "2027-01-24T00:00:00.000Z",
   "snapshotDate": "2026-10-16T18:47:47.000Z",
   "statuses": [
-    "ok",
     "clientTransferProhibited",
     "clientUpdateProhibited",
     "clientDeleteProhibited"

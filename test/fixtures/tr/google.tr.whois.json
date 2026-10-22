@@ -18,7 +18,6 @@
   "creationDate": "2024-08-26T00:00:00.000Z",
   "expirationDate": "2027-08-25T00:00:00.000Z",
   "statuses": [
-    "ok",
     "clientTransferProhibited"
   ],
   "nameservers": [

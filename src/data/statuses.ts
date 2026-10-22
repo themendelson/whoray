@@ -11,6 +11,7 @@ export const eppStatuses: readonly string[] = words(`
 export const statusSynonyms: Readonly<Record<string, string>> = {
   active: "ok",
   actif: "ok",
+  connect: "ok",
   "in quarantine": "redemptionPeriod",
   "on hold": "serverHold",
   "pending cancel": "pendingDelete",
