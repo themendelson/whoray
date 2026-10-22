@@ -12,6 +12,7 @@ pnpm test test/lookup.test.ts
 pnpm fixture nic.de         # capture live RDAP and WHOIS responses into test/fixtures
 pnpm fixture --follow google.com  # also capture the registrar's replies (*.registrar)
 pnpm test -u                # write expected records for new captures
+pnpm suffixes               # refresh src/data/suffixes.ts from the Public Suffix List
 pnpm build
 ```
 

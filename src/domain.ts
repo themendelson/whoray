@@ -1,8 +1,14 @@
+import { words } from "#data/lists.ts";
+import { secondLevelSuffixes } from "#data/suffixes.ts";
 import { decodePunycode } from "#utils/punycode.ts";
 import { parseUrl } from "#utils/url.ts";
 
 const LABEL = /^(?!-)[a-z0-9-]{1,63}(?<!-)$/;
 const NOT_A_HOSTNAME = /[\s/\\:@?#%]/;
+
+const suffixRules = new Set(
+  Object.entries(secondLevelSuffixes).flatMap(([tld, rules]) => words(rules).map((rule) => `${rule}.${tld}`)),
+);
 
 export interface Name {
   domain: string;
@@ -16,7 +22,9 @@ export function normalize(input: string, isKnownSuffix: (suffix: string) => bool
   const labels = ascii.split(".");
   const valid = labels.length > 1 && ascii.length <= 253 && !/^\d+$/.test(lastLabel(ascii));
   if (!valid || !labels.every((label) => LABEL.test(label))) throw new TypeError(`Not a domain name: "${input}"`);
-  return { domain: ascii, unicode: toUnicode(ascii), tld: suffixOf(labels, isKnownSuffix) };
+  const registrable = registrableLabels(labels, isKnownSuffix);
+  const domain = registrable.join(".");
+  return { domain, unicode: toUnicode(domain), tld: suffixOf(registrable, isKnownSuffix) };
 }
 
 export function lastLabel(suffix: string): string {
@@ -28,6 +36,19 @@ export function bySuffix<T>(table: Readonly<Record<string, T>>, suffix: string):
     if (Object.hasOwn(table, candidate)) return table[candidate];
     if (!candidate.includes(".")) return undefined;
   }
+}
+
+function registrableLabels(labels: string[], isKnownSuffix: (suffix: string) => boolean): string[] {
+  for (let i = 0; i < labels.length - 1; i++) {
+    const candidate = labels.slice(i).join(".");
+    if (suffixRules.has(`!${candidate}`)) return labels.slice(i);
+    if (i > 0 && (isKnownSuffix(candidate) || isPublicSuffix(candidate))) return labels.slice(i - 1);
+  }
+  return labels.slice(-2);
+}
+
+function isPublicSuffix(name: string): boolean {
+  return suffixRules.has(name) || suffixRules.has(`*.${name.slice(name.indexOf(".") + 1)}`);
 }
 
 function suffixOf(labels: string[], isKnownSuffix: (suffix: string) => boolean): string {

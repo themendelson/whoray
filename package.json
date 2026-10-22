@@ -59,7 +59,8 @@
     "test": "vitest run",
     "check": "pnpm lint && pnpm typecheck && pnpm test",
     "fixture": "node --experimental-strip-types --no-warnings scripts/fixture.ts",
-    "prepublishOnly": "pnpm check && pnpm build"
+    "prepublishOnly": "pnpm check && pnpm build",
+    "suffixes": "node --experimental-strip-types --no-warnings scripts/suffixes.ts"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.15",
