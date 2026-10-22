@@ -48,6 +48,12 @@ test("an unmapped TLD gets its registry from the reply text", () => {
   expect(parseWhois(text, "example.zz").registry).toEqual({ id: "centralnic", name: "CentralNic" });
 });
 
+test("a zoneless WHOIS date from a local-time registry follows that zone's winter and summer offsets", () => {
+  const expiry = (date: string) => parseWhois(`domain: example.cz\nexpire: ${date}`, "example.cz").expirationDate;
+  expect(expiry("22.01.2027")).toEqual(new Date("2027-01-21T23:00:00Z"));
+  expect(expiry("22.07.2027")).toEqual(new Date("2027-07-21T22:00:00Z"));
+});
+
 test("WHOIS replies keep the registry database timestamp", () => {
   const text =
     "Domain Name: example.com\nCreation Date: 2020-01-01\n>>> Last update of WHOIS database: 2026-10-16T08:00:00Z <<<";
