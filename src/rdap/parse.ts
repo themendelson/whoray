@@ -62,12 +62,16 @@ export function readRdap(json: unknown): Found {
 }
 
 function registrarOf(entity: JsonObject): Registrar | undefined {
-  const name = vcard(entity, "fn") ?? vcard(entity, "org");
-  if (name === undefined) return undefined;
   const abuse = objects(entity.entities).find((nested) => strings(nested.roles).includes("abuse"));
-  const about = objects(entity.links).find((link) => string(link.rel) === "about");
-  return registrar(name, {
-    ianaId: Number(objects(entity.publicIds).find((id) => /iana/i.test(string(id.type) ?? ""))?.identifier),
+  const about = objects(entity.links).find(
+    (link) => string(link.rel) === "about" && !/\brdap\b|\/entity\//i.test(string(link.href) ?? ""),
+  );
+  const ianaId = string(objects(entity.publicIds).find((id) => /iana/i.test(string(id.type) ?? ""))?.identifier);
+  const handle = visible(string(entity.handle));
+  return registrar({
+    name: vcard(entity, "fn") ?? vcard(entity, "org"),
+    ianaId: Number(ianaId),
+    handle: handle === ianaId ? undefined : handle,
     url: vcard(entity, "url") ?? string(about?.href),
     ...addressOf(entity),
     abuseEmail: abuse && vcard(abuse, "email"),

@@ -3,6 +3,9 @@
   "tld": "no",
   "state": "registered",
   "isAvailable": false,
+  "registrar": {
+    "handle": "REG466-NORID"
+  },
   "creationDate": "2001-02-26T00:00:00.000Z",
   "updatedDate": "2026-01-27T00:00:00.000Z",
   "statuses": [],

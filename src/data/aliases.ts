@@ -60,6 +60,7 @@ const FIELD_ALIASES = {
     registrar web, referral url, registration service url
   `,
   registrarIanaId: "registrar iana id, sponsoring registrar iana id",
+  registrarHandle: "registrar handle",
   registrarWhois: "registrar whois server, whois server, registrar whois",
   abuseEmail: "registrar abuse contact email, registrar abuse-email",
   abusePhone: "registrar abuse contact phone, registrar abuse-phone",

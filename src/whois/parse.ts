@@ -121,10 +121,11 @@ function contactOf(fields: Map<Field, string[]>, role: ContactRole): Contact | u
 
 function registrarOf(fields: Map<Field, string[]>): Registrar | undefined {
   const raw = firstOf(fields.get("registrar"), visible);
-  if (raw === undefined) return undefined;
-  const inline = /^(.*?)\s*\(\s*(https?:\/\/[^\s)]+)\s*\)$/.exec(raw);
-  return registrar(inline?.[1] ?? raw, {
+  const inline = /^(.*?)\s*\(\s*(https?:\/\/[^\s)]+)\s*\)$/.exec(raw ?? "");
+  return registrar({
+    name: inline?.[1] ?? raw,
     ianaId: Number(fields.get("registrarIanaId")?.[0]),
+    handle: firstOf(fields.get("registrarHandle"), visible),
     url: firstOf(fields.get("registrarUrl"), visible) ?? inline?.[2],
     ...addressOf(fields, "registrar"),
     abuseEmail: firstOf(fields.get("abuseEmail"), visible),

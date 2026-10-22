@@ -6,6 +6,7 @@
   "registrar": {
     "name": "MarkMonitor, Inc.",
     "ianaId": 292,
+    "handle": "H536",
     "url": "http://www.markmonitor.com",
     "abuseEmail": "abusecomplaints@markmonitor.com",
     "abusePhone": "+1.2083895740"

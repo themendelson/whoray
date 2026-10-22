@@ -5,8 +5,7 @@
   "isAvailable": false,
   "registrar": {
     "name": "The Registry General, Government of Bermuda",
-    "ianaId": 801154,
-    "url": "https://rdap.identitydigital.services/rdap"
+    "ianaId": 801154
   },
   "registrant": {
     "name": "Jane Doe",

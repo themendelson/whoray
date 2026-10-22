@@ -6,7 +6,6 @@
   "registrar": {
     "name": "Key-Systems GmbH",
     "ianaId": 269,
-    "url": "https://rdap.rrpproxy.net/",
     "abuseEmail": "abuse@key-systems.net",
     "abusePhone": "+49.68949396850"
   },

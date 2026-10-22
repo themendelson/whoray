@@ -4,7 +4,8 @@
   "state": "registered",
   "isAvailable": false,
   "registrar": {
-    "name": "MarkMonitor Inc."
+    "name": "MarkMonitor Inc.",
+    "handle": "REG-MARKMONITOR"
   },
   "handle": "google.cz",
   "creationDate": "2000-07-21T13:21:00.000Z",

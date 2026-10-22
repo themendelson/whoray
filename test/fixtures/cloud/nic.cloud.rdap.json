@@ -6,7 +6,6 @@
   "registrar": {
     "name": "Aruba PEC SpA",
     "ianaId": 9999,
-    "url": "https://rdap.registry.cloud/rdap/entity/9999",
     "street": [
       "Via San Clemente, 53"
     ],

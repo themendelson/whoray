@@ -6,7 +6,6 @@
   "registrar": {
     "name": "MarkMonitor Inc.",
     "ianaId": 292,
-    "url": "https://rdap.nixiregistry.in/rdap/entity/292",
     "street": [
       "3540 East Longwing Lane, Suite 300"
     ],
