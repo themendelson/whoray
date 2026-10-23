@@ -24,6 +24,13 @@ export const notFound: RegExp[] = [
   /\bstatus:\s*(available|free)\b/i,
   /\bis available for registration\b/i,
   /\bnincs talalat\b/i,
+  /\bno record found\b/i,
+  /\bno such domain\b/i,
+  /^\S+ is free\s*$/im,
+  /^\s*status:\s*not registered\b/im,
+  /\bthis query returned 0 objects\b/i,
+  /\bno se encuentra registrado\b/i,
+  /\bsolo acepta consultas con dominios\b/i,
   /등록되어 있지 않습니다/,
 ];
 
@@ -34,6 +41,7 @@ export const reserved: RegExp[] = [
   /^reserved domain name$/im,
   /\bnot available for registration\b/i,
   /\bhas usage restrictions applied\b/i,
+  /\bcannot be registered\b/i,
 ];
 
 export const notices: Record<"rateLimited" | "blocked" | "retired", RegExp[]> = {

@@ -24,9 +24,9 @@ export function readWhois(text: string, name: Name): Found {
   const registrar = registrarOf(fields);
   const nameservers = hostnames(fields.get("nameservers") ?? []).filter((host) => host !== name.domain);
   const statuses = statusesOf(fields, transformed);
-  if (!creationDate && !expirationDate && !registrar && nameservers.length === 0 && statuses.length === 0) {
-    return withoutRecord(text);
-  }
+  const registered =
+    creationDate !== undefined || expirationDate !== undefined || nameservers.length > 0 || statuses.length > 0;
+  if (!registered && (!registrar || notFound.some((phrase) => phrase.test(text)))) return withoutRecord(text);
   return {
     kind: "record",
     statuses,
