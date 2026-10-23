@@ -16,7 +16,6 @@
   "expirationDate": "2027-07-04T07:15:55.000Z",
   "snapshotDate": "2026-10-16T18:45:18.000Z",
   "statuses": [
-    "ok",
     "serverTransferProhibited",
     "serverDeleteProhibited",
     "serverUpdateProhibited"

@@ -11,9 +11,11 @@ export const eppStatuses: readonly string[] = words(`
 export const statusSynonyms: Readonly<Record<string, string>> = {
   active: "ok",
   actif: "ok",
+  connect: "ok",
   "in quarantine": "redemptionPeriod",
   "on hold": "serverHold",
   "pending cancel": "pendingDelete",
+  redemption: "redemptionPeriod",
   rédemption: "redemptionPeriod",
   supprimé: "pendingDelete",
   "the domain isn't generated in the zone": "serverHold",

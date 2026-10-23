@@ -10,7 +10,6 @@
   "updatedDate": "2025-11-16T00:00:00.000Z",
   "expirationDate": "2026-11-13T00:00:00.000Z",
   "statuses": [
-    "ok",
     "clientTransferProhibited"
   ],
   "nameservers": [

@@ -17,5 +17,7 @@ export function normalizeStatuses(values: string[]): string[] {
   const statuses = values
     .flatMap((value) => value.split(","))
     .flatMap((value) => statusesIn(value.trim().split(/\s+(?:\(|https?:)/)[0] ?? ""));
-  return [...new Set(statuses)];
+  const unique = [...new Set(statuses)];
+  // EPP's ok means no other status applies (RFC 5731), so a registry's "active" beside a lock isn't ok.
+  return unique.length > 1 ? unique.filter((status) => status !== "ok") : unique;
 }

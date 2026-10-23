@@ -54,6 +54,7 @@
   "handle": "google.is-7897",
   "creationDate": "2002-05-22T00:00:01.000Z",
   "updatedDate": "2026-04-29T19:12:13.000Z",
+  "expirationDate": "2027-05-22T00:00:00.000Z",
   "statuses": [
     "ok"
   ],

@@ -4,7 +4,9 @@
   "state": "registered",
   "isAvailable": false,
   "updatedDate": "2018-03-12T20:44:25.000Z",
-  "statuses": [],
+  "statuses": [
+    "ok"
+  ],
   "nameservers": [
     "ns1.google.com",
     "ns2.google.com",
