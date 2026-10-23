@@ -15,6 +15,7 @@ const EVENT_FIELDS: Record<string, EventField> = {
   expiration: "expirationDate",
   expired: "expirationDate",
   "record expires": "expirationDate",
+  "soft expiration": "expirationDate",
   "last changed": "updatedDate",
   "purge date": "released",
   transfer: "updatedDate",

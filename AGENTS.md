@@ -22,7 +22,7 @@ pnpm build
 - `src/lookup.ts`: one path for both protocols (locate the server, ask the registry, follow the
   registrar). `protocol: "auto"` asks WHOIS and falls back to RDAP.
 - `src/whois/`, `src/rdap/`: each protocol's transport and parser. `src/rdap/` never imports
-  `src/whois/`, so a browser bundle can leave WHOIS out. `src/iana.ts`: IANA lookups, cached for a day.
+  `src/whois/`, so a browser bundle can leave WHOIS out. `src/iana.ts`: IANA lookups.
 - `src/domain.ts`: input normalization.
 - `src/parse/`: what both parsers share, and `toRecord`, which turns either one's answer into a `DomainRecord`.
 - `src/data/`: servers, registries, label aliases, phrases, statuses, per-TLD quirks. Knowledge about a TLD
