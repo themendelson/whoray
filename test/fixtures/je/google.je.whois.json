@@ -12,7 +12,6 @@
   },
   "creationDate": "2002-10-31T00:00:00.000Z",
   "statuses": [
-    "ok",
     "serverTransferProhibited",
     "serverUpdateProhibited",
     "serverDeleteProhibited"
