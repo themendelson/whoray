@@ -6,6 +6,7 @@
   "registrar": {
     "name": "MARKMONITOR Inc.",
     "ianaId": 292,
+    "handle": "RAR376-FRNIC",
     "url": "http://www.markmonitor.com",
     "street": [
       "2150 S. Bonito Way, Suite 150"

@@ -6,6 +6,7 @@
   "registrar": {
     "name": "markmonitor",
     "ianaId": 9999,
+    "handle": "59774-NIRA",
     "url": "http://www.markmonitor.com",
     "street": [
       "1120 S. Rackham Way, Suite 300"

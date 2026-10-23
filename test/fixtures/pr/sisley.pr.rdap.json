@@ -6,7 +6,6 @@
   "registrar": {
     "name": "CSC Corporate Domains, Inc.",
     "ianaId": 299,
-    "url": "https://rdap.cscglobal.com/dbs/rdap-api/v1/",
     "abuseEmail": "domainabuse@cscglobal.com",
     "abusePhone": "+1.3026365400"
   },

@@ -53,18 +53,17 @@ export function contact(details: Details<Contact>): Contact | undefined {
   return Object.keys(known).length > 0 ? known : undefined;
 }
 
-export function registrar(name: string, details: Details<Omit<Registrar, "name">>): Registrar {
+export function registrar(details: Details<Registrar>): Registrar | undefined {
   const { ianaId } = details;
   const abuseEmail = details.abuseEmail?.toLowerCase();
-  return {
-    name,
-    ...defined({
-      ...details,
-      ianaId: ianaId !== undefined && Number.isInteger(ianaId) && ianaId > 0 ? ianaId : undefined,
-      abuseEmail: abuseEmail?.includes("@") === true ? abuseEmail : undefined,
-      abusePhone: details.abusePhone?.replace(/^tel:/, ""),
-    }),
-  };
+  const known = defined({
+    ...details,
+    ianaId: ianaId !== undefined && Number.isInteger(ianaId) && ianaId > 0 ? ianaId : undefined,
+    abuseEmail: abuseEmail?.includes("@") === true ? abuseEmail : undefined,
+    abusePhone: details.abusePhone?.replace(/^tel:/, ""),
+  });
+  const identified = known.name !== undefined || known.ianaId !== undefined || known.handle !== undefined;
+  return identified ? known : undefined;
 }
 
 export function hostnames(values: string[]): string[] {

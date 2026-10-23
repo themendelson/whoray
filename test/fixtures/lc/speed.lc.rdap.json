@@ -6,7 +6,6 @@
   "registrar": {
     "name": "Porkbun LLC",
     "ianaId": 1861,
-    "url": "https://cart-before.porkbun.horse/rdap/",
     "abuseEmail": "abuse+registry@porkbun.com",
     "abusePhone": "+1.8557675286"
   },

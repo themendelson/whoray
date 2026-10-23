@@ -5,6 +5,7 @@
   "isAvailable": false,
   "registrar": {
     "name": "MarkMonitor Inc.",
+    "handle": "ua.markmonitor",
     "url": "http://markmonitor.com",
     "city": "Meridian, Idaho",
     "country": "US",

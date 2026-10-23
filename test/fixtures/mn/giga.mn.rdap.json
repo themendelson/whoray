@@ -6,7 +6,6 @@
   "registrar": {
     "name": "Datacom Co., Ltd.",
     "ianaId": 800036,
-    "url": "https://rdap.identitydigital.services/rdap",
     "abuseEmail": "abuse@datacom.mn",
     "abusePhone": "+976.70000505"
   },

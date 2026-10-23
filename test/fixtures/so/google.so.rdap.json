@@ -6,7 +6,7 @@
   "registrar": {
     "name": "Mark Monitor",
     "ianaId": 9999,
-    "url": "https://rdap.nic.so/entity/52-sonic",
+    "handle": "52-sonic",
     "street": [
       "1120 S. Rackham Way, Suite 300"
     ],

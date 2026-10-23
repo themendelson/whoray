@@ -31,8 +31,9 @@ export interface Address {
 }
 
 export interface Registrar extends Address {
-  name: string;
+  name?: string;
   ianaId?: number;
+  handle?: string;
   url?: string;
   abuseEmail?: string;
   abusePhone?: string;

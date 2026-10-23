@@ -6,7 +6,6 @@
   "registrar": {
     "name": "One.com A/S",
     "ianaId": 1462,
-    "url": "https://rdap.one.com/v1/",
     "abuseEmail": "abuse@one.com",
     "abusePhone": "+45.44451220"
   },

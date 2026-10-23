@@ -6,6 +6,7 @@
   "registrar": {
     "name": "1API GmbH",
     "ianaId": 1387,
+    "handle": "H340803-USD",
     "url": "http://www.1api.net",
     "abuseEmail": "abuse@1api.net",
     "abusePhone": "+49.68949396850"

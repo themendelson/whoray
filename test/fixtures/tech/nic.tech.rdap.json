@@ -6,7 +6,6 @@
   "registrar": {
     "name": "Radix Technologies Inc. SEZC / CO Services Cayman Limited",
     "ianaId": 9999,
-    "url": "https://rdap.radix.host/rdap/entity/9999",
     "street": [
       "P.O. Box 10008"
     ],
