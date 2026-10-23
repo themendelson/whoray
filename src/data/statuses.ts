@@ -15,6 +15,7 @@ export const statusSynonyms: Readonly<Record<string, string>> = {
   "in quarantine": "redemptionPeriod",
   "on hold": "serverHold",
   "pending cancel": "pendingDelete",
+  redemption: "redemptionPeriod",
   rédemption: "redemptionPeriod",
   supprimé: "pendingDelete",
   "the domain isn't generated in the zone": "serverHold",

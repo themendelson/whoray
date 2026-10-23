@@ -22,7 +22,7 @@ export const commentedSections: Transform = (text) =>
     .replace(/^(Registrar:\n)registrar:/m, "$1handle:");
 
 export const domainEppStatuses: Transform = (text) => {
-  const block = /^domain:[\s\S]*?(?=\n[ \t]*\n)/m.exec(text)?.[0];
+  const block = /^domain:[\s\S]*?(?=\r?\n[ \t]*\r?\n)/m.exec(text)?.[0];
   return block === undefined ? text : text.replace(block, block.replace(/^eppstatus:/gm, "epp status:"));
 };
 
