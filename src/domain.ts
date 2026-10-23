@@ -1,8 +1,11 @@
+import { words } from "#data/lists.ts";
+import { tldsWithSecondLevelSuffixes } from "#data/suffixes.ts";
 import { decodePunycode } from "#utils/punycode.ts";
 import { parseUrl } from "#utils/url.ts";
 
 const LABEL = /^(?!-)[a-z0-9-]{1,63}(?<!-)$/;
 const NOT_A_HOSTNAME = /[\s/\\:@?#%]/;
+const SECOND_LEVEL_TLDS: ReadonlySet<string> = new Set(words(tldsWithSecondLevelSuffixes));
 
 export interface Name {
   domain: string;
@@ -16,7 +19,9 @@ export function normalize(input: string, isKnownSuffix: (suffix: string) => bool
   const labels = ascii.split(".");
   const valid = labels.length > 1 && ascii.length <= 253 && !/^\d+$/.test(lastLabel(ascii));
   if (!valid || !labels.every((label) => LABEL.test(label))) throw new TypeError(`Not a domain name: "${input}"`);
-  return { domain: ascii, unicode: toUnicode(ascii), tld: suffixOf(labels, isKnownSuffix) };
+  const tld = suffixOf(labels, isKnownSuffix);
+  const domain = registrable(labels, tld);
+  return { domain, unicode: toUnicode(domain), tld };
 }
 
 export function lastLabel(suffix: string): string {
@@ -28,6 +33,11 @@ export function bySuffix<T>(table: Readonly<Record<string, T>>, suffix: string):
     if (Object.hasOwn(table, candidate)) return table[candidate];
     if (!candidate.includes(".")) return undefined;
   }
+}
+
+function registrable(labels: string[], tld: string): string {
+  const unambiguous = tld.includes(".") || !SECOND_LEVEL_TLDS.has(tld);
+  return labels.slice(unambiguous ? -tld.split(".").length - 1 : 0).join(".");
 }
 
 function suffixOf(labels: string[], isKnownSuffix: (suffix: string) => boolean): string {
