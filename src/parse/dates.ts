@@ -1,3 +1,5 @@
+import { fromWallClock } from "#utils/time.ts";
+
 const MONTHS = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
 
 const ZONE_MINUTES: Record<string, number> = {
@@ -36,7 +38,7 @@ const PATTERNS: [pattern: RegExp, year: number, month: number, day: number][] = 
   [/^(\d{4})(\d{2})(\d{2})(\D.*)?$/, 1, 2, 3],
 ];
 
-export function parseDate(input: string): Date | undefined {
+export function parseDate(input: string, timeZone?: string): Date | undefined {
   const value = input
     .trim()
     .replace(/(\d)(st|nd|rd|th)\b/gi, "$1")
@@ -44,7 +46,7 @@ export function parseDate(input: string): Date | undefined {
     .replace(/^([a-z]{3}\s+\d{1,2})\s+(\d{1,2}:\d{2}(?::\d{2})?)\s+(\d{4})\b/i, "$1 $3 $2");
   for (const [pattern, year, month, day] of PATTERNS) {
     const match = pattern.exec(value);
-    const date = match && build(match, Number(match[year]), monthOf(match[month] ?? ""), Number(match[day]));
+    const date = match && build(match, Number(match[year]), monthOf(match[month] ?? ""), Number(match[day]), timeZone);
     if (date) return date;
   }
   return undefined;
@@ -54,19 +56,29 @@ function monthOf(text: string): number {
   return /^\d+$/.test(text) ? Number(text) : MONTHS.indexOf(text.toLowerCase()) + 1;
 }
 
-function build(match: RegExpExecArray, year: number, month: number, day: number): Date | undefined {
+function build(
+  match: RegExpExecArray,
+  year: number,
+  month: number,
+  day: number,
+  timeZone: string | undefined,
+): Date | undefined {
   const rest = match[4] ?? "";
   const time = /(\d{1,2}):(\d{2})(?::(\d{2}))?(?:\s*([ap])\.?m\b)?/i.exec(rest);
   const meridiem = time?.[4]?.toLowerCase();
   const hour = (Number(time?.[1] ?? 0) % (meridiem === undefined ? 24 : 12)) + (meridiem === "p" ? 12 : 0);
-  const date = new Date(Date.UTC(year, month - 1, day, hour, Number(time?.[2] ?? 0), Number(time?.[3] ?? 0)));
+  const wallClock = Date.UTC(year, month - 1, day, hour, Number(time?.[2] ?? 0), Number(time?.[3] ?? 0));
+  const date = new Date(wallClock);
   const valid = month >= 1 && month <= 12 && date.getUTCDate() === day && date.getUTCMonth() === month - 1;
-  return valid ? new Date(date.getTime() - offsetMinutes(rest) * 60_000) : undefined;
+  if (!valid) return undefined;
+  const offset = offsetMinutes(rest);
+  if (offset !== undefined) return new Date(wallClock - offset * 60_000);
+  return new Date(timeZone === undefined ? wallClock : fromWallClock(wallClock, timeZone));
 }
 
-function offsetMinutes(rest: string): number {
+function offsetMinutes(rest: string): number | undefined {
   const numeric = /(?:utc|gmt)?([+-])(\d{1,2}):?(\d{2})?\)?\s*$/i.exec(rest);
   if (numeric) return (numeric[1] === "-" ? -1 : 1) * (Number(numeric[2]) * 60 + Number(numeric[3] ?? 0));
   const named = /\(?([a-z]{1,5})\)?\s*$/i.exec(rest)?.[1]?.toLowerCase();
-  return named === undefined ? 0 : (ZONE_MINUTES[named] ?? 0);
+  return named === undefined ? undefined : ZONE_MINUTES[named];
 }

@@ -2,6 +2,7 @@ import type { ContactPart, ContactRole, Field } from "#data/aliases.ts";
 import { aliases } from "#data/aliases.ts";
 import { dnssec, firstLine, notFound, notices, reserved, revoked } from "#data/phrases.ts";
 import { quirks } from "#data/quirks.ts";
+import { whoisTimeZones } from "#data/time-zones.ts";
 import type { Name } from "#domain.ts";
 import { bySuffix } from "#domain.ts";
 import { registryInText } from "#lifecycle.ts";
@@ -19,8 +20,10 @@ export function readWhois(text: string, name: Name): Found {
   const transforms = bySuffix(quirks, name.tld) ?? [];
   const transformed = transforms.reduce((current, transform) => transform(current), text);
   const fields = collect(transformed);
-  const creationDate = firstOf(fields.get("created"), parseDate);
-  const expirationDate = firstOf(fields.get("expires"), parseDate);
+  const timeZone = bySuffix(whoisTimeZones, name.tld);
+  const date = (value: string): Date | undefined => parseDate(value, timeZone);
+  const creationDate = firstOf(fields.get("created"), date);
+  const expirationDate = firstOf(fields.get("expires"), date);
   const registrar = registrarOf(fields);
   const nameservers = hostnames(fields.get("nameservers") ?? []).filter((host) => host !== name.domain);
   const statuses = statusesOf(fields, transformed);
@@ -40,10 +43,10 @@ export function readWhois(text: string, name: Name): Found {
       tech: contactOf(fields, "tech"),
       billing: contactOf(fields, "billing"),
       handle: visible(fields.get("handle")?.[0]),
-      updatedDate: firstOf(fields.get("updated"), parseDate),
-      released: firstOf(fields.get("released"), parseDate),
-      deleted: firstOf(fields.get("deleted"), parseDate),
-      snapshotDate: parseDate(/>>> Last update of WHOIS database:\s*(\S+)/i.exec(transformed)?.[1] ?? ""),
+      updatedDate: firstOf(fields.get("updated"), date),
+      released: firstOf(fields.get("released"), date),
+      deleted: firstOf(fields.get("deleted"), date),
+      snapshotDate: date(/>>> Last update of WHOIS database:\s*(\S+)/i.exec(transformed)?.[1] ?? ""),
       dnssec: firstOf(fields.get("dnssec"), dnssecOf),
       registrarWhois: hostnames(fields.get("registrarWhois") ?? []).at(0),
       registryId: registryInText(transformed)?.id,
